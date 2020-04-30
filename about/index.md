@@ -36,9 +36,6 @@ comments: no
 
 - **[Cell BLAST](https://cblast.gao-lab.org){:target="_blank"}: Searching large-scale scRNA-seq databases via unbiased cell embedding.** Zhi-Jie Cao, Lin Wei, **Shen Lu**, De-Chang Yang, Ge Gao [[bioRxiv](https://doi.org/10.1101/587360){:target="_blank"}]
 
-----
-
-### Book List
 
 ----
 
