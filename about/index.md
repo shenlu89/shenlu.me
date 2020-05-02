@@ -8,7 +8,7 @@ comments: no
 
 ### Education
 
-- [Iowa State University](https://www.iastate.edu/){:target="_blank"}, Bachelor's Degree of [Bioinformatics and Computational Biology (BCBIO)](https://catalog.iastate.edu/azcourses/bcbio/){:target="_blank"} (2012.12-2016.5)
+- [Iowa State University](https://www.iastate.edu/){:target="_blank"}, bachelor's degree of [Bioinformatics and Computational Biology (BCBIO)](https://catalog.iastate.edu/azcourses/bcbio/){:target="_blank"} (2012.12-2016.5)
 
 ----
 ### Experience
