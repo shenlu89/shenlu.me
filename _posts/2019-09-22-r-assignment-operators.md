@@ -6,10 +6,10 @@ categories: Blatter
 tags: [R]
 ---
 
->The best thing about R is that it was developed by statisticians. The worst thing about R is that...it was developed by statisticians. — Bo Cowgill, Google, Inc
+>The best thing about R is that it was developed by statisticians. The worst thing about R is that...it was developed by statisticians. <span style="text-align: right; width:100%; display: block;">— Bo Cowgill, Google, Inc</span>
 
 
-R语言是我自学的第一门计算机语言，虽然接触最早，但用的最不好。因为R是一个面向统计学的高级语言 (statistics-oriented programming language)，有自己独特的数据类型和语法设计，且在其他语言中难以被借鉴，而且还要记一堆只有在R里才能用到的参数。
+R语言是我自学的第一门计算机语言，虽然接触最早，但用的最不好。因为R是一个面向统计学的高级语言 (statistics-oriented programming language)，有自己独特的数据类型和语法设计。不但在其他语言中难以被借鉴，而且还要记一堆只有在R里才能用到的参数。
 
 比如今天要说的赋值符号。在绝大部分语言里，简单一个等号(=)就完事了，而在R里竟然用箭头符(<-)实现。更可怕的是，在很多场景中等号和箭头可以达到相同的效果，我<del>TM</del>真是服了。最近把概率论和数理统计㕛拾起来了，又要用R了，怒查了一下箭头(<-)和等号(=)在R中的区别，结束个困扰我的问题。
 
