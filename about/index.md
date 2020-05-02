@@ -32,7 +32,21 @@ comments: no
 
 ### Projects
 
-- [IUCN Red List Amazing Species](https://shenlu89.github.io/iucn-red-list-amazing-species){:target="_blank"} [[Github](https://github.com/shenlu89/iucn-red-list-amazing-species){:target="_blank"}]
+**2020**
+
+- **Common Micro Services Boilerplate (CMSB)**
+
+An extensible RESTful-API microservices boilerplate based on koa2 [[Github](https://github.com/shenlu89/common-micro-services-boilerplate){:target="_blank"}] 
+
+**2018**
+
+- **[IUCN Red List Visualization](https://shenlu89.github.io/iucn-red-list-visualization/){:target="_blank"}**
+
+A project for visulizing the species facing a risk of extinction and their stories. [[Github](https://github.com/shenlu89/iucn-red-list-visualization){:target="_blank"}]
+
+- **[Oauth Github](https://infinite-bayou-58459.herokuapp.com){:target="_blank"}**
+
+A micro-auth web app based on Node.js and JWT. [[Github](https://github.com/shenlu89/oauth-github){:target="_blank"}]
 
 ----
 
@@ -43,9 +57,15 @@ comments: no
 
 **2020**
 
-- **Genomic Architecture of Cells in Tissues ([GeACT](http://geact.gao-lab.org){:target="_blank"}): Study of Human Mid-gestation Fetus.** Feng Tian, Fan Zhou, Xiang Li, Wenping Ma, Honggui Wu, Ming Yang, Alec R. Chapman, David F. Lee, Longzhi Tan, Dong Xing, Guangjun Yin, Ayjan Semayel, Jing Wang, Jia Wang, Wenjie Sun, Runsheng He, Siwei Zhang, Zhijie Cao, Lin Wei, **Shen Lu**, Dechang Yang, Yunuo Mao, Yuan Gao, Kexuan Chen, Yu Zhang, Xixi Liu, Jun Yong, Liying Yan, Yanyi Huang, Jie Qiao, Fuchou Tang, Ge Gao, X. Sunney Xie [[bioRxiv](https://www.biorxiv.org/content/10.1101/2020.04.12.038000v1){:target="_blank"}]
+- **Genomic Architecture of Cells in Tissues ([GeACT](http://geact.gao-lab.org){:target="_blank"}): Study of Human Mid-gestation Fetus.** 
 
-- **[Cell BLAST](https://cblast.gao-lab.org){:target="_blank"}: Searching large-scale scRNA-seq databases via unbiased cell embedding.** Zhi-Jie Cao, Lin Wei, **Shen Lu**, De-Chang Yang, Ge Gao [[bioRxiv](https://doi.org/10.1101/587360){:target="_blank"}]
+Feng Tian, Fan Zhou, Xiang Li, Wenping Ma, Honggui Wu, Ming Yang, Alec R. Chapman, David F. Lee, Longzhi Tan, Dong Xing, Guangjun Yin, Ayjan Semayel, Jing Wang, Jia Wang, Wenjie Sun, Runsheng He, Siwei Zhang, Zhijie Cao, Lin Wei, **Shen Lu**, Dechang Yang, Yunuo Mao, Yuan Gao, Kexuan Chen, Yu Zhang, Xixi Liu, Jun Yong, Liying Yan, Yanyi Huang, Jie Qiao, Fuchou Tang, Ge Gao, X. Sunney Xie [[bioRxiv](https://www.biorxiv.org/content/10.1101/2020.04.12.038000v1){:target="_blank"}]
+
+**2019**
+
+- **[Cell BLAST](https://cblast.gao-lab.org){:target="_blank"}: Searching large-scale scRNA-seq databases via unbiased cell embedding.** 
+
+Zhi-Jie Cao, Lin Wei, **Shen Lu**, De-Chang Yang, Ge Gao [[bioRxiv](https://doi.org/10.1101/587360){:target="_blank"}]
 
 
 ----
