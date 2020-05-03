@@ -19,9 +19,8 @@ comments: no
 ### Skills & Enthusiasm
 
 - MVKN(Mongodb, Vue, Koa, Node/Nginx) Technology Stack
-- Statistical Graphics and Data Visualization (R&D)
-- Discrete Mathematics (Set Theory, Linear Algebra, Probability Theory, Graph Theory, Mathematical logic, Combinatorics, etc.)
-- Geometry
+- Statistical Graphics & Data Visualization
+- Discrete Mathematics (Set Theory, Linear Algebra, Probability Theory, Graph Theory, Mathematical logic, Combinatorics, etc.) & Geometry
 
 >Please don't ask me about bioinformatics-related questions because I'm not the front-line staff on this field now :(
 
