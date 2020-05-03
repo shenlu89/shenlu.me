@@ -4,8 +4,6 @@ layout: page
 comments: no
 ---
 
-<del><strong>一个折腾生信的人 (2013-2016)</strong></del> **一个被生信折腾的人 (2017-2020)**
-
 ### Education
 
 - [Iowa State University](https://www.iastate.edu/){:target="_blank"}, bachelor's degree of [Bioinformatics and Computational Biology (BCBIO)](https://catalog.iastate.edu/azcourses/bcbio/){:target="_blank"} (2012.12-2016.5)
@@ -13,8 +11,7 @@ comments: no
 ----
 ### Experience
 
-- Bioinformatics Engnieer & Research Assistant (2017-2020)
-
+- Bioinformatics Engnieer & Research Assistant (2017-2020) 
 - Full-stack Web Developer (2020-current)
 
 ----
@@ -24,6 +21,7 @@ comments: no
 - MVKN(Mongodb, Vue, Koa, Node/Nginx) Technology Stack
 - Statistical Graphics and Data Visualization (R&D)
 - Discrete Mathematics (Set Theory, Linear Algebra, Probability Theory, Graph Theory, Mathematical logic, Combinatorics, etc.)
+- Geometry
 
 >Please don't ask me about bioinformatics-related questions because I'm not the front-line staff on this field now :(
 
