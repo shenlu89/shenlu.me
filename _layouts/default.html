@@ -14,6 +14,15 @@
     <!-- <link rel="stylesheet" href="/media/css/highlight.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/styles/github-gist.min.css">
     <link rel="stylesheet" href="/media/css/style.css">
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+    var $nav = $('nav span a').click(function(e) {
+        e.preventDefault();
+        console.log(this)
+        $nav.removeClass('highlight');
+        $(this).addClass('highlight');
+    });
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
     <script>
     hljs.initHighlightingOnLoad();
@@ -38,15 +47,6 @@
             <p><small>Powered by <a href="https://github.com/mojombo/jekyll" target="_blank">Jekyll</a> | © 2019-{{site.time | date:"%Y"}} by <a href="https://github.com/shenlu89" target="_blank">Shen Lu</a></small></p>
         </footer>
     </div>
-    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript">
-    var $nav = $('nav span a').click(function(e) {
-        e.preventDefault();
-        console.log(this)
-        $nav.removeClass('highlight');
-        $(this).addClass('highlight');
-    });
-    </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70772442-1"></script>
     <script>
