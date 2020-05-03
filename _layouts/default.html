@@ -18,18 +18,17 @@
     <script>
     hljs.initHighlightingOnLoad();
     </script>
-    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
 </head>
 
 <body>
     <div id="container">
         <div id="main" role="main">
             <nav>
-                <span><a title="home" class="" href="/">HOME</a></span>
-                <span><a title="archives" class="" href="/archives">ARCHIVES</a></span>
-                <span><a title="categories" class="" href="/categories">CATEGORIES</a></span>
-                <span><a title="tags" class="" href="/tags">TAGS</a></span>
-                <span><a title="about" class="" href="/about">ABOUT</a></span>
+                <span><a title="home" href="/">HOME</a></span>
+                <span><a title="archives" href="/archives">ARCHIVES</a></span>
+                <span><a title="categories" href="/categories">CATEGORIES</a></span>
+                <span><a title="tags" href="/tags">TAGS</a></span>
+                <span><a title="about" href="/about">ABOUT</a></span>
             </nav>
             <article class="content">
                 {{ content }}
@@ -39,6 +38,15 @@
             <p><small>Powered by <a href="https://github.com/mojombo/jekyll" target="_blank">Jekyll</a> | © 2019-{{site.time | date:"%Y"}} by <a href="https://github.com/shenlu89" target="_blank">Shen Lu</a></small></p>
         </footer>
     </div>
+    <script type="text/javascript" src="/media/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+    var $nav = $('nav span a').click(function(e) {
+        e.preventDefault();
+        console.log(this)
+        $nav.removeClass('highlight');
+        $(this).addClass('highlight');
+    });
+    </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70772442-1"></script>
     <script>

@@ -202,7 +202,6 @@ nav {
 }
 
 nav a {
-    /*display: block;*/
     padding: 0.5em 0em;
     color: #000000;
     transition: color .1s linear;
@@ -210,11 +209,13 @@ nav a {
 }
 
 nav a:hover {
-    /*background-color: #dd0000;*/
     text-decoration: none;
-    /*color: #f9f9f9;*/
     color: #dd0000;
-    /*-webkit-transition: color .1s linear;*/
+    border-bottom: 2px solid #dd0000
+}
+
+.highlight {
+    color: #dd0000;
     border-bottom: 2px solid #dd0000
 }
 
