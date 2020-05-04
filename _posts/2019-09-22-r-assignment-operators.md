@@ -2,7 +2,7 @@
 layout: post
 title: "R语言吐槽第一弹：等号(=)，还是箭头(<-)"
 mathjax: true
-categories: Blatter
+categories: [Programming]
 tags: [R]
 ---
 
