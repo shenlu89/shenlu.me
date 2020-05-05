@@ -6,7 +6,7 @@ categories: [Programming]
 tags: [R]
 ---
 
->The best thing about R is that it was developed by statisticians. The worst thing about R is that...it was developed by statisticians. <span style="text-align: right; width:100%; display: block;">— Bo Cowgill, Google, Inc</span>
+>*"The best thing about R is that it was developed by statisticians. The worst thing about R is that...it was developed by statisticians."* <span style="text-align: right; width:100%; display: block;">— Bo Cowgill, Google, Inc</span>
 
 
 R语言是我自学的第一门计算机语言，虽然接触最早，但用的最不好。因为R是一个面向统计学的高级语言 (statistics-oriented programming language)，有自己独特的数据类型和语法设计。不但在其他语言中难以被借鉴，而且还要记一堆只有在R里才能用到的参数。

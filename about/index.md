@@ -7,6 +7,7 @@ comments: no
 ### Education
 
 - **[Iowa State University](https://www.iastate.edu/){:target="_blank"}** (2012-2016), bachelor's degree of [Bioinformatics and Computational Biology (BCBIO)](https://catalog.iastate.edu/azcourses/bcbio/){:target="_blank"}
+- **[Qingdao Agricultural University](https://www.qau.edu.cn/){:target="_blank"}** (2010-2012), Biological Science (suspension of school since December 2012)
 
 ----
 ### Experience

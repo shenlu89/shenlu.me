@@ -122,7 +122,7 @@ blockquote p {
 }
 
 .content img {
-    max-width: 700px;
+    max-width: 100%;
     display: block;
     margin: 4px auto;
     -webkit-box-shadow: #999 1px 1px 4px;
