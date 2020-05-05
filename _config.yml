@@ -21,7 +21,7 @@ jekyll-archives:
   enabled: all
   layout: page
 
-exclude: ["Rakefile", "CNAME", "README.md"]
+exclude: ["CNAME", "README.md"]
 safe: true
 plugins:
   - jekyll-paginate

@@ -6,7 +6,7 @@ comments: no
 
 ### Education
 
-- [Iowa State University](https://www.iastate.edu/){:target="_blank"}, bachelor's degree of [Bioinformatics and Computational Biology (BCBIO)](https://catalog.iastate.edu/azcourses/bcbio/){:target="_blank"} (2012.12-2016.5)
+- **[Iowa State University](https://www.iastate.edu/){:target="_blank"}** (2012-2016), bachelor's degree of [Bioinformatics and Computational Biology (BCBIO)](https://catalog.iastate.edu/azcourses/bcbio/){:target="_blank"}
 
 ----
 ### Experience
@@ -18,11 +18,12 @@ comments: no
 
 ### Skills & Enthusiasm
 
+- Javascript(ES6+)/Typescript, Linux, R, Python, C/C++, etc. 
 - MVKN(Mongodb, Vue, Koa, Node/Nginx) Technology Stack
 - Statistical Graphics & Data Visualization
 - Discrete Mathematics (Set Theory, Linear Algebra, Probability Theory, Graph Theory, Mathematical logic, Combinatorics, etc.) & Geometry
 
->Please don't ask me about bioinformatics-related questions because I'm not the front-line staff on this field now :(
+>Please don't ask me about bioinformatics-related questions. I'm not the front-line staff on this field now :(
 
 ----
 

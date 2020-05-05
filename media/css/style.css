@@ -34,7 +34,6 @@ hr {
 
 p {
     margin: .7rem 0;
-    /*margin-bottom: .6rem;*/
     text-align: justify;
 }
 
@@ -42,10 +41,6 @@ p {
     padding: 0;
     line-height: 2
 }
-/*
-li {
-    padding: .2em 0em;
-}*/
 
 ol,
 ul {
@@ -68,7 +63,6 @@ pre code {
     padding: 3px 10px;
     line-height: 1.5;
     display: block;
-    /*color: white;*/
 }
 
 pre p {
@@ -88,10 +82,6 @@ pre {
     border-radius: 3px;
     margin-bottom: 1rem;
 }
-
-/*pre p code {
-    background-color: rgba(0, 0, 0, 0);
-}*/
 
 p code,
 li code {
@@ -117,7 +107,7 @@ blockquote p {
 }
 
 #container {
-    width: 700px;
+    width: 750px;
     margin: 2em auto;
     display: block;
     padding: 0 2em;
@@ -125,7 +115,6 @@ blockquote p {
 
 .content {
     font-size: 1rem;
-    /*line-height: 2;*/
 }
 
 .content h1 {
@@ -194,11 +183,8 @@ nav {
     font-size: 1rem;
     text-transform: uppercase;
     float: left;
-    /*margin-left: -8rem;*/
-    /*width: 7rem;*/
     width: 100%;
     text-align: left;
-    /*border-bottom: 1px solid #cccccc;*/
 }
 
 nav a {
@@ -258,7 +244,6 @@ iframe {
 }
 
 footer {
-    /*display: block;*/
     display: flex;
     justify-content: center;
     border-top: 1px dashed #CCC;
@@ -294,7 +279,6 @@ footer small {
 }
 
 .paginator {
-    /*font: 14px Arial, Helvetica, sans-serif;*/
     color: #AAA;
     margin: 20px 0;
     line-height: 150%;
