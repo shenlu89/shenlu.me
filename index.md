@@ -1,5 +1,5 @@
 ---
-title: 一个被生信折腾的人
+title: A Dancer of Great Hunger
 layout: page
 ---
 
