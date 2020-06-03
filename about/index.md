@@ -4,12 +4,10 @@ layout: page
 comments: no
 ---
 
-<del>一个折腾生信的人</del> 一个被生信折腾的人
-
 ### Education
 
 - **[Iowa State University](https://www.iastate.edu/){:target="_blank"}** (2012-2016), bachelor's degree of [Bioinformatics and Computational Biology (BCBIO)](https://catalog.iastate.edu/azcourses/bcbio/){:target="_blank"}
-- **[Qingdao Agricultural University](https://www.qau.edu.cn/){:target="_blank"}** (2010-2012), Biological Science in [School of Life Sciences](http://smkxy.qau.edu.cn/){:target="_blank"} (took off the college after receiving the ISU admission notice)
+<!-- - **[Qingdao Agricultural University](https://www.qau.edu.cn/){:target="_blank"}** (2010-2012), Biological Science in [School of Life Sciences](http://smkxy.qau.edu.cn/){:target="_blank"} (took off the college after receiving the ISU admission notice) -->
 
 ----
 ### Experience
@@ -17,16 +15,16 @@ comments: no
 - Bioinformatics Engnieer & Research Assistant (2017-2020) 
 - Full-stack Web Developer (2020-current)
 
+><del>一个折腾生信的人</del> 一个被生信折腾的人
+
 ----
 
 ### Skills & Enthusiasm
 
-- Javascript(ES6+)/Typescript, Linux, R, Python, C/C++, etc. 
-- MVKN(Mongodb, Vue, Koa, Node/Nginx) Technology Stack
+- Javascript(ES6+)/Typescript, Linux, R, Python, C/C++, etc
+- MXKN(Mongodb, Vue/React, Koa, Node/Nginx) Technology Stack
 - Statistical Graphics & Data Visualization
 - Discrete Mathematics (Set Theory, Linear Algebra, Probability Theory, Graph Theory, Mathematical logic, Combinatorics, etc.) & Geometry
-
->Please don't ask me about bioinformatics-related questions. I'm not the front-line staff on this field now :(
 
 ----
 
@@ -36,7 +34,7 @@ comments: no
 
 - **Common Micro Services Boilerplate (CMSB)**
 
-An extensible RESTful-API microservices boilerplate based on koa2 [[Github](https://github.com/shenlu89/common-micro-services-boilerplate){:target="_blank"}] 
+An extensible RESTful-API microservices boilerplate based on koa2 and mongodb. [[Github](https://github.com/shenlu89/common-micro-services-boilerplate){:target="_blank"}] 
 
 **2018**
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "什么是万维网"
+comments: true
 categories: [Web]
 tags: [CS 101]
 ---
@@ -29,7 +30,7 @@ tags: [CS 101]
 
 >上图展示的是世界上第一个Web浏览器运行时的截图，可以看到里面的很多设计依然保留在现代浏览器中。另外，最初的浏览器不但可以浏览网页，还可以直接在浏览器上修改页面的内容。
 
-## 万维网的发展
+## 万维网后续发展
 
 Tim Berners-Lee发布了'WorldWideWeb'网页浏览器和相关软件，其中包括[Line Mode Browser](http://line-mode.cern.ch){:target="_blank"} (LMB)，Web服务器软件和一个帮助开发人员扩展WWW功能的库。在1991年3月，最开始他的同事们只能通过CERN的电脑使用WWW软件。但几个月之后(1991年8月)，他在互联网上公开了WWW软件并希望将这个发明传播到全世界。<sup>[1]</sup>
 
@@ -44,15 +45,13 @@ Tim Berners-Lee发布了'WorldWideWeb'网页浏览器和相关软件，其中包
 
 ## 万维网和互联网是什么关系？
 
-万维网是构建在互联网发展的基础之上的（互联网的故事也是一个大坑，到此为止，不多说了）。互联网技术旨在解决不同电脑之间的连接问题，而万维网技术让电脑能够连接到我们每一个普通人。
+万维网是构建在互联网发展的基础之上的。互联网技术旨在解决不同电脑之间的连接问题；万维网技术让电脑能够连接到每一个人；而浏览器的诞生让万维网更加方便的连接了每一个普通人。
 
-## 域名是从哪里来的？
-
-有待补充...
+![](./assets/images/couchconfnycintrotodocumentdatabases-11-728.jpg)
 
 **参考文献：**
 
-- [1] [A short history of the Web](https://home.cern/science/computing/birth-web/short-history-web)
-- [2] [Tim Berners-Lee's original World Wide Web browser](http://info.cern.ch/NextBrowser.html)
-- [3] [Line Mode Browser 2013](http://line-mode.cern.ch)
-- [4] [Nicola Pellow](https://en.wikipedia.org/wiki/Nicola_Pellow)
+- [1] [A short history of the Web](https://home.cern/science/computing/birth-web/short-history-web){:target="_blank"}
+- [2] [Tim Berners-Lee's original World Wide Web browser](http://info.cern.ch/NextBrowser.html){:target="_blank"}
+- [3] [Line Mode Browser 2013](http://line-mode.cern.ch){:target="_blank"}
+- [4] [Nicola Pellow](https://en.wikipedia.org/wiki/Nicola_Pellow){:target="_blank"}
