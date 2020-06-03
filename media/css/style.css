@@ -164,12 +164,12 @@ blockquote p {
 
 .pageNav {
     font-weight: bold;
-    font-size: 17px;
+    font-size: 1rem;
 }
 
 .pageNavInvalid {
     font-weight: bold;
-    font-size: 17px;
+    font-size: 1rem;
     color: #D0D0D0;
 }
 
