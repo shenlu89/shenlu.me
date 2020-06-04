@@ -85,3 +85,7 @@ x = y <- 5
 上面的代码报错，原因是如果先使用箭头(<-)，后使用等号(=)，箭头(<-)会先得到解析，轮到等号(=)的时候就找不到要赋值的对象了。
 
 所以R赋值最好还是用箭头(<-)。好吧，到此为止，应该够用了。
+
+**参考文献：**
+
+- [Assignment Operators](https://stat.ethz.ch/R-manual/R-patched/library/base/html/assignOps.html)

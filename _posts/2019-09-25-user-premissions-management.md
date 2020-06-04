@@ -46,7 +46,7 @@ passwd: password updated successfully
 
 ### 切换用户
 
-如果要切换到刚刚创建的用户环境，可以通过`su`命令
+如果要切换到刚刚创建的用户环境，可以通过`su`命令切换账户。
 
 ```sh
 su useranme
@@ -68,12 +68,22 @@ sudo su root
 - 主组（初始组）: 用户登录系统时的组。
 - 附加组: 登录后可切换的其他组
 
+### 添加用户到组账户
+
 ```sh
 usermod -aG sudo username
 ```
 >`-a`代表追加`username`到`sudo`组，而不将用户从其他组中移除。
 
 这时候`username`就可以通过`sudo su`切换到`root`账户或者使用`sudo`权限了，比如安装软件或使用管理员权限操作系统，修改文件等等。
+
+### 删除用户
+
+执行如下命令，用户`username`和用户目录`/home/lus`会一并删除。
+
+```sh
+userdel -r username
+```
 
 ## 用户账户文件地址:
 
