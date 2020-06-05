@@ -199,6 +199,12 @@ nav a:hover {
     border-bottom: 2px solid #dd0000
 }
 
+.active {
+    text-decoration: none;
+    color: #dd0000;
+    border-bottom: 2px solid #dd0000
+}
+
 .highlight {
     color: #dd0000;
     border-bottom: 2px solid #dd0000

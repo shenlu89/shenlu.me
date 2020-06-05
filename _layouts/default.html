@@ -33,11 +33,11 @@
     <div id="container">
         <div id="main" role="main">
             <nav>
-                <span><a title="home" href="/">HOME</a></span>
-                <span><a title="archives" href="/archives">ARCHIVES</a></span>
-                <span><a title="categories" href="/categories">CATEGORIES</a></span>
-                <span><a title="tags" href="/tags">TAGS</a></span>
-                <span><a title="about" href="/about">ABOUT</a></span>
+                <span><a title="home" href="/" {% if page.url == '/' %} class="active" {% endif %}>HOME</a></span>
+                <span><a title="archives" href="/archives/" {% if page.url == '/archives' %} class="active" {% endif %}>ARCHIVES</a></span>
+                <span><a title="categories" href="/categories" {% if page.url == '/categories/' %} class="active" {% endif %}>CATEGORIES</a></span>
+                <span><a title="tags" href="/tags" {% if page.url == '/tags/' %} class="active" {% endif %}>TAGS</a></span>
+                <span><a title="about" href="/about" {% if page.url == '/about/' %} class="active" {% endif %}>ABOUT</a></span>
             </nav>
             <article class="content">
                 {{ content }}
