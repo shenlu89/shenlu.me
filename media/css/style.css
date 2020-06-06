@@ -249,6 +249,10 @@ iframe {
     line-height: 1.6;
 }
 
+table {
+    width: 100%
+}
+
 footer {
     display: flex;
     justify-content: center;

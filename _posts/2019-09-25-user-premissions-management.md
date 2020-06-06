@@ -98,10 +98,10 @@ userdel -r username
 
 ### 用户管理
 
-- useradd -m <用户账号名>: 创建<用户账号>和<用户账号>目录
-- usermod -G <组账号名> <用户账号名>: 设置<用户账号>的<组账号>
-- usermod -Ga <组账号名> <用户账号名>: 追加<用户账号>到<组账号>
-- userdel -r <用户账号名>: 删除用户和账号目录
+- useradd -m `<username>`: 创建<用户账号>和<用户账号>目录
+- usermod -G `<groupname>` `<username>`: 设置<用户账号>的<组账号>
+- usermod -Ga `<groupname>` `<username>`: 追加<用户账号>到<组账号>
+- userdel -r `<username>`: 删除用户和账号目录
 
 ### 组管理
 
@@ -116,31 +116,64 @@ userdel -r username
 
 ### 组成员管理：
 
-- gpasswd -d <用户账号名> <组账号名>: 从标准组中删除用户
+- gpasswd -d `<username>` `<groupname>`: 从标准组中删除用户
 
 
 ### 口令维护(禁用、恢复和删除用户口令)：
 
-- passwd <用户账号名>: 设置用户口令
-- passwd -l <用户账号名>: 禁用用户账户口令
-- passwd -u <用户账号名>: 恢复用户账户口令
-- passwd -S <用户账号名>: 查看用户账户口令状态
-- passwd -d <用户账号名>: 清除用户账户口令
+- passwd `<username>`: 设置用户口令
+- passwd -l `<username>`: 禁用用户账户口令
+- passwd -u `<username>`: 恢复用户账户口令
+- passwd -S `<username>`: 查看用户账户口令状态
+- passwd -d `<username>`: 清除用户账户口令
 
 ### 权限设置
 
-- chown <属主> <文件或目录>
-- chown <属主>:<属组> <文件或目录>
-- chown :<属组> <文件或目录> （相当于 chgrp 命令，专门修改属组）
+- chown `<username>` `<file ||directory>`
+- chown `<username>`:`<groupname>` `<file ||directory>`
+- chown :`<groupname>` `<file || directory>` （相当于 chgrp 命令，专门修改属组）
 
 >-R ：递归修改权限
 
 ### 权限解读
 
+如果在用户目录下执行`ll`，就会看到如上的输出结果。其中`permissions`下面的第一个字段编码描述了文件和目录权限代表的对象类型：
+
+- `-`: 文件
+- `d`: 目录
+- `l`: 链接
+- `c`: 字符型设备
+- `b`: 块设备
+- `n`: 网络设备
+
 ![](./assets/images/unix_dir.png)
 
+
+| 权限 | 二进制 | 八进制 | 描述 |
+|:--- |:---:|:---:|:---:|
+| `---` | 000 | 0 | 无权限 |
+| `--x` | 001 | 1 | 只有执行权限 |
+| `-w-` | 010 | 2 | 只有写入权限 |
+| `-wx` | 011 | 3	| 写和执行权限 |
+| `r--` | 100 | 4 | 读权限 |
+| `r-x` | 101 | 5 | 读取和执行的权限 |
+| `rw-` | 110 | 6	| 读取的写入的权限 |
+| `rwx` | 111 | 7	| 所有权限 |
+
+之后有3组三字符的编码。每一组定义了3种访问权限：
+
+- `r`: 可读(read)
+- `w`: 可写(write)
+- `x`: 可执行(execute)
+
+若没有某种权限，在该权限位会出现单破折线`-`。这3组权限分别对应对象的3个安全级别：
+
+- 属主(users)
+- 属组(groups)
+- 其他用户(others)
 
 **参考文献：**
 
 - [1] [Linux permissions 101](https://opensource.com/article/19/8/linux-permissions-101)
 - [2] [Linux用户和权限管理看了你就会用啦](https://juejin.im/post/5b1e69dcf265da6e0d7a347e)
+- [3] [理解Linux文件权限](https://www.jianshu.com/p/8566a74e77be)
