@@ -2,8 +2,8 @@
 layout: post
 title: "为什么电脑重启后仍能准确记录当前时间"
 mathjax: false
-categories: [Linux]
-tags: [permissions]
+categories: [Computer]
+tags: [cs101]
 ---
 
 计算机是通过主板电池维持系统时钟的准确性。

@@ -3,7 +3,7 @@ layout: post
 title: "你好，我的世界"
 description: "第一篇博客"
 category: Blatter
-tags: [Feelings]
+tags: [feelings]
 ---
 
 时间过得真快，还没准备好迎接那个30岁的自己，他就当着我的面明目张胆的走了。挥手告别那个曾经年轻的自己，开始一段新的旅程。

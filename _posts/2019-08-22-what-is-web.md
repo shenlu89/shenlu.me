@@ -3,7 +3,7 @@ layout: post
 title: "什么是万维网"
 comments: true
 categories: [Web]
-tags: [CS 101]
+tags: [cs101]
 ---
 
 ## 万维网的诞生
