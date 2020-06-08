@@ -197,3 +197,5 @@ scp -r example:~/host/dir .
 
 - [1] [关于对称加密/非对称加密的理解](https://zhuanlan.zhihu.com/p/125518960){:target="_blank"}
 - [2] [理解SSH服务的原理](https://www.0x0f0f.com/linux/about-secure-shell/about-secure-shell/){:target="_blank"}
+- [3] [SSH隧道加密技术](http://za-kaddafi.org/bypassing/zh/31){:target="_blank"}
+- [4] [SSH隧道技术](https://www.jianshu.com/p/f2156c444fd6){:target="_blank"}
