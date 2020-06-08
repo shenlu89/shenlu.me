@@ -6,7 +6,6 @@
     <meta http-equiv=X-UA-Compatible content="IE=edge">
     <meta name=viewport content="width=device-width,initial-scale=1">
     <meta name="author" content="{{ site.author }}" />
-    <!--[if IE]><link rel="icon" href="/favicon.ico"><![endif]-->
     <title>{{ site.author }} | {{ page.title }}</title>
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
@@ -22,10 +21,6 @@
         $nav.removeClass('highlight');
         $(this).addClass('highlight');
     });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
-    <script>
-    hljs.initHighlightingOnLoad();
     </script>
 </head>
 
@@ -47,6 +42,10 @@
             <p><small>Powered by <a href="https://github.com/mojombo/jekyll" target="_blank">Jekyll</a> | © 2019-{{site.time | date:"%Y"}} by <a href="https://github.com/shenlu89" target="_blank">Shen Lu</a>, all rights reserved.</small></p>
         </footer>
     </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
+    <script>
+    hljs.initHighlightingOnLoad();
+    </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-70772442-1"></script>
     <script>
