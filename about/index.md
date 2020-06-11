@@ -14,7 +14,7 @@ comments: no
 - Bioinformatics Engnieer & Research Assistant (2017-2020) 
 - Full-stack Web Developer & Visualization Enthusiast (2020-current)
 
-><del>一个折腾生信的人</del> 一个被生信折腾的人
+><del>一个曾经折腾生信的人</del> 一个曾经被生信折腾的人
 
 ----
 

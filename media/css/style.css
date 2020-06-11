@@ -1,7 +1,7 @@
 body {
     font-size: 1rem;
-    font-family: 'Source Sans Pro', sans-serif;
-    /*font-family: 'Open Sans',sans-serif;*/
+    /*font-family: 'Source Sans Pro', sans-serif;*/
+    font-family: 'Open Sans',sans-serif;
     word-spacing: 1px;
     margin-left: auto;
     margin-right: auto;
@@ -123,12 +123,9 @@ blockquote p {
 }
 
 .content img {
-    max-width: 100%;
+    width: 100%;
     display: block;
     margin: 4px auto;
-    -webkit-box-shadow: #999 1px 1px 4px;
-    -moz-box-shadow: #999 1px 1px 4px;
-    box-shadow: #999 1px 1px 4px;
 }
 
 #tag_cloud {
