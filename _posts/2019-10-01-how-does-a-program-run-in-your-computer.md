@@ -27,7 +27,6 @@ tags: [cs101]
 	- 算术逻辑单元(Arithmetic Logic Unit, ALU): 算术逻辑运算单元（ALU）的基本功能为加、减、乘、除四则运算，与、或、非、异或等逻辑操作，以及移位、求补等操作。
 	- **累加器** (Accumulator, ACC, AC): 是一个通用寄存器。当运算器的算术逻辑单元(ALU)执行算术或逻辑运算时(加法，乘法，移位等等)，累加器为ALU提供一个工作区，可以为ALU暂时保存一个操作数或运算结果。显然，运算器中至少要有一个累加寄存器。
 	- **状态字寄存器** (Status Register, Flag Register, Condition Code Register, CCR)，是一个16位(bit)寄存器,由条件码标志(flag)和控制标志构成，主要用于存放控制信息和体现当前指令执行结果的状态信息。
-如下所示：**
 
 **寄存器 (Register)**
 
@@ -47,6 +46,8 @@ tags: [cs101]
 - 地址总线 (Address Bus)：用来指定在RAM（Random Access Memory）之中储存的数据的地址。
 - 控制总线 (Control Bus)：将控制器（Control Unit）的信号，传送到周边设备。
 
+![](./assets/images/400px-Computer_system_bus.svg.png)
+
 存储器主要就是内存和外存：
 
 - 内部存储器 (Internal Memory) : 
@@ -62,8 +63,6 @@ tags: [cs101]
 
 补充材料: [为什么寄存器比内存快？](https://www.ruanyifeng.com/blog/2013/10/register.html)
 
-【时钟频率、数据传输频率。】
-
 ### 内存容量
 
 计算机的内存容量通常是指随机存储器（RAM) 的容量，是内存条的关键性参数。内存的容量一般都是2的整次方倍，比如64MB、128MB、256MB等，一般而言，内存容量越大越有利于系统的运行。系统对内存的识别是以Byte（字节）为单位，每个字节由8位二进制数组成，即8bit（比特，也称“位”）。
@@ -74,14 +73,12 @@ tags: [cs101]
 
 搞清楚这些概念后，就可以理解一个程序被执行的时候都经历了什么。
 
-每一次CPU时钟，都会执行指令周期的一个一个阶段。
-
 
 ## 指令周期 (Instruction Cycle, Fetch-decode-execute Cycle)
 
 >The main job of the CPU is to execute programs using the fetch-decode-execute cycle (also known as the instruction cycle). This cycle begins as soon as you turn on a computer.
 
-一个程序无论是由哪种语言编写的，在执行前要转换成二进制机器语言读入内存(RAM)中，内容包含这个程序需要CPU处理指令和数据。指令周期是指CPU要执行一条机器指令经过的步骤，每个步骤由若干个机器周期组成。CPU执行一条指令一般分为四个阶段，每个阶段是一个机器周期 (Machine Cycle)：**提取（Fetch）**、**解码（Decode）**、**执行（Execute）**和**写回（Writeback）**
+一个程序无论是由哪种语言编写的，在执行前要转换成二进制机器语言读入内存(RAM)中，内容包含这个程序需要CPU处理指令和数据。指令周期（Instruction Cycle）是指取出并执行一条指令的时间，每个指令周期 (Instruction Cycle)由若干个机器周期组成。CPU执行一条指令一般分为四个阶段，每个阶段是一个机器周期 (Machine Cycle)：**提取（Fetch）**、**解码（Decode）**、**执行（Execute）**和**写回（Writeback）**
 
 ![](./assets/images/1.2+微机的工作过程+计算机的工作原理是：+存储程序+++程序控制+CPU+总线+内存+程序+数据+寄存器组+指+令+地+寄存.jpg)
 
@@ -95,12 +92,11 @@ tags: [cs101]
 3. 执行 (Execute)：算数逻辑单元(ALU)根据输入的操作信号和数据进行实际的运算，状态字寄存器 (SR)存放控制信息和记录当前指令的执行状态，累加器(ACC)暂存计算中间结果和数据。
 4. 写回 (Writeback)：程序执行后需要输出的结果，通过数据总线(DB)传回内存，之后可通过输出设备输出结果或将执行结果保存到外存中。
 
->机器周期也称为CPU周期。在计算机中，为了便于管理，常把一条指令的执行过程划分为若干个阶段（如取指、译码、执行等），每一阶段完成一个基本操作。完成一个基本操作所需要的时间称为机器周期。一般情况下，一个机器周期由若干个时钟周期组成，不同的机器分解指令周期的方式也不同。
+>时钟周期 (Clock Cycle)也称为振荡周期，定义为时钟频率的倒数。时钟周期是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU仅完成一个最基本的动作。时钟周期是一个时间的量。时钟周期表示了SDRAM所能运行的最高频率。更小的时钟周期就意味着更高的工作频率。
 
->时钟周期
+>机器周期 (Machine Cycle)也称为CPU周期。在计算机中，为了便于管理，常把一条指令的执行过程划分为若干个阶段（如取指、译码、执行等），每一阶段完成一个基本操作。完成一个基本操作所需要的时间称为机器周期。一般情况下，一个机器周期由若干个时钟周期组成，不同的机器分解指令周期的方式也不同。
 
-
-1. High Level lauguage source code
+<!-- 1. High Level lauguage source code
 
 ```
 z = x + y
@@ -122,7 +118,7 @@ Assembled Machine Code (Object Code)
 111010	0000001100
 ```
 
-16个比特(bit)，2字节(Byte)。前6位是operation code，后10位是operand(s)，operand可以是一个CPU寄存器或一个内存地址。
+16个比特(bit)，2字节(Byte)。前6位是operation code，后10位是operand(s)，operand可以是一个CPU寄存器或一个内存地址。 -->
 
 随着知识的增加，不断完善上述内容。
 
