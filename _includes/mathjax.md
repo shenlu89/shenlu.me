@@ -1,4 +1,3 @@
-{% if page.mathjax %}
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
@@ -19,4 +18,3 @@
   src="https://vincenttam.github.io/javascripts/MathJaxLocal.js"
 >
 </script>
-{% endif %}

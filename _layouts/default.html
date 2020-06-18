@@ -22,17 +22,27 @@
         $(this).addClass('highlight');
     });
     </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+        }
+    });
+    </script>
+    <script type="text/javascript" charset="utf-8" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" charset="utf-8" src="https://vincenttam.github.io/javascripts/MathJaxLocal.js"></script>
 </head>
 
 <body>
     <div id="container">
         <div id="main" role="main">
             <nav>
-                <span><a title="home" href="/" {% if page.url == '/' %} class="active" {% endif %}>HOME</a></span>
-                <span><a title="archives" href="/archives" {% if page.url == '/archives' %} class="active" {% endif %}>ARCHIVES</a></span>
-                <span><a title="categories" href="/categories" {% if page.url == '/categories/' %} class="active" {% endif %}>CATEGORIES</a></span>
-                <span><a title="tags" href="/tags" {% if page.url == '/tags/' %} class="active" {% endif %}>TAGS</a></span>
-                <span><a title="about" href="/about" {% if page.url == '/about/' %} class="active" {% endif %}>ABOUT</a></span>
+                <span><a title="home" href="/" {% if page.url=='/' %} class="active" {% endif %}>HOME</a></span>
+                <span><a title="archives" href="/archives" {% if page.url=='/archives' %} class="active" {% endif %}>ARCHIVES</a></span>
+                <span><a title="categories" href="/categories" {% if page.url=='/categories/' %} class="active" {% endif %}>CATEGORIES</a></span>
+                <span><a title="tags" href="/tags" {% if page.url=='/tags/' %} class="active" {% endif %}>TAGS</a></span>
+                <span><a title="about" href="/about" {% if page.url=='/about/' %} class="active" {% endif %}>ABOUT</a></span>
             </nav>
             <article class="content">
                 {{ content }}
@@ -42,7 +52,7 @@
             <p><small>Powered by <a href="https://github.com/mojombo/jekyll" target="_blank">Jekyll</a> | © 2019-{{site.time | date:"%Y"}} by <a href="https://github.com/shenlu89" target="_blank">Shen Lu</a>, all rights reserved.</small></p>
         </footer>
     </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.0/highlight.min.js"></script>
     <script>
     hljs.initHighlightingOnLoad();
     </script>
