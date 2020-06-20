@@ -24,13 +24,7 @@ tags: [cs101, thread, process, concurrency, parallelism]
 
 也可以说进程是对一个CPU工作时间段的描述。
 
-
-
-
-
-
 ![](./assets/images/computing-cycles-normalize-to-seconds-latency.png)
-
 
 ### CPU利用率
 

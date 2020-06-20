@@ -22,7 +22,7 @@ tags: [cs101]
 	- **地址寄存器** (Memory Address Register, MAR): 是指存放指令地址的寄存器。控制器根据地址寄存器中存放的指令地址，从内存中将相应地址的指令取出到数据寄存器中。
 	- **数据寄存器** (Memory Data Register, MDR): 暂存由计算机主存储器读取后的数据胡或将要写入到计算机主存储器（RAM）的数据。它就像缓冲器，持有从内存复制的数据，以准备给CPU使用。
 	- **指令寄存器** (Instruction Register, IR): 
-	- 指令译码器(Instruction Decoder, ID): 能将存储在指令寄存器或微程序指令中的位元(二进制位，0或1)转换为能控制CPU其他部分的控制信号(signals)。
+	- 指令译码器(Instruction Decoder, ID): 能将存储在指令寄存器或微程序指令中的位元(二进制位，0或1)转换为能控制CPU其他部分的控制信号(signals)。指令由操作码 (Opcode)和地址码 (Operand)组成。操作码表示要执行的操作性质，即执行什么操作，或做什么；地址码是操作码执行时的操作对象的地址。计算机执行一条指定的指令时，必须首先分析这条指令的操作码是什么，以决定操作的性质和方法，然后才能控制计算机其他各部件协同完成指令表达的功能。这个分析工作由指令译码器来完成。
 - 运算器(Arithmetic Unit, AU)：
 	- 算术逻辑单元(Arithmetic Logic Unit, ALU): 算术逻辑运算单元（ALU）的基本功能为加、减、乘、除四则运算，与、或、非、异或等逻辑操作，以及移位、求补等操作。
 	- **累加器** (Accumulator, ACC, AC): 是一个通用寄存器。当运算器的算术逻辑单元(ALU)执行算术或逻辑运算时(加法，乘法，移位等等)，累加器为ALU提供一个工作区，可以为ALU暂时保存一个操作数或运算结果。显然，运算器中至少要有一个累加寄存器。
@@ -61,7 +61,7 @@ tags: [cs101]
 
 ![](./assets/images/v2-6cbe0ce1ed6a7336de891e9f83ad4269_r.jpg)
 
-补充材料: [为什么寄存器比内存快？](https://www.ruanyifeng.com/blog/2013/10/register.html)
+补充材料: [为什么寄存器比内存快？](https://www.ruanyifeng.com/blog/2013/10/register.html){:target="_blank"}
 
 ### 内存容量
 
@@ -91,6 +91,8 @@ tags: [cs101]
 2. 解码 (Decode)：将指令寄存器 (IR)中的指令提交到控制器 (CU)中的指令解码器(ID)，指令译码器 (ID)对提交的指令进行检测和译码，解析成不同的操作信号，地址和操作数等，通过控制总线(CB)将操作信号和数据传递到算数逻辑单元(ALU)。
 3. 执行 (Execute)：算数逻辑单元(ALU)根据输入的操作信号和数据进行实际的运算，状态字寄存器 (SR)存放控制信息和记录当前指令的执行状态，累加器(ACC)暂存计算中间结果和数据。
 4. 写回 (Writeback)：程序执行后需要输出的结果，通过数据总线(DB)传回内存，之后可通过输出设备输出结果或将执行结果保存到外存中。
+
+>时钟频率（Clock Rate）是指同步电路中时钟的基础频率，它以“每秒时钟周期”（clock cycles per second）来度量，量度单位採用SI单位赫兹（Hz）。一个时钟脉冲所需要的时间。在计算机组成原理中又叫T周期或节拍脉冲。是CPU和其他单片机的基本时间单位。它可以表示为时钟晶振频率（1秒钟的时钟脉冲数）的倒数（也就是1s/时钟脉冲数，比如1/12MHz），对CPU来说，在一个时钟周期内，CPU仅完成一个最基本的动作。时钟脉冲是计算机的基本工作脉冲，控制着计算机的工作节奏。时钟频率越高，时钟周期就越短，工作速度也就越快。
 
 >时钟周期 (Clock Cycle)也称为振荡周期，定义为时钟频率的倒数。时钟周期是计算机中最基本的、最小的时间单位。在一个时钟周期内，CPU仅完成一个最基本的动作。时钟周期是一个时间的量。时钟周期表示了SDRAM所能运行的最高频率。更小的时钟周期就意味着更高的工作频率。
 
@@ -124,11 +126,14 @@ Assembled Machine Code (Object Code)
 
 **参考文献：**
 
-- [1] [Instructions](https://www.bbc.co.uk/bitesize/guides/z2342hv/revision/5)
-- [2] [寄存器](https://zh.wikipedia.org/wiki/%E5%AF%84%E5%AD%98%E5%99%A8)
-- [3] [The Fetch Execute Cycle](https://www.youtube.com/watch?v=xfJbpCJSpd8)
-- [4] [Fetch decode execute cycle](https://www.youtube.com/watch?v=IL44-Mfp8x4)
-- [5] [Fetch Decode Execute Cycle in more detail](https://www.youtube.com/watch?v=jFDMZpkUWCw)
-- [6] [寄存器的作用](https://www.cnblogs.com/lsgxeva/p/7639392.html)
-- [7] [Processor Addressing Modes](https://www.youtube.com/watch?v=TGcjn8zMhfM)
-- [8] [机器周期](https://baike.baidu.com/item/%E6%9C%BA%E5%99%A8%E5%91%A8%E6%9C%9F)
+- [1] [Instructions](https://www.bbc.co.uk/bitesize/guides/z2342hv/revision/5){:target="_blank"}
+- [2] [寄存器](https://zh.wikipedia.org/wiki/%E5%AF%84%E5%AD%98%E5%99%A8){:target="_blank"}
+- [3] [The Fetch Execute Cycle](https://www.youtube.com/watch?v=xfJbpCJSpd8){:target="_blank"}
+- [4] [Fetch decode execute cycle](https://www.youtube.com/watch?v=IL44-Mfp8x4){:target="_blank"}
+- [5] [Fetch Decode Execute Cycle in more detail](https://www.youtube.com/watch?v=jFDMZpkUWCw){:target="_blank"}
+- [6] [寄存器的作用](https://www.cnblogs.com/lsgxeva/p/7639392.html){:target="_blank"}
+- [7] [Processor Addressing Modes](https://www.youtube.com/watch?v=TGcjn8zMhfM){:target="_blank"}
+- [8] [机器周期](https://baike.baidu.com/item/%E6%9C%BA%E5%99%A8%E5%91%A8%E6%9C%9F){:target="_blank"}
+- [9] [时钟周期、振荡周期、机器周期、CPU周期、状态周期、指令周期、总线周期、任务周期](https://blog.csdn.net/yangtalent1206/article/details/5853017)
+
+- [10] [简单介绍 CPU 的工作原理](https://www.cnblogs.com/onepixel/p/8724526.html)
