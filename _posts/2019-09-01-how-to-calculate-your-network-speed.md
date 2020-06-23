@@ -2,7 +2,7 @@
 layout: post
 title: "如何估算文件下载速度"
 categories: [Computer]
-tags: [cs101, thread, process, concurrency, parallelism]
+tags: [rudiment, thread, process, concurrency, parallelism]
 ---
 
 之前做生信的时候，经常要下载各种公开的原始数据，批量的下载十几个GB的数据是经常遇到的。结合之前的经验，在开始下载任务前，最好估算在当前网络环境下载数据的速度。比如，大约多长时间可以下载完所有的数据。虽然现在的下载工具都有下载进度条和预计完成时间的提示，但通过估算可以在开始任务前做到心中有数。

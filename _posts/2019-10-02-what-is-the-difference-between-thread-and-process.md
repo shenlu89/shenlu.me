@@ -2,7 +2,7 @@
 layout: post
 title: "从进程的概念开始说起"
 categories: [Computer]
-tags: [cs101, thread, process, concurrency, parallelism]
+tags: [rudiment, thread, process, concurrency, parallelism]
 ---
 
 最近研究了一下浏览器的工作原理，涉及到很多概念，比如，进程，线程，并发，并行，同步，异步等等。利用国庆假期将这些概念综合的梳理了一下。

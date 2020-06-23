@@ -2,7 +2,7 @@
 layout: post
 title: "一个程序是怎么在计算机中执行的"
 categories: [Computer]
-tags: [cs101]
+tags: [rudiment]
 ---
 
 >All computer software is built up of sets of instructions. Instructions are encoded in binary. The fetch-decode-execute cycle is the sequence of steps that the CPU follows to process instructions.
