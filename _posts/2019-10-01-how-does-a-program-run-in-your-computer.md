@@ -7,9 +7,7 @@ tags: [rudiment]
 
 >All computer software is built up of sets of instructions. Instructions are encoded in binary. The fetch-decode-execute cycle is the sequence of steps that the CPU follows to process instructions.
 
-最近打算学习一点C语言。因为C代码需要先编译成一个二进制的可执行文件才能运行，于是按照VS Code的官方[教程](https://code.visualstudio.com/docs/cpp/config-linux){:target="_blank"}配置了C/C++的相关环境。编程，调试和输出结果一步到位，让学习过程变得简单了很多。也由此想到了一些问题，一个程序是怎么在计算机中被执行的？
-
-为了搞清指令周期的工作原理，没有章法的了解一堆概念：
+为了搞清背后的工作原理，没有章法的了解一堆概念：
 
 冯.诺依曼结构的计算机是由五个组成部分：**运算器**，**控制器**，**存储器**，**输入设备**，**输出设备**。这5部分比较容易理解，就不多解释了。
 
