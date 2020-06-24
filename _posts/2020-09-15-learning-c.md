@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "2020开始学习C语言"
+title: "2019开始学习C语言"
 categories: [Programming]
 tags: [rudiment, c]
 ---
@@ -40,11 +40,9 @@ cc -E -dM - </dev/null | grep "STDC_VERSION"
 
 >熟知的C标准大概有三种: c90( or c89), c99, c11. 分别于1990年, 1999年, 2011年发布。原来的ANSI C标准(X3.159-1989)在1989年获得批准, 并在1990年发布. 之后(1990年)被批准为ISO标准(ISO/IEC 9899:1990). C89和C90在技术上没有区别。
 
-好吧，开始解决问题，上面的代码要正常工作，有以下几种方案：
+好吧，开始解决问题，上面的代码要正常工作，有两个方案:
 
-### 使用C11标准
-
-按照C11标准修改成
+**１．按照C11标准修改代码**
 
 ```c
 #include <stdio.h>
@@ -58,7 +56,7 @@ int main()
 
 就可以正常输出了。
 
-### 使用C89或C90标准
+**2. 使用C89或C90标准**
 
 ```sh
 cc -std=c89 hello.c // 或者cc -std=c90 hello.c
@@ -80,4 +78,35 @@ realpath /usr/bin/cc /usr/bin/gcc //　软链接指向的最终源文件
 /usr/bin/x86_64-linux-gnu-gcc-7
 ```
 
-写一个**Hello, World**好累。
+写一个`Hello, World`好累。
+
+<!-- ### C语言基本类型
+
+下面列出了C语言中所有的基本类型和所占字节数。
+
+```c
+#include <stdio.h>
+
+int main()
+{  
+    int char_length = sizeof(char);
+    int unsigned_char_length = sizeof(unsigned char);
+    int signed_char_length = sizeof(signed char);
+    int int_length = sizeof(int);
+    int unsigned_int_length = sizeof(unsigned int);
+    int short_length = sizeof(short);
+    int unsigned_short_length = sizeof(unsigned short);
+    int long_length = sizeof(long);
+    int unsigned_long_length = sizeof(unsigned long);
+   
+    printf("char=%d\nunsigned char=%d\nsigned char=%d\nint=%d\nunsigned int=%d\nshort=%d\nunsigned short=%d\nlong=%d\nunsigned long=%d\n", char_length, unsigned_char_length, signed_char_length, int_length, unsigned_int_length, short_length, unsigned_short_length, long_length, unsigned_long_length);
+   
+    return 0;
+}
+```
+>`sizeof`计算数据类型或变量长度，即所占字节数(Bytes)。 -->
+
+**参考文献：**
+
+- [1] [C 语言教程](https://www.runoob.com/cprogramming/c-tutorial.html){:target="_blank"}
+- [2] [K&R2 solutions](https://clc-wiki.net/wiki/K&R2_solutions){:target="_blank"}
