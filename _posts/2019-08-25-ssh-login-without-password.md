@@ -191,6 +191,14 @@ scp -r example:~/host/dir .
 
 >`scp`是`secure copy`的缩写，用于`Linux`之间复制文件和目录。`scp`是`Linux`系统下基于`ssh`登陆进行安全的远程文件拷贝命令。
 
+如果将公钥(public key)添加到`Github`上，本地使用`ssh`模式克隆仓库(repository)
+
+```sh
+git clone git@github.com:shenlu89/example.git
+```
+
+以后使用非对称加密方式提交(commit)代码到`Github`，不需要再输入密码了。
+
 出于安全性考虑，远程主机上的相关文件必须限制除当前用户之外的权限。`.ssh`目录权限必须不高于`700`，`authorized_keys`文件权限必须不高于`600`。当然，对于安全性的更多考虑，可以增加禁止root用户登录、禁用密码登录等设置。行了，应该够用了。
 
 **参考文献：**
