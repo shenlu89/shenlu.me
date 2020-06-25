@@ -59,7 +59,9 @@ tags: [rudiment]
 
 ![](./assets/images/v2-6cbe0ce1ed6a7336de891e9f83ad4269_r.jpg)
 
-补充材料: [为什么寄存器比内存快？](https://www.ruanyifeng.com/blog/2013/10/register.html){:target="_blank"}
+**补充材料:** 
+
+1. [为什么寄存器比内存快？](https://www.ruanyifeng.com/blog/2013/10/register.html){:target="_blank"}
 
 ### 内存容量
 
@@ -69,14 +71,84 @@ tags: [rudiment]
 
 32位的计算机就是可以一次处理32bit的数据，如果这个数据是地址信息，32bit最大寻址空间为$2^{32} = 2^{(10+10+10+2)} = 2^2 \times 2^{30}$个地址，刚刚说了内存以字节(Byte)为单位。也就是意味着32位系统最多只能在4GB的内存里找数据。而64位系统的最大寻址空间为$2^{64} = 2^{(60+4)} = 2^{60} \times 2^4$个地址，最大寻址范围达到了16EB。不过那也只是理论值而已，实际上是达不到的。
 
-搞清楚这些概念后，就可以理解一个程序被执行的时候都经历了什么。
+搞清楚这些概念后，就可以开始理解一个程序被执行的时候都经历了什么。
+
+最近在看[Computer System. A Programmer's Perspective [3rd ed.](2016 Person)](http://csapp.cs.cmu.edu/3e/labs.html)，里面清楚的描述了C语言程序在计算机的执行过程。
+
+## A Tour of Computer Systems
+
+### 1.1 Information is Bits + Context
+
+一个包含如下内容的`hello.c`文本文件(text file)，也是C语言程序的源文件(source program or source file)
+
+```c
+#include <stdio.h>
+
+int main()
+{
+	printf("hello, world\n");
+	return 0;
+}
+```
+
+大部分的计算机都使用[ASCII](https://en.wikipedia.org/wiki/ASCII){:target="_blank"}码，什么是ASCII码?
+
+计算机中储存的所有信息都是用二进制数表示的(0或1)。而我们在屏幕上看到的英文、汉字等字符是二进制数通过字符编码(Charactor Encoding)转换之后的结果。
+
+>字符集 (Charset): 是一个系统所支持的抽象字符集合。字符编码 (Character Encoding): 就是字符集与数字系统之间建立对应关系的一套法则。
+
+ASCII码就是其中一种计算机常用字符集。上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为 ASCII码，一直沿用至今。
+
+![](./assets/images/800px-USASCII_code_chart.png)
+
+每一个二进制位（bit）有0和1两种状态，因此8个二进制位就可以组合出256 ($2^8$)种状态，这被称为一个字节(Byte)。也就是说，一个字节(Byte)一共可以用来表示256种不同的整数，每一个整数对应一个符号。ASSCII标准码就是256个符号。例如，`hello.c`中的第一个字符`#`的整数值是35，第二个字符`i`是105，每一行结束的换行符`\n`是10。
+
+```
+# i n c l u d e S P < s t d i o .
+35 105 110 99 108 117 100 101 32 60 115 116 100 105 111 46
+h > \n \n i n t SP m a i n ( ) \n {
+104 62 10 10 105 110 116 32 109 97 105 110 40 41 10 123
+\n SP SP SP SP printf("hel
+10 32 32 32 32 112 114 105 110 116 102 40 34 104 101 108
+lo, SP w o r l d \ n " ) ; \n SP
+108 111 44 32 119 111 114 108 100 92 110 34 41 59 10 32
+SP SP SP return SP 0 ; \n } \n
+32 32 32 114 101 116 117 114 110 32 48 59 10 125 10
+```
+
+计算机上存储的所有信息对计算机而言本质上都是0或1。在不同的上下文(Context)中，一串相同的字节可以被看做整数(integer)，浮点数(floating-point number)，字符串(character string)或者机器指令(machine instructions)。
+
+### 1.2 Programs Are Translated by Other Programs into Different Forms
+
+C语言是一种高级语言(high-level programming language)，由C语言编写的程序内容比较容易理解。但是计算机只能识别二进制的机器语言(machine-language)，并不认识C语言源文件(source program)中的字符。
+
+之前的`hello.c`需要通过`gcc`编译器(complier)编译成二进制的可执行程序
+(executable object file or object file)后才能在计算机上正常运行。
+
+```c
+gcc -o hello hello.c
+```
+
+>C语言标准主要由两部分组成：一部分描述C的语法，另一部分描述C标准库。C标准库定义了一组标准头文件，每个头文件中包含一些相关的函数、变量、类型声明和宏定义，比如，如常见的`printf`函数便是一个C标准库函数，其原型定义在`stdio`头文件中。C语言标准仅仅定义了C标准库函数原型，并没有提供实现。因此，C语言编译器通常需要一个C运行时库（C Run Time Libray，CRT）的支持。C运行时库又常简称为C运行库。C运行库，是和平台相关的，即和操作系统相关的。它由不同操作系统不同开发平台提供不同的C运行库。但是C运行库的部分实现是基于C标准库的，即C运行库是各个操作系统各个开发工具根据自身平台开发的库，某种程度上，可以说C运行库是C标准库的一个扩展库，只是加了很多C标准库所没有的与平台相关的或者不相关的库接口函数。与C语言类似，C++也定义了自己的标准，同时提供相关支持库，称为C++运行时库。
+
+从C语言源代码到被`GCC`编译器编译成二进可制行程序都经历了四个阶段：
+
+- 预处理(Preprocessing)
+- 编译(Compilation)
+- 汇编(Assemble)
+- 链接(Linking)
+
+![](./assets/images/c-compling-process.png)
 
 
-## 指令周期 (Instruction Cycle, Fetch-decode-execute Cycle)
+
+### 指令周期 (Instruction Cycle, Fetch-decode-execute Cycle)
 
 >The main job of the CPU is to execute programs using the fetch-decode-execute cycle (also known as the instruction cycle). This cycle begins as soon as you turn on a computer.
 
-一个程序无论是由哪种语言编写的，在执行前要转换成二进制机器语言读入内存(RAM)中，内容包含这个程序需要CPU处理指令和数据。指令周期（Instruction Cycle）是指取出并执行一条指令的时间，每个指令周期 (Instruction Cycle)由若干个机器周期组成。CPU执行一条指令一般分为四个阶段，每个阶段是一个机器周期 (Machine Cycle)：**提取（Fetch）**、**解码（Decode）**、**执行（Execute）**和**写回（Writeback）**
+一个程序在执行前，先要读入内存(RAM)中，内容包含这个程序需要CPU处理的机器语言指令和数据。CPU执行一条指令一般分为四个阶段，每个阶段是一个机器周期 (Machine Cycle)：**提取（Fetch）**、**解码（Decode）**、**执行（Execute）**和**写回（Writeback）**
+
+>指令周期（Instruction Cycle）是指取出并执行一条指令的时间，每个指令周期 (Instruction Cycle)由若干个机器周期组成。
 
 ![](./assets/images/1.2+微机的工作过程+计算机的工作原理是：+存储程序+++程序控制+CPU+总线+内存+程序+数据+寄存器组+指+令+地+寄存.jpg)
 
@@ -135,3 +207,5 @@ Assembled Machine Code (Object Code)
 - [9] [时钟周期、振荡周期、机器周期、CPU周期、状态周期、指令周期、总线周期、任务周期](https://blog.csdn.net/yangtalent1206/article/details/5853017)
 
 - [10] [简单介绍 CPU 的工作原理](https://www.cnblogs.com/onepixel/p/8724526.html)
+- [11] [字符编码那点事：快速理解ASCII、Unicode、GBK和UTF-8](https://zhuanlan.zhihu.com/p/38333902)
+- [12] [c运行库、c标准库、windows API的区别和联系](https://www.cnblogs.com/renyuan/p/5031100.html)
