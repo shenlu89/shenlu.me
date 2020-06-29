@@ -120,7 +120,7 @@ SP SP SP return SP 0 ; \n } \n
 
 ### 1.2 Programs Are Translated by Other Programs into Different Forms
 
-C语言是一种高级语言(high-level programming language)，由C语言编写的程序内容比较容易理解。但是计算机只能识别二进制的机器语言(machine-language)，并不认识C语言源文件(source program)中的字符。
+C语言是一种高级语言(high-level programming language)，由C语言编写的程序由固定的词汇按照固定的格式组织起来，简单直观，容易识别和理解。但是计算机只能识别二进制的机器语言(machine-language)，并不认识C语言源文件(source program)中的字符。这就需要另一个程序，将C语言原文近(source program)转换成计算机CPU可以识别的二进制指令。这个程序就叫编译器(Compiler)。编译器能够识别代码中的词汇、句子以及各种特定的格式，并将他们转换成计算机能够识别的二进制形式，这个过程称为编译（Compile）。
 
 之前的`hello.c`需要通过`gcc`编译器(complier)编译成二进制的可执行程序
 (executable object file or object file)后才能在计算机上正常运行。
@@ -209,3 +209,5 @@ Assembled Machine Code (Object Code)
 - [10] [简单介绍 CPU 的工作原理](https://www.cnblogs.com/onepixel/p/8724526.html)
 - [11] [字符编码那点事：快速理解ASCII、Unicode、GBK和UTF-8](https://zhuanlan.zhihu.com/p/38333902)
 - [12] [c运行库、c标准库、windows API的区别和联系](https://www.cnblogs.com/renyuan/p/5031100.html)
+- [13] [C Tutor - Visualize C code execution to learn C online](http://pythontutor.com/c.html#mode=display)
+- [14] [C语言编译和链接详解（通俗易懂，深入本质）](http://c.biancheng.net/view/1736.html)
