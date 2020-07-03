@@ -123,26 +123,104 @@ SP SP SP return SP 0 ; \n } \n
 C语言是一种高级语言(high-level programming language)，由C语言编写的程序由固定的词汇按照固定的格式组织起来，简单直观，容易识别和理解。但是计算机只能识别二进制的机器语言(machine-language)，并不认识C语言源文件(source program)中的字符。这就需要另一个程序，将C语言原文近(source program)转换成计算机CPU可以识别的二进制指令。这个程序就叫编译器(Compiler)。编译器能够识别代码中的词汇、句子以及各种特定的格式，并将他们转换成计算机能够识别的二进制形式，这个过程称为编译（Compile）。
 
 之前的`hello.c`需要通过`gcc`编译器(complier)编译成二进制的可执行程序
-(executable object file or object file)后才能在计算机上正常运行。
+(executable object file, executable file or object file)后才能在计算机上正常运行。
 
 ```c
 gcc -o hello hello.c
 ```
 
+另外，在Windows系统上，以`.exe`结尾，双击后可直接运行的文件都是可执行程序(executable file)。
+
 >C语言标准主要由两部分组成：一部分描述C的语法，另一部分描述C标准库。C标准库定义了一组标准头文件，每个头文件中包含一些相关的函数、变量、类型声明和宏定义，比如，如常见的`printf`函数便是一个C标准库函数，其原型定义在`stdio`头文件中。C语言标准仅仅定义了C标准库函数原型，并没有提供实现。因此，C语言编译器通常需要一个C运行时库（C Run Time Libray，CRT）的支持。C运行时库又常简称为C运行库。C运行库，是和平台相关的，即和操作系统相关的。它由不同操作系统不同开发平台提供不同的C运行库。但是C运行库的部分实现是基于C标准库的，即C运行库是各个操作系统各个开发工具根据自身平台开发的库，某种程度上，可以说C运行库是C标准库的一个扩展库，只是加了很多C标准库所没有的与平台相关的或者不相关的库接口函数。与C语言类似，C++也定义了自己的标准，同时提供相关支持库，称为C++运行时库。
 
-从C语言源代码到被`GCC`编译器编译成二进可制行程序都经历了四个阶段：
+编译也可以理解为“翻译”，类似于将中文翻译成英文、将英文翻译成象形文字，它是一个复杂的过程，大致包括词法分析、语法分析、语义分析、性能优化、生成可执行文件五个步骤，期间涉及到复杂的算法和硬件架构，这里不做展开了。
 
-- 预处理(Preprocessing)
-- 编译(Compilation)
-- 汇编(Assemble)
-- 链接(Linking)
+以C语言为例，C语言源代码到被`GCC`编译器编译成二进可制行程序都经历了四个阶段：
 
 ![](./assets/images/c-compling-process.png)
 
+**1.预处理(Preprocessing)**
 
+预处理过程实质上是处理“#”，将`#include`包含的头文件直接拷贝到`hello.c`当中；将`#define`定义的宏进行替换，同时将代码中没用的注释部分删除等。[点击查看编译后的hello.i文件](./public/2019-10-01-how-does-a-program-run-in-your-computer/hello.i)
 
-### 指令周期 (Instruction Cycle, Fetch-decode-execute Cycle)
+```sh
+gcc -E hello.c -o hello.i
+```
+
+**2.编译(Compilation)**
+
+编译器(compiler)将预编译得到的文件进行词法、语法、语义分析等，使之转化为功能等价的汇编语言(assembly lauange)代码。对代码进行优化，减小代码的时间和空间，提高执行效率。不同的高级语言（如 C、Fortran、Pascal 等等）有不同的预处理器和编译器，但它们在经过编译之后都变成了同一种汇编语言，于是后面的步骤和工具大家都是通用的了。
+
+```sh
+gcc -S hello.i -o hello.s
+```
+
+`hello.s`内容如下
+
+```
+	.file	"hello.c"
+	.text
+	.section	.rodata
+.LC0:
+	.string	"hello, wrold"
+	.text
+	.globl	main
+	.type	main, @function
+main:
+.LFB0:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	leaq	.LC0(%rip), %rdi
+	call	puts@PLT
+	movl	$0, %eax
+	popq	%rbp
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE0:
+	.size	main, .-main
+	.ident	"GCC: (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0"
+	.section	.note.GNU-stack,"",@progbits
+```
+
+**3.汇编(Assemble)**
+
+汇编就是通过汇编器(assembler)将汇编语言程序真正翻译成由`0`和`1`组成的二进制机器指令，并把它们打包输出成一个可重定位文件(relocatable object program)。
+
+```sh
+gcc -c hello.s -o hello.o 
+```
+
+>可以通过`od`命令查看`hello.o`内容
+
+**4.链接(Linking)**
+
+链接程序运行的所需要的目标文件，以及依赖的库文件，最后生成可执行文件。比如，`hello.c`程序中调用了C语言标准库里的 `printf()`函数，用来打印输出`hello，world`。`hello.c`文件中的主函数(main)和`printf()`函数存放在两个不同的目标文件里，经过连接器(linker)处理之后这两文件就被合并到一起了（静态链接)。
+
+```sh
+gcc hello.o -o hello
+```
+
+<!-- The shell is a command-line interpreter that prints a prompt, waits for you
+to type a command line, and then performs the command. If the first word of the
+command line does not correspond to a built-in shell command, then the shell
+assumes that it is the name of an executable file that it should load and run. So
+in this case, the shell loads and runs the hello program and then waits for it to
+terminate. The hello program prints its message to the screen and then terminates.
+The shell then prints a prompt and waits for the next input command line. -->
+
+编译完成后，在当前目录执行`./hello`，就可以看到输出结果了。
+
+```sh
+./hello
+hello，world
+```
+
+## 指令周期 (Instruction Cycle, Fetch-decode-execute Cycle)
 
 >The main job of the CPU is to execute programs using the fetch-decode-execute cycle (also known as the instruction cycle). This cycle begins as soon as you turn on a computer.
 
