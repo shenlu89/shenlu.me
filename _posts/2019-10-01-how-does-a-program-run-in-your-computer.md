@@ -75,9 +75,7 @@ tags: [rudiment]
 
 最近在看[Computer System. A Programmer's Perspective [3rd ed.](2016 Person)](http://csapp.cs.cmu.edu/3e/labs.html)，里面清楚的描述了C语言程序在计算机的执行过程。
 
-## A Tour of Computer Systems
-
-### 1.1 Information is Bits + Context
+### 计算机眼中的C语言源文件
 
 一个包含如下内容的`hello.c`文本文件(text file)，也是C语言程序的源文件(source program or source file)
 
@@ -118,7 +116,9 @@ SP SP SP return SP 0 ; \n } \n
 
 计算机上存储的所有信息对计算机而言本质上都是0或1。在不同的上下文(Context)中，一串相同的字节可以被看做整数(integer)，浮点数(floating-point number)，字符串(character string)或者机器指令(machine instructions)。
 
-### 1.2 Programs Are Translated by Other Programs into Different Forms
+### 将C语言源文件编译成可执行文件
+
+1.2 Programs Are Translated by Other Programs into Different Forms
 
 C语言是一种高级语言(high-level programming language)，由C语言编写的程序由固定的词汇按照固定的格式组织起来，简单直观，容易识别和理解。但是计算机只能识别二进制的机器语言(machine-language)，并不认识C语言源文件(source program)中的字符。这就需要另一个程序，将C语言原文近(source program)转换成计算机CPU可以识别的二进制指令。这个程序就叫编译器(Compiler)。编译器能够识别代码中的词汇、句子以及各种特定的格式，并将他们转换成计算机能够识别的二进制形式，这个过程称为编译（Compile）。
 
@@ -220,7 +220,7 @@ The shell then prints a prompt and waits for the next input command line. -->
 hello，world
 ```
 
-## 指令周期 (Instruction Cycle, Fetch-decode-execute Cycle)
+### 指令周期 (Instruction Cycle, Fetch-decode-execute Cycle)
 
 >The main job of the CPU is to execute programs using the fetch-decode-execute cycle (also known as the instruction cycle). This cycle begins as soon as you turn on a computer.
 
@@ -275,17 +275,15 @@ Assembled Machine Code (Object Code)
 **参考文献：**
 
 - [1] [Instructions](https://www.bbc.co.uk/bitesize/guides/z2342hv/revision/5){:target="_blank"}
-- [2] [寄存器](https://zh.wikipedia.org/wiki/%E5%AF%84%E5%AD%98%E5%99%A8){:target="_blank"}
-- [3] [The Fetch Execute Cycle](https://www.youtube.com/watch?v=xfJbpCJSpd8){:target="_blank"}
-- [4] [Fetch decode execute cycle](https://www.youtube.com/watch?v=IL44-Mfp8x4){:target="_blank"}
-- [5] [Fetch Decode Execute Cycle in more detail](https://www.youtube.com/watch?v=jFDMZpkUWCw){:target="_blank"}
-- [6] [寄存器的作用](https://www.cnblogs.com/lsgxeva/p/7639392.html){:target="_blank"}
-- [7] [Processor Addressing Modes](https://www.youtube.com/watch?v=TGcjn8zMhfM){:target="_blank"}
-- [8] [机器周期](https://baike.baidu.com/item/%E6%9C%BA%E5%99%A8%E5%91%A8%E6%9C%9F){:target="_blank"}
-- [9] [时钟周期、振荡周期、机器周期、CPU周期、状态周期、指令周期、总线周期、任务周期](https://blog.csdn.net/yangtalent1206/article/details/5853017)
+- [2] [The Fetch Execute Cycle](https://www.youtube.com/watch?v=xfJbpCJSpd8){:target="_blank"}
+- [3] [Fetch decode execute cycle](https://www.youtube.com/watch?v=IL44-Mfp8x4){:target="_blank"}
+- [4] [Fetch Decode Execute Cycle in more detail](https://www.youtube.com/watch?v=jFDMZpkUWCw){:target="_blank"}
+- [5] [Processor Addressing Modes](https://www.youtube.com/watch?v=TGcjn8zMhfM){:target="_blank"}
+- [6] [机器周期](https://baike.baidu.com/item/%E6%9C%BA%E5%99%A8%E5%91%A8%E6%9C%9F){:target="_blank"}
+- [7] [时钟周期、振荡周期、机器周期、CPU周期、状态周期、指令周期、总线周期、任务周期](https://blog.csdn.net/yangtalent1206/article/details/5853017)
 
-- [10] [简单介绍 CPU 的工作原理](https://www.cnblogs.com/onepixel/p/8724526.html)
-- [11] [字符编码那点事：快速理解ASCII、Unicode、GBK和UTF-8](https://zhuanlan.zhihu.com/p/38333902)
-- [12] [c运行库、c标准库、windows API的区别和联系](https://www.cnblogs.com/renyuan/p/5031100.html)
-- [13] [C Tutor - Visualize C code execution to learn C online](http://pythontutor.com/c.html#mode=display)
-- [14] [C语言编译和链接详解（通俗易懂，深入本质）](http://c.biancheng.net/view/1736.html)
+- [8] [简单介绍 CPU 的工作原理](https://www.cnblogs.com/onepixel/p/8724526.html)
+- [9] [字符编码那点事：快速理解ASCII、Unicode、GBK和UTF-8](https://zhuanlan.zhihu.com/p/38333902)
+- [10] [c运行库、c标准库、windows API的区别和联系](https://www.cnblogs.com/renyuan/p/5031100.html)
+- [11] [C Tutor - Visualize C code execution to learn C online](http://pythontutor.com/c.html#mode=display)
+- [12] [C语言编译和链接详解（通俗易懂，深入本质）](http://c.biancheng.net/view/1736.html)
