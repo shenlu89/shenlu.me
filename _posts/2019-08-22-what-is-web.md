@@ -14,9 +14,14 @@ tags: [rudiment]
 ![](/assets/images/9407011_31-A4-at-144-dpi.jpg "Tim Berners-Lee, pictured at CERN")
 <figcaption>Tim Berners-Lee, pictured at CERN</figcaption>
 
+万维网最早的构想可以追溯到1980年，Tim Berners-Lee构建的[ENQUIRE](https://en.wikipedia.org/wiki/ENQUIRE)项目。这是一个类似维基百科的超文本在线编辑数据库。尽管这与我们现在使用的万维网大不相同，但是它们有许多相同的核心思想，甚至还包括一些Berners-Lee后来提出的[语义网](https://en.wikipedia.org/wiki/Semantic_Web)构想。据Berners-Lee说，这个名字的灵感源自于一本古老的书[*Enquire Within upon Everything*](https://en.wikipedia.org/wiki/ENQUIRE)。<sup>[5]</sup>
+
+
+>*Enquire Within upon Everything* is a how-to book, akin to a short encyclopedia for domestic life, first published in 1856 by Houlston and Sons of Paternoster Square in London. The editor was Robert Kemp Philp.[1] It was then continuously reprinted in many new and updated editions as additional information and articles were added (and obsolete material sometimes removed).<sup>[5]</sup>
+
 1989年3月12日，Tim Berners-Lee写了第一份万维网协议。又在1990年5月写了第二份[协议](http://cds.cern.ch/record/369245/files/dd-89-001.pdf){:target="_blank"}。1990年11月，他和比利时系统工程师[Robert Cailiau](https://en.wikipedia.org/wiki/Robert_Cailliau)一起合作才正式确定了这个协议，[a management proposal](http://cds.cern.ch/record/2639699/files/Proposal_Nov-1990.pdf){:target="_blank"}。协议概述了Web中的主要概念和定义了Web里重要的术语。这份文件描述了一个叫"WorldWideWeb"的超文本项目，一个可通过浏览器访问超文本的网络。<sup>[1]</sup>
 
-为了实现这个想法。到了1990年末，Tim Berners-Lee在一台[NeXT](https://en.wikipedia.org/wiki/NeXT_Computer){:target="_blank"}电脑上开发了一个Web服务器，成功的部署和运行了世界上第一个Web服务器和浏览器。为了防止这台电脑被意外关闭，他特意在电脑上贴了一个红色的便签，上面写着：“**This machine is a server, DO NOT POWER IT DOWN!!**”。<sup>[1]</sup>
+在他的[Weaving the Web: The Original Design and Ultimate Destiny of the World Wide Web by its inventor](https://www.amazon.com/Weaving-Web-Original-Ultimate-Destiny/dp/006251587X)一书中提到他多次向技术社群的成员暗示这两种技术结合是可行的，但是却没有任何人接受他的建议。为了实现这个想法。到了1990年末，Tim Berners-Lee在一台[NeXT](https://en.wikipedia.org/wiki/NeXT_Computer){:target="_blank"}电脑上开发了一个Web服务器，成功的部署和运行了世界上第一个Web服务器和浏览器。为了防止这台电脑被意外关闭，他特意在电脑上贴了一个红色的便签，上面写着：“**This machine is a server, DO NOT POWER IT DOWN!!**”。<sup>[1]</sup>
 
 ![](/assets/images/1280px-First_Web_Server.jpg)
 
@@ -30,6 +35,14 @@ tags: [rudiment]
 
 >上图展示的是世界上第一个Web浏览器运行时的截图，可以看到里面的很多设计依然保留在现代浏览器中。另外，最初的浏览器不但可以浏览网页，还可以直接在浏览器上修改页面的内容。
 
+万维网的核心部分是由三个标准构成的：
+
+通过这个项目，Tim Berners-Lee创造了后来万维网的三个核心标准：
+
+- **统一资源标识符（URI）**，这是一个统一的为资源定位的系统。
+- **超文本传送协议（HTTP）**，它负责规定客户端和服务器怎样互相交流。
+- **超文本标记语言（HTML）**，作用是定义超文本文档的结构和格式。
+
 ## 万维网后续发展
 
 Tim Berners-Lee发布了'WorldWideWeb'网页浏览器和相关软件，其中包括[Line Mode Browser](http://line-mode.cern.ch){:target="_blank"} (LMB)，Web服务器软件和一个帮助开发人员扩展WWW功能的库。在1991年3月，最开始他的同事们只能通过CERN的电脑使用WWW软件。但几个月之后(1991年8月)，他在互联网上公开了WWW软件并希望将这个发明传播到全世界。<sup>[1]</sup>
@@ -42,6 +55,7 @@ Tim Berners-Lee发布了'WorldWideWeb'网页浏览器和相关软件，其中包
 >几乎就在Berners-Lee完成WWW网页浏览器在NeXT平台测试的同时, Pellow被分配了一个制作浏览器的任务。在快速的恶补了[C语言](https://en.wikipedia.org/wiki/C_(programming_language){:target="_blank"})编程后，她开发了一个通用浏览器，Line Mode Browser (LMB)，可以运行在不同的计算机平台，而不像WWW浏览器仅限于NeXT平台。然后WWW项目的团队开始在她工作的基础上进行改进，开发了几个实验版本。后面她的工作主要涉及将LMB移植到不同的计算机平台。她在1991年8月底离开CERN，1992年毕业后又返回GERN和Robert Cailiau合作开发[MacWWW](https://en.wikipedia.org/wiki/MacWWW){:target="_blank"}(第一个用于Mac的网页浏览器)。
 
 
+Tim Berners-Lee现在是万维网联盟（W3C）的领导人。
 
 ## 万维网和互联网是什么关系？
 
@@ -55,3 +69,4 @@ Tim Berners-Lee发布了'WorldWideWeb'网页浏览器和相关软件，其中包
 - [2] [Tim Berners-Lee's original World Wide Web browser](http://info.cern.ch/NextBrowser.html){:target="_blank"}
 - [3] [Line Mode Browser 2013](http://line-mode.cern.ch){:target="_blank"}
 - [4] [Nicola Pellow](https://en.wikipedia.org/wiki/Nicola_Pellow){:target="_blank"}
+- [5] [Enquire Within upon Everything](https://en.wikipedia.org/wiki/Enquire_Within_upon_Everything){:target="_blank"}
