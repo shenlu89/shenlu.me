@@ -20,4 +20,3 @@ layout: page
 {% endfor %}
 {% endfor %}
 </ul>
-</script>
