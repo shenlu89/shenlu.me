@@ -28,10 +28,6 @@ comments: no
 
 ### Projects
 
-**2020**
-
-- **[Cell BLAST](https://cblast.gao-lab.org){:target="_blank"}: Searching large-scale scRNA-seq databases via unbiased cell embedding.** 
-
 **2019**
 
 - **Common Micro Services Boilerplate (CMSB)**
@@ -53,6 +49,8 @@ A micro-auth web app based on Node.js and JWT. [[Github](https://github.com/shen
 ### Publications
 
 **2020**
+
+- **[Cell BLAST](https://cblast.gao-lab.org){:target="_blank"}: Searching large-scale scRNA-seq databases via unbiased cell embedding.** 
 
 Zhi-Jie Cao, Lin Wei, **Shen Lu**, De-Chang Yang, Ge Gao [[Nature Communications](https://doi.org/10.1038/s41467-020-17281-7){:target="_blank"}]
 
