@@ -28,6 +28,10 @@ comments: no
 
 ### Projects
 
+**2020**
+
+- **[Cell BLAST](https://cblast.gao-lab.org){:target="_blank"}: Searching large-scale scRNA-seq databases via unbiased cell embedding.** 
+
 **2019**
 
 - **Common Micro Services Boilerplate (CMSB)**
@@ -48,6 +52,9 @@ A micro-auth web app based on Node.js and JWT. [[Github](https://github.com/shen
 
 ### Publications
 
+**2020**
+
+Zhi-Jie Cao, Lin Wei, **Shen Lu**, De-Chang Yang, Ge Gao [[Nature Communications](https://doi.org/10.1038/s41467-020-17281-7){:target="_blank"}]
 
 **Preprints**
 
@@ -56,13 +63,6 @@ A micro-auth web app based on Node.js and JWT. [[Github](https://github.com/shen
 - **Genomic Architecture of Cells in Tissues ([GeACT](http://geact.gao-lab.org){:target="_blank"}): Study of Human Mid-gestation Fetus.** 
 
 Feng Tian, Fan Zhou, Xiang Li, Wenping Ma, Honggui Wu, Ming Yang, Alec R. Chapman, David F. Lee, Longzhi Tan, Dong Xing, Guangjun Yin, Ayjan Semayel, Jing Wang, Jia Wang, Wenjie Sun, Runsheng He, Siwei Zhang, Zhijie Cao, Lin Wei, **Shen Lu**, Dechang Yang, Yunuo Mao, Yuan Gao, Kexuan Chen, Yu Zhang, Xixi Liu, Jun Yong, Liying Yan, Yanyi Huang, Jie Qiao, Fuchou Tang, Ge Gao, X. Sunney Xie [[bioRxiv](https://www.biorxiv.org/content/10.1101/2020.04.12.038000v1){:target="_blank"}]
-
-**2019**
-
-- **[Cell BLAST](https://cblast.gao-lab.org){:target="_blank"}: Searching large-scale scRNA-seq databases via unbiased cell embedding.** 
-
-Zhi-Jie Cao, Lin Wei, **Shen Lu**, De-Chang Yang, Ge Gao [[bioRxiv](https://doi.org/10.1101/587360){:target="_blank"}]
-
 
 ----
 
