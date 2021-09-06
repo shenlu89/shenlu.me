@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "优雅的使用SSH登录服务器"
-categories: [Web, Security]
-tags: [asymmertirc encryption, password, symmertirc encryption]
+comments: true
 ---
 
 搞过生信的都应该使用过SSH登录云端服务器，之前的操作也只是Google一下，跟着别人的流程走，没有深究其背后的原理是什么。今天配置了一个SSH无密码登录，顺便了解了一下背后的原理。

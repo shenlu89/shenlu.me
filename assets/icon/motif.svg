@@ -1,0 +1,11 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewbox="0 0 103.92304845413263 120">
+    <g transform="translate(8,0)">
+        <path fill="#5e16b6"
+            d="M43.301270189221924 4.999999999999999Q51.96152422706631 0 60.6217782649107 5L95.26279441628824 25Q103.92304845413263 30 103.92304845413263 40L103.92304845413263 80Q103.92304845413263 90 95.26279441628824 95L60.6217782649107 115Q51.96152422706631 120 43.301270189221924 115L8.660254037844386 95Q0 90 0 80L0 40Q0 30 8.660254037844387 25Z">
+        </path>
+        <line x1="32" y1="48" x2="32" y2="73" stroke="#e4d2f9" stroke-linecap="round" stroke-width="18" />
+        <line x1="32" y1="48" x2="55" y2="56" stroke="#e4d2f9" stroke-linecap="round" stroke-width="18" />
+        <line x1="56" y1="55" x2="75" y2="48" stroke="#e4d2f9" stroke-linecap="round" stroke-width="18" />
+        <circle cx="75" cy="73" r="9" fill="#e4d2f9" />
+    </g>
+</svg>

@@ -1,35 +1,23 @@
-permalink: /:year/:month/:day/:title/
-url: http://shenlu89.github.io
-author: Shen Lu
-# markdown: kramdown
-# highlighter: rouge
-# kramdown:
-#   input: GFM
-#   auto_ids: true
-#   toc_levels: 1..3
-#   syntax_highlighter: rouge
-#   syntax_highlighter_opts:
-#     default_lang: html
-#     css_class: 'hljs'
+# site
+baseurl: ''
+url: https://shenlu89.github.io
+author: shenlu89
+title: "Shen Lu's Blog" # the name of your site, e.g. ACME Corp.
 
+# markdown
 markdown: kramdown
-kramdown:
-  syntax_highlighter_opts:
-    disable: true
+highlighter: rouge
 
-jekyll-archives:
-  enabled: all
-  layout: page
-
-exclude: ["CNAME", "README.md"]
-safe: true
+# paginator
 plugins:
   - jekyll-paginate
-  - jekyll-archives
-paginate: 10
-paginate_path: '/page:num'
-permalink: '/:title'
+  - jekyll-seo-tag
 
+paginate: 5
+paginate_path: "/page:num"
 
-# Gems
-gems: [jekyll-paginate,jekyll-archives]
+# google analytics
+google_analytics_id: "Google Analytics ID"
+
+# other configs
+exclude: ["CNAME", "README.md"]

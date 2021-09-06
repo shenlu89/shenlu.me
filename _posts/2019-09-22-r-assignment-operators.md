@@ -2,8 +2,7 @@
 layout: post
 title: "R语言吐槽第一弹：等号(=)，还是箭头(<-)"
 mathjax: true
-categories: [Programming]
-tags: [r]
+comments: true
 ---
 
 >*"The best thing about R is that it was developed by statisticians. The worst thing about R is that...it was developed by statisticians."* <span style="text-align: right; width:100%; display: block;">— Bo Cowgill, Google, Inc</span>

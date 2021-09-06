@@ -1,0 +1,85 @@
+---
+layout: default
+title: "Jekyll Tailwindcss Starter"
+subtitle: "All good things to these who wait."
+---
+
+<article class="w-full max-w-none py-8">
+  <h2>
+    {{ page.subtitle }}
+  </h2>
+  {% for post in paginator.posts %}
+  <article class="flex flex-col w-full border-b border-gray-200 py-6">
+    <a
+      class="font-semibold text-blue-500 hover:text-blue-700 no-underline hover:no-underline"
+      href="{{ site.github.url }}{{post.url}}"
+      title="{{ post.title }}"
+    >
+      {{ post.title }}
+    </a>
+    <p class="text-sm mt-2 font-medium text-gray-900">{{ post.subtitle }}</p>
+    <time class="text-sm text-gray-500 mt-2">
+      {{post.date | date: '%b %d, %Y'}}
+    </time>
+  </article>
+
+  {% endfor %} {% if paginator.total_posts %}
+  <div class="flex justify-between pt-8">
+    <div class="flex font-extrabold space-x-1">
+      <div>Total</div>
+      <span class="text-blue-500 inline-flex justify-center rounded-full"
+        >{{ paginator.total_posts }}</span
+      >
+      <div>Posts</div>
+    </div>
+    <div class="font-extrabold felx">
+      {% if paginator.previous_page %} {% if paginator.previous_page == 1 %}
+      <a
+        href="{{ site.github.url }}/"
+        class="cursor-pointer text-gray-900 font-extrabold no-underline hover:underline"
+        >Prev</a
+      >
+      {% else %}
+      <a
+        href="{{ site.github.url }}/page{{paginator.previous_page}}"
+        class="cursor-pointer text-gray-900 font-extrabold hover:text-blue-700 no-underline hover:underline"
+        >Prev</a
+      >
+      {% endif %} {% else %}
+      <a class="cursor-not-allowed text-gray-500"></a>
+      {% endif %} {% if paginator.page == 1 %}
+      <a
+        class="bg-blue-500 text-white font-extrabold min-w-6 px-1 h-6 inline-flex justify-center rounded-full hover:no-underline no-underline hover:text-white"
+        >1</a
+      >
+      {% else %}
+      <a
+        href="{{ site.github.url }}/"
+        class="min-w-6 px-1 h-6 inline-flex font-extrabold justify-center text-blue-500 hover:text-blue-700 no-underline hover:underline rounded-full"
+        >1</a
+      >
+      {% endif %} {% for count in (2..paginator.total_pages) %} {% if count ==
+      paginator.page %}
+      <a
+        class="bg-blue-500 text-white hover:text-white no-underline font-extrabold min-w-6 px-1 h-6 inline-flex justify-center rounded-full hover:no-underline"
+        >{{count}}</a
+      >
+      {% else %}
+      <a
+        href="{{ site.github.url }}/page{{count}}"
+        class="min-w-6 px-1 h-6 inline-flex font-extrabold justify-center text-blue-500 hover:text-blue-700 no-underline hover:underline broder-blue-100 cursor-pointe rounded-full"
+        >{{count}}</a
+      >
+      {% endif %} {% endfor %} {% if paginator.next_page %}
+      <a
+        class="cursor-pointer text-gray-900 font-extrabold font-extrabold no-underline hover:underline"
+        href="{{ site.github.url }}/page{{paginator.next_page}}"
+        >Next</a
+      >
+      {% else %}
+      <a class="cursor-not-allowed text-gray-500"></a>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+</article>

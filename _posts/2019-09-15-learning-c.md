@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "2019开始学习C语言"
-categories: [Programming]
-tags: [rudiment, c]
+comments: true
 ---
 
 最近终于有点时间了，打算认真学一些C语言。C代码需要先编译成一个二进制的可执行文件才能运行，于是按照VS Code的官方[教程](https://code.visualstudio.com/docs/cpp/config-linux){:target="_blank"}配置了C/C++的相关环境。编程，调试和输出结果一步到位，让学习过程更高效一些。

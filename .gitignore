@@ -1,2 +1,7 @@
 _site/
-_drafts/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+node_modules
+.vscode

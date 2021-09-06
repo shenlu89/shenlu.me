@@ -2,8 +2,6 @@
 layout: post
 title: "什么是万维网"
 comments: true
-categories: [Web]
-tags: [rudiment]
 ---
 
 ## 万维网的诞生
@@ -61,7 +59,7 @@ Tim Berners-Lee现在是万维网联盟（W3C）的领导人。
 
 万维网是构建在互联网发展的基础之上的。互联网技术旨在解决不同电脑之间的连接问题；万维网技术让电脑能够连接到每一个人；而浏览器的诞生真正让万维网连接了普通人的生活。
 
-![](./assets/images/couchconfnycintrotodocumentdatabases-11-728.jpg)
+![](/assets/images/couchconfnycintrotodocumentdatabases-11-728.jpg)
 
 **参考文献：**
 

@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "一个程序是怎么在计算机中执行的"
-categories: [Computer]
-tags: [rudiment]
+comments: true
 ---
 
 >All computer software is built up of sets of instructions. Instructions are encoded in binary. The fetch-decode-execute cycle is the sequence of steps that the CPU follows to process instructions.
@@ -11,7 +10,7 @@ tags: [rudiment]
 
 冯.诺依曼结构的计算机是由五个组成部分：**运算器**，**控制器**，**存储器**，**输入设备**，**输出设备**。这5部分比较容易理解，就不多解释了。
 
-![](./assets/images/Von-Neumann-Architecture-Diagram.jpg)
+![](/assets/images/Von-Neumann-Architecture-Diagram.jpg)
 
 **中央处理器 (Central Processing Unit)**的组成部分
 
@@ -30,7 +29,7 @@ tags: [rudiment]
 
 上面列出的**加粗名词**都是**寄存器**。在计算机架构中，寄存器(Register)是中央处理器(CPU)内用来暂存指令、地址、中间运算结果等数据的存储器，存储容量有限，读写速度非常快。寄存器位于存储阶层（Memory Hierarchy）的最顶端，是读写速度最快的存储器。
 
-![](./assets/images/Slide21.png)
+![](/assets/images/Slide21.png)
 
 **总线 (Bus)**
 
@@ -44,7 +43,7 @@ tags: [rudiment]
 - 地址总线 (Address Bus)：用来指定在RAM（Random Access Memory）之中储存的数据的地址。
 - 控制总线 (Control Bus)：将控制器（Control Unit）的信号，传送到周边设备。
 
-![](./assets/images/400px-Computer_system_bus.svg.png)
+![](/assets/images/400px-Computer_system_bus.svg.png)
 
 存储器主要就是内存和外存：
 
@@ -57,7 +56,7 @@ tags: [rudiment]
 
 - 外部存储器 (External Memory) : 比如，硬盘，U盘，磁盘，光盘等等。
 
-![](./assets/images/v2-6cbe0ce1ed6a7336de891e9f83ad4269_r.jpg)
+![](/assets/images/v2-6cbe0ce1ed6a7336de891e9f83ad4269_r.jpg)
 
 **补充材料:** 
 
@@ -97,7 +96,7 @@ int main()
 
 ASCII码就是其中一种计算机常用字符集。上个世纪60年代，美国制定了一套字符编码，对英语字符与二进制位之间的关系，做了统一规定。这被称为 ASCII码，一直沿用至今。
 
-![](./assets/images/800px-USASCII_code_chart.png)
+![](/assets/images/800px-USASCII_code_chart.png)
 
 每一个二进制位（bit）有0和1两种状态，因此8个二进制位就可以组合出256 ($2^8$)种状态，这被称为一个字节(Byte)。也就是说，一个字节(Byte)一共可以用来表示256种不同的整数，每一个整数对应一个符号。ASSCII标准码就是256个符号。例如，`hello.c`中的第一个字符`#`的整数值是35，第二个字符`i`是105，每一行结束的换行符`\n`是10。
 
@@ -137,11 +136,11 @@ gcc -o hello hello.c
 
 以C语言为例，C语言源代码到被`GCC`编译器编译成二进可制行程序都经历了四个阶段：
 
-![](./assets/images/c-compling-process.png)
+![](/assets/images/c-compling-process.png)
 
 **1.预处理(Preprocessing)**
 
-预处理过程实质上是处理“#”，将`#include`包含的头文件直接拷贝到`hello.c`当中；将`#define`定义的宏进行替换，同时将代码中没用的注释部分删除等。[点击查看编译后的hello.i文件](./public/2019-10-01-how-does-a-program-run-in-your-computer/hello.i)
+预处理过程实质上是处理“#”，将`#include`包含的头文件直接拷贝到`hello.c`当中；将`#define`定义的宏进行替换，同时将代码中没用的注释部分删除等。[点击查看编译后的hello.i文件](/examples/2019-10-01-how-does-a-program-run-in-your-computer/hello.i)
 
 ```sh
 gcc -E hello.c -o hello.i
