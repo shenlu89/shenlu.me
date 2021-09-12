@@ -1,9 +1,0 @@
-- name: articles
-  url: /articles
-  title: 按时间顺序展示文章列表
-- name: products
-  url: /products
-  title: 开发的产品和参与的项目
-- name: about
-  url: /about
-  title: 关于我自己
