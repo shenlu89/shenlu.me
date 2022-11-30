@@ -1,5 +1,5 @@
 import localFont from '@next/font/local'
-const Font = localFont({
+const font = localFont({
     src: [
         {
             path: '../public/fonts/cantarell-regular.woff2',
@@ -19,4 +19,4 @@ const Font = localFont({
     ],
 })
 
-export default Font
+export default font
