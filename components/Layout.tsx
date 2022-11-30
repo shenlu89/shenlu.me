@@ -15,18 +15,21 @@ const Layout: NextPage<PropsWithChildren> = ({ children }) => {
         favicon: '/logo.svg'
     }
     return (
-        <div className={Font.className}>
+        <>
             <Head>
                 <title>{meta.title}</title>
                 <meta name="description" content={meta.description} />
                 <link rel="icon" href={meta.favicon} as="image" />
             </Head>
-            <Navbar />
-            <main className="flex flex-col max-w-3xl container mx-auto px-2 py-6 h-full w-full">
-                {children}
-            </main>
-            <Footer />
-        </div>
+            <div className={Font.className}>
+                <Navbar />
+                <main className="flex flex-col max-w-3xl container mx-auto px-2 py-6 h-full w-full">
+                    {children}
+                </main>
+                <Footer />
+            </div>
+        </>
+
     )
 }
 
