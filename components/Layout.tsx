@@ -5,7 +5,7 @@ import { PropsWithChildren } from 'react'
 
 import Navbar from './Navbar'
 import Footer from './Footer'
-import Font from './Font'
+import font from '../lib/font'
 
 const Layout: NextPage<PropsWithChildren> = ({ children }) => {
 
@@ -21,7 +21,7 @@ const Layout: NextPage<PropsWithChildren> = ({ children }) => {
                 <meta name="description" content={meta.description} />
                 <link rel="icon" href={meta.favicon} as="image" />
             </Head>
-            <div className={Font.className}>
+            <div className={font.className}>
                 <Navbar />
                 <main className="flex flex-col max-w-3xl container mx-auto px-2 py-6 h-full w-full">
                     {children}
