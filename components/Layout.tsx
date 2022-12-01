@@ -21,7 +21,7 @@ const Layout: NextPage<PropsWithChildren> = ({ children }) => {
                 <meta name="description" content={meta.description} />
                 <link rel="icon" href={meta.favicon} as="image" />
             </Head>
-            <div className={font.className}>
+            <div className={`${font.className} text-black dark:text-white`}>
                 <Navbar />
                 <main className="flex flex-col max-w-3xl container mx-auto px-2 py-6 h-full w-full">
                     {children}
