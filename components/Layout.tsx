@@ -5,15 +5,10 @@ import { PropsWithChildren } from 'react'
 
 import Navbar from './Navbar'
 import Footer from './Footer'
-import font from '../lib/font'
+import font from 'lib/font'
+import meta from 'data/metadata'
 
 const Layout: NextPage<PropsWithChildren> = ({ children }) => {
-
-    const meta = {
-        title: 'Shen Lu - Developer, Writer and Creator.',
-        description: `Shen Lu's Personal Website`,
-        favicon: '/logo.svg'
-    }
     return (
         <>
             <Head>
