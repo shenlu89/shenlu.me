@@ -3,8 +3,8 @@ import Head from 'next/head'
 
 import { PropsWithChildren } from 'react'
 
-import Navbar from './Navbar'
-import Footer from './Footer'
+import Navbar from 'components/Navbar'
+import Footer from 'components/Footer'
 import font from 'lib/font'
 import meta from 'data/metadata'
 

@@ -3,8 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import headerNavLinks from 'data/headerNavLinks'
-import ThemeSwitcher from './ThemeSwitcher'
-
+import ThemeSwitcher from 'components/ThemeSwitcher'
 
 const Navbar: NextPage = () => {
     const { asPath } = useRouter()
