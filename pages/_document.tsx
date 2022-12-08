@@ -8,7 +8,7 @@ export default function Document () {
             <Head>
                 <link rel="icon" href={meta.favicon} as="image" />
             </Head>
-            <body>
+            <body className="flex flex-col h-screen">
                 <Main />
                 <NextScript />
             </body>

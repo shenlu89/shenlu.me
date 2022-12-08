@@ -10,13 +10,13 @@ import meta from 'data/metadata'
 
 const Layout: NextPage<PropsWithChildren> = ({ children }) => {
     return (
-        <div className={`${font.className} text-black dark:text-white`}>
+        <div className={`${font.className} text-black dark:text-white flex flex-col h-full`}>
             <Head>
                 <title>{meta.title}</title>
                 <meta name="description" content={meta.description} />
             </Head>
             <Navbar />
-            <main className="flex flex-col max-w-3xl container mx-auto px-2 py-6 h-full w-full">
+            <main className="max-w-3xl container mx-auto px-2 py-6 h-full">
                 {children}
             </main>
             <Footer />
