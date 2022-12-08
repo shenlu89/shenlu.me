@@ -11,7 +11,8 @@ const Home: NextPage = () => {
           <p className="text-gray-600 dark:text-gray-400 mb-16">Now I'm focusing on web development and data visualization.</p>
         </div>
         <div className="relative mr-auto">
-          <Image className="rounded-full" alt="Shen Lu" width={120} height={120} src={'/avatar.jpeg'} priority />
+          <Image className="rounded-full" alt="Shen Lu"
+            width={120} height={120} src={'/images/avatar.jpg'} priority />
         </div>
       </div>
     </>
