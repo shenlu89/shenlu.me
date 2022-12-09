@@ -8,9 +8,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      textUnderlineOffset: {
-        3: '3px',
-      },
       colors: {
         twitter: '#1DA1F2'
       },
