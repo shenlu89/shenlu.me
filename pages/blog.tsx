@@ -1,9 +1,14 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { NextPage } from 'next'
 import { MagnifyingGlassIcon, BackspaceIcon } from '@heroicons/react/24/outline'
 
-const Blog: NextPage = (props) => {
+const Blog: NextPage = () => {
   const [serachPosts, setserachPosts] = useState('')
+  const searchInput = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    searchInput.current?.focus()
+  }, [])
 
   return (
     <div className="flex flex-col relative w-full">
@@ -14,12 +19,17 @@ const Blog: NextPage = (props) => {
       <div className="relative w-full mb-4">
         <MagnifyingGlassIcon className="flex left-2 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-gray-600" />
         <BackspaceIcon
-          onClick={() => setserachPosts('')}
+          onClick={() => {
+            setserachPosts('')
+            searchInput.current?.focus()
+          }}
           className={`${
             serachPosts ? '' : 'hidden'
-          } flex right-2 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-gray-600 cursor-pointer`}
+          } flex right-2 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-black cursor-pointer`}
         />
         <input
+          ref={searchInput}
+          autoFocus
           aria-label="Search all posts"
           type="text"
           onChange={(e) => setserachPosts(e.target.value)}
