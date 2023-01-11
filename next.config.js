@@ -8,7 +8,7 @@ const nextConfig = {
         source: '/(.*)',
         headers: securityHeaders
       }
-    ];
+    ]
   }
 }
 
@@ -23,8 +23,8 @@ const ContentSecurityPolicy = `
     img-src * blob: data:;
     media-src 'none';
     connect-src *;
-    font-src 'self';
-`;
+    font-src * data:;
+`
 
 const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
@@ -62,4 +62,4 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()'
   }
-];
+]
