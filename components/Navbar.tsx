@@ -13,10 +13,10 @@ const Navbar: NextPage = () => {
       <nav className="flex flex-row">
         {headerNavLinks?.map((nav) => (
           <Link
-            className={`p-2 underline-offset-[3px] ${
+            className={`p-2 underline-offset-4 hover:underline ${
               asPath === nav?.href
-                ? 'font-bold no-underline hover:underline'
-                : 'underline text-gray-600 dark:text-gray-400'
+                ? 'font-bold no-underline'
+                : 'text-gray-600 dark:text-gray-400'
             }`}
             key={nav?.title}
             href={nav?.href}
