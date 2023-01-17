@@ -20,6 +20,10 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const filteredBlogPosts = posts.filter((post: any) =>
     post.title.toLowerCase().includes(serachPosts.toLowerCase())
   )
+  const getView = async (slug: string) =>
+    await fetch(`/api/views/${slug}`, {
+      method: 'GET'
+    })
 
   useEffect(() => {
     searchInput.current?.focus()
@@ -64,14 +68,11 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
       )}
       <ul>
         {filteredBlogPosts.map((post: any) => (
-          <Link
-            as={`/blog/${post.filePath.replace(/\.mdx?$/, '')}`}
-            href={`/blog/[slug]`}
+          <li
+            key={post.filePath}
+            className="flex flex-col w-full dark:hover:bg-gray-900 hover:bg-gray-50 border border-gray-200 rounded-sm dark:border-gray-600 p-4 mb-4 dark:bg-black bg-white hover:shadow-sm"
           >
-            <li
-              key={post.filePath}
-              className="flex flex-col w-full dark:hover:bg-gray-900 hover:bg-gray-50 border border-gray-200 rounded-sm dark:border-gray-600 p-4 mb-4 dark:bg-black bg-white hover:shadow-sm"
-            >
+            <Link href={`/blog/${post.filePath.replace(/\.mdx?$/, '')}`}>
               <span className="font-bold">{post.title}</span>
               {/* <span className="text-sm text-gray-200 mt-1">
                 {post.description}
@@ -81,11 +82,11 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   {format(parseISO(post.date), 'MMMM dd, yyyy')}
                 </time>
                 <span className="flex text-sm text-gray-400 mt-2">
-                  <ViewCounter slug={post.slug} />
+                  <ViewCounter slug={post.title} method={'GET'} />
                 </span>
               </div>
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
     </>
