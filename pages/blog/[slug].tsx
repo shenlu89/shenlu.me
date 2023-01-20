@@ -1,9 +1,11 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import readingTime from 'reading-time'
 import { MDXRemote } from 'next-mdx-remote'
 import PostLayout from 'components/PostLayout'
-import { POSTS_PATH, postFilePaths, mdxToHtml } from 'lib/mdxUtils'
+import { mdxToHtml } from 'lib/mdx'
+import { POSTS_PATH, postFilePaths } from 'lib/paths'
 import { InferGetStaticPropsType } from 'next'
 
 export default function PostPage({
@@ -23,9 +25,10 @@ export const getStaticPaths = async () => {
     .map((path) => path.replace(/\.mdx?$/, ''))
     // Map the path into the static paths object required by Next.js
     .map((slug) => ({ params: { slug } }))
+  // { fallback: false } means other routes should 404
   return {
     paths,
-    fallback: 'blocking'
+    fallback: false
   }
 }
 
@@ -33,16 +36,14 @@ export const getStaticProps = async ({ params }: any) => {
   const postFilePath = path.join(POSTS_PATH, `${params.slug}.mdx`)
   const source = fs.readFileSync(postFilePath).toString()
   const { content, data } = matter(source)
-
-  const { html, readingTime, wordCount } = await mdxToHtml(content)
-
+  const html = await mdxToHtml(content)
   return {
     props: {
       post: {
         ...data,
         content: html,
-        readingTime,
-        wordCount
+        readingTime: readingTime(content).text,
+        wordCount: content.split(/\s+/gu).length
       }
     }
   }
