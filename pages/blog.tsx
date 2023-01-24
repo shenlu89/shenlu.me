@@ -6,12 +6,12 @@ import type { InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
 import {
   MagnifyingGlassIcon,
-  BackspaceIcon,
-  EyeSlashIcon
+  EyeSlashIcon,
+  XCircleIcon
 } from '@heroicons/react/24/outline'
 import { parseISO, format } from 'date-fns'
 
-import { POSTS_PATH, postFilePaths } from 'lib/mdxUtils'
+import { POSTS_PATH, postFilePaths } from 'lib/paths'
 import ViewCounter from 'components/ViewCounter'
 
 const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -20,19 +20,15 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const filteredBlogPosts = posts.filter((post: any) =>
     post.title.toLowerCase().includes(serachPosts.toLowerCase())
   )
-  const getView = async (slug: string) =>
-    await fetch(`/api/views/${slug}`, {
-      method: 'GET'
-    })
 
   useEffect(() => {
     searchInput.current?.focus()
   }, [])
 
   return (
-    <>
+    <div className="not-prose">
       <div className="flex flex-col relative w-full">
-        <h1 className="font-extrabold text-3xl tracking-tight mb-1">Blog</h1>
+        <h1 className="font-extrabold text-3xl tracking-tight mb-4">Blog</h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
           I've written{' '}
           <strong className="text-black dark:text-white">{posts.length}</strong>{' '}
@@ -40,7 +36,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
         </p>
         <div className="relative w-full mb-4">
           <MagnifyingGlassIcon className="flex left-2 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-gray-600" />
-          <BackspaceIcon
+          <XCircleIcon
             onClick={() => {
               setserachPosts('')
               searchInput.current?.focus()
@@ -69,38 +65,37 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <ul>
         {filteredBlogPosts.map((post: any) => (
           <li
-            key={post.filePath}
+            key={post.slug}
             className="flex flex-col w-full dark:hover:bg-gray-900 hover:bg-gray-50 border border-gray-200 rounded-sm dark:border-gray-600 p-4 mb-4 dark:bg-black bg-white hover:shadow-sm"
           >
-            <Link href={`/blog/${post.filePath.replace(/\.mdx?$/, '')}`}>
+            <Link href={`/blog/${post.slug}`}>
               <span className="font-bold">{post.title}</span>
-              {/* <span className="text-sm text-gray-200 mt-1">
-                {post.description}
-              </span> */}
               <div className="flex justify-between">
                 <time className="text-sm text-gray-400 mt-2">
                   {format(parseISO(post.date), 'MMMM dd, yyyy')}
                 </time>
                 <span className="flex text-sm text-gray-400 mt-2">
-                  <ViewCounter slug={post.title} method={'GET'} />
+                  <ViewCounter slug={post.slug} method={'GET'} />
                 </span>
               </div>
             </Link>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   )
 }
 
 export function getStaticProps() {
-  const posts = postFilePaths.map((filePath) => {
-    const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
+  const posts = postFilePaths.map((postPath) => {
+    const slug = postPath.replace(/\.mdx?$/, '')
+    const source = fs.readFileSync(path.join(POSTS_PATH, postPath))
     const { data } = matter(source)
 
     return {
+      slug,
       ...data,
-      filePath
+      postPath
     }
   })
 
