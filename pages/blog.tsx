@@ -87,17 +87,22 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
 }
 
 export function getStaticProps() {
-  const posts = postFilePaths.map((postPath) => {
-    const slug = postPath.replace(/\.mdx?$/, '')
-    const source = fs.readFileSync(path.join(POSTS_PATH, postPath))
-    const { data } = matter(source)
+  const posts = postFilePaths
+    .map((postPath) => {
+      const slug = postPath.replace(/\.mdx?$/, '')
+      const source = fs.readFileSync(path.join(POSTS_PATH, postPath))
+      const { data } = matter(source)
 
-    return {
-      slug,
-      ...data,
-      postPath
-    }
-  })
+      return {
+        slug,
+        ...data,
+        postPath
+      }
+    })
+    .sort(
+      (a: any, b: any) =>
+        Number(b.date.split('-').join('')) - Number(a.date.split('-').join(''))
+    )
 
   return { props: { posts } }
 }
