@@ -32,7 +32,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <p className="mb-4 text-gray-600 dark:text-gray-400">
           I've written{' '}
           <strong className="text-black dark:text-white">{posts.length}</strong>{' '}
-          posts since 2023, using the search below to filter by title.
+          posts since 2022, using the search below to filter by title.
         </p>
         <div className="relative w-full mb-4">
           <MagnifyingGlassIcon className="flex left-2 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-gray-600" />
@@ -43,7 +43,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
             }}
             className={`${
               serachPosts ? '' : 'hidden'
-            } flex right-2 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-gray-600 cursor-pointer`}
+            } flex right-2 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-gray-600 hover:text-black cursor-pointer`}
           />
           <input
             ref={searchInput}
@@ -66,7 +66,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
         {filteredBlogPosts.map((post: any) => (
           <li
             key={post.slug}
-            className="flex flex-col w-full dark:hover:bg-gray-900 hover:bg-gray-50 border border-gray-200 rounded-sm dark:border-gray-600 p-4 mb-4 dark:bg-black bg-white hover:shadow-sm"
+            className="flex flex-col w-full dark:hover:bg-gray-900 dark:hover:border-gray-400 hover:bg-gray-50 border border-gray-200 hover:border-gray-400 rounded-sm dark:border-gray-600 p-4 mb-4 dark:bg-black bg-white hover:shadow-sm"
           >
             <Link href={`/blog/${post.slug}`}>
               <span className="font-bold">{post.title}</span>
@@ -101,7 +101,7 @@ export function getStaticProps() {
     })
     .sort(
       (a: any, b: any) =>
-        Number(b.date.split('-').join('')) - Number(a.date.split('-').join(''))
+        new Date(b.date).getTime() - new Date(a.date).getTime()
     )
 
   return { props: { posts } }
