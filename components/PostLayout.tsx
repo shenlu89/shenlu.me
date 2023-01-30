@@ -4,6 +4,7 @@ import { parseISO, format } from 'date-fns'
 import { PropsWithChildren, Suspense } from 'react'
 
 import ViewCounter from 'components/ViewCounter'
+import Comment from 'components/Comment'
 
 const PostLayout: NextPage<PropsWithChildren<{ post: any }>> = ({
   children,
@@ -11,10 +12,8 @@ const PostLayout: NextPage<PropsWithChildren<{ post: any }>> = ({
 }) => {
   return (
     <article className="flex flex-col items-start justify-center w-full">
-      <h1 className="font-extrabold text-3xl tracking-tight mb-1">
-        {post.title}
-      </h1>
-      <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row">
+      <h1>{post.title}</h1>
+      <div className="flex items-start justify-between w-full md:flex-row">
         <div className="flex items-center">
           <Image
             alt="Shen Lu"
@@ -22,7 +21,7 @@ const PostLayout: NextPage<PropsWithChildren<{ post: any }>> = ({
             width={36}
             sizes="20vw"
             src="/images/avatar.jpg"
-            className="rounded-full"
+            className="rounded-full mt-0 mb-0"
             priority
           />
           <div className="ml-2 text-sm text-gray-600 dark:text-gray-400">
@@ -32,8 +31,8 @@ const PostLayout: NextPage<PropsWithChildren<{ post: any }>> = ({
             <div>{format(parseISO(post.date), 'MMM dd, yyyy')}</div>
           </div>
         </div>
-        <div className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-          <ViewCounter slug={post.title} method={'POST'} />
+        <div className="flex flex-col mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
+          <ViewCounter slug={post.slug} method={'POST'} />
           <div>
             {post.readingTime}
             {` (`}
@@ -47,6 +46,7 @@ const PostLayout: NextPage<PropsWithChildren<{ post: any }>> = ({
           {children}
         </div>
       </Suspense>
+      <Comment />
     </article>
   )
 }
