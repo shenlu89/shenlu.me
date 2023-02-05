@@ -40,6 +40,7 @@ export const getStaticProps = async ({ params }: any) => {
   return {
     props: {
       post: {
+        slug: params.slug,
         ...data,
         content: html,
         readingTime: readingTime(content).text,
