@@ -31,18 +31,20 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <h1 className="font-extrabold text-3xl tracking-tight mb-4">Blog</h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
           I've written{' '}
-          <strong className="text-black dark:text-white">{posts.length}</strong>{' '}
-          posts since 2022, using the search below to filter by title.
+          <strong className="text-black dark:text-white">{posts.length}</strong>
+          {` posts since `}
+          <strong className="text-black dark:text-white">2019</strong>
+          {`, using the search below to filter by title.`}
         </p>
         <div className="relative w-full mb-4">
           <MagnifyingGlassIcon className="flex left-2 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-gray-600" />
           <XCircleIcon
             onClick={() => {
-              setserachPosts('')
               searchInput.current?.focus()
+              setserachPosts('')
             }}
             className={`${
-              serachPosts ? '' : 'hidden'
+              !serachPosts && 'hidden'
             } flex right-2 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-gray-600 hover:text-black cursor-pointer`}
           />
           <input
@@ -52,7 +54,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
             onChange={(e) => setserachPosts(e.target.value)}
             placeholder="Search all posts"
             value={serachPosts}
-            className="w-full px-8 py-2 text-black bg-white dark:border-black dark:focus:border-black border border-gray-400 rounded-sm focus:outline-0"
+            className="w-full px-8 py-2 text-black bg-white dark:border-black dark:focus:border-black border focus:border-gray-400 rounded-sm focus:outline-0"
           />
         </div>
       </div>
@@ -66,7 +68,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
         {filteredBlogPosts.map((post: any) => (
           <li
             key={post.slug}
-            className="flex flex-col w-full dark:hover:bg-gray-900 dark:hover:border-gray-400 hover:bg-gray-50 border border-gray-200 hover:border-gray-400 rounded-sm dark:border-gray-600 p-4 mb-4 dark:bg-black bg-white hover:shadow-sm"
+            className="flex flex-col w-full dark:hover:bg-gray-900 border hover:bg-gray-50 rounded-sm p-4 mb-4 dark:border-gray-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm"
           >
             <Link href={`/blog/${post.slug}`}>
               <span className="font-bold">{post.title}</span>
