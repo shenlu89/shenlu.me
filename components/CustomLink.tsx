@@ -1,21 +1,16 @@
 import Link from 'next/link'
 
 const CustomLink = (props: any) => {
-  const { href, children, ...otherProps } = props
-
-  if (href.startsWith('/')) {
-    return (
-      <Link href={href} {...otherProps}>
-        {children}
-      </Link>
-    )
+  const { href } = props
+  if (!href.startsWith('/') && !href.startsWith('#')) {
+    props = {
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      ...props
+    }
   }
 
-  if (href.startsWith('#')) {
-    return <a {...props} />
-  }
-
-  return <a target="_blank" rel="noopener noreferrer" {...props} />
+  return <Link {...props} />
 }
 
 export default CustomLink
