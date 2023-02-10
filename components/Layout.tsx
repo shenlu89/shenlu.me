@@ -9,10 +9,12 @@ import Footer from 'components/Footer'
 import fonts from 'lib/fonts'
 
 import { MDXProvider } from '@mdx-js/react'
-import CustomLink from './CustomLink'
+import CustomLink from 'components/CustomLink'
+import CustomPre from 'components/CustomPre'
 
 const MDXComponents = {
-  a: CustomLink
+  a: CustomLink,
+  pre: CustomPre
 }
 
 const Layout: NextPage<PropsWithChildren<Meta>> = ({
