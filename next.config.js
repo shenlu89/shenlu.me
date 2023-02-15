@@ -1,20 +1,7 @@
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-  options: {
-    // If you use remark-gfm, you'll need to use next.config.mjs
-    // as the package is ESM only
-    // https://github.com/remarkjs/remark-gfm#install
-    remarkPlugins: [],
-    rehypePlugins: [],
-    // If you use `MDXProvider`, uncomment the following line.
-    providerImportSource: "@mdx-js/react",
-  },
-})
+const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configure pageExtensions to include md and mdx
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
   swcMinify: true,
@@ -25,27 +12,27 @@ const nextConfig = {
         headers: securityHeaders
       }
     ]
-  }
+  },
 }
 
-module.exports = withMDX(nextConfig)
+module.exports = withContentlayer(nextConfig)
 
 // https://nextjs.org/docs/advanced-features/security-headers
-const ContentSecurityPolicy = `
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com *.giscus.app;
-    style-src 'self' 'unsafe-inline' *.googleapis.com;
-    img-src * blob: data:;
-    media-src 'none';
-    connect-src *;
-    font-src * data:;
-`
+// const ContentSecurityPolicy = `
+//     script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com *.giscus.app;
+//     style-src 'self' 'unsafe-inline' *.googleapis.com;
+//     img-src * blob: data:;
+//     media-src 'none';
+//     connect-src *;
+//     font-src * data:;
+// `
 
 const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
-  {
-    key: 'Content-Security-Policy',
-    value: ContentSecurityPolicy.replace(/\n/g, '')
-  },
+  // {
+  //   key: 'Content-Security-Policy',
+  //   value: ContentSecurityPolicy.replace(/\n/g, '')
+  // },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {
     key: 'Referrer-Policy',

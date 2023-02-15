@@ -1,6 +1,3 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
 import { useEffect, useRef, useState } from 'react'
 import type { InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
@@ -10,8 +7,8 @@ import {
   XCircleIcon
 } from '@heroicons/react/24/outline'
 import { parseISO, format } from 'date-fns'
+import { allPosts, Post } from 'contentlayer/generated'
 
-import { POSTS_PATH, postFilePaths } from 'lib/paths'
 import ViewCounter from 'components/ViewCounter'
 
 const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -30,7 +27,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
       <div className="flex flex-col relative w-full">
         <h1 className="font-extrabold text-3xl tracking-tight mb-4">Blog</h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
-          I've written{' '}
+          {`I've written `}
           <strong className="text-black dark:text-white">{posts.length}</strong>
           {` posts since `}
           <strong className="text-black dark:text-white">2019</strong>
@@ -66,11 +63,11 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
       )}
       <ul>
         {filteredBlogPosts.map((post: any) => (
-          <li
-            key={post.slug}
-            className="flex flex-col w-full dark:hover:bg-gray-900 border hover:bg-gray-50 rounded-sm p-4 mb-4 dark:border-gray-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm"
-          >
-            <Link href={`/blog/${post.slug}`}>
+          <Link key={post.slug} href={post.url}>
+            <li
+              key={post.slug}
+              className="flex flex-col w-full dark:hover:bg-gray-900 border hover:bg-gray-50 rounded-sm p-4 mb-4 dark:border-gray-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm"
+            >
               <span className="font-bold">{post.title}</span>
               <div className="flex justify-between">
                 <time className="text-sm text-gray-400 mt-2">
@@ -80,8 +77,8 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
                   <ViewCounter slug={post.slug} method={'GET'} />
                 </span>
               </div>
-            </Link>
-          </li>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
@@ -89,23 +86,9 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
 }
 
 export function getStaticProps() {
-  const posts = postFilePaths
-    .map((postPath) => {
-      const slug = postPath.replace(/\.mdx?$/, '')
-      const source = fs.readFileSync(path.join(POSTS_PATH, postPath))
-      const { data } = matter(source)
-
-      return {
-        slug,
-        ...data,
-        postPath
-      }
-    })
-    .sort(
-      (a: any, b: any) =>
-        new Date(b.date).getTime() - new Date(a.date).getTime()
-    )
-
+  const posts = allPosts.sort((a: Post, b: Post) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime()
+  })
   return { props: { posts } }
 }
 

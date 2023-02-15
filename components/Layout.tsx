@@ -8,15 +8,6 @@ import Navbar from 'components/Navbar'
 import Footer from 'components/Footer'
 import fonts from 'lib/fonts'
 
-import { MDXProvider } from '@mdx-js/react'
-import CustomLink from 'components/CustomLink'
-import CustomPre from 'components/CustomPre'
-
-const MDXComponents = {
-  a: CustomLink,
-  pre: CustomPre
-}
-
 const Layout: NextPage<PropsWithChildren<Meta>> = ({
   children,
   ...customMeta
@@ -38,7 +29,7 @@ const Layout: NextPage<PropsWithChildren<Meta>> = ({
       </Head>
       <Navbar />
       <main className="max-w-3xl container prose dark:prose-invert text-black dark:text-white mx-auto px-2 py-6 h-full">
-        <MDXProvider components={MDXComponents}>{children}</MDXProvider>
+        {children}
       </main>
       <Footer />
     </div>
