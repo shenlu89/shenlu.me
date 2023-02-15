@@ -1,8 +1,8 @@
-import type { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import _404 from 'public/images/404.jpeg'
 
-const NotFound: NextPage = () => {
+export default function NotFound() {
   return (
     <>
       <h1 className="font-extrabold text-3xl tracking-tight mb-1">404</h1>
@@ -18,15 +18,7 @@ const NotFound: NextPage = () => {
           page.
         </span>
       </div>
-      <Image
-        width={400}
-        height={400}
-        src="/404.jpeg"
-        alt={'Drawing hands by M.C. Escher'}
-        priority
-      />
+      <Image src={_404} alt={'Drawing hands by M.C. Escher'} priority />
     </>
   )
 }
-
-export default NotFound
