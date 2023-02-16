@@ -23,33 +23,32 @@ const CustomPre = ({ children, ...props }: any): ReactElement => {
     }
   }, [isCopied])
 
-  const getTextContent = (children: any) => {
-    let textContent = ''
-    Children.map(children, (child) => {
-      if (typeof child === 'string' || typeof child === 'number') {
-        textContent += child
-      }
-      children = child?.props?.children
-      if (children) {
-        textContent += getTextContent(children)
-      }
-    })
-    return textContent
-  }
-
   const handleClick = useCallback<
     NonNullable<ComponentProps<'button'>['onClick']>
   >(async () => {
-    setCopied(true)
+    const getTextContent = (children: any) => {
+      let textContent = ''
+      Children.map(children, (child) => {
+        if (typeof child === 'string' || typeof child === 'number') {
+          textContent += child
+        }
+        children = child?.props?.children
+        if (children) {
+          textContent += getTextContent(children)
+        }
+      })
+      return textContent
+    }
     if (!navigator?.clipboard) {
       console.error('Access to clipboard rejected!')
     }
     try {
       await navigator.clipboard.writeText(getTextContent(children))
+      setCopied(true)
     } catch {
       console.error('Failed to copy!')
     }
-  }, [])
+  }, [children])
 
   const IconToUse = isCopied ? CheckIcon : CopyIcon
 
