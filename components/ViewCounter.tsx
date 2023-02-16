@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import useSWR from 'swr'
 import type { NextPage } from 'next'
 import { EyeSlashIcon } from '@heroicons/react/24/outline'
@@ -8,15 +8,15 @@ import type { Views, Slug } from 'lib/types'
 
 const ViewCounter: NextPage<Slug> = ({ slug, method }) => {
   const { data } = useSWR<Views>(`/api/views/${slug}`, fetcher)
-  const views = new Number(data?.total)
-  const registerView = async () =>
-    await fetch(`/api/views/${slug}`, {
-      method
-    })
+  const views = Number(data?.total)
+  const registerView = useCallback(
+    async () => await fetch(`/api/views/${slug}`, { method }),
+    [slug, method]
+  )
 
   useEffect(() => {
     registerView()
-  }, [slug])
+  }, [registerView])
 
   return (
     <span className="flex items-center justify-end">
