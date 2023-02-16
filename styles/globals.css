@@ -6,6 +6,28 @@
   flex: 1 1 auto;
 }
 
+.prose .anchor {
+  @apply absolute invisible no-underline;
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 100%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.anchor:hover {
+  @apply visible;
+}
+
+.prose .anchor:after {
+  @apply text-gray-400 dark:text-gray-200;
+  content: '#';
+}
+
+.prose *:hover>.anchor {
+  @apply visible;
+}
+
 /**
  * Inspired by gatsby remark prism - https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
  * 1. Make the element just wide enough to fit its content.
