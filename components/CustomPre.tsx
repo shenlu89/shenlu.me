@@ -58,7 +58,11 @@ const CustomPre = ({ children, ...props }: any): ReactElement => {
         onClick={handleClick}
         tabIndex={0}
         {...props}
-        className="float-right hover:text-bg-800 border p-1 block rounded-sm text-gray-400 border-gray-200 hover:bg-gray-100"
+        className={`float-right border p-1 block rounded-sm ${
+          isCopied
+            ? 'text-green-400 hover:bg-green-100 border-green-200'
+            : 'text-gray-400 hover:bg-gray-100 border-gray-200'
+        }`}
       >
         <IconToUse className="w-5 h-5" />
       </button>
