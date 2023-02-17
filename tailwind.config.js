@@ -15,6 +15,8 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css: {
+            'blockquote p:first-of-type::before': { content: 'none' },
+            'blockquote p:first-of-type::after': { content: 'none' },
             a: {
               color: theme('colors.blue.600'),
               '&:hover': {
@@ -27,14 +29,15 @@ module.exports = {
             },
             h1: {
               fontSize: theme('fontSize.3xl'),
-              // letterSpacing: theme('letterSpacing.tight'),
-              marginBottom: '1rem'
+              marginBottom: 0
             },
             h2: {
               fontWeight: theme('fontWeight.extrabold'),
               fontSize: theme('fontSize.2xl'),
-              // letterSpacing: theme('letterSpacing.tight'),
-              marginBottom: '1rem'
+            },
+            h3: {
+              fontWeight: theme('fontWeight.extrabold'),
+              fontSize: theme('fontSize.xl'),
             },
             hr: {
               marginTop: '1.5rem',
