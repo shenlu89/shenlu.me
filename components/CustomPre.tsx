@@ -60,8 +60,8 @@ const CustomPre = ({ children, ...props }: any): ReactElement => {
         {...props}
         className={`float-right border p-1 block rounded-sm ${
           isCopied
-            ? 'text-green-400 hover:bg-green-100 border-green-200'
-            : 'text-gray-400 hover:bg-gray-100 border-gray-200'
+            ? 'text-green-400 bg-green-100 border-green-200'
+            : 'text-gray-400 bg-gray-100 hover:bg-gray-100 border-gray-200'
         }`}
       >
         <IconToUse className="w-5 h-5" />
