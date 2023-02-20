@@ -1,23 +1,29 @@
 # shenlu89.github.io
 
-Shen Lu's Personal Website
+Shen Lu's personal website, inspired by [leerob](https://leerob.io/).
 
 ## Features
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **CMS**: [MDX](https://mdxjs.com/) and [Contentlayer](https://www.contentlayer.dev/)
+- **Analytics**: [Vercel Analytics](https://vercel.com/analytics)
+- **Comment**: [Giscus](https://giscus.app/)
+- **ORM**: [Prisma](https://www.prisma.io/)
+- **Database**: [PlanetScale](https://planetscale.com/)
+- **Deployment**: [Vercel](https://vercel.com/)
 
 ## Overview
 
-- `components/*` - The components defined as functions provide more features for all pages
-- `layouts/*` - The different page layouts each MDX category (blog, about) uses.
-- `data/*` - The
+- `components/*` - The components defined as functions provide more features for all pages.
+- `data/*` - All other unpublic information (mata, headers, articles, etc.) about the pages.
 - `lib/*` - A collection of helpful utilities or functions for external services.
 - `pages/api/*` - [API Routes](https://beta.nextjs.org/docs/routing/fundamentals) powering post views.
-- `pages/blog/*` - Static pre-rendered posts using MDX.
+- `pages/blog/*` - Static pre-rendered posts using Contentlayer.
+- `posts/*` - All the content of posts.
 - `pages/*` - All other static pages.
-- `databases/*` - MySQL schema
-- `public/*` - Static assets including fonts and images.
+- `db/*` - The [Prisma](https://www.prisma.io/) schema and client, which uses a [PlanetScale](https://planetscale.com/) MySQL database.
+- `public/*` - Static public assets including fonts and images.
 - `styles/*` - A small amount of global styles, mostly using vanilla Tailwind CSS.
 
 ## License
