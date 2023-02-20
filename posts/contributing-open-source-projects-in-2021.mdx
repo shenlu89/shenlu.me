@@ -1,0 +1,75 @@
+---
+title: Contributing Open Source Projects in 2021
+date: '2021-12-31'
+---
+
+As a developer, I often used open-source projects developed and maintained by other individuals or organizations, in daily work.
+And I also had developed some for my own uses.
+However, I contributed little to open source community, such as issues and pull requests.
+
+After leaving office, I had more time to delve into some open-source projects.
+From August 2021, I consciously participated in some open-source projects and submited some issues and pull requests.
+I found that contributing open-source projects was not so difficult.
+
+## Open Source Projects Contributed in 2021
+
+### Experience #1:
+
+- **If you want more developers to pay attention to your open-source projects, you should share these in places where more developers can see them.**
+
+In September 2021, I wanted to learn how to use [Tailwind CSS](https://tailwindcss.com/), and I rewrote the UI part of my Jekyll personal blog using it.
+After finishing my blog, I shared it as template on GitHub via an exhibition library, [awesome-tailwindcss](https://github.com/aniftyco/awesome-tailwindcss) and created a pull request to this repository.
+
+The PR was merged in less than a day. Then in less than a month, I received three stars.
+I felt that should be related to this submission, because my previous open-source projects that had not been promoted before almost had no stars.
+
+### Experience #2:
+
+- **When submitting a pull request, one should have a clear understanding of the problem, and when describing the problem that the pull request is intended to solve, one should emphasize the key points and avoid misunderstandings by reviewers.**
+
+After last project ended, in October, I developed a [rollup-typescript-babel-starter](https://github.com/shenlu89/rollup-typescript-babel-starter) for figuring out how to use `tsc` and `Babel` together in a project.
+After comparing the different effects between `tsc` and `Babel` in compiling (strictly speaking, it is transpiling), I decided to use `Babel` instead of `tsc`.
+
+During the process, I discovered a problem in the official documentation: `@babel/env` in the Babel official documentation has been changed to `@babel/preset-env`.
+However, the [Guide page](https://babeljs.io/docs/en/usage) still uses `@babel/env`, which feels semantically inconsistent.
+So I created a pull request to change all `@babel/env` in the Guide page to `@babel/preset-env`.
+However, there were some problems with the description in the pull request.
+My description is that `@babel/env` could not be found in other parts of the documentation, rather than saying that the name of package, `@babel/env`, has been updated.
+
+Fortunately, the `Babel` reviewers understood what I mean, agreed with this PR, and corrected my description of the problem for me.
+When I saw the modification on the official website, I really felt the sense of participation.
+By the way, the `Babel` team's work efficiency is very high, and they can respond to others' contributions positively.
+
+### Experience #3:
+
+- **Before submitting a PR, you can observe the issues and PRs submitted by the author before, and observe the code style and overall structure.**
+
+Of course, I also experienced that my PRs were rejected during this time.
+During the process of developing node projects, I learned about how to publish `npm` packages.
+I looked at how [d3](https://d3js.org/)'s Rollup was configured and felt that [Mike Bostock](https://github.com/mbostock)'s configuration was more practical and did not have many fancy places.
+Therefore, I submitted a pull request, but the author did not think that their improvement plan was important enough, and each modification would affect more than 30 related libraries, so he rejected it.
+
+So I got that some developers pay attention to details in their code, such as typos and optimizations, while some focus on practicality (like Mike Bostock), just like if it works fine, there is no need to change it.
+Although this PR were rejected, I were also excited to receive a reply from an industry expert.
+
+### Experience #4
+
+- **If you're not sure whether or not the maintainers will agree to merge your PR, you can create a tentative one first. If the author agrees to merge it, you can create further PRs later.**
+- **Don't spend too much time making a lot of changes and then have your submission rejected, as it would be a waste of time.**
+
+In November, I'm developing a graphics library that requires some JavaScript APIs involving geometry and mathematics.
+When I was looking up the [MDN Web Docs](https://developer.mozilla.org/), I noticed that the Latex formula for `Math.log()` was incorrect.
+So I created a PR for it. After it was merged, I found some issues with similar problem in other API documents and created more PRs as well.
+I didn't believe I could really find some problems in the MDN Web Docs. It's amazing experience.
+
+In December, one of my project needed to use [codemirror 6](https://codemirror.net/), I needed to develop a codemirror `Latex` package by using [lang-example](https://github.com/codemirror/lang-example), a template library.
+But this template can not work because the author had upgraded the dependencies, but he didn't udpate the code that depended on it.
+So I corrected this problem and created a issue and PR. [Marijn Haverbeke](https://github.com/marijnh) merged my submission later.
+Interestingly, I had read his book, [Eloquent JavaScript](https://eloquentjavascript.net/), before.
+
+## Summary
+
+These are all the open source projects I participated in 2021, and there weren't many technically challenging submissions.
+Participating in open source is really not as difficult as you might imagine, and those industry giants are not as unapproachable as you might think.
+Even well-known open source projects will have some difficult-to-notice details.
+As the year is coming to an end, set a goal for myself in 2022 to develop an open source project that I can be satisfied with.

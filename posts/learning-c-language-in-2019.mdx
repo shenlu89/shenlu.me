@@ -1,0 +1,76 @@
+---
+title: 'Learning C Language in 2019'
+date: '2019-09-15'
+---
+
+Recently, I finally had some time to learn some C language.
+C code needs to be compiled into a binary executable file before it can be executed, so I configured the relevant environment for C/C++ according to the official [tutorial](https://code.visualstudio.com/docs/languages/cpp) of VS Code.
+Programming, debugging, and outputting results in one step makes the learning process more efficient.
+
+I plan to start from [_The C Programming Language_](https://en.wikipedia.org/wiki/The_C_Programming_Language), and I typed the first example code in chapter one, `hello.c`:
+
+```c
+#include<stdio.h>
+// include information about standard input/output library
+main()
+// define a function named main that receives no arguments values
+{
+// statements of main are enclosed in braces
+  printf("hello, world\n");
+// main calls library function printf to print this sequence of characters; \n represents the newline character
+}
+```
+
+After executing `cc hello.c` to compile it, I saw the error message:
+
+```c
+hello.c:3:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+main()
+^~~~
+```
+
+The reason is that from the C99 standard, no type specifiers have been removed.
+The book uses the C89 standard, see The C89 Draft - 3.5.2 Type specifiers for details.
+
+Well, now I will find out which standard `cc` is using by executing the following command to view the pre-compilation macros defined by `cc`:
+
+```c
+cc -E -dM - </dev/null | grep "STDC_VERSION"
+#define **STDC_VERSION** 201112L
+```
+
+The computer is Ubuntu 18.04, and the default standard used is C11.
+
+There are approximately three commonly known C standards: c90 (or c89), c99, c11, which were released in 1990, 1999, and 2011, respectively.
+The original ANSI C standard (X3.159-1989) was approved in 1989 and released in 1990. It was later (in 1990) approved as an ISO standard (ISO/IEC 9899:1990).
+There is no technical difference between C89 and C90.
+
+Well, let's start solving the problem. There are two options for the above code to work properly:
+
+**1. Modify the code according to the C11 standard**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  printf("hello, world\n");
+  return 0;
+}
+```
+
+And it will output normally.
+
+**2. Use the C89 or C90 standard**
+
+```sh
+cc -std=c89 hello.c
+# or cc -std=c90 hello.c
+And it will also output normally.
+```
+
+In the Linux operating system, `cc` is linked to `gcc` through a soft link, so using `cc` and `gcc` in Linux has the same effect.
+
+**Supplementary material**:
+
+- [Difference between CC, gcc, and g++?](https://stackoverflow.com/questions/1516609/difference-between-cc-gcc-and-g#:~:text=On%20linux%20platforms%2C%20CC%20almost,set%20for%20compiling%20C%2B%2B.)

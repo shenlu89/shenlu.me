@@ -1,0 +1,68 @@
+---
+title: Create a Next.js App with Tailwind CSS
+date: '2023-01-12'
+---
+
+## Prerequisites
+
+- Node.js >= 14.6.0
+- PNPM
+- Ubuntu 22.04
+
+## 1. Create A New Project
+
+Create a new Next.js project with TypeScript and ESlint:
+
+```sh
+npx create-next-app@latest my-project --typescript --eslint
+cd my-project
+pnpm dev
+```
+
+## 2. Setup Tailwind CSS
+
+Install tailwindcss and its peer dependencies via `pnpm`,
+and then run the init command to generate both `tailwind.config.js` and `postcss.config.js`.
+
+```sh
+pnpm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+Add the paths to all of your template files in your tailwind.config.js file.
+
+```sh
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+
+    // Or if using `src` directory:
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+Add the `@tailwind` directives for each Tailwind’s layers to your `globals.css` file.
+
+```sh
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+## 3. Start development process
+
+Run `pnpm dev` to start the development server,
+
+```sh
+pnpm dev
+```
+
+Visit http://localhost:3000 to view your application.

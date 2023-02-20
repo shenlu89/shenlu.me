@@ -1,0 +1,98 @@
+---
+title: 'Using Equal Sign (=) or Arrow Sign (<-) in R'
+date: '2019-09-22'
+---
+
+> _The best thing about R is that it was developed by statisticians. The worst thing about R is that...it was developed by statisticians. — Bo Cowgill, Google, Inc_
+
+As a high-level language, the R language has unique syntax.
+This is an important reason why I hate R language. Because many of the syntaxes of R can't be used in other languages, we need to remember a bunch of parameters that can only be used in R.
+For example, assignment symbol in R. In other languages, this symbol is usually represented by an equal sign (`=`), while in R language, the arrow sign (`<-`) undertakes this task.
+And in most cases, the equal sign and arrow can achieve the same effect.
+I really don't understand why it has to work in this way.
+After investigation, I summarized several differences between the operators `<-` and `=` in the R language.
+
+I am quoting an explanation of the difference between the equal sign and the arrow from the [Assignment Operators](https://stat.ethz.ch/R-manual/R-patched/library/base/html/assignOps.html) in R-manual.
+
+> There are three different assignment operators: two of them have leftwards and rightwards forms.
+> The operators `<-` and `=` assign into the environment in which they are evaluated.
+> The operator `<-` can be used anywhere, whereas the operator `=` is only allowed at the top level (e.g., in the complete expression typed at the command prompt) or as one of the subexpressions in a braced list of expressions.
+
+## Variable Assignment And Passing Arguments
+
+In most programming languages, the equal sign (`=`) has two functions: **variable assignment** and **passing arguments**.
+The equal sign (`=`) can be used for assigning variables, and can also play the role of passing arguments in Functions. For example:
+
+```r
+> a = 2 # assiging a variable
+> a
+[1] 2
+> read.table("fileName", header = TRUE) # passing a argument
+> header
+Error: object 'header' not found
+```
+
+But the arrow sign (`<-`) in R does not work like this.
+It has only one function: variable assignment.
+Assume that only the equal sign (`=`) is used in all cases.
+However, if you use the arrow (`<-`) when passing arguments in Functions, you will find that there will be an additional variable with the same assignment value as the parameter name in the global variable.
+It will lead to ambiguity and occupy the namespace. For example:
+
+```r
+> b <- 2 # assign a variable
+> b
+[1] 2
+> read.table("fileName", header <- TRUE) # assign a variable
+> header
+[1] TRUE
+```
+
+But the arrow sign (`<-`) is not useless. It has a capability that the equal sign (`=`) does not have: **two-way assignment**.
+Since it is an arrow sign (`<-`), it should be directional.
+In the R language, the arrow sign (`<-`) can not only be assigned to the left like the equal sign (`=`) but also to the right. For example:
+
+```r
+> b <- 2 # assign a variable
+> b
+[1] 2
+> 3 -> a # assign a variable
+> a
+[1] 3
+```
+
+However, the arrow sign (`<-`) usually does not use like this, which is not conducive to code reading and maintenance.
+Only just the arrow sign (`<-`) does have such a function in R.
+
+## Operator Precedence
+
+When the equal sign (`=`) and arrow sign (`<-`) exist at the same time, the precedence of `<-` is higher than `=`. For example:
+
+```r
+> x = y = 1
+> x
+[1] 1
+> y
+[1] 1
+> x <- y <- 2
+> x
+[1] 2
+> y
+[1] 2
+> x <- y = 3
+Error in (x <- y) = 5 : object 'x' not found
+> x = y <- 4
+> x
+[1] 4
+> y
+[1] 4
+```
+
+We can see that `<-` has higher precedence than `=` and execute first when processing continuous assignment.
+
+## Conclusion
+
+That's all my understanding of the equal sign (`=`) and arrow sign (`<-`) of R language in detail. As for how to choose, it depends on your habits.
+
+**Supplementary material**
+
+- [Assignment Operators](https://stat.ethz.ch/R-manual/R-patched/library/base/html/assignOps.html)

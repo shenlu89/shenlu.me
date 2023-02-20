@@ -1,0 +1,85 @@
+---
+title: Building MDX Blog with Contentlayer and Next.js
+date: '2023-02-18'
+---
+
+Recently, I'm rebuilding my personal blog using Next.js. I'm almost down except for the content management part. Using [MDX](https://mdxjs.com/) or headless CMS? That's a question.
+
+After trying both of them, I prefer to use MDX instead of headless CMS.
+Because I don't like spending too much time to learn how to use a platform.
+
+## Comparison of MDX integration strategies
+
+I had tried `@next/mdx`, `next-mdx-remote` and [Contentlayer](https://www.contentlayer.dev/) to integrate MDX with my Next.js blog and summarized their differences.
+
+### @next/mdx
+
+In the beginning, I used `@next/mdx` to render MDX posts.
+It can be setup easily on my Next.js project with following the official [docs](https://nextjs.org/docs/advanced-features/using-mdx) and [blog](https://nextjs.org/blog/markdown#sharing-layout).
+However, there are some drawbacks in this solution:
+
+- `@next/mdx` does not support YAML front matter by default. You have to add frontmatter parser yourself, such as `gray-matter`.
+- `@next/mdx` can only render MDX files locally, not using the remote files source including other Git repositories, databases, APIs or anywhere else.
+
+The default rendering mode of MDX files using `@next/mdx` is Static Site Generation (SSG) in Next.js. We can see that by running the official [example](https://github.com/vercel/next.js/tree/canary/examples/with-mdx), `with-mdx`.
+
+```sh
+> @ build /home/a/with-mdx-app
+> next build
+
+info  - Linting and checking validity of types
+info  - Creating an optimized production build
+info  - Compiled successfully
+info  - Collecting page data
+info  - Generating static pages (3/3)
+info  - Finalizing page optimization
+
+Route (pages)                              Size     First Load JS
+┌ ○ /                                      1.24 kB        74.2 kB
+└ ○ /404                                   181 B          73.1 kB
++ First Load JS shared by all              73 kB
+  ├ chunks/framework-93f3b2d2d07baa50.js   45.2 kB
+  ├ chunks/main-7ec8980c466a2751.js        26.8 kB
+  ├ chunks/pages/_app-1467937b68b6f370.js  194 B
+  └ chunks/webpack-4e7214a60fad8e88.js     712 B
+
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+```
+
+### next-remote-mdx
+
+`next-mdx-remote` is a set of utilities to help work with MDX in Next.js projects.
+
+Comparing with`@next/mdx`, there are some differences between the two.
+
+- `next-mdx-remote` allow content to be loaded from anywhere, rather than only in local Next.js project.
+- `next-mdx-remote` can be loaded with `getStaticProps` or `getServerSideProps` and hydrated correctly on the client.
+
+However, `next-mdx-remote` and `@next/mdx` does not handle loading content from sources,
+which means you have to do loading MDX files, generating JSON data that contains content, metadata, etc, and passing these as `props` into page components, by yourself.
+
+### ContentLayer
+
+Contentlayer is a content SDK that validates and transforms your content into type-safe JSON data you can easily import into your application's pages.
+
+Here are some things that Contentlayer can do but `@next/mdx` and `next-mdx-remote` cannot:
+
+- Support live reload (HMR) on content changes
+- Transform content into data based on designed content model, powered by schema DSL
+- Auto validates content and generate TypeScript type definitions based on content model
+
+Comparing three popular ways of using MDX with Next.js, I chose Contentlayer as content management tool finally.
+
+## Using ContentLayer in Next.js
+
+### 1. Create Next.js Project with Tailwind CSS
+
+Following this article, [Create a Next.js App with Tailwind CSS](/blog/create-a-nextjs-app-with-tailwind-css), to create new Next.js project and add Tailwind to it.
+
+### 2. Install and Configure Contentlayer with Next.js
+
+Following this [tutorial](https://www.contentlayer.dev/docs/getting-started), you can build a simple Next.js blog site using Contentlayer.
+
+### 3. Customize Project as You Needs
+
+Now this blog had integrated with Contentlayer already, you can refer to the [source code](https://github.com/shenlu89/shenlu89.github.io) if you like.
