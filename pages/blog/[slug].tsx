@@ -1,6 +1,5 @@
 import { type Post, allPosts } from 'contentlayer/generated'
 import Image from 'next/image'
-import { parseISO, format } from 'date-fns'
 
 import ViewCounter from 'components/ViewCounter'
 import Comment from 'components/Comment'
@@ -9,6 +8,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 
 import CustomLink from 'components/CustomLink'
 import CustomPre from 'components/CustomPre'
+import { Adsense } from '@ctrl/react-adsense'
 
 const MDXComponent = {
   a: CustomLink,
@@ -16,14 +16,15 @@ const MDXComponent = {
 }
 
 export default function PostPage({
-      post
-    }: InferGetStaticPropsType<typeof getStaticProps>) {
+  post
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const MDXContent = useMDXComponent(post.body.code)
-
   return (
     <article className="flex flex-col items-start justify-center w-full">
-      <h1>{post.title}</h1>
-      <div className="flex items-start justify-between w-full md:flex-row py-4">
+      <h1 className="font-extrabold text-3xl tracking-tight mb-0">
+        {post.title}
+      </h1>
+      <div className="flex items-start justify-between w-full md:flex-row my-8">
         <div className="flex items-center">
           <Image
             alt="Shen Lu"
@@ -38,10 +39,10 @@ export default function PostPage({
             <span className="flex text-black dark:text-gray-200 font-bold">
               Shen Lu
             </span>
-            <div>Posted on {format(parseISO(post.date), 'MMM dd, yyyy')}</div>
+            <div>Posted on {post.publishedAt}</div>
           </div>
         </div>
-        <div className="flex flex-col mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
+        <div className="flex flex-col text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
           <ViewCounter slug={post.slug} method={'POST'} />
           <div>
             {post.readingTime}
@@ -51,7 +52,14 @@ export default function PostPage({
           </div>
         </div>
       </div>
-      <div className="w-full mt-4 prose dark:prose-invert max-w-none">
+      <Adsense
+        client={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT as string}
+        slot={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT as string}
+        style={{ display: 'block' }}
+        format="auto"
+        responsive="true"
+      />
+      <div className="w-full prose dark:prose-invert max-w-none mb-8">
         <MDXContent components={MDXComponent} />
       </div>
       <Comment />

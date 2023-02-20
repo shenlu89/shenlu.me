@@ -6,7 +6,7 @@ import rehypeCodeTitles from 'rehype-code-titles'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrism from 'rehype-prism-plus'
 import readingTime from 'reading-time'
-
+import { parseISO, format } from 'date-fns'
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -22,11 +22,7 @@ export const Post = defineDocumentType(() => ({
       type: 'date',
       description: 'The date of the post',
       required: true,
-    },
-    // image: {
-    //   type: string,
-    //   description: 'The image of the post',
-    // },
+    }
   },
   computedFields: {
     url: {
@@ -37,6 +33,10 @@ export const Post = defineDocumentType(() => ({
       type: 'string',
       resolve: (post) => post._raw.flattenedPath
     },
+    publishedAt: {
+      type: 'string',
+      resolve: (post) => format(parseISO(post.date), 'MMM dd, yyyy')
+    },
     readingTime: {
       type: 'string',
       resolve: (post) => readingTime(post.body.raw).text
@@ -45,7 +45,7 @@ export const Post = defineDocumentType(() => ({
       type: 'number',
       resolve: (post) => post.body.raw.split(/\s+/gu).length
     }
-  },
+  }
 }))
 
 // defineDocumentType(() => ({

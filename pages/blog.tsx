@@ -6,7 +6,6 @@ import {
   EyeSlashIcon,
   XCircleIcon
 } from '@heroicons/react/24/outline'
-import { parseISO, format } from 'date-fns'
 import { allPosts, Post } from 'contentlayer/generated'
 
 import ViewCounter from 'components/ViewCounter'
@@ -23,7 +22,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   }, [])
 
   return (
-    <div className="not-prose">
+    <>
       <div className="flex flex-col relative w-full">
         <h1 className="font-extrabold text-3xl tracking-tight mb-4">Blog</h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
@@ -71,7 +70,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
               <span className="font-bold">{post.title}</span>
               <div className="flex justify-between">
                 <time className="text-sm text-gray-400 mt-2">
-                  {format(parseISO(post.date), 'MMMM dd, yyyy')}
+                  {post.publishedAt}
                 </time>
                 <span className="flex text-sm text-gray-400 mt-2">
                   <ViewCounter slug={post.slug} method={'GET'} />
@@ -81,7 +80,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
           </Link>
         ))}
       </ul>
-    </div>
+    </>
   )
 }
 
