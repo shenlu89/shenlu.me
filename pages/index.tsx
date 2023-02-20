@@ -1,16 +1,15 @@
-import type { NextPage } from 'next'
 import Image from 'next/image'
 
-const Home: NextPage = (props) => {
+export default function Home() {
   return (
     <div className="flex flex-row relative justify-between w-full">
       <div className="flex flex-col pr-8 relative w-full">
-        <h1 className="font-extrabold text-3xl tracking-tight mb-0">Shen Lu</h1>
-        <span className="text-gray-600 dark:text-gray-400">
+        <h1 className="font-extrabold text-3xl tracking-tight mb-4">Shen Lu</h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-4">
           Developer, Writer and Creator.
-        </span>
+        </p>
         <p className="text-gray-600 dark:text-gray-400">
-          Now I'm focusing on web development and data visualization.
+          {`Now I'm focusing on web development and data visualization.`}
         </p>
       </div>
       <div className="relative mr-auto">
@@ -26,5 +25,3 @@ const Home: NextPage = (props) => {
     </div>
   )
 }
-
-export default Home

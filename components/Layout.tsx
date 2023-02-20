@@ -28,7 +28,7 @@ const Layout: NextPage<PropsWithChildren<Meta>> = ({
         )}
       </Head>
       <Navbar />
-      <main className="max-w-3xl container prose dark:prose-invert text-black dark:text-white mx-auto px-2 py-6 h-full">
+      <main className="max-w-3xl container text-black dark:text-white mx-auto px-2 py-6 h-full">
         {children}
       </main>
       <Footer />

@@ -1,19 +1,18 @@
-import type { NextPage } from 'next'
 import Link from 'next/link'
 import { GitHubIcon, TwitterIcon, DiscordIcon } from 'data/icons'
 
-const Footer: NextPage = () => {
+export default function Footer() {
   return (
     <footer className="flex justify-between max-w-3xl container mx-auto py-2 text-gray-400 tracking-tight">
       <p className="py-2 m-2 underline-offset-3">
         {`© ${new Date().getFullYear()} `}
-        <a
+        <Link
           className="hover:underline hover:text-black dark:hover:text-white"
           href={'https://github.com/shenlu89'}
           target={'_blank'}
         >
           Shen Lu
-        </a>
+        </Link>
         . All rights reserved.
       </p>
       <ul className="flex items-center py-2 m-2">
@@ -42,5 +41,3 @@ const Footer: NextPage = () => {
     </footer>
   )
 }
-
-export default Footer
