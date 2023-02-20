@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prisma": "npx prisma generate --schema=./db/schema.prisma"
+    "postinstall": "prisma generate --schema=./db/schema.prisma"
   },
   "dependencies": {
     "@ctrl/react-adsense": "^1.6.1",
