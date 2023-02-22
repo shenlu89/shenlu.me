@@ -8,7 +8,6 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 
 import CustomLink from 'components/CustomLink'
 import CustomPre from 'components/CustomPre'
-import { Adsense } from '@ctrl/react-adsense'
 
 const MDXComponent = {
   a: CustomLink,
@@ -52,13 +51,6 @@ export default function PostPage({
           </div>
         </div>
       </div>
-      <Adsense
-        client={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT as string}
-        slot={process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT as string}
-        style={{ display: 'block' }}
-        format="auto"
-        responsive="true"
-      />
       <div className="w-full prose dark:prose-invert max-w-none mb-8">
         <MDXContent components={MDXComponent} />
       </div>

@@ -1,7 +1,6 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@ctrl/react-adsense': ^1.6.1
   '@giscus/react': ^2.2.6
   '@heroicons/react': ^2.0.13
   '@next/font': ^13.1.2
@@ -37,7 +36,6 @@ specifiers:
   typescript: ^4.9.4
 
 dependencies:
-  '@ctrl/react-adsense': 1.6.1
   '@giscus/react': 2.2.6_biqbaboplfbrettd7655fr4n2y
   '@heroicons/react': 2.0.13_react@18.2.0
   '@next/font': 13.1.2
@@ -200,12 +198,6 @@ packages:
       oo-ascii-tree: 1.74.0
       ts-pattern: 4.1.4
       type-fest: 3.5.7
-    dev: false
-
-  /@ctrl/react-adsense/1.6.1:
-    resolution: {integrity: sha512-pa8/rl1fWzufBjJlTaAFqc0Y7f87RYQJscxs23ZxMv7aqR4nfnUkDK5HwF26dMnrR8sMXFg2OVni9Tr6XgRt7A==}
-    dependencies:
-      tslib: 2.4.1
     dev: false
 
   /@effect-ts/core/0.60.5:

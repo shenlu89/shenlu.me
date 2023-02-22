@@ -10,7 +10,6 @@
     "postinstall": "prisma generate --schema=./db/schema.prisma"
   },
   "dependencies": {
-    "@ctrl/react-adsense": "^1.6.1",
     "@giscus/react": "^2.2.6",
     "@heroicons/react": "^2.0.13",
     "@next/font": "^13.1.2",
