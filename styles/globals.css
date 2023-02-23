@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 #__next {
-  flex: 1 1 auto;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
 }
 
 .prose .anchor {
