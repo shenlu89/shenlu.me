@@ -28,20 +28,20 @@ module.exports = {
               color: theme('colors.pink.600'),
             },
             h1: {
-              fontSize: theme('fontSize.3xl'),
+              fontSize: theme('fontSize.2xl'),
               marginBottom: 0
             },
             h2: {
               fontWeight: theme('fontWeight.extrabold'),
-              fontSize: theme('fontSize.2xl'),
+              fontSize: theme('fontSize.xl'),
             },
             h3: {
               fontWeight: theme('fontWeight.extrabold'),
-              fontSize: theme('fontSize.xl'),
+              fontSize: theme('fontSize.lg'),
             },
             hr: {
-              marginTop: '1.5rem',
-              marginBottom: '1.5rem'
+              marginTop: '2rem',
+              marginBottom: '2rem'
             },
             p: {
               color: theme('colors.gray.800'),

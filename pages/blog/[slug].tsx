@@ -20,7 +20,7 @@ export default function PostPage({
   const MDXContent = useMDXComponent(post.body.code)
   return (
     <article className="flex flex-col items-start justify-center w-full">
-      <h1 className="font-extrabold text-3xl tracking-tight mb-0">
+      <h1 className="font-extrabold text-2xl tracking-tight mb-0">
         {post.title}
       </h1>
       <div className="flex items-start justify-between w-full md:flex-row my-8">
