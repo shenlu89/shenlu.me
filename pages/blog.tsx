@@ -24,7 +24,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       <div className="flex flex-col relative w-full">
-        <h1 className="font-extrabold text-3xl tracking-tight mb-4">Blog</h1>
+        <h1 className="font-extrabold text-2xl tracking-tight mb-4">Blog</h1>
         <p className="mb-4 text-gray-600 dark:text-gray-400">
           {`I've written `}
           <strong className="text-black dark:text-white">{posts.length}</strong>
