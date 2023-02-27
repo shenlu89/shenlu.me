@@ -3,13 +3,13 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <div className="flex flex-row relative justify-between w-full">
-      <div className="flex flex-col pr-8 relative w-full">
-        <h1 className="font-extrabold text-3xl tracking-tight mb-4">Shen Lu</h1>
+      <div className="flex flex-col relative w-full">
+        <h1 className="font-extrabold text-2xl tracking-tight mb-4">Shen Lu</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          Developer, Writer and Creator.
+          Developer and Writer
         </p>
         <p className="text-gray-600 dark:text-gray-400">
-          {`Now I'm focusing on web development and data visualization.`}
+          {`All good things come to those who wait.`}
         </p>
       </div>
       <div className="relative mr-auto">
