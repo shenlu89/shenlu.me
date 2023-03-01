@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <link rel="icon" href={'/images/logo.svg'} as="image" />
       </Head>
-      <body className="flex flex-col h-screen">
+      <body>
         <Main />
         <NextScript />
       </body>
