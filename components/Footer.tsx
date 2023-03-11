@@ -3,9 +3,9 @@ import { GitHubIcon, TwitterIcon, DiscordIcon } from 'data/icons'
 
 export default function Footer() {
   return (
-    <footer className="flex justify-between max-w-3xl container mx-auto py-2 text-gray-400 tracking-tight">
-      <p className="py-2 m-2 underline-offset-3">
-        {`© ${new Date().getFullYear()} `}
+    <footer className="flex justify-between max-w-3xl container mx-auto p-2 text-gray-400 tracking-tight m-2">
+      <p className="py-2 underline-offset-3 text-gray-600">
+        {`© 2019-${new Date().getFullYear()} `}
         <Link
           className="hover:underline hover:text-black dark:hover:text-white"
           href={'https://github.com/shenlu89'}
@@ -15,28 +15,34 @@ export default function Footer() {
         </Link>
         . All rights reserved.
       </p>
-      <ul className="flex items-center py-2 m-2">
-        <Link
-          className="flex hover:text-[#536dfe]"
-          href={'https://discord.gg/QqucGZFRz7'}
-          target={'_blank'}
-        >
-          <DiscordIcon />
-        </Link>
-        <Link
-          className="flex hover:text-[#1DA1F2] mx-2"
-          href={'https://twitter.com/shenlu89'}
-          target={'_blank'}
-        >
-          <TwitterIcon />
-        </Link>
-        <Link
-          className="flex hover:text-black dark:hover:text-white"
-          href="https://github.com/shenlu89/shenlu89.github.io"
-          target={'_blank'}
-        >
-          <GitHubIcon />
-        </Link>
+      <ul className="flex items-center py-2">
+        <li>
+          <Link
+            className="flex hover:text-[#536dfe]"
+            href={'https://discord.gg/QqucGZFRz7'}
+            target={'_blank'}
+          >
+            <DiscordIcon />
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="flex hover:text-[#1DA1F2] mx-2"
+            href={'https://twitter.com/shenlu89'}
+            target={'_blank'}
+          >
+            <TwitterIcon />
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="flex hover:text-black dark:hover:text-white"
+            href="https://github.com/shenlu89/shenlu89.github.io"
+            target={'_blank'}
+          >
+            <GitHubIcon />
+          </Link>
+        </li>
       </ul>
     </footer>
   )
