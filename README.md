@@ -1,12 +1,12 @@
 # shenlu89.github.io
 
-Shen Lu's personal website, inspired by [leerob](https://leerob.io/).
+Shen Lu's Blog, inspired by [leerob.io](https://leerob.io/).
 
 ## Features
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **CMS**: [MDX](https://mdxjs.com/) and [Contentlayer](https://www.contentlayer.dev/)
+- **Content**: [Contentlayer](https://www.contentlayer.dev/)
 - **Analytics**: [Vercel Analytics](https://vercel.com/analytics)
 - **Comment**: [Giscus](https://giscus.app/)
 - **ORM**: [Prisma](https://www.prisma.io/)
@@ -25,6 +25,19 @@ Shen Lu's personal website, inspired by [leerob](https://leerob.io/).
 - `db/*` - The [Prisma](https://www.prisma.io/) schema and client, which uses a [PlanetScale](https://planetscale.com/) MySQL database.
 - `public/*` - Static public assets including fonts and images.
 - `styles/*` - A small amount of global styles, mostly using vanilla Tailwind CSS.
+
+## Running Locally
+
+This application requires Node.js v16.13+.
+
+```js
+git clone git@github.com:shenlu89/shenlu89.github.io.git
+cd shenlu.github.io
+pnpm install
+pnpm dev
+```
+
+Create a `.env` file similar to [`.env.example`]().
 
 ## License
 
