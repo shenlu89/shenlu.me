@@ -19,7 +19,7 @@ const Layout: NextPage<PropsWithChildren<Meta>> = ({
   }
 
   return (
-    <div className={`${fonts.className} flex flex-col h-full`}>
+    <div className={`${fonts.className} flex flex-col h-full px-2`}>
       <Head>
         <title>{meta.title}</title>
         <meta name="description" content={meta.description} />
@@ -28,7 +28,7 @@ const Layout: NextPage<PropsWithChildren<Meta>> = ({
         )}
       </Head>
       <Navbar />
-      <main className="max-w-3xl container text-black dark:text-white mx-auto px-2 py-6 h-full">
+      <main className="max-w-3xl container text-black dark:text-white mx-auto px-2 py-6 flex-1 leading-6">
         {children}
       </main>
       <Footer />
