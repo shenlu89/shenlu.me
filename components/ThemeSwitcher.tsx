@@ -5,15 +5,18 @@ import { useTheme } from 'next-themes'
 
 const ThemeSwitcher: NextPage = () => {
   const { resolvedTheme, setTheme } = useTheme()
-  const [mount, setMount] = useState(false)
-  useEffect(() => setMount(true), [])
+  const [mount, setMount] = useState(true)
+  useEffect(() => setMount(false), [])
   const IconToUse = resolvedTheme === 'light' ? MoonIcon : SunIcon
   return (
     <button
+      disabled={mount}
+      type="button"
+      aria-label="Theme Switcher"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-      className="p-1 rounded-full cursor-pointer text-black hover:bg-gray-200 dark:text-white dark:hover:bg-gray-200 dark:hover:text-black"
+      className="flex items-center p-1 rounded-full text-black hover:bg-gray-200 dark:text-white dark:hover:bg-gray-200 dark:hover:text-black"
     >
-      {mount && <IconToUse />}
+      <IconToUse />
     </button>
   )
 }
