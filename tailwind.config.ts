@@ -48,7 +48,7 @@ module.exports = {
             },
             img: {
               marginTop: 0,
-              marginBottom: 0
+              marginBottom: 0,
             },
             ul: {
               marginTop: 0,
