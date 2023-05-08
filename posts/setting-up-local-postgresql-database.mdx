@@ -1,0 +1,129 @@
+---
+title: Setting up Local PostgreSQL Database
+date: '2023-05-08'
+---
+
+Last month, I create a database on Vercel Postgres to store the data in [wildlifeinchina.org](https://wildlifeinchina.org).
+However, the free version has monthly limitations on data storage and transfers.
+To avoid wasting online resources, I decide to set up a local PostgreSQL environment to facilitate the debugging process for the upcoming web application development.
+
+## Install PostgreSQL
+
+To install PostgreSQL server, update your computer's local package cache with the latest set of packages. Afterwards, install the `postgresql` package:
+
+```sh
+sudo apt update
+sudo apt install postgresql
+```
+
+## Login PostgreSQL
+
+By default, PostgreSQL is configured to use [peer authentication](https://www.postgresql.org/docs/10/auth-methods.html#AUTH-PEER), which allows users to log in if their operating system user name matches a PostgreSQL internal name.
+
+The installation process created an operating system user called `postgres` to match the `postgres` database administrative account.
+To log into PostgreSQL with the `psql` client, use `sudo` to run the command as the postgres user:
+
+```sh
+sudo -u postgres psql
+```
+
+## Set User Password in PostgreSQL
+
+```sql
+ALTER USER postgres PASSWORD 'yourpassword';
+-- ALTER ROLE
+```
+
+## Connect PostgreSQL with Connection URIs
+
+After setting password for user `postgres`, you can connect to postgres with URI:
+
+```sh
+psql 'postgresql://postgres:yourpassword@localhost:5432/postgres?connect_timeout=10&sslmode=require'
+```
+
+For more details, you can refer to:
+
+- https://www.prisma.io/docs/concepts/database-connectors/postgresql
+- https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING
+
+## Create Table in PostgreSQL
+
+The CSV file, `animals.csv`, containing the data given below:
+
+```sh
+less animals.csv
+# 1,Mammalia,Primates,Lorisidae,Nycticebus bengalensis,Bengal slow loris,蜂猴,I,EN,false,false,I
+# 2,Mammalia,Primates,Lorisidae,Nycticebus pygmaeus,Pygmy slow loris,倭蜂猴,I,EN,false,false,I
+# 3,Mammalia,Primates,Cercopithecidae,Macaca arctoides,Stump-tailed macaque,短尾猴,II,VU,false,false,
+# ...
+```
+
+In this table, the following columns should be present:
+
+- **Animal ID**: A unique animals identification number.
+- **Class**: The animal's class.
+- **Order**: The animal's order.
+- **Family**: The animal's family.
+- **Scientific Name**: The animal's scientific name.
+- **Common Name**: The animal's common name.
+- **Chinese Name**: The animal's Chinese name.
+- **Protection Class**: The animal's protection class.
+- **Conservation Status**: The animal's protection status.
+- **Aquatic**: Whether or not the animal is aquatic.
+- **Endemic**: Whether or not the animal is endemic.
+- **CITES**: CITES appendices.
+
+Create the `animals` table with the above schema with the following SQL:
+
+```sql
+CREATE TABLE IF NOT EXISTS animals (
+  id serial PRIMARY KEY,
+  class VARCHAR ( 50 ) NOT NULL,
+  "order" VARCHAR ( 50 ) NOT NULL,
+  family VARCHAR ( 50 ) NOT NULL,
+  scientific_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+  common_name VARCHAR ( 50 ) NOT NULL,
+  chinese_name VARCHAR ( 50 ) NOT NULL,
+  protection_class VARCHAR ( 2 ) NOT NULL,
+  conservation_status CHAR ( 2 ) NOT NULL DEFAULT 'DD',
+  aquatic BOOLEAN NOT NULL DEFAULT FALSE,
+  endemic BOOLEAN NOT NULL DEFAULT FALSE,
+  cites VARCHAR(50)
+);
+-- CREATE TABLE
+```
+
+## Import CSV Data in PostgreSQL
+
+Now you can easily import CSV to PostgreSQL via using the `COPY` Command:
+
+```sql
+ \COPY animals
+FROM '/path/xxx/animals.csv'
+WITH csv;
+-- COPY 186
+```
+
+and show table contnet:
+
+```sql
+\d
+--                List of relations
+--  Schema |      Name      |   Type   |  Owner
+-- --------+----------------+----------+----------
+--  public | animals        | table    | postgres
+--  public | animals_id_seq | sequence | postgres
+-- (2 rows)
+
+table animals;
+
+--  id  |  class   |     order      |     family      |       scientific_name        |           common_name           |   chinese_name   | protection_class | conservation_status | aquatic | endemic |   cites
+-- -----+----------+----------------+-----------------+------------------------------+---------------------------------+------------------+------------------+---------------------+---------+---------+-----------
+--    1 | Mammalia | Primates       | Lorisidae       | Nycticebus bengalensis       | Bengal slow loris               | 蜂猴             | I                | EN                  | f       | f       | I
+```
+
+## References:
+
+- [Setting up a local PostgreSQL database](https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database#debian-and-ubuntu)
+- [How to create and delete databases and tables in PostgreSQL](https://www.prisma.io/dataguide/postgresql/create-and-delete-databases-and-tables)
