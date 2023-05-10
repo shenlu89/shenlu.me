@@ -1,0 +1,49 @@
+---
+title: Managing PostgreSQL with TablePlus
+date: '2023-05-10'
+---
+
+After setting up local `PostgreSQL`, I'm looking for a SQL GUI tool to help me manage relational databases, such as `MySQL`, `PostgreSQL`.
+The first tool I used is `pgAdmin4`, but when I launch it, it can not be opened and throw errors:
+
+![](/images/posts/fatal-error.png)
+
+And then I tried to solve this problem but failed finally. Thus, I gave up to use it and turn to other tools.
+
+## Why TablePlus
+
+Finally I decided to choose `TablePlus` as the GUI tool of managing database. The reasons are:
+
+1. It is cross-platform tool for Mac, Linux and Windows.
+2. It has elegant UI and uses easily.
+3. It supports multiple databases including MySQL and PostgreSQL.
+
+## Install TablePlus
+
+On `Ubuntu 22.04`, you can run the commands below to install `TablePlus`:
+
+```sh
+# Add TablePlus gpg key
+wget -qO - https://deb.tableplus.com/apt.tableplus.com.gpg.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/tableplus-archive.gpg > /dev/null
+
+# Add TablePlus repo
+sudo add-apt-repository "deb [arch=amd64] https://deb.tableplus.com/debian/22 tableplus main"
+
+# Install
+sudo apt update
+sudo apt install tableplus
+```
+
+For more information, see: https://tableplus.com/blog/2019/10/tableplus-linux-installation.html
+
+## Connect Database with TablePlus
+
+On Ubuntu 22.04
+
+![](/images/posts/connect-database-with-tableplus.png)
+
+![](/images/posts/show-animals-table.png)
+
+The official tutorial:
+
+https://docs.tableplus.com/gui-tools/manage-connections
