@@ -1,24 +1,26 @@
+'use client'
+
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 
-import headerNavLinks from 'data/headerNavLinks.json'
-import ThemeSwitcher from 'components/ThemeSwitcher'
+import headerNavLinks from '@/data/headerNavLinks'
+import ThemeSwitcher from '@/components/ThemeSwitcher'
 
 const Navbar: NextPage = () => {
-  const { asPath } = useRouter()
+  const pathname = usePathname()
 
   return (
-    <header className="flex max-w-3xl container mx-auto py-2">
-      <nav className="flex flex-1">
-        <ul className="flex">
-          {headerNavLinks?.map((nav) => (
+    <header className="flex max-w-3xl container mx-auto py-3">
+      <nav className="flex w-full">
+        <ul className="flex flex-1">
+          {headerNavLinks?.map((nav: any) => (
             <li key={nav?.title}>
               <Link
-                className={`flex p-2 underline-offset-4 hover:underline outline-none ${
-                  asPath === nav?.href
-                    ? 'font-bold no-underline'
-                    : 'text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-gray-200'
+                className={`flex p-2 underline-offset-4  ${
+                  pathname === nav?.href
+                    ? 'underline'
+                    : 'text-gray-600 hover:text-black hover:underline outline-none dark:text-gray-400 dark:hover:text-gray-200'
                 }`}
                 href={nav?.href}
               >
@@ -27,10 +29,10 @@ const Navbar: NextPage = () => {
             </li>
           ))}
         </ul>
+        <div className="flex items-center mr-2">
+          <ThemeSwitcher />
+        </div>
       </nav>
-      <div className="flex items-center mr-2">
-        <ThemeSwitcher />
-      </div>
     </header>
   )
 }
