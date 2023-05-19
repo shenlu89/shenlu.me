@@ -1,3 +1,4 @@
+'use client'
 import Giscus from '@giscus/react'
 import { useTheme } from 'next-themes'
 
