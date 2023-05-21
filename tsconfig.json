@@ -15,7 +15,13 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
+      "@/*": ["./*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },
@@ -23,7 +29,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".contentlayer/generated"
+    ".contentlayer/generated",
+    ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
