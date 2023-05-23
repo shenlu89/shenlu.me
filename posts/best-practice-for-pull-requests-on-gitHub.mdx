@@ -1,0 +1,136 @@
+---
+title: Best Practice for Pull Requests on GitHub
+date: '2022-11-19'
+---
+
+Previously, I wrote an [article](https://www.shenlu.me/blog/contributing-open-source-projects-in-2021) summarizing the open-source projects I participated in and my experiences in 2021.
+However, it was more of a rough summary without specific details on the actual workflow.
+Coincidentally, recently I came across a GitHub project (https://github.com/leerob/leerob.io/) and found a small issue in it.
+Following the basic collaboration workflow recommended by GitHub,
+I submitted an issue and a Pull Request (PR) to the project.
+
+After two days, the author provided feedback and merged my PR.
+Taking this opportunity, I summarized the complete workflow for collaborating on projects through GitHub, based on the open-source collaboration process provided by GitHub Docs and my practical experience.
+This workflow is not only applicable to individuals contributing to open-source projects but also suitable for collaboration within companies or teams for Git projects.
+
+## Github Workflow for Collaborating on Projects
+
+### 1. Finding projects
+
+Finding a target project is straightforward, in this case: https://github.com/leerob/leerob.io.
+
+> Before making open-source contributions, it's a good idea to check if anyone has already raised similar feedback or submitted similar modifications in the issues and PRs.
+> Pay attention to how the author responded to avoid wasting your time.
+> If it's a minor issue and you have limited time, you can start by creating an issue to notify the author or others about the problem.
+> If there is no response, you can then try submitting a PR.
+> In this case, I have already opened an issue here: https://github.com/leerob/leerob.io/issues/550
+
+![](/images/posts/v2-f8429d6a3369156dffb4022ed6f58d6b_720w.png)
+
+### 2.Forking a repository
+
+Go to the main page of the project at https://github.com/leerob/leerob.io.
+Click on the **"Fork"** button to create a new fork of the project.
+
+![](/images/posts/v2-b2b78cb89dd5801d7c6b057a0ffdcaae_720w.png)
+
+After clicking the **"Fork"** button, click on the **"Create fork"** button to create the forked project in your own workspace.
+
+![](/images/posts/v2-1a7d8058ace3f3dcbe5cb50fd6e72f40_720w.png)
+
+### 3.Cloning a fork
+
+Go to your GitHub workspace and clone the forked project to your local machine or remote server.
+You can refer to the detailed instructions provided in the GitHub documentation at https://docs.github.com/en/get-started/quickstart/contributing-to-projects for the steps to clone a repository from your GitHub account.
+
+```sh
+git clone git@github.com:shenlu89/leerob.io.git
+```
+
+### 4.Creating a branch
+
+```sh
+git checkout -b delete-unused-link
+```
+
+### 5.Make changes
+
+To delete the unnecessary line of code import `Link from 'next/link'`
+
+![](/images/posts/v2-482ea4fc83bd4f113012a88aa7244d54_720w.png)
+
+### 6. Pushing changes
+
+This step requires attention because some projects may have frequent updates.
+Before making modifications and submitting a PR, it's possible that there may be new commits and merged PRs in the original project.
+If this situation occurs, your forked project in your workspace will show that the original project has been updated. For example:
+
+![](/images/posts/v2-50161493436a34796e05fb946368a6b7_720w.png)
+
+After clicking **"Update branch"**, the changes from the original project (https://github.com/leerob/leerob.io) will be synchronized with your forked project (https://github.com/shenlu89/leerob.io).
+Now, navigate to your local project folder.
+
+```sh
+git stash
+git pull
+git stash pop
+```
+
+Check if the updated content conflicts with your local modifications.
+If conflicts exist, resolve them. Once resolved, you can proceed with submitting your modifications.
+
+```sh
+git commit -am 'Delete unused Link declaration'
+git push --set-upstream origin delete-unused-link
+```
+
+### 7.Create a pull request
+
+Go back to the workspace of your online forked project.
+You will see the new branch and the merged commit information for your modifications.
+Click on **"Compare & pull request"**.
+
+![](/images/posts/v2-8812730e32d99340263c135305df5178_720w.png)
+
+Choose the branch of the original project that you want to merge into.
+Provide a title and description for the pull request.
+If there is a corresponding issue, you can add it by typing **"#"** (GitHub will automatically display a list of issues).
+
+![](/images/posts/v2-8eebfb4c7744463f88cf2dbe555d1d1b_720w.png)
+
+Click on **"Create pull request"**. The result will be as follows:
+
+![](/images/posts/v2-6580a8663ba8cce1d8b551678647c94e_720w.png)
+
+### 8. Address review comments
+
+This part is the set of guidelines that the original project author needs to follow, and [Lee Robinson](https://leerob.io) also provided a polite response.
+
+![](/images/posts/v2-56bb1e30fa0728503cfa98c8918613fb_720w.png)
+
+### 9.Merge your pull request
+
+This step is to be carried out by the original project author, as previously demonstrated, and it will not be reiterated.
+
+### 10.Delete your branch
+
+The final step is not mandatory but serves as a good practice for maintaining a standardized open-source collaboration workflow and reducing the occurrence of accidentally committing to the wrong project branch.
+
+Go to the main page of the original project on GitHub. Locate the previously merged pull request (in the closed PR list), and click on **"Delete branch"**.
+
+![](/images/posts/v2-04351c3253b921f063eaaa06951a5c85_720w.png)
+
+```sh
+git branch -d delete-unused-link
+```
+
+> Note: Before creating a new branch in an existing forked project, it is important to sync the updates from the original project to the forked project.
+> Pull the updated forked project to your local machine using `git pull`, and then create a new branch using `git checkout -b new-branch-name`.
+> Repeat the aforementioned process after creating the new branch.
+
+For more information, see:
+
+- [GitHub flow](https://docs.github.com/en/get-started/quickstart/github-flow)
+- [Contributing to projects](https://docs.github.com/en/get-started/quickstart/contributing-to-projects)
+- [Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [Linking a pull request to an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
