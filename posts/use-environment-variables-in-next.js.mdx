@@ -1,0 +1,55 @@
+---
+title: Use Environment Variables in Next.js
+date: '2023-06-08'
+---
+
+During the week, I was working on the new project, [Wildlife in China](https://wildlifeinchina.org).
+In development process, I simply directly connected Vercel Postgres with Prisma in Next.js.
+However, the Hobby plan of Vercel Postgres has [usage limits](https://vercel.com/docs/storage/vercel-postgres/usage-and-pricing#pricing) and I almost exceeded the data transfer limits.
+To save the amount of data transfer, I have to connect local Postgres with the project for testing and debuging.
+So I think I should use environment variables to distinguish between the development and production environments automatically.
+
+## `.env*` Files and Environment Variables
+
+As the documentation said, if the environment variable `NODE_ENV` is unassigned, Next.js automatically assigns development when running the `next dev` command, or production for all other commands.
+
+So you can create a `.env.development` for development environment and add local PostgreSQL variable in it.
+
+```sh
+# Postgres
+POSTGRES_URL="postgresql://postgres:xxx@localhost:5432/postgres"
+POSTGRES_PRISMA_URL="postgresql://postgres:xxx@localhost:5432/postgres?pgbouncer=true&connect_timeout=15"
+POSTGRES_URL_NON_POOLING="postgresql://postgres:xxx@localhost:5432/postgres"
+POSTGRES_USER="postgres"
+POSTGRES_HOST="localhost"
+POSTGRES_PASSWORD="xxx"
+POSTGRES_DATABASE="postgres"
+```
+
+And create a `.env.production` for production environment and add Vercel Postgres variable in it.
+
+```sh
+# Postgres
+POSTGRES_URL="************"
+POSTGRES_PRISMA_URL="************"
+POSTGRES_URL_NON_POOLING="************"
+POSTGRES_USER="************"
+POSTGRES_HOST="************"
+POSTGRES_PASSWORD="************"
+POSTGRES_DATABASE="************"
+```
+
+After that, when running `next dev`, the Next.js project will automatically load environment variables from `.env.development`.
+Or if deploying Next.js project to production environment, it will loading production environment variables from `.env.production` by default.
+
+You can also add the environment variables shared between development and production environments in `.env` file, which will be loaded wherever the environments are.
+
+```sh
+# Postgres
+NEXT_PUBLIC_IMAGES_URI = **********
+NEXT_PUBLIC_ICON_URL = **********
+```
+
+## Conclusion
+
+Now it will not waste the usage limits of Vercel Postgres when developing project in local.
