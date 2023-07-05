@@ -1,0 +1,146 @@
+---
+title: How to Batch Update Git Commit Messages
+date: '2023-07-05'
+---
+
+Yesterday, I uploaded a portion of organized wildlife image data to the Github repository.
+However, when I checked the git log later, I found that the commit messages I submitted did not follow the commit conventions.
+There were a total of 85 commits, and they had already been pushed to the remote Github repository.
+
+```git
+commit b81c9d0dc11eff2336a87e3f3f33b7d0b0dc98d8 (HEAD -> main, origin/main)
+Author: shenlu89 <shenlu89dev@gmail.com>
+Date:   Sun Jul 2 21:49:57 2023 +0800
+
+    add Equus kiang image
+
+commit 9ed8f1e74cc40a77d84158f7ad04f9cfe744f07b
+Author: shenlu89 <shenlu89dev@gmail.com>
+Date:   Sat Jul 1 21:49:28 2023 +0800
+
+    add Equus hemionus image
+
+commit 047efe1c420b4d9353c36b01238ec2c4ae4e25de
+Author: shenlu89 <shenlu89dev@gmail.com>
+Date:   Fri Jun 30 21:48:49 2023 +0800
+
+    add Equus ferus image
+
+commit afd25d615687b262ca9bad76e98d97eece0e1d51
+Author: shenlu89 <shenlu89dev@gmail.com>
+Date:   Thu Jun 29 21:48:05 2023 +0800
+```
+
+I have previously modified individual commit messages, but this time there are too many to change individually.
+After some research and experimentation, I have summarized a method for batch modifying Git commit messages.
+
+## git filter-branch
+
+The main function of the `git filter-branch` command is to help rewrite the branch history of a Git project.
+Here is a detailed usage of the command:
+
+```bash
+git filter-branch --help
+```
+
+The git filter-branch command provides various options to modify the branch history. Some commonly used options are:
+
+**--msg-filter `<command>`**
+
+This is the filter for rewriting the commit messages.
+The argument is evaluated in the shell with the original commit message on standard input;
+its standard output is used as the new commit message.
+
+It's important to note that `git filter-branch` modifies the commit history, and it can have significant implications if the repository is shared or if there are existing clones.
+It is recommended to use this command with caution and communicate with other collaborators to ensure a smooth transition.
+
+For more detailed information and examples, you can refer to the official Git documentation on git filter-branch: [Git - git-filter-branch Documentation](https://git-scm.com/docs/git-filter-branch).
+
+## Solution
+
+Since it is the first time using this command and to prevent any accidental contamination of the entire project, it is advisable to create a `dev` branch as a means of isolation before proceeding with the experiment.
+
+```bash
+git checkout -b dev
+git branch -a
+
+ * dev
+   main
+   remotes/origin/main
+```
+
+After that, run `git filter-branch` to rewrite all commit messages starting with `add` to `feat: add` in dev branch.
+
+```bash
+git filter-branch -f --msg-filter 'sed -e "s/^add/feat: add/g"' HEAD
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+	 rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+	 alternative filtering tool such as 'git filter-repo'
+	 (https://github.com/newren/git-filter-repo/) instead.  See the
+	 filter-branch manual page for more details; to squelch this warning,
+	 set FILTER_BRANCH_SQUELCH_WARNING=1.
+Proceeding with filter-branch...
+
+Rewrite b0b4cc4e1a89acb1a05a4f871d43e67dffaecd1e (1/85)
+(0 seconds passed, remaiRewrite b27d23199345736a3cb9667eb037af1ebe16c88c (2/85)
+(0 seconds passed, remaiRewrite 2bb418eb12650190110583c8f367da0b1b679a89 (3/85)
+(0 seconds passed, remaiRewrite 23745f9a7e4f4736bb1a9fc5a642853309a532d7 (4/85)
+(0 seconds passed, remaiRewrite 916fb83dfae96fe112621362c2428acea7e1bcc6 (5/85)
+(0 seconds passed, remaiRewrite 7ebc27f335bf649a6c47eb4f0201d1613f367479 (6/85)
+(0 seconds passed, remaiRewrite 75b276bdfa7043ed1196ac8e8da38920c421f688 (7/85)
+(0 seconds passed, remaiRewrite faa59cdb9350509a6adbea613008fd545fd2288b (8/85)
+(0 seconds passed, remaiRewrite b07cec5080ef70c89d89d18cfad298a14d11b0b7 (9/85)
+(0 seconds passed, remaiRewrite 6f69e1417ff76e45845ed70cbc191c0e71e91ac1 (10/85)
+...
+(1 seconds passed, remaRewrite 3aed0e61bf4b1cace185591cc3bb9068162227af (84/85)
+(1 seconds passed, remaRewrite 996a7d7f9ef17311cd66bae1bf73723ad2335f7a (85/85)
+(1 seconds passed, remaining 0 predicted)
+Ref 'refs/heads/dev' was rewritten
+```
+
+And check the result with `git log`
+
+```bash
+commit b81c9d0dc11eff2336a87e3f3f33b7d0b0dc98d8 (HEAD -> main, origin/main, dev)
+Author: shenlu89 <shenlu89dev@gmail.com>
+Date:   Sun Jul 2 21:49:57 2023 +0800
+
+    feat: add Equus kiang image
+
+commit 9ed8f1e74cc40a77d84158f7ad04f9cfe744f07b
+Author: shenlu89 <shenlu89dev@gmail.com>
+Date:   Sat Jul 1 21:49:28 2023 +0800
+
+    feat: add Equus hemionus image
+
+commit 047efe1c420b4d9353c36b01238ec2c4ae4e25de
+Author: shenlu89 <shenlu89dev@gmail.com>
+Date:   Fri Jun 30 21:48:49 2023 +0800
+
+    feat: add Equus ferus image
+
+commit afd25d615687b262ca9bad76e98d97eece0e1d51
+Author: shenlu89 <shenlu89dev@gmail.com>
+Date:   Thu Jun 29 21:48:05 2023 +0800
+
+    feat: add Elephas maximus image
+```
+
+Success!
+
+The final step is just switching the git branch from `dev` to `main` and repeat the procedure above.
+And run `git push -f` to push these changes to remote Github repository.
+
+```bash
+git push -f
+
+Enumerating objects: 561, done.
+Counting objects: 100% (561/561), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (428/428), done.
+Writing objects: 100% (560/560), 44.72 MiB | 1.79 MiB/s, done.
+Total 560 (delta 175), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (175/175), completed with 1 local object.
+To github.com:shenlu89/wildlife-in-china.git
+ + 996a7d7...b81c9d0 main -> main (forced update)
+```
