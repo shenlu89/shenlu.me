@@ -9,10 +9,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'white': '#fff',
-        'black': '#000',
+        white: '#fff',
+        black: '#000'
       },
-      typography: (theme) => ({
+      typography: (theme: (arg0: string) => any) => ({
         DEFAULT: {
           css: {
             'blockquote p:first-of-type::before': { content: 'none' },
@@ -25,7 +25,7 @@ module.exports = {
               code: { color: theme('colors.blue.600') }
             },
             code: {
-              color: theme('colors.pink.600'),
+              color: theme('colors.pink.600')
             },
             h1: {
               fontSize: theme('fontSize.2xl'),
@@ -33,25 +33,25 @@ module.exports = {
             },
             h2: {
               fontWeight: theme('fontWeight.extrabold'),
-              fontSize: theme('fontSize.xl'),
+              fontSize: theme('fontSize.xl')
             },
             h3: {
               fontWeight: theme('fontWeight.extrabold'),
-              fontSize: theme('fontSize.lg'),
+              fontSize: theme('fontSize.lg')
             },
             hr: {
               marginTop: '2rem',
               marginBottom: '2rem'
             },
             p: {
-              color: theme('colors.gray.800'),
+              color: theme('colors.gray.800')
             },
             img: {
               marginTop: 0,
-              marginBottom: 0,
+              marginBottom: 0
             },
             ul: {
-              marginTop: 0,
+              marginTop: 0
             },
             blockquote: {
               p: {
@@ -62,17 +62,17 @@ module.exports = {
               position: 'relative',
               code: {
                 overflow: 'hidden',
-                whiteSpace: 'pre-wrap !important',
+                whiteSpace: 'pre-wrap !important'
               },
               button: {
                 position: 'absolute',
                 right: '0.5rem',
                 top: '0.5rem',
-                display: 'none',
+                display: 'none'
               },
               '&:hover': {
                 button: {
-                  display: 'block',
+                  display: 'block'
                 }
               }
             }
@@ -89,13 +89,13 @@ module.exports = {
             },
             code: { color: theme('colors.pink.400') },
             p: {
-              color: theme('colors.gray.200'),
+              color: theme('colors.gray.200')
             },
             blockquote: {
               p: {
                 color: theme('colors.gray.400')
               }
-            },
+            }
           }
         }
       })
