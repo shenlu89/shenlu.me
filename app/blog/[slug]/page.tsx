@@ -11,7 +11,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 import CustomLink from 'components/CustomLink'
 import CustomPre from 'components/CustomPre'
 
-export const runtime = 'edge'
+// export const runtime = 'edge'
 
 const MDXComponent = {
   a: CustomLink,
