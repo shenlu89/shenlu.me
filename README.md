@@ -21,7 +21,6 @@ Shen Lu's portfolio, inspired by [leerob.io](https://leerob.io/).
 - `app/api/*` - [API Routes](https://nextjs.org/docs/app/building-your-application/routing/router-handlers) powering post views.
 - `app/blog/*` - Static pre-rendered posts using Contentlayer.
 - `posts/*` - All the content of posts.
-- `pages/*` - All other static pages.
 - `db/*` - The [Prisma](https://www.prisma.io/) schema and client, which uses a [PlanetScale](https://planetscale.com/) MySQL database.
 - `public/*` - Static public assets including fonts and images.
 
@@ -31,7 +30,7 @@ This application requires Node.js v16.13+.
 
 ```js
 git clone git@github.com:shenlu89/shenlu89.github.io.git
-cd shenlu.github.io
+cd shenlu89.github.io
 pnpm install
 pnpm dev
 ```
