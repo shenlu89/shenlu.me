@@ -33,3 +33,7 @@
 .prose img {
   margin: 0 auto
 }
+
+.prose pre {
+  border-radius: 0;
+}

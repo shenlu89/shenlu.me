@@ -1,6 +1,7 @@
 // contentlayer.config.js
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import remarkGfm from 'remark-gfm'
+import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import rehypeCodeTitles from 'rehype-code-titles'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
@@ -16,18 +17,18 @@ export const Post = defineDocumentType(() => ({
     title: {
       type: 'string',
       description: 'The title of the post',
-      required: true,
+      required: true
     },
     date: {
       type: 'date',
       description: 'The date of the post',
-      required: true,
+      required: true
     }
   },
   computedFields: {
     url: {
       type: 'string',
-      resolve: (post) => `/blog/${post._raw.flattenedPath}`,
+      resolve: (post) => `/blog/${post._raw.flattenedPath}`
     },
     slug: {
       type: 'string',
@@ -61,6 +62,23 @@ export default makeSource({
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,
+      [
+        rehypePrettyCode,
+        {
+          theme: 'solarized-dark',
+          onVisitLine(node: { children: string | any[] }) {
+            if (node.children.length === 0) {
+              node.children = [{ type: 'text', value: ' ' }]
+            }
+          },
+          onVisitHighlightLine(node: { properties: { className: string[] } }) {
+            node.properties.className.push('line--highlighted')
+          },
+          onVisitHighlightWord(node: { properties: { className: string[] } }) {
+            node.properties.className = ['word--highlighted']
+          }
+        }
+      ],
       rehypeCodeTitles,
       [
         rehypePrism,
@@ -76,6 +94,6 @@ export default makeSource({
           }
         }
       ]
-    ],
+    ]
   }
 })
