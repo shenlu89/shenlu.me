@@ -1,0 +1,31 @@
+---
+title: Link Git Commit to Github Issues
+date: '2023-07-28'
+---
+
+A few days ago, a peer raised an issue on my GitHub repository,
+[shenlu89.github.io](https://github.com/shenlu89/shenlu89.github.io),
+regarding the design of the code blocks.
+
+To close the issue using [Conventional Commits](https://kapeli.com/cheat_sheets/Conventional_Commits.docset/Contents/Resources/Documents/index), I used the "close" keyword in your commit message. Here's how you can do it:
+
+```sh
+fix: code block hard to read close #3
+```
+
+After making the desired changes to your commit message, push the commit to your GitHub repository.
+GitHub will automatically recognize the reference in the commit message and link the commit to issue `#3`
+
+![](/images/posts/link-git-commit-to-github-issues.png)
+
+By the way, You can use any of these keywords to close an issue via commit message:
+
+- **fix** #xxx
+- **fixes** #xxx
+- **fixed** #xxx
+- **close** #xxx
+- **closes** #xxx
+- **closed** #xxx
+- **resolve** #xxx
+- **resolves** #xxx
+- **resolved** #xxx
