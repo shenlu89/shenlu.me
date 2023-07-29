@@ -1,6 +1,6 @@
-# shenlu89.github.io
+# shenlu.me
 
-Shen Lu's portfolio, inspired by [leerob.io](https://leerob.io/).
+Shen Lu's Blog, inspired by [leerob.io](https://leerob.io/).
 
 ## Features
 
@@ -29,13 +29,13 @@ Shen Lu's portfolio, inspired by [leerob.io](https://leerob.io/).
 This application requires Node.js v16.13+.
 
 ```js
-git clone git@github.com:shenlu89/shenlu89.github.io.git
-cd shenlu89.github.io
+git clone git@github.com:shenlu89/shenlu.me.git
+cd shenlu.me
 pnpm install
 pnpm dev
 ```
 
-Create a `.env` file similar to [`.env.example`]().
+Create a `.env` file similar to [`.env.example`](/.env.example).
 
 ## License
 
