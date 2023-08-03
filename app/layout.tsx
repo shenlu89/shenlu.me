@@ -40,11 +40,17 @@ export const metadata: Metadata = {
     siteName: 'Shen Lu',
     images: [
       {
-        url: 'https://shenlu.me/og?title=Shen Lu'
+        url: 'https://shenlu.me/og'
       }
     ],
     locale: 'en-US',
     type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shen Lu',
+    description: 'Developer and Writer.',
+    images: ['https://shenlu.me/og']
   },
   robots: {
     index: true,
@@ -56,10 +62,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1
     }
-  },
-  twitter: {
-    title: 'Shen Lu',
-    card: 'summary_large_image'
   },
   icons: {
     shortcut: '/favicon.ico'
