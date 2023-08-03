@@ -2,7 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import Providers from '@/components/Providers'
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from '@vercel/analytics/react'
 
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -38,8 +38,24 @@ export const metadata: Metadata = {
     description: 'Developer and Writer.',
     url: 'https://shenlu.me',
     siteName: 'Shen Lu',
+    images: [
+      {
+        url: 'https://shenlu.me/og'
+      }
+    ],
     locale: 'en-US',
     type: 'website'
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1
+    }
   },
   twitter: {
     title: 'Shen Lu',
