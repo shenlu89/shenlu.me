@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     siteName: 'Shen Lu',
     images: [
       {
-        url: 'https://shenlu.me/og'
+        url: 'https://shenlu.me/og?title=Shen Lu'
       }
     ],
     locale: 'en-US',
