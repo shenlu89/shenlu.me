@@ -28,6 +28,7 @@ const fonts = localFont({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://shenlu.me'),
   title: {
     default: 'Shen Lu',
     template: '%s | Shen Lu'
@@ -38,19 +39,12 @@ export const metadata: Metadata = {
     description: 'Developer and Writer.',
     url: 'https://shenlu.me',
     siteName: 'Shen Lu',
-    images: [
-      {
-        url: 'https://shenlu.me/og'
-      }
-    ],
     locale: 'en-US',
     type: 'website'
   },
   twitter: {
-    card: 'summary_large_image',
     title: 'Shen Lu',
-    description: 'Developer and Writer.',
-    images: ['https://shenlu.me/og']
+    card: 'summary_large_image'
   },
   robots: {
     index: true,
