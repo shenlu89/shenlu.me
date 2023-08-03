@@ -26,7 +26,7 @@ export async function generateMetadata({
   const post = allPosts.find((post) => post.slug === params.slug) as Post
   if (!post) return
   const { title, slug, publishedAt: publishedTime } = post
-  // const ogImage = image
+  const ogImage = `https://shenlu.me/og?title=${title}&time=${publishedTime}`
   return {
     title,
     openGraph: {
@@ -34,12 +34,16 @@ export async function generateMetadata({
       type: 'article',
       publishedTime,
       url: `https://shenlu.me/blog/${slug}`,
-      images: []
+      images: [
+        {
+          url: ogImage
+        }
+      ]
     },
     twitter: {
       card: 'summary_large_image',
       title,
-      images: []
+      images: [ogImage]
     }
   }
 }
