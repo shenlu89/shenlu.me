@@ -1,12 +1,29 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'That is all about me.'
+}
+
 export default function About() {
   return (
     <div className="flex flex-col relative max-w-none prose dark:prose-invert">
       <h1>About</h1>
       <div>
         <p>
-          Hi, I’m Shen Lu 👋, a full-stack developer. Now I’m focusing on web
-          development and data visualization.
+          Hi, I’m Shen Lu 👋, a full-stack web developer. Now I’m focusing on
+          web development and data visualization.
+        </p>
+        <hr />
+        <h2>Education</h2>
+        <p>
+          2012-2016,{' '}
+          <b>Bachelor Degree in Bioinformatics and Computational Biology</b>,
+          College of Liberal Arts and Sciences ,{' '}
+          <Link target="_blank" href="https://www.iastate.edu/">
+            [Iowa State University]
+          </Link>
         </p>
         <hr />
         <h2>Publications</h2>
