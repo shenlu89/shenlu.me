@@ -29,14 +29,17 @@ export async function generateMetadata({
   const ogImage = `https://shenlu.me/og?title=${title}&time=${publishedTime}`
   return {
     title,
+    description: title,
     openGraph: {
       title,
+      description: title,
       type: 'article',
       publishedTime,
       url: `https://shenlu.me/blog/${slug}`,
       images: [
         {
           url: ogImage,
+          type: 'image/png',
           width: 1200,
           height: 630,
           alt: title
@@ -46,9 +49,11 @@ export async function generateMetadata({
     twitter: {
       card: 'summary_large_image',
       title,
+      description: title,
       images: [
         {
           url: ogImage,
+          type: 'image/png',
           width: 1200,
           height: 630,
           alt: title
