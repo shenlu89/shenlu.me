@@ -15,13 +15,12 @@ export async function GET(request: Request) {
     ).then((res) => res.arrayBuffer())
     const url = request.url.replace('&amp%3B', '&')
     const { searchParams } = new URL(url)
-    console.log(url)
 
     // ?title=<title>
     const hasTitle = searchParams.has('title')
     const title = hasTitle
       ? searchParams.get('title')?.slice(0, 100)
-      : "Shen Lu's Blog"
+      : 'Shen Lu'
 
     // ?time=<time>
     const hasTime = searchParams.has('time')

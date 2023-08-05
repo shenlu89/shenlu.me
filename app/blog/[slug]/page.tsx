@@ -36,14 +36,24 @@ export async function generateMetadata({
       url: `https://shenlu.me/blog/${slug}`,
       images: [
         {
-          url: ogImage
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: title
         }
       ]
     },
     twitter: {
       card: 'summary_large_image',
       title,
-      images: [ogImage]
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: title
+        }
+      ]
     }
   }
 }
