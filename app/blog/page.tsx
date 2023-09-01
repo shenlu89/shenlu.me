@@ -40,7 +40,7 @@ const Blog = () => {
             }}
             className={`${
               !serachPosts && 'hidden'
-            } flex right-2 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-gray-400 hover:text-black cursor-pointer`}
+            } flex right-3 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-gray-400 hover:text-black cursor-pointer`}
           />
           <input
             autoFocus
