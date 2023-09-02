@@ -57,7 +57,7 @@ const Blog = () => {
       {!filteredBlogPosts.length && (
         <div className="flex flex-col py-8 text-gray-600 items-center dark:text-gray-400 justify-center">
           <MagnifyingGlassIcon className="w-10 h-10 p-2 bg-gray-100 dark:text-gray-600 rounded-full mb-2" />
-          <span>No posts found for '{serachPosts}'</span>
+          <span>{`No posts found for '${serachPosts}'`}</span>
         </div>
       )}
       <ul>
