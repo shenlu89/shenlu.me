@@ -1,0 +1,35 @@
+---
+title: Some Useful Linux Command Lines for Manipulating CSV Files
+date: '2023-08-31'
+---
+
+Recently I am working on the site, [Wildlife in China](http://www.wildlifeinchina.org),
+which are aiming to collecting all key protected wildlife designated by Chinese government.
+
+The most tedious work is generating and collecting data. Today I list some frequently used Linux commands for manipulating CSV files.
+
+## Delete the Nth Column
+
+Here is the example that If you want to delete the 12th column in CSV file
+
+```sh
+cut -d, -f12 --complement older.csv > newer.csv
+```
+
+## Add Line Number As First Column
+
+```sh
+ awk '{printf "%s,%s\n", NR,$0}' older.csv > newer.csv
+```
+
+## Delete First Column
+
+```sh
+sed -r 's/^[^,]+,//' older.csv > newer.csv
+```
+
+## Copy images from one folder to another
+
+```sh
+find /one/folder -iname \*.jpg -print0 | xargs -I{} -0 cp -v {} /another/folder
+```
