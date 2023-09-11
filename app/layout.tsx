@@ -2,10 +2,10 @@ import './globals.css'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import Providers from '@/components/Providers'
-import { Analytics } from '@vercel/analytics/react'
 
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import Script from 'next/script'
 
 const fonts = localFont({
   src: [
@@ -68,10 +68,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`flex flex-col h-full ${fonts.className}`}>
+    <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className="flex flex-col h-full px-2"
+        className={`flex flex-col h-screen ${fonts.className}`}
       >
         <Providers>
           <Navbar />
@@ -80,7 +80,18 @@ export default function RootLayout({
           </main>
           <Footer />
         </Providers>
-        <Analytics />
+        {/* <!-- Google tag (gtag.js) --> */}
+        <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ANALYTICS_ID}`}
+        />
+        <Script id="google-analytics">
+          {`window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_ANALYTICS_ID}');
+          `}
+        </Script>
       </body>
     </html>
   )
