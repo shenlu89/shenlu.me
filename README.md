@@ -7,7 +7,7 @@ Shen Lu's Blog, inspired by [leerob.io](https://leerob.io/).
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Content Management**: [Contentlayer](https://www.contentlayer.dev/)
-- **Analytics**: [Vercel Analytics](https://vercel.com/analytics)
+- **Analytics**: [Google Analytics](https://analytics.google.com/)
 - **Comment**: [Giscus](https://giscus.app/)
 - **ORM**: [Prisma](https://www.prisma.io/)
 - **Database**: [PlanetScale](https://planetscale.com/)
