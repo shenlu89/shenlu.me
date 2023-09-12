@@ -1,0 +1,80 @@
+---
+title: How to add Google Analytics to Next.js
+date: '2023-09-02'
+---
+
+As more and more people visited my blog, I reached the limit of data ingestion of at the end of August.
+
+![](/images/posts/how-to-add-google-analytics-to-nextjs/reach-the-limit-of-data-of-vercel-analytics.jpg)
+
+In order to continue supervising the web traffic of my blog, I decided to replace `Vercel Analytics` with `Google Analytics`.
+
+## Create Google Analytics Account
+
+Firstly, I need a new account of google analytics. I had one, so I just need create an new `id` or use the `id` I created before.
+For those who do not have google analytics account yet, you can read these toturials,
+[Google Analytics for Beginners](https://analytics.google.com/analytics/academy/course/6)
+
+## Test Google Analytics in Development Environment
+
+For decoupling the Google Analytics ID with JSX page in Next.js, I set `NEXT_PUBLIC_ANALYTICS_ID` as environment variable in `.env.development` file
+
+```sh
+NEXT_PUBLIC_ANALYTICS_ID='GOOGLE_ANALYTICS_MEASUREMENT_ID'
+```
+
+and copy `MEASUREMENT ID` into it.
+
+![](/images/posts/how-to-add-google-analytics-to-nextjs/google-analytics-measure-id.jpg)
+
+And substitute `Vercel Analytics` with a code snippets from `View tag instructions` as below:
+
+```js
+{/* <!--  import { Analytics } from '@vercel/analytics/react'; --> */}
+import Script from 'next/script'
+
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="en">
+      <body
+        suppressHydrationWarning={true}
+        className={`flex flex-col h-screen ${fonts.className}`}
+      >
+      ...
+        {/* <!--  <Analytics /> --> */}
+        {/* <!-- Google tag (gtag.js) --> */}
+        <Script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ANALYTICS_ID}`}/>
+        <Script id='google-analytics'>
+          {`window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_ANALYTICS_ID}');
+          `}
+        </Script>
+      </body>
+    </html>
+  )
+}
+```
+
+Viewing page source and see:
+
+![](/images/posts/how-to-add-google-analytics-to-nextjs/source-views.jpg)
+
+## Deploy Google Analytics on Production Environment
+
+Setting the environment variable, `NEXT_PUBLIC_ANALYTICS_ID` with `MEASUREMENT ID`, in production,
+which will automatically inject `MEASUREMENT ID` in the rigit position of the page
+after pushing source code to GitHub repository, [https://github.com/shenlu.me](https://github.com/shenlu.me).
+
+![](/images/posts/how-to-add-google-analytics-to-nextjs/vercel-production-environment.jpg)
+
+## Check if it works
+
+![](/images/posts/how-to-add-google-analytics-to-nextjs/google-analytics-dashboard.jpg)
+
+Success!
