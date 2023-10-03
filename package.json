@@ -29,6 +29,7 @@
     "rehype-prism-plus": "^1.6.1",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
+    "sharp": "^0.32.6",
     "swr": "^2.2.0"
   },
   "devDependencies": {
