@@ -7,7 +7,7 @@ import fetcher from 'lib/fetcher'
 import type { Views, Slug } from 'lib/types'
 
 const ViewCounter: NextPage<Slug> = ({ slug, method }) => {
-  const { data } = useSWR<Views>(`/api/views/${slug}`, (url) =>
+  const { data } = useSWR<Views>(`/api/views/${slug}`, (url: string) =>
     fetcher(url, { method })
   )
   const views = Number(data?.total)
