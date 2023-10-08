@@ -12,8 +12,8 @@ export default function About() {
       <h1>About</h1>
       <div>
         <p>
-          Hi, I’m Shen Lu 👋, a full-stack web developer. Now I’m focusing on
-          web development and data visualization.
+          Hi, I’m Shen Lu 👋, a Software Engineer with passion on web
+          development and data visualization, especially in bioinformatics.
         </p>
         <hr />
         <h2>Education</h2>
