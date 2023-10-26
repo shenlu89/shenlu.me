@@ -75,7 +75,7 @@ export default function RootLayout({
       >
         <Providers>
           <Navbar />
-          <main className="max-w-3xl container text-black dark:text-white mx-auto px-2 py-6 flex-1 leading-6">
+          <main className="max-w-3xl container text-black dark:text-white mx-auto px-4 py-6 flex-1 leading-6">
             {children}
           </main>
           <Footer />
