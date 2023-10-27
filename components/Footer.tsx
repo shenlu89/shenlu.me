@@ -3,8 +3,8 @@ import { GitHubIcon, TwitterIcon, DiscordIcon } from '@/data/icons'
 
 export default function Footer() {
   return (
-    <footer className="flex justify-between max-w-3xl container mx-auto p-2 text-gray-400 tracking-tight m-2">
-      <p className="py-2 text-gray-600 dark:text-gray-400">
+    <footer className="flex justify-between max-w-3xl container mx-auto p-4 text-gray-400 tracking-tight">
+      <p className="text-gray-600 dark:text-gray-400">
         {`© ${new Date().getFullYear()}`}
         <Link
           className="hover:underline hover:text-black dark:hover:text-white underline-offset-[3px]"
@@ -16,7 +16,7 @@ export default function Footer() {
         </Link>
         . All rights reserved.
       </p>
-      <ul className="flex items-center py-2">
+      <ul className="flex items-center">
         <li>
           <Link
             className="flex hover:text-[#536dfe]"
