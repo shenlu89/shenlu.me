@@ -11,9 +11,9 @@ const Navbar: NextPage = () => {
   const pathname = usePathname()
 
   return (
-    <header className="flex max-w-3xl container mx-auto py-3">
+    <header className="flex max-w-3xl container mx-auto p-4">
       <nav className="flex w-full">
-        <ul className="flex flex-1">
+        <ul className="flex flex-1 ml-[-0.5rem]">
           {headerNavLinks?.map((nav: any) => (
             <li key={nav?.title}>
               <Link
