@@ -1,12 +1,15 @@
 // contentlayer.config.js
 import { defineDocumentType, makeSource } from 'contentlayer/source-files'
 import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import rehypeCodeTitles from 'rehype-code-titles'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrism from 'rehype-prism-plus'
 import readingTime from 'reading-time'
+import rehypeKatex from 'rehype-katex'
+
 import { parseISO, format } from 'date-fns'
 
 export const Post = defineDocumentType(() => ({
@@ -59,8 +62,9 @@ export default makeSource({
   contentDirPath: 'posts',
   documentTypes: [Post],
   mdx: {
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkMath, remarkGfm],
     rehypePlugins: [
+      rehypeKatex,
       rehypeSlug,
       [
         rehypePrettyCode,

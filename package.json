@@ -1,6 +1,6 @@
 {
   "name": "shenlu89.github.io",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -17,6 +17,7 @@
     "@vercel/analytics": "^1.0.1",
     "contentlayer": "^0.3.4",
     "date-fns": "^2.30.0",
+    "katex": "^0.16.9",
     "next": "13.5.2",
     "next-contentlayer": "^0.3.4",
     "next-themes": "^0.2.1",
@@ -25,10 +26,12 @@
     "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-code-titles": "^1.2.0",
+    "rehype-katex": "^7.0.0",
     "rehype-pretty-code": "^0.10.0",
-    "rehype-prism-plus": "^1.6.1",
+    "rehype-prism-plus": "^1.6.3",
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
+    "remark-math": "^5.1.1",
     "sharp": "^0.32.6",
     "swr": "^2.2.0"
   },

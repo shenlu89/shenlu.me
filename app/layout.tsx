@@ -1,4 +1,5 @@
 import './globals.css'
+import 'katex/dist/katex.min.css'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import Providers from '@/components/Providers'
