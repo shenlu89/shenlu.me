@@ -1,103 +1,100 @@
 // contentlayer.config.js
-import { defineDocumentType, makeSource } from 'contentlayer/source-files'
-import remarkGfm from 'remark-gfm'
-import remarkMath from 'remark-math'
-import rehypePrettyCode from 'rehype-pretty-code'
-import rehypeSlug from 'rehype-slug'
-import rehypeCodeTitles from 'rehype-code-titles'
-import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import rehypePrism from 'rehype-prism-plus'
-import readingTime from 'reading-time'
-import rehypeKatex from 'rehype-katex'
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import rehypeCodeTitles from "rehype-code-titles";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrism from "rehype-prism-plus";
+import readingTime from "reading-time";
+import rehypeKatex from "rehype-katex";
 
-import { parseISO, format } from 'date-fns'
+import { parseISO, format } from "date-fns";
 
 export const Post = defineDocumentType(() => ({
-  name: 'Post',
+  name: "Post",
   filePathPattern: `**/*.mdx`,
-  contentType: 'mdx',
+  contentType: "mdx",
   fields: {
     title: {
-      type: 'string',
-      description: 'The title of the post',
-      required: true
+      type: "string",
+      description: "The title of the post",
+      required: true,
     },
     date: {
-      type: 'date',
-      description: 'The date of the post',
-      required: true
-    }
+      type: "date",
+      description: "The date of the post",
+      required: true,
+    },
   },
   computedFields: {
     url: {
-      type: 'string',
-      resolve: (post) => `/blog/${post._raw.flattenedPath}`
+      type: "string",
+      resolve: (post) => `/blog/${post._raw.flattenedPath}`,
     },
     slug: {
-      type: 'string',
-      resolve: (post) => post._raw.flattenedPath
+      type: "string",
+      resolve: (post) => post._raw.flattenedPath,
     },
     publishedAt: {
-      type: 'string',
-      resolve: (post) => format(parseISO(post.date), 'MMM dd, yyyy')
+      type: "string",
+      resolve: (post) => format(parseISO(post.date), "MMM dd, yyyy"),
     },
     readingTime: {
-      type: 'string',
-      resolve: (post) => readingTime(post.body.raw).text
+      type: "string",
+      resolve: (post) => readingTime(post.body.raw).text,
     },
     wordCount: {
-      type: 'number',
-      resolve: (post) => post.body.raw.split(/\s+/gu).length
-    }
-  }
-}))
-
-// defineDocumentType(() => ({
-//   name: 'About',
-//   filePathPattern: `about.mdx`,
-//   // ...
-// }))
+      type: "number",
+      resolve: (post) => post.body.raw.split(/\s+/gu).length,
+    },
+  },
+}));
 
 export default makeSource({
-  contentDirPath: 'posts',
+  contentDirPath: "content",
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkMath, remarkGfm],
     rehypePlugins: [
+      // @ts-ignore
       rehypeKatex,
       rehypeSlug,
       [
+        // @ts-ignore
         rehypePrettyCode,
         {
-          theme: 'solarized-light',
+          theme: "solarized-light",
           onVisitLine(node: { children: string | any[] }) {
             if (node.children.length === 0) {
-              node.children = [{ type: 'text', value: ' ' }]
+              node.children = [{ type: "text", value: " " }];
             }
           },
           onVisitHighlightLine(node: { properties: { className: string[] } }) {
-            node.properties.className.push('line--highlighted')
+            node.properties.className.push("line--highlighted");
           },
           onVisitHighlightWord(node: { properties: { className: string[] } }) {
-            node.properties.className = ['word--highlighted']
-          }
-        }
+            node.properties.className = ["word--highlighted"];
+          },
+        },
       ],
       rehypeCodeTitles,
       [
+        // @ts-ignore
         rehypePrism,
         {
-          showLineNumbers: true
-        }
+          showLineNumbers: true,
+        },
       ],
       [
         rehypeAutolinkHeadings,
         {
           properties: {
-            className: ['anchor']
-          }
-        }
-      ]
-    ]
-  }
-})
+            className: ["anchor"],
+          },
+        },
+      ],
+    ],
+  },
+});
