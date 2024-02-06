@@ -1,74 +1,30 @@
-import 'app/highlighting.css'
-import { Metadata } from 'next'
-import { allPosts, Post } from 'contentlayer/generated'
-import { notFound } from 'next/navigation'
+"use client";
+import { allPosts, Post } from "contentlayer/generated";
+import { notFound } from "next/navigation";
 
-import Image from 'next/image'
-import ViewCounter from 'components/ViewCounter'
-import Comment from 'components/Comment'
-import { useMDXComponent } from 'next-contentlayer/hooks'
+import Image from "next/image";
+import Comment from "@/app/components/comment";
+import { useMDXComponent } from "next-contentlayer/hooks";
 
-import CustomLink from 'components/CustomLink'
-import CustomPre from 'components/CustomPre'
-import CustomImg from '@/components/CustomImg'
+import { Suspense } from "react";
+
+import ViewCounter from "@/app/components/view-counter";
+import CustomLink from "@/app/components/custom-link";
+import CustomPre from "@/app/components/custom-pre";
+import CustomImg from "@/app/components/custom-image";
 
 // export const runtime = 'edge'
 
 const MDXComponent = {
   a: CustomLink,
   pre: CustomPre,
-  img: CustomImg
-}
-
-export async function generateMetadata({
-  params
-}: {
-  params: { slug: string }
-}): Promise<Metadata | undefined> {
-  const post = allPosts.find((post) => post.slug === params.slug) as Post
-  if (!post) return
-  const { title, slug, publishedAt: publishedTime } = post
-  const ogImage = `https://shenlu.me/og?title=${title}&time=${publishedTime}`
-  return {
-    title,
-    description: title,
-    openGraph: {
-      title,
-      description: title,
-      type: 'article',
-      publishedTime,
-      url: `https://shenlu.me/blog/${slug}`,
-      images: [
-        {
-          url: ogImage,
-          type: 'image/png',
-          width: 1200,
-          height: 630,
-          alt: title
-        }
-      ]
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description: title,
-      images: [
-        {
-          url: ogImage,
-          type: 'image/png',
-          width: 1200,
-          height: 630,
-          alt: title
-        }
-      ]
-    }
-  }
-}
+  img: CustomImg,
+};
 
 export default function PostPage({ params }: { params: { slug: string } }) {
-  const post = allPosts.find((post) => post.slug === params.slug) as Post
-  if (!post) notFound()
-  const MDXContent = useMDXComponent(post.body.code)
+  const post = allPosts.find((post) => post.slug === params.slug) as Post;
+  if (!post) notFound();
+  const MDXContent = useMDXComponent(post.body.code);
   return (
     <article className="flex flex-col items-start justify-center w-full">
       <h1 className="font-extrabold text-2xl tracking-tight mb-0">
@@ -85,20 +41,20 @@ export default function PostPage({ params }: { params: { slug: string } }) {
             className="rounded-full mt-0 mb-0"
             priority
           />
-          <div className="ml-2 text-sm text-gray-600 dark:text-gray-400">
-            <span className="flex text-black dark:text-gray-200 font-bold">
+          <div className="ml-2 text-sm text-slate-600 dark:text-slate-400">
+            <span className="flex text-black dark:text-slate-200 font-bold">
               Shen Lu
             </span>
             <div>Posted on {post.publishedAt}</div>
           </div>
         </div>
-        <div className="flex flex-col text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-          <ViewCounter slug={post.slug} method={'POST'} />
+        <div className="flex flex-col text-sm text-slate-600 dark:text-slate-400 min-w-32 md:mt-0">
+          <ViewCounter slug={post.slug} method={"POST"} />
           <div>
             {post.readingTime}
             {` (`}
             {post.wordCount}
-            {' words)'}
+            {" words)"}
           </div>
         </div>
       </div>
@@ -107,5 +63,5 @@ export default function PostPage({ params }: { params: { slug: string } }) {
       </div>
       <Comment />
     </article>
-  )
+  );
 }
