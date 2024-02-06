@@ -1,30 +1,29 @@
-import { ImageResponse } from 'next/server'
-// App router includes @vercel/og.
+import { ImageResponse } from "next/og"; // App router includes @vercel/og.
 // No need to install it.
 
-export const runtime = 'edge'
+export const runtime = "edge";
 
 export async function GET(request: Request) {
   // Make sure the font exists in the specified path:
   try {
     const extraBold = await fetch(
-      new URL('../../public/fonts/Cantarell-ExtraBold.otf', import.meta.url)
-    ).then((res) => res.arrayBuffer())
+      new URL("../../public/fonts/Cantarell-ExtraBold.otf", import.meta.url),
+    ).then((res) => res.arrayBuffer());
     const regular = await fetch(
-      new URL('../../public/fonts/Cantarell-Regular.otf', import.meta.url)
-    ).then((res) => res.arrayBuffer())
-    const url = request.url.replace('&amp%3B', '&')
-    const { searchParams } = new URL(url)
+      new URL("../../public/fonts/Cantarell-Regular.otf", import.meta.url),
+    ).then((res) => res.arrayBuffer());
+    const url = request.url.replace("&amp%3B", "&");
+    const { searchParams } = new URL(url);
 
     // ?title=<title>
-    const hasTitle = searchParams.has('title')
+    const hasTitle = searchParams.has("title");
     const title = hasTitle
-      ? searchParams.get('title')?.slice(0, 100)
-      : 'Shen Lu'
+      ? searchParams.get("title")?.slice(0, 100)
+      : "Shen Lu";
 
     // ?time=<time>
-    const hasTime = searchParams.has('time')
-    const time = hasTime ? searchParams.get('time') : ''
+    const hasTime = searchParams.has("time");
+    const time = hasTime ? searchParams.get("time") : "";
 
     return new ImageResponse(
       (
@@ -57,11 +56,11 @@ export async function GET(request: Request) {
             </div>
             <div
               tw="text-6xl mt-8 font-extrabold tracking-tight"
-              style={{ lineHeight: '80px' }}
+              style={{ lineHeight: "80px" }}
             >
               {title}
             </div>
-            <div tw="flex text-gray-600 text-3xl w-full justify-end">
+            <div tw="flex text-slate-600 text-3xl w-full justify-end">
               {time}
             </div>
           </div>
@@ -72,7 +71,7 @@ export async function GET(request: Request) {
             />
             <div tw="flex flex-col">
               <span tw="flex text-4xl font-extrabold">Shen Lu</span>
-              <span tw="flex text-3xl text-gray-600">
+              <span tw="flex text-3xl text-slate-600">
                 Developer and writer.
               </span>
             </div>
@@ -82,23 +81,23 @@ export async function GET(request: Request) {
       {
         fonts: [
           {
-            name: 'Cantarell',
+            name: "Cantarell",
             data: extraBold,
             weight: 800,
-            style: 'normal'
+            style: "normal",
           },
           {
-            name: 'Cantarell',
+            name: "Cantarell",
             data: regular,
             weight: 400,
-            style: 'normal'
-          }
-        ]
-      }
-    )
+            style: "normal",
+          },
+        ],
+      },
+    );
   } catch (e: any) {
     return new Response(`Failed to generate the image`, {
-      status: 500
-    })
+      status: 500,
+    });
   }
 }
