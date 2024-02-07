@@ -26,7 +26,7 @@ Shen Lu's Blog, inspired by [leerob.io](https://leerob.io/).
 
 ## Install and Run Locally
 
-This application requires Node.js v18.17+ and Bun.
+This application requires Node.js v18.17+.
 
 ```js
 git clone git@github.com:shenlu89/shenlu.me.git
