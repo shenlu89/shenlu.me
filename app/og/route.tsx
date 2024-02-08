@@ -7,10 +7,10 @@ export async function GET(request: Request) {
   // Make sure the font exists in the specified path:
   try {
     const extraBold = await fetch(
-      new URL("../../public/fonts/Cantarell-ExtraBold.otf", import.meta.url),
+      new URL("../../public/fonts/Cantarell-ExtraBold.otf", import.meta.url)
     ).then((res) => res.arrayBuffer());
     const regular = await fetch(
-      new URL("../../public/fonts/Cantarell-Regular.otf", import.meta.url),
+      new URL("../../public/fonts/Cantarell-Regular.otf", import.meta.url)
     ).then((res) => res.arrayBuffer());
     const url = request.url.replace("&amp%3B", "&");
     const { searchParams } = new URL(url);
@@ -55,8 +55,8 @@ export async function GET(request: Request) {
               </svg>
             </div>
             <div
-              tw="text-6xl mt-8 font-extrabold tracking-tight"
-              style={{ lineHeight: "80px" }}
+              tw="text-6xl mt-8 font-extrabold tracking-tight mb-4"
+              style={{ lineHeight: "70px" }}
             >
               {title}
             </div>
@@ -64,16 +64,26 @@ export async function GET(request: Request) {
               {time}
             </div>
           </div>
-          <div tw="flex items-center">
-            <img
-              tw="w-24 h-24 rounded-full mr-8"
-              src="https://shenlu.me/images/avatar.png"
-            />
-            <div tw="flex flex-col">
-              <span tw="flex text-4xl font-extrabold">Shen Lu</span>
-              <span tw="flex text-3xl text-slate-600">
-                Developer and writer.
-              </span>
+          <div tw="flex justify-between">
+            <div tw="flex items-center">
+              <img
+                tw="w-24 h-24 rounded-full mr-8"
+                src="https://shenlu.me/images/avatar.png"
+              />
+              <div tw="flex flex-col">
+                <span tw="flex text-4xl font-extrabold mb-4">Shen Lu</span>
+                <span tw="flex text-3xl text-gray-600">
+                  A Full-Stack Developer And Data Visualisation Enthusiast
+                </span>
+              </div>
+            </div>
+            <div tw="flex items-center">
+              <img
+                tw="w-24 h-24"
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shenlu.me/blog/${title
+                  ?.toLowerCase()
+                  ?.replaceAll(" ", "-")}`}
+              />
             </div>
           </div>
         </div>
@@ -93,9 +103,10 @@ export async function GET(request: Request) {
             style: "normal",
           },
         ],
-      },
+      }
     );
   } catch (e: any) {
+    console.error(e);
     return new Response(`Failed to generate the image`, {
       status: 500,
     });
