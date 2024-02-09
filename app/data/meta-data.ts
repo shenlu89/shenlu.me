@@ -21,8 +21,8 @@ const HomePage = {
   metadata: {
     metadataBase: new URL("https://shenlu.me"),
     title: {
-      default: "Shen Lu",
-      template: `%s | Shen Lu`,
+      default: "Shen Lu's Blog",
+      template: `%s - Shen Lu`,
     },
     description: "A full-stack developer and data visualisation enthusiast.",
     openGraph: {
