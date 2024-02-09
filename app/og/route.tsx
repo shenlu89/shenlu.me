@@ -73,7 +73,7 @@ export async function GET(request: Request) {
               <div tw="flex flex-col">
                 <span tw="flex text-4xl font-extrabold mb-4">Shen Lu</span>
                 <span tw="flex text-3xl text-gray-600">
-                  A Full-Stack Developer And Data Visualisation Enthusiast
+                  A full-stack developer and data visualisation enthusiast
                 </span>
               </div>
             </div>
