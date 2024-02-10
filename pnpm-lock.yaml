@@ -17,6 +17,9 @@ dependencies:
   date-fns:
     specifier: ^3.3.1
     version: 3.3.1
+  giscus:
+    specifier: ^1.4.0
+    version: 1.4.0
   katex:
     specifier: ^0.16.9
     version: 0.16.9
@@ -109,9 +112,6 @@ devDependencies:
   postcss:
     specifier: ^8.4.33
     version: 8.4.34
-  prettier:
-    specifier: 3.2.4
-    version: 3.2.4
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
@@ -4746,12 +4746,6 @@ packages:
   /prelude-ls@1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
-    dev: true
-
-  /prettier@3.2.4:
-    resolution: {integrity: sha512-FWu1oLHKCrtpO1ypU6J0SbK2d9Ckwysq6bHj/uaCP26DxrPpppCLQRGVuqAxSTvhF00AcvDRyYrLNW7ocBhFFQ==}
-    engines: {node: '>=14'}
-    hasBin: true
     dev: true
 
   /prisma@5.9.1:

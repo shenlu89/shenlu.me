@@ -1,9 +1,10 @@
-'use client'
-import Giscus from '@giscus/react'
-import { useTheme } from 'next-themes'
+"use client";
+import Giscus from "@giscus/react";
+import { useTheme } from "next-themes";
+import("giscus");
 
-const Comment = () => {
-  const { theme } = useTheme()
+export default function Comment() {
+  const { theme } = useTheme();
 
   return (
     <Giscus
@@ -15,10 +16,8 @@ const Comment = () => {
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="top"
-      theme={theme === 'dark' ? 'transparent_dark' : 'light'}
+      theme={theme === "dark" ? "transparent_dark" : "light"}
       loading="lazy"
     />
-  )
+  );
 }
-
-export default Comment
