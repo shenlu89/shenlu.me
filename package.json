@@ -10,7 +10,6 @@
     "postinstall": "prisma generate --schema=./app/db/schema.prisma"
   },
   "dependencies": {
-    "@giscus/react": "^2.4.0",
     "@prisma/client": "^5.9.1",
     "contentlayer": "^0.3.4",
     "date-fns": "^3.3.1",
