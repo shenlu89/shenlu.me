@@ -61,7 +61,7 @@ const techStackIcons = [
     target: "_blank",
   },
   {
-    title: "Linux",
+    title: "Ubuntu",
     href: "https://ubuntu.com/",
     icon: <FaUbuntu className="w-6 h-6" />,
     target: "_blank",
