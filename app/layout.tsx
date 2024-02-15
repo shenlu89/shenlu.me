@@ -2,13 +2,13 @@ import "./globals.css";
 import "katex/dist/katex.min.css";
 
 import type { Metadata } from "next";
-import Providers from "@/app/components/providers";
-import Header from "@/app/components/header";
-import Footer from "@/app/components/footer";
+import Providers from "@/components/providers";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 import Script from "next/script";
 
-import LocalFont from "@/app/lib/local-font";
-import { HomePage } from "@/app/data/meta-data";
+import LocalFont from "@/lib/local-font";
+import { HomePage } from "@/data/meta-data";
 
 export const metadata: Metadata = HomePage.metadata;
 
@@ -30,18 +30,13 @@ export default function RootLayout({
           </main>
           <Footer />
         </Providers>
-        {/* <!-- Google tag (gtag.js) --> */}
-        <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ANALYTICS_ID}`}
-        />
-        <Script id="google-analytics">
-          {`window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_ANALYTICS_ID}');
-          `}
-        </Script>
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            async
+            src="https://analytics.shenlu.me/script.js"
+            data-website-id="a038f8fd-006e-4094-9507-d62022b175b8"
+          />
+        )}
       </body>
     </html>
   );

@@ -1,19 +1,14 @@
-"use client";
 import { allPosts, Post } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
 import Image from "next/image";
-import Comment from "@/app/components/comment";
+import Comment from "@/components/comment";
 import { useMDXComponent } from "next-contentlayer/hooks";
 
-import { Suspense } from "react";
-
-import ViewCounter from "@/app/components/view-counter";
-import CustomLink from "@/app/components/custom-link";
-import CustomPre from "@/app/components/custom-pre";
-import CustomImg from "@/app/components/custom-image";
-
-// export const runtime = 'edge'
+import ViewCounter from "@/components/view-counter";
+import CustomLink from "@/components/custom-link";
+import CustomPre from "@/components/custom-pre";
+import CustomImg from "@/components/custom-image";
 
 const MDXComponent = {
   a: CustomLink,

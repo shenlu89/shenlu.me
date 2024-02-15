@@ -46,11 +46,11 @@ export default function Footer() {
       <ul className="flex justify-center items-center space-x-2">
         {SocialIcons.map((social) => (
           <Link
+            className="flex hover:text-black dark:hover:text-white"
             title={social.title}
             key={social.title}
-            className="flex hover:text-black dark:hover:text-white"
             href={social.href}
-            target={"_blank"}
+            target={social.target}
           >
             {social.icon}
           </Link>

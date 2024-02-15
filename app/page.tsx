@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { HomePage } from "@/app/data/meta-data";
+import { HomePage } from "@/data/meta-data";
 
 export default function Home() {
   return (
