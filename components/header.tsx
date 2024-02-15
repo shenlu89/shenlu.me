@@ -4,8 +4,8 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { HeaderNavLinks } from "@/app/data/meta-data";
-import ThemeSwitcher from "@/app/components/theme-switcher";
+import { HeaderNavLinks } from "@/data/meta-data";
+import ThemeSwitcher from "@/components/theme-switcher";
 
 const Header: NextPage = () => {
   const pathname = usePathname();

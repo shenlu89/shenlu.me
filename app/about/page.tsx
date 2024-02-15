@@ -6,7 +6,7 @@ import { IoLogoJavascript, IoLogoVercel } from "react-icons/io5";
 import { TbBrandVscode } from "react-icons/tb";
 import { SiVim, SiPrisma, SiRedis, SiPostgresql } from "react-icons/si";
 
-import { AboutPage } from "@/app/data/meta-data";
+import { AboutPage } from "@/data/meta-data";
 
 export const metadata: Metadata = AboutPage.metadata;
 

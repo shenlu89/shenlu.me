@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { HiMiniMagnifyingGlass, HiXCircle } from "react-icons/hi2";
 import { allPosts, Post } from "contentlayer/generated";
-import ViewCounter from "@/app/components/view-counter";
+import ViewCounter from "@/components/view-counter";
 
 const Blog = () => {
   const [serachPosts, setserachPosts] = useState<string>("");
@@ -12,7 +12,7 @@ const Blog = () => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
   const filteredBlogPosts = posts.filter((post: any) =>
-    post.title.toLowerCase().includes(serachPosts.toLowerCase()),
+    post.title.toLowerCase().includes(serachPosts.toLowerCase())
   );
 
   return (
