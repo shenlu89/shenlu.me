@@ -7,10 +7,10 @@ const HeaderNavLinks = [
     title: "Blog",
     href: "/blog",
   },
-  // {
-  //   title: "Projects",
-  //   href: "/projects",
-  // },
+  {
+    title: "Projects",
+    href: "/projects",
+  },
   {
     title: "About",
     href: "/about",
@@ -22,7 +22,7 @@ const HomePage = {
     metadataBase: new URL("https://shenlu.me"),
     title: {
       default: "Shen Lu's Blog",
-      template: `%s - Shen Lu`,
+      template: `%s | Shen Lu's Blog`,
     },
     description: "A full-stack developer and data visualisation enthusiast.",
     openGraph: {
@@ -63,7 +63,6 @@ const ProjectsPage = {
     title: "Projects",
     description: "Here are some things I made over the years.",
   },
-  projects: [],
 };
 
 const AboutPage = {
