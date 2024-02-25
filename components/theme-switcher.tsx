@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 const ThemeSwitcher: NextPage = () => {
   const { resolvedTheme, setTheme } = useTheme();
   const [mount, setMount] = useState(true);
-  const IconToUse = mount || resolvedTheme === "dark" ? LuSun : LuMoon;
+  const IconToUse = mount || resolvedTheme === "light" ? LuMoon : LuSun;
   useEffect(() => setMount(false), []);
   return (
     <button
