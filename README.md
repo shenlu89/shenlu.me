@@ -36,7 +36,7 @@ bun install
 bun dev
 
 // production mode
-// pnpm build
+// bun run build
 ```
 
 ## Deployment
