@@ -1,6 +1,6 @@
 {
   "name": "shenlu.me",
-  "version": "1.4.1",
+  "version": "1.5.1",
   "private": true,
   "author": "Shen Lu <shenlu89dev@gmail.com>",
   "license": "MIT",
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@giscus/react": "^3.0.0",
-    "@upstash/redis": "^1.28.3",
+    "@upstash/redis": "^1.28.4",
     "contentlayer": "^0.3.4",
     "date-fns": "^3.3.1",
     "katex": "^0.16.9",
@@ -37,17 +37,17 @@
     "remark-gfm": "3.0.1",
     "remark-math": "5.1.1",
     "sharp": "^0.33.2",
-    "swr": "^2.2.4"
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
-    "@types/node": "20.11.18",
-    "@types/react": "18.2.55",
+    "@types/node": "20.11.20",
+    "@types/react": "18.2.58",
     "@types/react-dom": "18.2.19",
-    "@typescript-eslint/eslint-plugin": "^7.0.1",
-    "@typescript-eslint/parser": "^7.0.1",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
     "autoprefixer": "^10.4.17",
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.0",
     "eslint-config-next": "^14.1.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
