@@ -1,5 +1,5 @@
 "use client";
-import Giscus from "@/components/giscus";
+import Giscus from "@giscus/react";
 import { useTheme } from "next-themes";
 
 export default function Comment() {

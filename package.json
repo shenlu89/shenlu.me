@@ -16,10 +16,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@giscus/react": "^3.0.0",
     "@upstash/redis": "^1.28.3",
     "contentlayer": "^0.3.4",
     "date-fns": "^3.3.1",
-    "giscus": "^1.4.0",
     "katex": "^0.16.9",
     "next": "14.1.0",
     "next-contentlayer": "^0.3.4",
