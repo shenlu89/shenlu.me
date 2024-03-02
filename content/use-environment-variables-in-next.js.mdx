@@ -1,6 +1,6 @@
 ---
 title: Use Environment Variables in Next.js
-date: '2023-06-08'
+date: "2023-06-08"
 ---
 
 During the week, I was working on the new project, [Wildlife in China](https://wildlifeinchina.org).
@@ -9,11 +9,16 @@ However, the Hobby plan of Vercel Postgres has [usage limits](https://vercel.com
 To save the amount of data transfer, I have to connect local Postgres with the project for testing and debuging.
 So I think I should use environment variables to distinguish between the development and production environments automatically.
 
-## `.env*` Files and Environment Variables
+## Non-Standard `NODE_ENV`
 
 As the documentation said, if the environment variable `NODE_ENV` is unassigned, Next.js automatically assigns development when running the `next dev` command, or production for all other commands.
 
-So you can create a `.env.development` for development environment and add local PostgreSQL variable in it.
+> Do not set `NODE_ENV` in `.env` or `.env.*`, it may cause non-standard environment errors
+> [https://nextjs.org/docs/messages/non-standard-node-env]
+
+## `.env*` Files and Environment Variables
+
+You also can create a `.env.development` for development environment and add local PostgreSQL variable in it.
 
 ```sh
 # Postgres
@@ -53,3 +58,8 @@ NEXT_PUBLIC_ICON_URL = **********
 ## Conclusion
 
 Now it will not waste the usage limits of Vercel Postgres when developing project in local.
+
+## References
+
+- https://stackoverflow.com/questions/55690143/what-is-the-difference-between-env-local-and-env-development-local
+- https://create-react-app.dev/docs/adding-custom-environment-variables/#what-other-env-files-can-be-used

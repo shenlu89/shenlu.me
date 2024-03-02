@@ -12,7 +12,7 @@ module.exports = {
         white: "#fff",
         black: "#000",
       },
-      typography: (theme: (arg0: string) => any) => ({
+      typography: (theme) => ({
         DEFAULT: {
           css: {
             "blockquote p:first-of-type::before": { content: "none" },

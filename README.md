@@ -39,9 +39,9 @@ bun dev
 // bun run build
 ```
 
-## Deployment
-
 Create a `.env` file similar to [`.env.example`](/.env.example).
+
+## Deploy on Vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/shenlu89/shenlu.me)
 

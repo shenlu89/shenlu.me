@@ -9,7 +9,6 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrism from "rehype-prism-plus";
 import readingTime from "reading-time";
 import rehypeKatex from "rehype-katex";
-
 import { parseISO, format } from "date-fns";
 
 export const Post = defineDocumentType(() => ({
@@ -58,30 +57,27 @@ export default makeSource({
   mdx: {
     remarkPlugins: [remarkMath, remarkGfm],
     rehypePlugins: [
-      // @ts-ignore
       rehypeKatex,
       rehypeSlug,
       [
-        // @ts-ignore
         rehypePrettyCode,
         {
           theme: "solarized-light",
-          onVisitLine(node: { children: string | any[] }) {
+          onVisitLine (node) {
             if (node.children.length === 0) {
               node.children = [{ type: "text", value: " " }];
             }
           },
-          onVisitHighlightLine(node: { properties: { className: string[] } }) {
+          onVisitHighlightLine (node) {
             node.properties.className.push("line--highlighted");
           },
-          onVisitHighlightWord(node: { properties: { className: string[] } }) {
+          onVisitHighlightWord (node) {
             node.properties.className = ["word--highlighted"];
           },
         },
       ],
       rehypeCodeTitles,
       [
-        // @ts-ignore
         rehypePrism,
         {
           showLineNumbers: true,
