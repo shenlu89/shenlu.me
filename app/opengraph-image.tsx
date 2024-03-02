@@ -34,6 +34,7 @@ export default async function Image() {
                   ? "http://localhost:3000"
                   : "https://shenlu.me"
               }/images/avatar.png`}
+              alt="Shen Lu"
             />
           </div>
           <div
@@ -60,6 +61,7 @@ export default async function Image() {
             <img
               tw="w-24 h-24"
               src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shenlu.me"
+              alt="Shen Lu"
             />
           </div>
         </div>
