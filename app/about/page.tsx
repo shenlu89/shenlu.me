@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 
-import { FaNodeJs, FaReact, FaRust, FaUbuntu } from "react-icons/fa";
+import { FaNodeJs, FaReact, FaRust, FaUbuntu, FaPython } from "react-icons/fa";
 import { IoLogoJavascript, IoLogoVercel } from "react-icons/io5";
 import { TbBrandVscode } from "react-icons/tb";
 import { SiVim, SiPrisma, SiRedis, SiPostgresql } from "react-icons/si";
@@ -15,6 +15,12 @@ const techStackIcons = [
     title: "JavaScript",
     href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
     icon: <IoLogoJavascript className="w-6 h-6" />,
+    target: "_blank",
+  },
+  {
+    title: "Python",
+    href: "https://www.python.org/",
+    icon: <FaPython className="w-6 h-6" />,
     target: "_blank",
   },
   {
@@ -93,12 +99,12 @@ export default function About() {
         </div>
         <hr />
         <h2>Tech Stack</h2>
-        <ul className="flex items-center space-x-2 pl-0">
+        <ul className="flex items-center space-x-2 pl-0 flex-wrap">
           {techStackIcons.map((tech) => (
             <Link
               title={tech.title}
               key={tech.title}
-              className="text-inherit hover:text-black dark:text-slate-200 dark:hover:text-white"
+              className="text-inherit hover:text-black mb-2 dark:text-slate-200 dark:hover:text-white"
               href={tech.href}
               target={"_blank"}
             >
