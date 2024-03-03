@@ -3,8 +3,7 @@ title: Use Environment Variables in Next.js
 date: "2023-06-08"
 ---
 
-During the week, I was working on the new project, [Wildlife in China](https://wildlifeinchina.org).
-In development process, I simply directly connected Vercel Postgres with Prisma in Next.js.
+During the week, I was working on the new project. In development process, I simply directly connected Vercel Postgres with Prisma in Next.js.
 However, the Hobby plan of Vercel Postgres has [usage limits](https://vercel.com/docs/storage/vercel-postgres/usage-and-pricing#pricing) and I almost exceeded the data transfer limits.
 To save the amount of data transfer, I have to connect local Postgres with the project for testing and debuging.
 So I think I should use environment variables to distinguish between the development and production environments automatically.
