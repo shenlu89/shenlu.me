@@ -1,0 +1,48 @@
+---
+title: Git Semantic Commit Messages
+date: "2024-03-03"
+---
+
+I summarize the semantic commit messages I used daily in case I forget.
+
+## Syntax
+
+Format: `<type>(<scope>): <subject>`
+
+`<scope>` is optional
+
+## Example
+
+```sh
+feat: add hat wobble
+^--^ ^------------^
+| |
+| +-> Summary in present tense.
+|
++-------> Type: chore, docs, feat, fix, refactor, style, or test.
+```
+
+### More Examples:
+
+```sh
+feat: add beta sequence
+chore: add Oyster build script
+docs: explain hat wobble
+fix: remove broken confirmation message
+refactor: share logic between 4d3d3d3 and flarhgunnstow
+style: convert tabs to spaces
+test: ensure Tayne retains clothing
+```
+
+- **feat**: new feature for the user, not a new feature for build script
+- **fix**: bug fix for the user, not a fix to a build script
+- **docs**: changes to the documentation
+- **style**: formatting, missing semi colons, etc; no production code change
+- **refactor**: refactoring production code, eg. renaming a variable
+- **test**: adding missing tests, refactoring tests; no production code change
+- **chore**: updating grunt tasks etc; no production code change
+
+## Reference
+
+- https://www.conventionalcommits.org/en/v1.0.0
+- https://sparkbox.com/foundry/semantic_commit_messages
