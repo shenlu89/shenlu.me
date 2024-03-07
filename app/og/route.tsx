@@ -69,6 +69,7 @@ export async function GET(request: Request) {
               <img
                 tw="w-24 h-24 rounded-full mr-8"
                 src="https://shenlu.me/images/avatar.png"
+                alt="Shen Lu"
               />
               <div tw="flex flex-col">
                 <span tw="flex text-4xl font-extrabold mb-4">Shen Lu</span>

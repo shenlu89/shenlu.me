@@ -1,0 +1,20 @@
+---
+title: Upgrade Blog to Next.js 14.1
+date: "2024-02-16"
+---
+
+I have not update my blog for almost 8 mouths from May 2023. Next.js has already been upgraded to the verion of 14.1.0
+So it is a time to start upgrading my blog to the latest version of Next.js.
+
+## Upgrade from 13.4 to 14.1
+
+- 1. Switch Pages Router to App Router
+- 2. Use Metadata API to define metadata, such as `meta` and `link` tags inside your HTML `head` element for improved SEO and web shareability.
+- 3. Create an `opengraph-image` or `twitter-image` route to generate a route segment's shared image
+- 4. Switch Prisma ORM to serverless KV with Redis API powered by [Upstash](https://upstash.com/)
+- 5. Replace `heroicons` with `react-icons`
+
+## Conclusion
+
+I am very satisfied with the Next.js v14.1 design philosophy, especially in Metadata API and Open Graph image generation.
+However, [Contentlayer](https://contentlayer.dev/) was not maintained for a long time. I was trying to find another way to substitute it.
