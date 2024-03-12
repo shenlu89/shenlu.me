@@ -9,7 +9,7 @@ const SocialIcons = [
     target: "_blank",
   },
   {
-    title: "X (Twitter)",
+    title: "X",
     href: "https://twitter.com/shenlu89",
     icon: <FaXTwitter className="w-6 h-6" />,
     target: "_blank",
