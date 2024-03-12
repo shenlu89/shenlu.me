@@ -25,7 +25,10 @@ Shen Lu's Blog, inspired by [leerob.io](https://leerob.io/).
 
 ## Install and Run Locally
 
-This application requires Node.js v18.17+.
+This application requires:
+
+- Bun v1.0+ (compatibility with Node.js v20).
+- Create a `.env` file similar to [`.env.example`](/.env.example).
 
 ```js
 git clone git@github.com:shenlu89/shenlu.me.git
@@ -33,13 +36,11 @@ cd shenlu.me
 
 // development mode
 bun install
-bun dev
+bun --hot dev
 
 // production mode
 // bun run build
 ```
-
-Create a `.env` file similar to [`.env.example`](/.env.example).
 
 ## Deploy on Vercel
 
