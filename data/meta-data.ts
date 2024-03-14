@@ -8,8 +8,8 @@ const HeaderNavLinks = [
     href: "/blog",
   },
   {
-    title: "Projects",
-    href: "/projects",
+    title: "Works",
+    href: "/works",
   },
   {
     title: "About",
@@ -58,10 +58,10 @@ const HomePage = {
   avatar_url: "/images/avatar.jpg",
 };
 
-const ProjectsPage = {
+const WorksPage = {
   metadata: {
-    title: "Projects",
-    description: "Here are some things I made over the years.",
+    title: "Works",
+    description: "The works I had made over the years.",
   },
 };
 
@@ -69,4 +69,4 @@ const AboutPage = {
   metadata: { title: "About", description: "That is all about me." },
 };
 
-export { HeaderNavLinks, HomePage, ProjectsPage, AboutPage };
+export { HeaderNavLinks, HomePage, WorksPage, AboutPage };

@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-
 import { FaNodeJs, FaReact, FaRust, FaUbuntu, FaPython } from "react-icons/fa";
 import { IoLogoJavascript, IoLogoVercel } from "react-icons/io5";
 import { TbBrandVscode } from "react-icons/tb";
@@ -98,6 +97,16 @@ export default function About() {
           </p>
         </div>
         <hr />
+        <h2>Education</h2>
+        <p>
+          2012-2016,{" "}
+          <b>Bachelor Degree in Bioinformatics and Computational Biology</b>,
+          College of Liberal Arts and Sciences ,{" "}
+          <Link target="_blank" href="https://www.iastate.edu/">
+            [Iowa State University]
+          </Link>
+        </p>
+        <hr />
         <h2>Tech Stack</h2>
         <ul className="flex items-center space-x-2 pl-0 flex-wrap">
           {techStackIcons.map((tech) => (
@@ -113,48 +122,16 @@ export default function About() {
           ))}
         </ul>
         <hr />
-        <h2>Education</h2>
-        <p>
-          2012-2016,{" "}
-          <b>Bachelor Degree in Bioinformatics and Computational Biology</b>,
-          College of Liberal Arts and Sciences ,{" "}
-          <Link target="_blank" href="https://www.iastate.edu/">
-            [Iowa State University]
-          </Link>
-        </p>
-        <hr />
-        <h2>Publications</h2>
-        <strong>
-          Searching large-scale scRNA-seq databases via unbiased cell embedding
-        </strong>
-        <p>
-          Zhi-Jie Cao, Lin Wei, <strong>Shen Lu</strong>, De-Chang Yang, Ge Gao{" "}
-          {` `}
-          <Link
-            target="_blank"
-            href="https://doi.org/10.1038/s41467-020-17281-7"
-          >
-            [Nature Communications]
-          </Link>
-        </p>
-        <strong>
-          Genomic Architecture of Cells in Tissues (GeACT): Study of Human
-          Mid-gestation Fetus
-        </strong>
-        <p>
-          Feng Tian, Fan Zhou, Xiang Li, Wenping Ma, Honggui Wu, Ming Yang, Alec
-          R. Chapman, David F. Lee, Longzhi Tan, Dong Xing, Guangjun Yin, Ayjan
-          Semayel, Jing Wang, Jia Wang, Wenjie Sun, Runsheng He, Siwei Zhang,
-          Zhijie Cao, Lin Wei, <strong>Shen Lu </strong>, Dechang Yang, Yunuo
-          Mao, Yuan Gao, Kexuan Chen, Yu Zhang, Xixi Liu, Jun Yong, Liying Yan,
-          Yanyi Huang, Jie Qiao, Fuchou Tang, Ge Gao, X. Sunney Xie {` `}
-          <Link
-            target="_blank"
-            href="https://www.biorxiv.org/content/10.1101/2020.04.12.038000v1"
-          >
-            [bioRxiv]
-          </Link>
-        </p>
+        <h2>Sponsors</h2>
+        <iframe
+          src="https://github.com/sponsors/shenlu89/button"
+          title="Sponsor shenlu89"
+          className="rounded"
+          height="32"
+          width="114"
+        ></iframe>
+        {/* <hr />
+        <h2>Statistics</h2> */}
       </div>
     </div>
   );
