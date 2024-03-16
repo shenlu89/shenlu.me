@@ -28,9 +28,11 @@ export default function CustomMDX(
         mdxOptions: {
           remarkPlugins: [remarkMath, remarkGfm],
           rehypePlugins: [
+            //@ts-ignore
             rehypeKatex,
             rehypeSlug,
             [
+              //@ts-ignore
               rehypePrettyCode,
               {
                 theme: "solarized-light",
@@ -38,6 +40,7 @@ export default function CustomMDX(
             ],
             rehypeCodeTitles,
             [
+              //@ts-ignore
               rehypePrism,
               {
                 showLineNumbers: true,
