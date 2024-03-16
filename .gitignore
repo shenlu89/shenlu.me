@@ -42,5 +42,5 @@ next-env.d.ts
 # turborepo
 .turbo
 
-#content
+# generated json files of all posts
 content/generated.json
