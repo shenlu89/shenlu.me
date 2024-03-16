@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 import { ReactNode } from "react";
-import { allPosts, Post } from "contentlayer/generated";
+import allPosts from "content/generated.json";
 
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }): Promise<Metadata | undefined> {
-  const post = allPosts.find((post) => post.slug === params.slug) as Post;
+  const post = allPosts.find((post) => post.slug === params.slug);
   if (!post) return;
   const { title, slug, publishedAt: publishedTime } = post;
   const ogImage = `https://shenlu.me/og?title=${title}&time=${publishedTime}`;

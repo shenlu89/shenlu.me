@@ -1,25 +1,14 @@
-import { allPosts, Post } from "contentlayer/generated";
 import { notFound } from "next/navigation";
+import allPosts from "content/generated.json";
 
 import Image from "next/image";
 import Comment from "@/components/comment";
-import { useMDXComponent } from "next-contentlayer/hooks";
-
+import CustomMDX from "@/components/custom-mdx";
 import ViewCounter from "@/components/view-counter";
-import CustomLink from "@/components/custom-link";
-import CustomPre from "@/components/custom-pre";
-import CustomImg from "@/components/custom-image";
-
-const MDXComponent = {
-  a: CustomLink,
-  pre: CustomPre,
-  img: CustomImg,
-};
 
 export default function PostPage({ params }: { params: { slug: string } }) {
-  const post = allPosts.find((post) => post.slug === params.slug) as Post;
+  const post = allPosts.find((post) => post.slug === params.slug);
   if (!post) notFound();
-  const MDXContent = useMDXComponent(post.body.code);
   return (
     <article className="flex flex-col items-start justify-center w-full">
       <h1 className="font-extrabold text-2xl tracking-tight mb-0">
@@ -54,7 +43,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
       <div className="w-full prose dark:prose-invert max-w-none mb-8">
-        <MDXContent components={MDXComponent} />
+        <CustomMDX source={post.content} />
       </div>
       <Comment />
     </article>

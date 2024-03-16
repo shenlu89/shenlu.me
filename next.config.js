@@ -1,5 +1,3 @@
-const { withContentlayer } = require("next-contentlayer")
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Optionally, add any other Next.js config below
@@ -15,7 +13,7 @@ const nextConfig = {
   },
 }
 
-module.exports = withContentlayer(nextConfig)
+module.exports = nextConfig
 
 // https://nextjs.org/docs/advanced-features/security-headers
 // const ContentSecurityPolicy = `

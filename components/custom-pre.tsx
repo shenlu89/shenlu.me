@@ -55,17 +55,14 @@ const CustomPre = ({ children, ...props }: any): ReactElement => {
 
   return (
     <pre {...props}>
-      <button
-        onClick={handleClick}
-        tabIndex={0}
-        {...props}
-        className={`float-right border p-1 block rounded ${
-          isCopied
-            ? "text-green-400 !bg-green-50 border-green-400"
-            : "text-slate-400 !bg-slate-50 border-slate-400"
-        }`}
-      >
-        <IconToUse className="w-5 h-5" />
+      <button onClick={handleClick} tabIndex={0} {...props}>
+        <IconToUse
+          className={`w-8 h-8 float-right border rounded p-1 block ${
+            isCopied
+              ? "text-green-400 !bg-green-200 border-green-200"
+              : "text-slate-400 !bg-slate-200 border-slate-200"
+          }`}
+        />
       </button>
       {children}
     </pre>
