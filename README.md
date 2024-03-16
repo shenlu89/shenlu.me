@@ -6,7 +6,7 @@ Shen Lu's Blog, inspired by [leerob.io](https://leerob.io/).
 
 - **Framework**: [Next.js](https://nextjs.org)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
-- **Content**: [MDX](https://mdxjs.com/) + [Contentlayer](https://contentlayer.dev/)
+- **Content**: [MDX](https://mdxjs.com/) + [next-remote-mdx](https://github.com/hashicorp/next-mdx-remote)
 - **Analytics**: [Umami](https://umami.is/)
 - **Comment**: [Giscus](https://giscus.app)
 - **Database**: [Redis](https://redis.io/) + [Upstash](https://upstash.com/)
@@ -19,17 +19,22 @@ Shen Lu's Blog, inspired by [leerob.io](https://leerob.io/).
 - `data/*` - All private information (matadata, headers, articles, etc.) about the pages.
 - `lib/*` - A collection of helpful utilities or functions for external services.
 - `app/api/*` - [API Routes](https://nextjs.org/docs/app/building-your-application/routing/router-handlers) and Serverless KV with Redis API powered by [Upstash](https://upstash.com/) for post views.
-- `app/blog/*` - Static pre-rendered posts using `Contentlayer`.
+- `app/blog/*` - Static pre-rendered posts using `next-remote-mdx`.
 - `content/*` - All the MDX files for blog posts.
 - `public/*` - Static public assets including fonts and images.
 
 ## Install and Run Locally
 
-This application requires Node.js v18.17+.
+This application requires:
+
+- Bun v1.0+ (compatibility with Node.js v20).
+- Create a `.env` file similar to [`.env.example`](/.env.example).
 
 ```js
 git clone git@github.com:shenlu89/shenlu.me.git
 cd shenlu.me
+
+// create .env file similar to .env.example
 
 // development mode
 bun install
@@ -38,8 +43,6 @@ bun dev
 // production mode
 // bun run build
 ```
-
-Create a `.env` file similar to [`.env.example`](/.env.example).
 
 ## Deploy on Vercel
 

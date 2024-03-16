@@ -1,14 +1,14 @@
-import { allPosts } from 'contentlayer/generated'
-import { MetadataRoute } from 'next'
+import allPosts from "content/generated.json";
+import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogs = allPosts.map((post) => ({
     url: `https://shenlu.me/blog/${post.slug}`,
-    lastModified: post.publishedAt
-  }))
-  const routes = ['', '/blog', '/about'].map((route) => ({
+    lastModified: post.publishedAt,
+  }));
+  const routes = ["", "/blog", "/about"].map((route) => ({
     url: `https://shenlu.me${route}`,
-    lastModified: new Date().toISOString().split('T')[0]
-  }))
-  return [...routes, ...blogs]
+    lastModified: new Date().toISOString().split("T")[0],
+  }));
+  return [...routes, ...blogs];
 }

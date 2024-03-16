@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import ImageWithFallback from "@/components/image-with-fallback";
 import { RiShareCircleLine } from "react-icons/ri";
 
 const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
@@ -8,12 +8,12 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
     <Link
       href={href}
       target="_blank"
-      className="flex no-underline flex-col p-12 border bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-black dark:border-slate-600 border-slate-200 rounded"
+      className="flex no-underline flex-col p-10  border bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-black dark:border-slate-600 border-slate-200 rounded"
     >
       <div className="flex flex-col item-center md:flex-row justify-between space-y-4 md:space-x-8">
         <div className="flex flex-col items-center md:items-start">
           <div className="flex w-fulln flex-col sm:flex-row space-y-4 sm:space-y-0 justify-center md:justify-start md:flex-start space-x-0 sm:space-x-4">
-            <Image
+            <ImageWithFallback
               src={logoUrl}
               alt={title}
               width="56"
@@ -31,10 +31,10 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
           <hr className="w-full" />
           <p className="flex text-center">{description}</p>
         </div>
-        <Image
+        <ImageWithFallback
           src={imageUrl}
           alt={title}
-          width="240"
+          width="220"
           height="0"
           className="flex shadow self-center justify-center !ml-0 !mt-0"
         />

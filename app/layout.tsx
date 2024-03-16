@@ -2,11 +2,11 @@ import "./globals.css";
 import "katex/dist/katex.min.css";
 
 import type { Metadata } from "next";
+import Script from "next/script";
+
 import Providers from "@/components/providers";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import Script from "next/script";
-
 import LocalFont from "@/lib/local-font";
 import { HomePage } from "@/data/meta-data";
 

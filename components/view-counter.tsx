@@ -13,7 +13,7 @@ const ViewCounter: NextPage<Slug> = ({ slug, method }) => {
   );
 
   return (
-    <span className="flex items-center justify-end space-x-1">
+    <span className="flex items-center justify-end">
       {isLoading ? (
         <HiOutlineEyeSlash className="w-4 h-4 mr-1" />
       ) : (

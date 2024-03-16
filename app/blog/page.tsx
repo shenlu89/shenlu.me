@@ -2,13 +2,13 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { HiMiniMagnifyingGlass, HiXCircle } from "react-icons/hi2";
-import { allPosts, Post } from "contentlayer/generated";
+import allPosts from "content/generated.json";
 import ViewCounter from "@/components/view-counter";
 
 const Blog = () => {
   const [serachPosts, setserachPosts] = useState<string>("");
   const searchInput = useRef<HTMLInputElement>(null);
-  const posts = allPosts.sort((a: Post, b: Post) => {
+  const posts = allPosts.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
   const filteredBlogPosts = posts.filter((post: any) =>
@@ -30,7 +30,6 @@ const Blog = () => {
           <HiMiniMagnifyingGlass className="flex left-3 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-slate-400" />
           <HiXCircle
             onClick={() => {
-              searchInput.current?.focus();
               setserachPosts("");
             }}
             className={`${
@@ -38,7 +37,6 @@ const Blog = () => {
             } flex right-3 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-slate-400 hover:text-black cursor-pointer`}
           />
           <input
-            autoFocus
             ref={searchInput}
             aria-label="Search all posts"
             type="text"
@@ -57,7 +55,7 @@ const Blog = () => {
       )}
       <ul>
         {filteredBlogPosts.map((post: any) => (
-          <Link key={post.slug} href={post.url}>
+          <Link key={post.slug} href={`/blog/${post.slug}`}>
             <li
               key={post.slug}
               className="flex flex-col w-full dark:hover:bg-slate-900 border hover:bg-slate-50 rounded p-4 mb-4 dark:border-slate-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm"

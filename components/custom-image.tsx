@@ -1,8 +1,8 @@
-import Image from 'next/image'
+import ImageWithFallback from "./image-with-fallback";
 
-export default function ImageWithFallback({ src, alt, ...props }: any) {
+export default function CustomImg({ src, alt, ...props }: any) {
   return (
-    <Image
+    <ImageWithFallback
       {...props}
       alt={alt}
       src={src}
@@ -10,10 +10,10 @@ export default function ImageWithFallback({ src, alt, ...props }: any) {
       height={0}
       sizes="100vw"
       style={{
-        width: '100%',
-        height: 'auto'
+        width: "100%",
+        height: "auto",
       }}
       priority={true}
     />
-  )
+  );
 }

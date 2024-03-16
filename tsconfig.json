@@ -21,15 +21,14 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@/*": ["./*"]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".contentlayer/generated",
+    ".content/generated.json",
     ".next/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
