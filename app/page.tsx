@@ -1,4 +1,4 @@
-import ImageWithFallback from "@/components/image-with-fallback";
+import Image from "next/image";
 import { HomePage } from "@/data/meta-data";
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
             {HomePage.motto}
           </p>
         </div>
-        <ImageWithFallback
+        <Image
           className="flex relative mx-auto md:mr-auto rounded-full"
           alt={HomePage.title}
           width={110}
