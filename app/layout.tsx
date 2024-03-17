@@ -18,11 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`flex flex-col h-screen ${LocalFont.className}`}
-        suppressHydrationWarning
-      >
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className={`flex flex-col h-screen ${LocalFont.className}`}>
         <Providers>
           <Header />
           <main className="max-w-3xl container text-black dark:text-white mx-auto px-6 py-6 flex-1 leading-6">
@@ -33,8 +30,8 @@ export default function RootLayout({
         {process.env.NODE_ENV === "production" && (
           <Script
             async
-            src="https://analytics.shenlu.me/script.js"
-            data-website-id="a038f8fd-006e-4094-9507-d62022b175b8"
+            src={process.env.UMAMI_SCRIPT_URL}
+            data-website-id={process.env.UMAMI_DATA_WEBSITE_ID}
           />
         )}
       </body>
