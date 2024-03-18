@@ -8,10 +8,7 @@ import ViewCounter from "@/components/view-counter";
 const Blog = () => {
   const [serachPosts, setserachPosts] = useState<string>("");
   const searchInput = useRef<HTMLInputElement>(null);
-  const posts = allPosts.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
-  const filteredBlogPosts = posts.filter((post: any) =>
+  const filteredBlogPosts = allPosts.filter((post: any) =>
     post.title.toLowerCase().includes(serachPosts.toLowerCase())
   );
 
@@ -21,7 +18,9 @@ const Blog = () => {
         <h1 className="font-extrabold text-2xl tracking-tight mb-4">Blog</h1>
         <p className="mb-4 text-slate-600 dark:text-slate-400">
           {`I've written `}
-          <strong className="text-black dark:text-white">{posts.length}</strong>
+          <strong className="text-black dark:text-white">
+            {allPosts.length}
+          </strong>
           {` posts since `}
           <strong className="text-black dark:text-white">2019</strong>
           {`, using the search below to filter by title.`}
