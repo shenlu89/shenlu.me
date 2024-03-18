@@ -27,3 +27,20 @@
 .prose pre {
   border-radius: 0;
 }
+
+.prose ul {
+  word-wrap: break-word;
+}
+
+table {
+  @apply border border-slate-200 dark:border-slate-600 border-collapse m-0 p-0 w-full !table-fixed;
+}
+
+table tr {
+  @apply border border-slate-200 dark:border-slate-600 bg-slate-50 p-2 dark:bg-slate-800 break-words;
+}
+
+table th,
+table td {
+  @apply !p-2 text-center !align-middle text-sm;
+}
