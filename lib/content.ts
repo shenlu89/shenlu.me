@@ -40,19 +40,23 @@ function getMDXData(dir: string) {
   writeFileSync(
     join(process.cwd(), process.env.GENERATED_FILE as string),
     JSON.stringify(
-      mdxFiles.map((file) => {
-        let { frontMatter, content } = readMDXFile(join(dir, file));
-        let slug = basename(file, extname(file));
-        return {
-          ...frontMatter,
-          url: `/blog/${slug}`,
-          slug,
-          publishedAt: format(parseISO(frontMatter.date), "MMM dd, yyyy"),
-          readingTime: readingTime(content).text,
-          wordCount: content.split(/\s+/gu).length,
-          content,
-        };
-      })
+      mdxFiles
+        .map((file) => {
+          let { frontMatter, content } = readMDXFile(join(dir, file));
+          let slug = basename(file, extname(file));
+          return {
+            ...frontMatter,
+            url: `/blog/${slug}`,
+            slug,
+            publishedAt: format(parseISO(frontMatter.date), "MMM dd, yyyy"),
+            readingTime: readingTime(content).text,
+            wordCount: content.split(/\s+/gu).length,
+            content,
+          };
+        })
+        .sort((a, b) => {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        })
     )
   );
   console.log("successfully generated!");
