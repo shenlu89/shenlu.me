@@ -12,7 +12,7 @@ const Header: NextPage = () => {
 
   return (
     <header className="flex max-w-3xl container mx-auto px-6 py-4">
-      <nav className="flex w-full">
+      <nav className="flex w-full text-sm md:text-base">
         <ul className="flex flex-1 ml-[-0.5rem] justify-center md:flex-row md:justify-start space-x-4 md:space-x-0">
           {HeaderNavLinks?.map((nav: any) => (
             <li key={nav?.title}>
