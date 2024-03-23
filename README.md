@@ -6,7 +6,7 @@ Shen Lu's Blog, inspired by [leerob.io](https://leerob.io/).
 
 - **Framework**: [Next.js](https://nextjs.org)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
-- **Content**: [MDX](https://mdxjs.com/) + [next-remote-mdx](https://github.com/hashicorp/next-mdx-remote)
+- **Content**: [MDX](https://mdxjs.com/) + [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
 - **Analytics**: [Umami](https://umami.is/)
 - **Comment**: [Giscus](https://giscus.app)
 - **Database**: [Redis](https://redis.io/) + [Upstash](https://upstash.com/)
@@ -19,7 +19,7 @@ Shen Lu's Blog, inspired by [leerob.io](https://leerob.io/).
 - `data/*` - All private information (matadata, headers, articles, etc.) about the pages.
 - `lib/*` - A collection of helpful utilities or functions for external services.
 - `app/api/*` - [API Routes](https://nextjs.org/docs/app/building-your-application/routing/router-handlers) and Serverless KV with Redis API powered by [Upstash](https://upstash.com/) for post views.
-- `app/blog/*` - Static pre-rendered posts using `next-remote-mdx`.
+- `app/blog/*` - Static pre-rendered posts using `next-mdx-remote`.
 - `content/*` - All the MDX files for blog posts.
 - `public/*` - Static public assets including fonts and images.
 
