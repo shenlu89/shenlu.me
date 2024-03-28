@@ -1,6 +1,6 @@
 {
   "name": "shenlu.me",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "author": "Shen Lu <shenlu89dev@gmail.com>",
   "license": "MIT",
@@ -10,17 +10,18 @@
     "url": "https://github.com/shenlu89/shenlu.me.git"
   },
   "scripts": {
-    "dev": "bun lib/content.ts && next dev",
-    "build": "bun lib/content.ts && next build",
+    "dev": "bun run lib/content.ts && next dev",
+    "build": "bun run lib/content.ts && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "watch": "onchange content/*.mdx public/images -- bun run lib/content.ts"
   },
   "dependencies": {
     "@giscus/react": "^3.0.0",
-    "@upstash/redis": "^1.28.4",
-    "date-fns": "^3.5.0",
-    "katex": "^0.16.9",
-    "next": "14.1.3",
+    "@upstash/redis": "^1.29.0",
+    "date-fns": "^3.6.0",
+    "katex": "^0.16.10",
+    "next": "14.1.4",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.3.0",
     "react": "18.2.0",
@@ -35,22 +36,23 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "3.0.1",
     "remark-math": "6.0.0",
-    "sharp": "^0.33.2",
+    "sharp": "^0.33.3",
     "swr": "^2.2.5"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
-    "@types/node": "20.11.28",
-    "@types/react": "18.2.66",
+    "@tailwindcss/typography": "^0.5.11",
+    "@types/node": "20.11.30",
+    "@types/react": "18.2.72",
     "@types/react-dom": "18.2.22",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "autoprefixer": "^10.4.18",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.1.3",
-    "postcss": "^8.4.36",
-    "tailwindcss": "^3.4.1",
-    "turbo": "^1.12.5",
-    "typescript": "^5.4.2"
+    "eslint-config-next": "^14.1.4",
+    "onchange": "^7.1.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.2",
+    "turbo": "^1.13.0",
+    "typescript": "^5.4.3"
   }
 }

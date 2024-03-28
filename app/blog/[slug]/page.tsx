@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import allPosts from "content/generated.json";
+import allPosts from ".generated/content.json";
 
 import Image from "next/image";
 import Comment from "@/components/comment";
