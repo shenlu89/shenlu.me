@@ -21,7 +21,7 @@ export default function Projects() {
             title="Mathcheap"
             logoUrl="/images/mathcheap-logo.svg"
             imageUrl="/images/mathcheap-showcase.png"
-            description="A dead simple online LaTex equation editor."
+            description="A dead simple online LaTeX equation editor."
           />
         </div>
         <hr />
