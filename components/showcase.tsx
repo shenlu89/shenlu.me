@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import ImageWithFallback from "@/components/image-with-fallback";
+import Image from "next/image";
 import { RiShareCircleLine } from "react-icons/ri";
 
 const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
@@ -13,7 +13,7 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
       <div className="flex flex-col item-center md:flex-row justify-between space-y-4 md:space-x-8">
         <div className="flex flex-col items-center md:items-start">
           <div className="flex w-fulln flex-col sm:flex-row space-y-4 sm:space-y-0 justify-center md:justify-start md:flex-start space-x-0 sm:space-x-4">
-            <ImageWithFallback
+            <Image
               src={logoUrl}
               alt={title}
               width="56"
@@ -31,7 +31,7 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
           <hr className="w-full" />
           <p className="flex text-center">{description}</p>
         </div>
-        <ImageWithFallback
+        <Image
           src={imageUrl}
           alt={title}
           width="220"

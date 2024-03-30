@@ -1,8 +1,8 @@
-import ImageWithFallback from "./image-with-fallback";
+import Image from "next/image";
 
 export default function CustomImg({ src, alt, ...props }: any) {
   return (
-    <ImageWithFallback
+    <Image
       {...props}
       alt={alt}
       src={src}
