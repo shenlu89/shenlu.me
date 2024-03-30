@@ -2,7 +2,7 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { HiMiniMagnifyingGlass, HiXCircle } from "react-icons/hi2";
-import allPosts from ".generated/content.json";
+import allPosts from "generated/content.json";
 import ViewCounter from "@/components/view-counter";
 
 const Blog = () => {

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { ReactNode } from "react";
-import allPosts from ".generated/content.json";
+import allPosts from "generated/content.json";
 
 export async function generateMetadata({
   params,

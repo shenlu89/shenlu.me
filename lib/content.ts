@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, writeFileSync } from "fs";
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "fs";
 import { join, basename, extname } from "path";
 import readingTime from "reading-time";
 import { parseISO, format } from "date-fns";
@@ -37,6 +37,11 @@ function readMDXFile(filePath: string) {
 
 function getMDXData(dir: string) {
   let mdxFiles = getMDXFiles(dir);
+  try {
+    mkdirSync(process.env.GENERATED_DIRECTORY as string, { recursive: true });
+  } catch (e) {
+    console.log("Cannot create folder ", e);
+  }
   writeFileSync(
     join(process.cwd(), process.env.GENERATED_FILE as string),
     JSON.stringify(
