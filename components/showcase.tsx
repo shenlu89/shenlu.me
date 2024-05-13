@@ -34,7 +34,7 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
         <Image
           src={imageUrl}
           alt={title}
-          width="220"
+          width="200"
           height="0"
           className="flex shadow self-center justify-center !ml-0 !mt-0"
         />
