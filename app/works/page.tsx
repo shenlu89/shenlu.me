@@ -15,13 +15,20 @@ export default function Projects() {
         </div>
         <hr />
         <h2>Projects</h2>
-        <div>
+        <div className="flex flex-col space-y-4">
           <Showcase
             href="https://mathcheap.xyz"
             title="Mathcheap"
             logoUrl="/images/mathcheap-logo.svg"
             imageUrl="/images/mathcheap-showcase.png"
             description="A dead simple online LaTeX equation editor."
+          />
+          <Showcase
+            href="https://aes.shenlu.me"
+            title="Amazing Endemic Species"
+            logoUrl="/images/aes-logo.svg"
+            imageUrl="/images/aes-showcase.png"
+            description="Mapping amazing endemic species all over the world."
           />
         </div>
         <hr />
