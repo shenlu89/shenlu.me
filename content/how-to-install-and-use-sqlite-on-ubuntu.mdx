@@ -1,0 +1,112 @@
+---
+title: How to Install And Use SQLite on Ubuntu
+date: "2024-05-20"
+---
+
+Recently, I was developing a new open-source project, [Amazing Endemic Species](https://github.com/shenlu89/amazing-endemic-species).
+And I need a database to store the increasing number of species in the future. I choose to use [Turso](https://turso.tech/) as database.
+To facilitate testing, I plan to set up a local SQLite environment.
+
+## Prerequisites
+
+- Ubuntu 22.04
+
+## Installing SQLite
+
+First update your package list:
+
+```sh
+sudo apt update
+```
+
+Install SQLite:
+
+```sh
+sudo apt install sqlite3
+```
+
+To verify the installation, check the software’s version:
+
+```sh
+sqlite3 --version
+# 3.37.2 2022-01-06 13:25:41 872ba256cbf61d9290b571c0e6d82a20c224ca3ad82971edc46b29818d5dalt1
+```
+
+## Creating a SQLite Database
+
+To create the database, open terminal and run this sqlite3 command:
+
+```sh
+sqlite3 amazing-endemic-species.db
+```
+
+That means I create a database named "amazing-endemic-species" and I will receive an output like this:
+
+```sh
+SQLite version 3.37.2 2022-01-06 13:25:41
+Enter ".help" for usage hints.
+sqlite>
+```
+
+Now I will create a schema for `amazing-endemic-species.json` as below:
+
+```json
+[
+  {
+    "id": 712,
+    "sciName": "Ailuropoda melanoleuca",
+    "status": "VU",
+    "group": "MAMMALIA",
+    "code": "CN",
+    "commonName": "Giant Panda"
+  },
+  {
+    "id": 16892,
+    "sciName": "Phascolarctos cinereus",
+    "status": "VU",
+    "group": "MAMMALIA",
+    "code": "AU",
+    "commonName": "Koala"
+  }
+  // ...
+]
+```
+
+## Create the Table Schema
+
+```sql
+CREATE TABLE IF NOT EXISTS aes (
+    id INTEGER PRIMARY KEY,
+    sciName TEXT NOT NULL UNIQUE,
+    status TEXT NOT NULL,
+    "group" TEXT NOT NULL, -- Escaped keyword 'group'
+    code TEXT NOT NULL,
+    commonName TEXT NOT NULL
+);
+```
+
+## Inserting Data into the Table
+
+Once the table is created, I will insert the data from the JSON objects into the `aes` table.
+
+```sql
+INSERT INTO aes (id, sciName, status, "group", code, commonName) VALUES
+(712, 'Ailuropoda melanoleuca', 'VU', 'MAMMALIA', 'CN', 'Giant Panda'),
+(16892, 'Phascolarctos cinereus', 'VU', 'MAMMALIA', 'AU', 'Koala');
+```
+
+To verify that the data has been imported correctly, you can run a simple `SELECT` query:
+
+```sql
+SELECT * FROM aes;
+-- 712|Ailuropoda melanoleuca|VU|MAMMALIA|CN|Giant Panda
+-- 16892|Phascolarctos cinereus|VU|MAMMALIA|AU|Koala
+```
+
+## Drop Schema or Table
+
+If I want to drop the schema and table.
+
+```sh
+sqlite3 amazing-endemic-species.db "DROP TABLE IF EXISTS aes;"
+```
