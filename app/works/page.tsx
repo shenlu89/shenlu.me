@@ -28,7 +28,7 @@ export default function Projects() {
             title="Amazing Endemic Species"
             logoUrl="/images/aes-logo.svg"
             imageUrl="/images/aes-showcase.png"
-            description="Mapping amazing endemic species all over the world."
+            description="An open-source, community-driven Species-as-a-Service application."
           />
         </div>
         <hr />
