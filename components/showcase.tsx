@@ -8,7 +8,7 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
     <Link
       href={href}
       target="_blank"
-      className="flex no-underline flex-col p-10  border bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-black dark:border-slate-600 border-slate-200 rounded"
+      className="flex no-underline flex-col p-8  border bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-black dark:border-slate-600 border-slate-200 rounded"
     >
       <div className="flex flex-col item-center md:flex-row justify-between space-y-4 md:space-x-8">
         <div className="flex flex-col items-center md:items-start">
@@ -28,8 +28,7 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
               </p>
             </div>
           </div>
-          <hr className="w-full" />
-          <p className="flex text-center">{description}</p>
+          <p className="flex text-start">{description}</p>
         </div>
         <Image
           src={imageUrl}
