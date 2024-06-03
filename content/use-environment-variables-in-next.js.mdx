@@ -54,6 +54,12 @@ NEXT_PUBLIC_IMAGES_URI = **********
 NEXT_PUBLIC_ICON_URL = **********
 ```
 
+## Environment Loading Order
+
+**Development Mode**: (bun dev): `.env.development.local` > `.env.local` > `.env.development` > `.env`
+
+**Production Mode**: (bun run build): `.env.production.local` > `.env.local` > `.env.production` > `.env`
+
 ## Conclusion
 
 Now it will not waste the usage limits of Vercel Postgres when developing project in local.
