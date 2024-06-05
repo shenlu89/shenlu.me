@@ -1,9 +1,10 @@
 "use client";
-import { useRef, useState } from "react";
+import { FormEvent, useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { HiMiniMagnifyingGlass, HiXCircle } from "react-icons/hi2";
 import allPosts from "generated/content.json";
 import ViewCounter from "@/components/view-counter";
+import useKeyPress from "@/hooks/use-key-press";
 
 const Blog = () => {
   const [serachPosts, setserachPosts] = useState<string>("");
@@ -11,6 +12,20 @@ const Blog = () => {
   const filteredBlogPosts = allPosts.filter((post: any) =>
     post.title.toLowerCase().includes(serachPosts.toLowerCase())
   );
+
+  // handle what happens on key press
+  const handleKeyPress = useCallback((event: any) => {
+    event.preventDefault();
+    searchInput.current?.focus();
+  }, []);
+
+  const clearSearch = useCallback((event: FormEvent) => {
+    event.preventDefault();
+    searchInput.current?.focus();
+  }, []);
+
+  useKeyPress(["/"], handleKeyPress);
+  useKeyPress(["Escape"], clearSearch);
 
   return (
     <>
@@ -37,10 +52,10 @@ const Blog = () => {
           />
           <input
             ref={searchInput}
-            aria-label="Search all posts"
+            aria-label={`Type "/" to search all posts`}
             type="text"
             onChange={(e) => setserachPosts(e.target.value)}
-            placeholder="Search all posts"
+            placeholder={`Type "/" to search all posts`}
             value={serachPosts}
             className="w-full px-10 py-2 text-black bg-white focus:bg-slate-50 dark:border-black dark:focus:border-black border rounded focus:outline-0"
           />
@@ -48,7 +63,7 @@ const Blog = () => {
       </div>
       {!filteredBlogPosts.length && (
         <div className="flex flex-col py-8 text-slate-600 items-center dark:text-slate-400 justify-center">
-          <HiMiniMagnifyingGlass className="w-9 h-9 p-2 bg-slate-100 dark:text-slate-600 rounded-full mb-2" />
+          <HiMiniMagnifyingGlass className="w-10 h-10 p-2 bg-slate-100 dark:text-slate-600 rounded-full mb-2" />
           <span>{`No posts found for '${serachPosts}'`}</span>
         </div>
       )}
