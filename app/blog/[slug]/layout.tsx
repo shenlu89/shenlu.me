@@ -10,7 +10,11 @@ export async function generateMetadata({
   const post = allPosts.find((post) => post.slug === params.slug);
   if (!post) return;
   const { title, slug, publishedAt: publishedTime } = post;
-  const ogImage = `https://shenlu.me/og?title=${title}&time=${publishedTime}`;
+  const ogImage = `${
+    process.env.NODE_ENV === "production"
+      ? "https://shenlu.me"
+      : "localhost:3000"
+  }/og?title=${title}&time=${publishedTime}&slug=${slug}`;
   return {
     title,
     description: title,
