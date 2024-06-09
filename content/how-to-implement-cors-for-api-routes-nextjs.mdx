@@ -1,0 +1,96 @@
+---
+title: How to Implement CORS for API routes in Next.js
+date: "2024-06-09"
+---
+
+Recently I published [Amazing Endemic Species](https://aes.shenlu.me), a Species-as-a-Services application,
+which provides other developers with a set of APIs being used in secondary development.
+
+For testing, I plan to use these APIs in `Not Found` page of [shenlu.me](https://shenlu.me). However, I met some error when
+I used these APIs.
+
+---
+
+## Problem #1: No 'Access-Control-Allow-Origin' Header
+
+```js
+Access to fetch at 'http://aes.shenlu.me/api/v1/random' from origin 'http://localhost:1200' has been blocked by CORS policy:
+Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+```
+
+There are two ways to solve this problem:
+
+- Define CORS in `headers` in configuration file, `next.config.js`
+- Create a middleware to handle the request
+
+### Define CORS in `headers` in configuration file
+
+I used this method and configure `next.config.js` like below.
+
+```js
+const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: "/api/v1/:slug",
+        headers: [
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*", // Set your origin
+          },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET, POST, PUT, DELETE, OPTIONS",
+          },
+          {
+            key: "Access-Control-Allow-Headers",
+            value: "Content-Type, Authorization",
+          },
+        ],
+      },
+    ];
+  },
+  // Optionally, add any other Next.js config below.
+};
+```
+
+After this configuration, `shenlu.me` in local, `https://localhost:3000`, will normally get the data from API service,
+`https://aes.shenlu.me/api/v1/random`.
+
+### Create a middleware to handle the request
+
+The secondary way I did not use, you can check this link, https://github.com/vercel/next.js/discussions/52933, to figure out.
+
+---
+
+## Problem #2: `next/image` Un-configured Host
+
+Another error I got is when I directly passed `https://aes.shenlu.me/images/**.jpg`,
+the value get from `http://aes.shenlu.me/api/v1/random`, to `src`. To solve this problem,
+I defined `hostname`, `aes.shenlu.me`, in the `images.remotePatterns` in `next.config.js`.
+
+```js
+const nextConfig = {
+  // Optionally, add any other Next.js config below.
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "aes.shenlu.me",
+        port: "",
+        pathname: "/images/**",
+      },
+    ],
+  },
+};
+```
+
+After solving this problem, I finished the `Not Found` page as below:
+
+![](/images/content/how-to-implement-cors-for-api-routes-nextjs/404.png)
+
+## References
+
+- [https://github.com/vercel/next.js/discussions/52933](https://github.com/vercel/next.js/discussions/52933)
+- [https://nextjs.org/docs/messages/next-image-unconfigured-host](https://nextjs.org/docs/messages/next-image-unconfigured-host)

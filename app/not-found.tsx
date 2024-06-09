@@ -1,8 +1,18 @@
+"use client";
+import fetcher from "@/lib/fetcher";
 import Image from "next/image";
-import Link from "next/link";
-import _404 from "public/images/not-found.jpeg";
+import Link from "@/components/custom-link";
+import useSWR from "swr";
+import SpecieItem from "@/components/species-item";
+import SpeciesItem from "@/components/species-item";
 
 export default function NotFound() {
+  const {
+    data: species,
+    isLoading,
+    error,
+  }: any = useSWR("https://aes.shenlu.me/api/v1/random", fetcher);
+  console.log(species);
   return (
     <>
       <h1 className="font-extrabold text-3xl tracking-tight mb-4">404</h1>
@@ -18,7 +28,15 @@ export default function NotFound() {
           page.
         </span>
       </div>
-      <Image src={_404} alt={"Drawing hands by M.C. Escher"} priority />
+      <hr className="my-4" />
+      {!isLoading && !error && species?.image && (
+        <SpeciesItem
+          className="flex flex-col bg-slate-100 border p-4 space-y-4 relative text-slate-600 items-center rounded w-full"
+          key={species.id}
+          species={species}
+          imageUrl={species.image}
+        />
+      )}
     </>
   );
 }
