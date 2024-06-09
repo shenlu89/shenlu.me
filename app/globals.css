@@ -44,3 +44,49 @@ table th,
 table td {
   @apply !p-2 text-center !align-middle text-sm;
 }
+
+.LC {
+  background: #066;
+  color: #fff;
+}
+
+.NE {
+  background: #eee;
+  color: #000;
+}
+
+.EN {
+  background: #c63;
+  color: #fc9;
+}
+
+.EW {
+  background: #000;
+  color: #fff;
+}
+
+.EX {
+  background: #000;
+  color: #c33;
+}
+
+.NT {
+  background: #066;
+  color: #9c9;
+}
+
+.VU {
+  background: #c90;
+  color: #ffc;
+}
+
+.DD {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.CR {
+  background: #c33;
+  color: #fcc;
+}

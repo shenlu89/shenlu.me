@@ -1,6 +1,6 @@
 {
   "name": "shenlu.me",
-  "version": "2.2.1",
+  "version": "2.3.1",
   "private": true,
   "author": "Shen Lu <shenlu89dev@gmail.com>",
   "license": "MIT",
@@ -19,6 +19,7 @@
   "dependencies": {
     "@giscus/react": "^3.0.0",
     "@upstash/redis": "^1.30.0",
+    "country-flag-icons": "^1.5.12",
     "date-fns": "^3.6.0",
     "katex": "^0.16.10",
     "next": "14.2.3",
