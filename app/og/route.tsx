@@ -12,18 +12,21 @@ export async function GET(request: Request) {
     const regular = await fetch(
       new URL("../../public/fonts/Cantarell-Regular.otf", import.meta.url)
     ).then((res) => res.arrayBuffer());
-    const url = request.url.replace("&amp%3B", "&");
+    const url = request.url.replaceAll("&amp%3B", "&");
     const { searchParams } = new URL(url);
 
     // ?title=<title>
     const hasTitle = searchParams.has("title");
-    const title = hasTitle
-      ? searchParams.get("title")?.slice(0, 100)
-      : "Shen Lu";
+    const title = hasTitle ? searchParams.get("title") : "Shen Lu";
 
     // ?time=<time>
     const hasTime = searchParams.has("time");
     const time = hasTime ? searchParams.get("time") : "";
+
+    // ?slug=<slug>
+    const hasSlug = searchParams.has("slug");
+    const slug = hasSlug ? searchParams.get("slug") : "";
+    console.log(hasSlug);
 
     return new ImageResponse(
       (
@@ -81,9 +84,7 @@ export async function GET(request: Request) {
             <div tw="flex items-center">
               <img
                 tw="w-24 h-24"
-                src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shenlu.me/blog/${title
-                  ?.toLowerCase()
-                  ?.replaceAll(" ", "-")}`}
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shenlu.me/blog/${slug}`}
               />
             </div>
           </div>
