@@ -26,7 +26,6 @@ export async function GET(request: Request) {
     // ?slug=<slug>
     const hasSlug = searchParams.has("slug");
     const slug = hasSlug ? searchParams.get("slug") : "";
-    console.log(hasSlug);
 
     return new ImageResponse(
       (

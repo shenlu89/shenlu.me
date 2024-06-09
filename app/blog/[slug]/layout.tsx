@@ -13,8 +13,8 @@ export async function generateMetadata({
   const ogImage = `${
     process.env.NODE_ENV === "production"
       ? "https://shenlu.me"
-      : "localhost:3000"
-  }/og?title=${title}&time=${publishedTime}&slug=${slug}`;
+      : "http://localhost:3000"
+  }/og?title=${title}&time=${publishedTime}&slug=${123}`;
   return {
     title,
     description: title,
