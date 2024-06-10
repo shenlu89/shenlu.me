@@ -1,9 +1,15 @@
 import { Metadata } from "next";
-import Link from "next/link";
+import Link from "@/components/custom-link";
 import { FaNodeJs, FaReact, FaRust, FaUbuntu, FaPython } from "react-icons/fa";
 import { IoLogoJavascript, IoLogoVercel } from "react-icons/io5";
 import { TbBrandVscode } from "react-icons/tb";
-import { SiVim, SiPrisma, SiRedis, SiPostgresql } from "react-icons/si";
+import {
+  SiVim,
+  SiPrisma,
+  SiRedis,
+  SiPostgresql,
+  SiSqlite,
+} from "react-icons/si";
 
 import { AboutPage } from "@/data/meta-data";
 
@@ -66,6 +72,12 @@ const techStackIcons = [
     target: "_blank",
   },
   {
+    title: "SQLite",
+    href: "https://sqlite.org/",
+    icon: <SiSqlite className="w-6 h-6" />,
+    target: "_blank",
+  },
+  {
     title: "Ubuntu",
     href: "https://ubuntu.com/",
     icon: <FaUbuntu className="w-6 h-6" />,
@@ -92,8 +104,8 @@ export default function About() {
       <div>
         <div>
           <p>
-            Hi, I’m Shen Lu 👋, a software developer with passion on web
-            development and data visualization, especially in bioinformatics.
+            Hi, I’m Shen Lu 👋, a solopreneur and data visualization enthusiast,
+            especially in bioinformatics.
           </p>
         </div>
         <hr />
@@ -122,16 +134,10 @@ export default function About() {
           ))}
         </ul>
         <hr />
-        <h2>Sponsors</h2>
-        <iframe
-          src="https://github.com/sponsors/shenlu89/button"
-          title="Sponsor shenlu89"
-          className="rounded"
-          height="32"
-          width="114"
-        ></iframe>
-        {/* <hr />
-        <h2>Statistics</h2> */}
+        <h2>Analytics</h2>
+        <Link href="https://analytics.shenlu.me/share/apltJrEeXUVit3sP/shenlu.me">
+          shenlu.me
+        </Link>
       </div>
     </div>
   );
