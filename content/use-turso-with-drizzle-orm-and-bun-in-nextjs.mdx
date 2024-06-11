@@ -7,7 +7,7 @@ On April 8th, 2024, the free Hobby database of [PlanetScale](https://planetscale
 So I started to find an alternative. After the comparison of other serverless databases in the market,
 I decided to choose [Turso](https://turso.tech) as the database for the next project, [OSAlts](https://github.com/shenlu89/osalts).
 
-Moreover, I used [Primsa](https://www.prisma.io/) as an Object-Relational Mapping (ORM) tool applied in my Next.js projects Last year.
+Moreover, I used [Primsa](https://www.prisma.io/) as an Object-Relational Mapping (ORM) tool applied in my Next.js projects last year.
 However, I did not like its unique syntax of API design and the level of abstraction.
 Until I found [Drizzle ORM](https://orm.drizzle.team/), whose philosophy is "If you know SQL, you know Drizzle ORM",
 which offers a higher level abstraction from SQL and can be used to read nested relations.
@@ -106,7 +106,7 @@ It is easy to set up a local database for the development process.
 ### Create `db` Folder for Connecting Turso Database
 
 ```sh
-tree -L 3 - gitignore db
+tree -L 3 --gitignore db
 # db
 # ├── index.ts
 # ├── libsql
@@ -121,7 +121,7 @@ Create a `.env` file in the root directory with the connection url and authentic
 get database name and token from the following command:
 
 ```sh
-turso db show - url osalts
+turso db show --url osalts
 #libsql://osalts-*****.turso.io
 turso db tokens create osalts
 #eyj******Cw
@@ -139,17 +139,17 @@ TURSO_AUTH_TOKEN="*******"
 Create a `drizzle.config.ts` file in the root of the project and add the following content:
 
 ```js
-import { defineConfig } from 'drizzle-kit';
-export default defineConfig({
-schema: './db/schema.ts',
-out: './migrations',
-dialect: 'sqlite',
-driver: 'turso',
-dbCredentials: {
-url: process.env.TURSO_CONNECTION_URL!,
-authToken: process.env.TURSO_AUTH_TOKEN!,
-},
-});
+import type { Config } from "drizzle-kit";
+export default {
+  dialect: "sqlite",
+  schema: "./db/schema.ts",
+  out: "./db/migrations",
+  driver: "turso",
+  dbCredentials: {
+    url: process.env.TURSO_DATABASE_URL!,
+    authToken: process.env.TURSO_AUTH_TOKEN!,
+  },
+} satisfies Config;
 ```
 
 ### Connect Drizzle ORM to local Turso
@@ -160,8 +160,8 @@ For connecting `Turso` database locally, I write the following code into `db/ind
 import { drizzle } from 'drizzle-orm/libsql';
 import { createClient } from '@libsql/client';
 const client = createClient({
-url: process.env.TURSO_CONNECTION_URL!,
-authToken: process.env.TURSO_AUTH_TOKEN!,
+  url: process.env.TURSO_CONNECTION_URL!,
+  authToken: process.env.TURSO_AUTH_TOKEN!,
 });
 export const db = drizzle(client);
 ```
@@ -201,7 +201,7 @@ CREATE TABLE `os` (
 `id` integer PRIMARY KEY NOT NULL,
 `createAt` text DEFAULT (current_timestamp) NOT NULL
 );
- → statement-breakpoint
+--> statement-breakpoint
 CREATE UNIQUE INDEX `os_id_unique` ON `os` (`id`);
 ```
 
