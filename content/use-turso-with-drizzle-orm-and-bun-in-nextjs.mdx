@@ -152,9 +152,9 @@ export default {
 } satisfies Config;
 ```
 
-### Connect Drizzle ORM to local Turso
+### Connect Drizzle ORM to Turso
 
-For connecting `Turso` database locally, I write the following code into `db/index.ts` as below:
+For connecting `Turso` database, I write the following code into `db/index.ts` as below:
 
 ```js
 import { drizzle } from 'drizzle-orm/libsql';
@@ -172,7 +172,7 @@ The code below is a demonstration of creating a `os` table in `osalts` database
 
 ```js
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
-export const aes = sqliteTable("os", {
+export const os = sqliteTable("os", {
   id: integer("id").notNull().primaryKey().unique(),
   createAt: text("createAt")
     .notNull()
