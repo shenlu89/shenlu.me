@@ -1,0 +1,266 @@
+---
+title: Use Turso with Drizzle ORM And Bun in Next.js
+date: "2024-06-11"
+---
+
+On April 8th, 2024, the free Hobby database of [PlanetScale](https://planetscale.com/) plan would no longer be available.
+So I started to find an alternative. After the comparasion of other serverless databases in the market,
+I decided to choose [Turso](https://turso.tech) as the database for the next project, [OSAlts](https://github.com/shenlu89/osalts).
+
+Moreover, I used [Primsa](https://www.prisma.io/) as Object-Relational Mapping (ORM) tools apply in my Next.js projects Last year.
+However, I did not like its unique syntax about API design and the level of abstraction.
+Until I found [Drizzle ORM](https://orm.drizzle.team/), whose philosophy is "If you know SQL, you know Drizzle ORM",
+which offers a higher level abstraction from SQL and can be used to read nested relations.
+
+This article I would introduce how to use Turso with Drizzle ORM in Next.js.
+
+## Prerequisites
+
+- [Bun](https://bun.sh) v1.1+
+
+## Install Drizzle ORM and Drizzle kit
+
+You should have installed `Drizzle ORM` and `Drizzle kit`. You can do this by running the following command:
+
+```sh
+bun add drizzle-orm @libsql/client
+bun add -D drizzle-kit
+```
+
+## Setup Turso
+
+### Install the Turso CLI
+
+`Turso CLI` will help manage database, create replicas in other regions, and connect to the database shell.
+You can install it by following command:
+
+```sh
+curl -sSfL https://get.tur.so/install.sh | bash
+```
+
+And check the verison of Turso CLI.
+
+```sh
+turso -v
+turso version v0.93.8
+
+```
+
+### Signup or login to Turso
+
+```sh
+turso auth signup
+turso auth login
+# Already signed in as shenlu89. Use turso auth logout to log out of this account
+```
+
+### Create a Database in Turso
+
+I create a database with the name `osalts` for [Amazing Endemic Species](https://aes.shenlu.me):
+
+```sh
+turso db create osalts
+
+# Created database osalts at group default in 1.758s.
+
+# Start an interactive SQL shell with:
+
+#    turso db shell osalts
+
+# To see information about the database, including a connection URL, run:
+
+#    turso db show osalts
+
+# To get an authentication token for the database, run:
+
+#    turso db tokens create osalts
+```
+
+```sh
+turso db show osalts
+
+# Name:           oslats
+# URL:            libsql://oslats-*****.turso.io
+# ID:             ********
+# Group:          default
+# Version:        0.24.7
+# Locations:      sin, sjc
+# Size:           4.1 kB
+# Sleeping:       No
+# Bytes Synced:   0 B
+# Is Schema:      No
+
+# Database Instances:
+# NAME     TYPE        LOCATION
+# sjc      primary     sjc
+# sin      replica     sin
+```
+
+```sh
+turso db shell osalts
+
+# Connected to osalts at libsql://osalts-****.turso.io
+
+# Welcome to Turso SQL shell!
+
+# Type ".quit" to exit the shell and ".help" to list all available commands.
+
+# →
+
+```
+
+## Setup Turso Database
+
+`Turso` is a SQLite-compatible database built on `libSQL`, the Open Contribution fork of `SQLite`.
+It is easy to set a local database for development process.
+
+### Create `db` Folder for Connecting Turso Database
+
+```sh
+tree -L 3 --gitignore db
+# db
+# ├── index.ts
+# ├── libsql
+# │   └── osalts.db
+# ├── schema.ts
+# └── seed.ts
+```
+
+### Update environment variables
+
+Create a `.env` file in root directory with connection url and authentication token and
+get database name and token from the following command:
+
+```sh
+turso db show --url osalts
+#libsql://osalts-*****.turso.io
+
+turso db tokens create osalts
+
+#eyj******Cw
+```
+
+Then Paste the connection url and authentication token in `.env` as below:
+
+```sh
+TURSO_DATABASE_URL='libsql://oslats-*****.turso.io'
+TURSO_AUTH_TOKEN="*******"
+```
+
+### Setup Drizzle config file
+
+Create a `drizzle.config.ts` file in the root of the project and add the following content:
+
+```js
+import { defineConfig } from 'drizzle-kit';
+
+export default defineConfig({
+  schema: './db/schema.ts',
+  out: './migrations',
+  dialect: 'sqlite',
+  driver: 'turso',
+  dbCredentials: {
+    url: process.env.TURSO_CONNECTION_URL!,
+    authToken: process.env.TURSO_AUTH_TOKEN!,
+  },
+});
+```
+
+### Connect Drizzle ORM to local Turso
+
+For connecting `Turso` database locally, I write the following code into `db/index.ts` as below:
+
+```js
+import { drizzle } from 'drizzle-orm/libsql';
+import { createClient } from '@libsql/client';
+const client = createClient({
+  url: process.env.TURSO_CONNECTION_URL!,
+  authToken: process.env.TURSO_AUTH_TOKEN!,
+});
+export const db = drizzle(client);
+```
+
+### Create tables in Turso database
+
+The code below is a demonstration of creating a `os` table in `osalts` database
+
+```js
+import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+
+export const aes = sqliteTable("os", {
+  id: integer("id").notNull().primaryKey().unique(),
+  createAt: text("createAt")
+    .notNull()
+    .default(sql`(current_timestamp)`),
+});
+```
+
+And `drizzle-kit generate` lets you generate migrations based on you Drizzle schema.
+
+```sh
+bunx drizzle-kit generate
+# drizzle-kit: v0.22.4
+# drizzle-orm: v0.31.1
+
+# No config path provided, using default 'drizzle.config.ts'
+# Reading config file '/home/a/osalts/drizzle.config.ts'
+# 1 tables
+# os 2 columns 1 indexes 0 fks
+```
+
+### Generate the Migration
+
+```sh
+bunx drizzle-kit generate
+# drizzle-kit: v0.22.4
+# drizzle-orm: v0.31.1
+
+# No config path provided, using default 'drizzle.config.ts'
+# Reading config file '/home/a/osalts/drizzle.config.ts'
+# 1 tables
+# os 2 columns 1 indexes 0 fks
+```
+
+This will generate a migration SQL file:
+
+```sql
+CREATE TABLE `os` (
+	`id` integer PRIMARY KEY NOT NULL,
+	`createAt` text DEFAULT (current_timestamp) NOT NULL
+);
+--> statement-breakpoint
+CREATE UNIQUE INDEX `os_id_unique` ON `os` (`id`);
+```
+
+### Push the Schema to Turso Database
+
+`drizzle-kit push` lets you push the schema changes directly to the `osalts` database
+
+```sh
+bunx drizzle-kit push
+# drizzle-kit: v0.22.4
+# drizzle-orm: v0.31.1
+
+# No config path provided, using default path
+# Reading config file '/home/a/osalts/drizzle.config.ts'
+# [✓] Pulling schema from database...[✓] Changes applied
+```
+
+After that, you will see the schema of `os` table in `Turso` database.
+
+```sh
+turso db shell osalts '.schema'
+# CREATE TABLE `os` (
+#         `id` integer PRIMARY KEY NOT NULL,
+#         `createAt` text DEFAULT (current_timestamp) NOT NULL
+# );
+# CREATE UNIQUE INDEX `os_id_unique` ON `os` (`id`);
+```
+
+Let's stop here for today and continue adding more later.
+
+## References
+
+- https://orm.drizzle.team/learn/tutorials/drizzle-with-turso
+- https://orm.drizzle.team/docs/get-started-sqlite
+- https://docs.turso.tech/quickstart
