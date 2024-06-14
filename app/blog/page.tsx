@@ -1,7 +1,9 @@
 "use client";
 import { FormEvent, useCallback, useRef, useState } from "react";
 import Link from "next/link";
-import { HiMiniMagnifyingGlass, HiXCircle } from "react-icons/hi2";
+import { HiMiniMagnifyingGlass } from "react-icons/hi2";
+import { BsXCircleFill } from "react-icons/bs";
+
 import allPosts from "generated/content.json";
 import ViewCounter from "@/components/view-counter";
 import useKeyPress from "@/hooks/use-key-press";
@@ -42,7 +44,7 @@ const Blog = () => {
         </p>
         <div className="relative w-full mb-4">
           <HiMiniMagnifyingGlass className="flex left-3 top-1/2 translate-y-[-50%] absolute w-5 h-5 text-slate-400" />
-          <HiXCircle
+          <BsXCircleFill
             onClick={() => {
               setserachPosts("");
             }}
