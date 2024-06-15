@@ -24,10 +24,10 @@ const HomePage = {
       default: "Shen Lu's Blog",
       template: `%s | Shen Lu's Blog`,
     },
-    description: "A full-stack developer and data visualisation enthusiast.",
+    description: "A solopreneur and data visualisation enthusiast.",
     openGraph: {
       title: "Shen Lu",
-      description: "A full-stack developer and data visualisation enthusiast.",
+      description: "A solopreneur and data visualisation enthusiast.",
       url: "https://shenlu.me",
       siteName: "Shen Lu",
       locale: "en-US",
@@ -52,7 +52,7 @@ const HomePage = {
     },
   },
   title: "Shen Lu",
-  description: "A full-stack developer and data visualisation enthusiast",
+  description: "A solopreneur and data visualisation enthusiast",
   motto: "Thinking merely poses questions, action will bring all answers.",
   url: "https://shenlu.me",
   avatar_url: "/images/avatar.jpg",
@@ -63,6 +63,23 @@ const WorksPage = {
     title: "Works",
     description: "The works I had made over the years.",
   },
+  showcase: [
+    {
+      href: "https://mathcheap.xyz",
+      title: "Mathcheap",
+      logoUrl: "/images/mathcheap-logo.svg",
+      imageUrl: "/images/mathcheap-showcase.png",
+      description: "A dead simple online LaTeX equation editor.",
+    },
+    {
+      href: "https://aes.shenlu.me",
+      title: "Amazing Endemic Species",
+      logoUrl: "/images/aes-logo.svg",
+      imageUrl: "/images/aes-showcase.png",
+      description:
+        "An open-source, community-driven SaaS (Species-as-a-Service) application.",
+    },
+  ],
 };
 
 const AboutPage = {
