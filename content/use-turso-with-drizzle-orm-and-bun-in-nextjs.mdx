@@ -5,7 +5,7 @@ date: "2024-06-11"
 
 On April 8th, 2024, the free Hobby database of [PlanetScale](https://planetscale.com/) plan would no longer be available.
 So I started to find an alternative. After the comparison of other serverless databases in the market,
-I decided to choose [Turso](https://turso.tech) as the database for the next project, [OSAlts](https://github.com/shenlu89/osalts).
+I decided to choose [Turso](https://turso.tech) as the database for the next project, [Amazing Endemic Species](https://github.com/shenlu89/amazing-endemic-species).
 
 Moreover, I used [Primsa](https://www.prisma.io/) as an Object-Relational Mapping (ORM) tool applied in my Next.js projects last year.
 However, I did not like its unique syntax of API design and the level of abstraction.
@@ -55,25 +55,25 @@ turso auth login
 
 ### Create a Database in Turso
 
-I create a database with the name `osalts`:
+I create a database with the name `aes`:
 
 ```sh
-turso db create osalts
-# Created database osalts at group default in 1.758s.
+turso db create aes
+# Created database aes at group default in 1.758s.
 # Start an interactive SQL shell with:
-# turso db shell osalts
+# turso db shell aes
 # To see information about the database, including a connection URL, run:
-# turso db show osalts
+# turso db show aes
 # To get an authentication token for the database, run:
-# turso db tokens create osalts
+# turso db tokens create aes
 ```
 
-And show the information about the `osalts` database with following command:
+And show the information about the `aes` database with following command:
 
 ```sh
-turso db show osalts
-# Name: oslats
-# URL: libsql://oslats-*****.turso.io
+turso db show aes
+# Name: aes
+# URL: libsql://aes-*****.turso.io
 # ID: ********
 # Group: default
 # Version: 0.24.7
@@ -91,8 +91,8 @@ turso db show osalts
 Connect with the database with following command:
 
 ```sh
-turso db shell osalts
-# Connected to osalts at libsql://osalts-****.turso.io
+turso db shell aes
+# Connected to aes at libsql://aes-****.turso.io
 # Welcome to Turso SQL shell!
 # Type ".quit" to exit the shell and ".help" to list all available commands.
 # →
@@ -110,7 +110,7 @@ tree -L 3 --gitignore db
 # db
 # ├── index.ts
 # ├── libsql
-# │ └── osalts.db
+# │ └── aes.db
 # ├── schema.ts
 # └── seed.ts
 ```
@@ -121,16 +121,16 @@ Create a `.env` file in the root directory with the connection url and authentic
 get database name and token from the following command:
 
 ```sh
-turso db show --url osalts
-#libsql://osalts-*****.turso.io
-turso db tokens create osalts
+turso db show --url aes
+#libsql://aes-*****.turso.io
+turso db tokens create aes
 #eyj******Cw
 ```
 
 Then Paste the connection url and authentication token in `.env` as below:
 
 ```sh
-TURSO_DATABASE_URL='libsql://oslats-*****.turso.io'
+TURSO_DATABASE_URL='libsql://aes-*****.turso.io'
 TURSO_AUTH_TOKEN="*******"
 ```
 
@@ -168,11 +168,11 @@ export const db = drizzle(client);
 
 ### Create tables in Turso database
 
-The code below is a demonstration of creating a `os` table in `osalts` database
+The code below is a demonstration of creating a `aes` table in `aes` database
 
 ```js
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
-export const os = sqliteTable("os", {
+export const aes = sqliteTable("aes", {
   id: integer("id").notNull().primaryKey().unique(),
   createAt: text("createAt")
     .notNull()
@@ -189,44 +189,44 @@ bunx drizzle-kit generate
 # drizzle-kit: v0.22.4
 # drizzle-orm: v0.31.1
 # No config path provided, using default 'drizzle.config.ts'
-# Reading config file '/home/a/osalts/drizzle.config.ts'
+# Reading config file '/home/a/aes/drizzle.config.ts'
 # 1 tables
-# os 2 columns 1 indexes 0 fks
+# aes 2 columns 1 indexes 0 fks
 ```
 
 This will generate a migration SQL file:
 
 ```sql
-CREATE TABLE `os` (
+CREATE TABLE `aes` (
 `id` integer PRIMARY KEY NOT NULL,
 `createAt` text DEFAULT (current_timestamp) NOT NULL
 );
 --> statement-breakpoint
-CREATE UNIQUE INDEX `os_id_unique` ON `os` (`id`);
+CREATE UNIQUE INDEX `aes_id_unique` ON `aes` (`id`);
 ```
 
 ### Push the Schema to Turso Database
 
-`drizzle-kit push` lets you push the schema changes directly to the `osalts` database
+`drizzle-kit push` lets you push the schema changes directly to the `aes` database
 
 ```sh
 bunx drizzle-kit push
 # drizzle-kit: v0.22.4
 # drizzle-orm: v0.31.1
 # No config path provided, using default path
-# Reading config file '/home/a/osalts/drizzle.config.ts'
+# Reading config file '/home/a/aes/drizzle.config.ts'
 # [✓] Pulling schema from database…[✓] Changes applied
 ```
 
-After that, you will see the schema of `os` table in `Turso` database.
+After that, you will see the schema of `aes` table in `Turso` database.
 
 ```sh
-turso db shell osalts '.schema'
-# CREATE TABLE `os` (
+turso db shell aes '.schema'
+# CREATE TABLE `aes` (
 # `id` integer PRIMARY KEY NOT NULL,
 # `createAt` text DEFAULT (current_timestamp) NOT NULL
 # );
-# CREATE UNIQUE INDEX `os_id_unique` ON `os` (`id`);
+# CREATE UNIQUE INDEX `aes_id_unique` ON `aes` (`id`);
 ```
 
 Let's stop here for today and continue adding more later.
