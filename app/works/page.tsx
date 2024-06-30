@@ -5,6 +5,8 @@ import { WorksPage } from "@/data/meta-data";
 
 export const metadata: Metadata = WorksPage.metadata;
 
+const { showcase } = WorksPage;
+
 export default function Projects() {
   return (
     <div className="flex flex-col relative max-w-none prose dark:prose-invert">
@@ -16,20 +18,15 @@ export default function Projects() {
         <hr />
         <h2>Projects</h2>
         <div className="flex flex-col space-y-4">
-          <Showcase
-            href="https://mathcheap.xyz"
-            title="Mathcheap"
-            logoUrl="/images/mathcheap-logo.svg"
-            imageUrl="/images/mathcheap-showcase.png"
-            description="A dead simple online LaTeX equation editor."
-          />
-          <Showcase
-            href="https://aes.shenlu.me"
-            title="Amazing Endemic Species"
-            logoUrl="/images/aes-logo.svg"
-            imageUrl="/images/aes-showcase.png"
-            description="An open-source, community-driven Species-as-a-Service application."
-          />
+          {showcase.map((sc: any) => (
+            <Showcase
+              href={sc.href}
+              title={sc.title}
+              logoUrl={sc.logoUrl}
+              imageUrl={sc.imageUrl}
+              description={sc.description}
+            />
+          ))}
         </div>
         <hr />
         <h2>Publications</h2>
