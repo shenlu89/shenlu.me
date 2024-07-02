@@ -17,7 +17,7 @@ export default function Projects() {
         </div>
         <hr />
         <h2>Projects</h2>
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col md:flex-row md:space-x-4 space-x-0 md:space-y-0 space-y-4">
           {showcase.map((sc: any) => (
             <Showcase
               href={sc.href}
