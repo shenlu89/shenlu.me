@@ -29,18 +29,18 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
             </div>
           </div>
           <hr className="border border-x-transparent border-t-transparent my-4 border-b-slate-200 dark:border-b-slate-400 w-full px-4" />
-          <div className="flex text-start text-slate-600 dark:text-slate-200">
+          <p className="flex text-start text-slate-600 dark:text-slate-200">
             {description}
-          </div>
+          </p>
         </div>
       </div>
-      {/* <Image
+      <Image
         src={imageUrl}
         alt={title}
         width="300"
         height="0"
         className="flex shadow self-center justify-center !ml-0 !mt-0"
-      /> */}
+      />
     </Link>
   );
 };
