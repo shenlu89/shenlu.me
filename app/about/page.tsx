@@ -9,6 +9,7 @@ import {
   SiRedis,
   SiPostgresql,
   SiSqlite,
+  SiDrizzle,
 } from "react-icons/si";
 
 import { AboutPage } from "@/data/meta-data";
@@ -19,80 +20,85 @@ const techStackIcons = [
   {
     title: "JavaScript",
     href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    icon: <IoLogoJavascript className="w-6 h-6" />,
+    icon: <IoLogoJavascript className="size-6" />,
     target: "_blank",
   },
   {
     title: "Python",
     href: "https://www.python.org/",
-    icon: <FaPython className="w-6 h-6" />,
+    icon: <FaPython className="size-6" />,
     target: "_blank",
   },
   {
     title: "Rust",
     href: "https://www.rust-lang.org/",
-    icon: <FaRust className="w-6 h-6" />,
+    icon: <FaRust className="size-6" />,
     target: "_blank",
   },
   {
     title: "React",
     href: "https://react.dev/",
-    icon: <FaReact className="w-6 h-6" />,
+    icon: <FaReact className="size-6" />,
     target: "_blank",
   },
   {
     title: "Prisma",
     href: "https://www.prisma.io/",
-    icon: <SiPrisma className="w-6 h-6" />,
+    icon: <SiPrisma className="size-6" />,
     target: "_blank",
   },
-
+  {
+    title: "Drizzle",
+    href: "https://orm.drizzle.team/",
+    icon: <SiDrizzle className="size-6" />,
+    target: "_blank",
+  },
   {
     title: "Node",
     href: "https://nodejs.org/en",
-    icon: <FaNodeJs className="w-6 h-6" />,
+    icon: <FaNodeJs className="size-6" />,
     target: "_blank",
   },
   {
     title: "Vercel",
     href: "https://vercel.com/",
-    icon: <IoLogoVercel className="w-6 h-6" />,
+    icon: <IoLogoVercel className="size-6" />,
     target: "_blank",
   },
   {
     title: "PostgreSQL",
     href: "https://www.postgresql.org/",
-    icon: <SiPostgresql className="w-6 h-6" />,
+    icon: <SiPostgresql className="size-6" />,
     target: "_blank",
   },
   {
     title: "Redis",
     href: "https://redis.io/",
-    icon: <SiRedis className="w-6 h-6" />,
+    icon: <SiRedis className="size-6" />,
     target: "_blank",
   },
   {
     title: "SQLite",
     href: "https://sqlite.org/",
-    icon: <SiSqlite className="w-6 h-6" />,
+    icon: <SiSqlite className="size-6" />,
     target: "_blank",
   },
   {
     title: "Ubuntu",
     href: "https://ubuntu.com/",
-    icon: <FaUbuntu className="w-6 h-6" />,
+    icon: <FaUbuntu className="size-6" />,
     target: "_blank",
   },
   {
     title: "VSCode",
     href: "https://code.visualstudio.com/",
-    icon: <TbBrandVscode className="w-6 h-6" />,
+    icon: <TbBrandVscode className="size-6" />,
     target: "_blank",
   },
   {
     title: "Vim",
     href: "https://www.vim.org/",
-    icon: <SiVim className="w-6 h-6" />,
+    icon: <SiVim className="size-6" />,
     target: "_blank",
   },
 ];
