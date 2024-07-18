@@ -3,8 +3,8 @@ import "katex/dist/katex.min.css";
 
 import type { Metadata } from "next";
 import Script from "next/script";
+import { ThemeProvider } from "next-themes";
 
-import Providers from "@/components/providers";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import LocalFont from "@/lib/local-font";
@@ -20,13 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body className={`flex flex-col h-screen ${LocalFont.className}`}>
-        <Providers>
+        <ThemeProvider enableSystem={true} attribute="class">
           <Header />
           <main className="max-w-3xl container text-black dark:text-white mx-auto px-6 py-6 flex-1 leading-6">
             {children}
           </main>
           <Footer />
-        </Providers>
+        </ThemeProvider>
         {process.env.NODE_ENV === "production" && (
           <Script
             async
