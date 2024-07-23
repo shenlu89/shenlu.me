@@ -7,7 +7,7 @@ export const metadata: Metadata = WorksPage.metadata;
 
 const { showcase } = WorksPage;
 
-export default function Projects() {
+export default function Works() {
   return (
     <div className="flex flex-col relative max-w-none prose dark:prose-invert">
       <h1>Works</h1>
