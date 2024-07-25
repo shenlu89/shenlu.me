@@ -8,7 +8,7 @@ import allPosts from "generated/content.json";
 import ViewCounter from "@/components/view-counter";
 import useKeyPress from "@/hooks/use-key-press";
 
-const Blog = () => {
+export default function Blog() {
   const [serachPosts, setserachPosts] = useState<string>("");
   const searchInput = useRef<HTMLInputElement>(null);
   const filteredBlogPosts = allPosts.filter((post: any) =>
@@ -92,5 +92,3 @@ const Blog = () => {
     </>
   );
 };
-
-export default Blog;
