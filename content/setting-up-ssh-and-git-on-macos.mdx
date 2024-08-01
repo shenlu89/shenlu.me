@@ -1,0 +1,101 @@
+---
+title: Setting up SSH and Git on MacOS
+date: "2024-08-01"
+---
+
+After recieving my new Macbook, I started setting up development environment on **MacOS**.
+To set up **Git** on **MacOS**, I generated a new **SSH** key on my Mackbook and
+add it to my **GitHub** account to enable authentication for **Git** operations over **SSH**.
+
+## 1. Generating a new SSH key
+
+I open a terminal and paste the text below to generate a new **SSH** key:
+
+```bash
+$ ssh-keygen -t ed25519 -C "your_email@example.com"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/Users/shenlu/.ssh/id_ed25519):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /Users/shenlu/.ssh/id_ed25519
+Your public key has been saved in /Users/shenlu/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:kWkioRYSeKUUpNBRckvF/JGfJ+wfcu2FrtE6/TYgrr0 your_email@example.com
+The key's randomart image is:
++--[ED25519 256]--+
+|=+B=*+.  .       |
+|o+oB oo oo       |
+|..+ o ..=+ .     |
+| .   . o..= .    |
+|        S. o . . |
+|          o.ooo .|
+|          .+o=o. |
+|          ..oo+..|
+|         ..E+o oo|
++----[SHA256]-----+
+```
+
+The `-t` flag sets the encryption algorithm to `ed25519`. It was prompted to enter a passphrase.
+Replace `your_email@example.com` with your **GitHub** account email. 
+The `-C` flag adds a comment or label to identify the key, and using an email address is common. 
+
+> Ed25519 is a public-key signature system and elliptic curve signing algorithm that uses EdDSA and Curve25519.
+
+## 2. Adding a new SSH key to GitHub account
+
+To copy the public key to your clipboard, you can do the following:
+
+```bash
+$ pbcopy < ~/.ssh/id_ed25519.pub
+# Copies the contents of the id_ed25519.pub file to your clipboard
+```
+
+>If pbcopy isn't working, you can locate the hidden `.ssh` folder, 
+open the file in your favorite text editor, and copy it to your clipboard.
+
+Paste the public key into your **GitHub** settings. You can do this by:
+- 1. Opening **GitHub** and logging in
+- 2. Navigating to Settings
+- 3. Clicking **SSH** and **GPG** keys
+- 4. Clicking `New SSH key`
+- 5. Entering a title for the key
+- 6. Pasting the key into the Key section
+- 7. Clicking `Add SSH Key`
+- 8. Entering your account password if prompted
+
+## 3. Git Configuration
+
+Install homebrew if you don't already have it, then:
+
+```bash
+brew install git
+```
+
+**Git** configuration settings with the git config command. 
+One of the first things you did was set up your name and email address:
+
+```bash
+$ git config --global user.name "Shen Lu"
+$ git config --global user.email shenlu89dev@gmail.com
+```
+
+Check if **Git** can normally connect with your **GitHub** account with **SSH**:
+
+```bash
+$ ssh -T -p 443 git@ssh.github.com
+The authenticity of host '[ssh.github.com]:443 ([20.205.243.160]:443)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This host key is known by the following other names/addresses:
+    ~/.ssh/known_hosts:1: github.com
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[ssh.github.com]:443' (ED25519) to the list of known hosts.
+Hi shenlu89! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+Now you can freely use **SSH** to authenticate **Git** operations.
+
+## Reference
+
+- https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+- https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+- https://git-scm.com/download/mac
