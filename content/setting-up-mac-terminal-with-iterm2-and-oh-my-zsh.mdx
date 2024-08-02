@@ -1,0 +1,115 @@
+---
+title: Setting up Mac Terminal with iTerm2 and Oh My Zsh
+date: "2024-08-03"
+---
+
+After finishing configuration of **SSH** and **Git**, I hope use Mac terminal with elegant an theme. 
+To fulfill this propose, I decided to use **iTerm2** as the terminal and 
+manage **Zsh** configuration via **Oh My Zsh**.
+
+## Install iTerm2
+
+Install [iTerm2](https://ohmyz.sh/#install), then open and configure its `Profile` (color presets) like below. 
+
+![](/images/content/setting-up-mac-terminal-with-iterm2-and-oh-my-zsh/iterm2.png)
+
+**Zsh** is the default shell program on **MacOS** and you can check the current shell by following command line:
+
+```bash
+echo $SHELL
+/bin/zsh
+```
+
+## Install Oh My Zsh
+
+To install **Oh My Zsh**, Running the following commands in your terminal:
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+## Configure Oh My Zsh
+
+Open `~/.zshrc` to modify `ZSH_THEME="robbyrussell"` to `ZSH_THEME="agnoster"`.
+
+```bash
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time Oh My Zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="agnoster"
+```
+
+## Install Powerline Fonts
+
+To install Powerline fonts, you just copy, paste and run these commands to your terminal.
+
+```bash
+# clone
+git clone https://github.com/powerline/fonts.git --depth=1
+# install
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+```
+
+then configure `Font` (Meslo LG M DZ for Powerline) in **iTerm2** as below:
+
+![](/images/content/setting-up-mac-terminal-with-iterm2-and-oh-my-zsh/fonts.png)
+
+## Install Oh My Zsh Plugins
+
+Clone `zsh-autosuggestions` and `zsh-syntax-highlighting` into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)
+
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+Add the plugin to the list of plugins for **Oh My Zsh** to load (inside ~/.zshrc):
+
+```bash
+plugins=( 
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
+```
+
+After runing `source ~/.zshrc`, you will see as below.
+
+![](/images/content/setting-up-mac-terminal-with-iterm2-and-oh-my-zsh/ohmyzsh.png)
+
+However, I cannot normally use `brew` after installing **Oh My Zsh**.
+Then I figure out when installing **Oh My Zsh**, it moves all contents of the existing 
+`.zshrc` file into a new file it creates called `~/.zshrc.pre-oh-my-zsh`.
+
+To solve this issue, I add the following commands into `.zshrc` as below:
+
+```bash
+# Old configuration
+if [ -f "$HOME/.zshrc.pre-oh-my-zsh" ]; then
+    source "$HOME/.zshrc.pre-oh-my-zsh"
+fi
+```
+
+## Customize Keyboard Shortcuts on MacOS
+
+When I used terminal on **Ubuntu**, there is a keyboard shortcut, `Ctrl` + `Alt` + `T`, which helped me quickly open a terminal. 
+But there is no same shortcut on **MacOS**. Thus, I need customize keyboard shortcut as same as it on **Ubuntu**.
+
+To customize keyboard shortcut, click `System Setting` > `Keyboard` > `Keyboard Shortcuts` > `App Shortcuts` > `+`.
+
+Then I configure shortcut as following:
+
+![](/images/content/customize-keyboard-shortcuts-on-macos/customize.png)
+
+And it works.
+
+## Reference
+- https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+- https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+- https://stackoverflow.com/questions/76000164/in-macos-how-to-get-back-the-contents-of-zshrc-file-after-installing-oh-my
+- https://support.apple.com/guide/mac-help/create-keyboard-shortcuts-for-apps-mchlp2271/14.0/mac/14.0
