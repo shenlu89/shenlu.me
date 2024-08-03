@@ -3,8 +3,8 @@ title: Setting up Mac Terminal with iTerm2 and Oh My Zsh
 date: "2024-08-03"
 ---
 
-After finishing configuration of **SSH** and **Git**, I hope use Mac terminal with elegant an theme. 
-To fulfill this propose, I decided to use **iTerm2** as the terminal and 
+After finishing the configuration of **SSH** and **Git**, I hope to use a Mac terminal with an elegant theme. 
+To fulfill this purpose, I decided to use **iTerm2** as the terminal and 
 manage **Zsh** configuration via **Oh My Zsh**.
 
 ## Install iTerm2
@@ -13,7 +13,7 @@ Install [iTerm2](https://ohmyz.sh/#install), then open and configure its `Profil
 
 ![](/images/content/setting-up-mac-terminal-with-iterm2-and-oh-my-zsh/iterm2.png)
 
-**Zsh** is the default shell program on **MacOS** and you can check the current shell by following command line:
+**Zsh** is the default shell program on **MacOS** and you can check the current shell by following the command line:
 
 ```bash
 echo $SHELL
@@ -22,7 +22,7 @@ echo $SHELL
 
 ## Install Oh My Zsh
 
-To install **Oh My Zsh**, Running the following commands in your terminal:
+To install **Oh My Zsh**, Runn the following commands in your terminal:
 
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -42,7 +42,7 @@ ZSH_THEME="agnoster"
 
 ## Install Powerline Fonts
 
-To install Powerline fonts, you just copy, paste and run these commands to your terminal.
+To install Powerline fonts, you can just copy, paste, and run these commands to your terminal.
 
 ```bash
 # clone
@@ -82,9 +82,9 @@ After runing `source ~/.zshrc`, you will see as below.
 
 ![](/images/content/setting-up-mac-terminal-with-iterm2-and-oh-my-zsh/ohmyzsh.png)
 
-However, I cannot normally use `brew` after installing **Oh My Zsh**.
-Then I figure out when installing **Oh My Zsh**, it moves all contents of the existing 
-`.zshrc` file into a new file it creates called `~/.zshrc.pre-oh-my-zsh`.
+However, I cannot normally use `brew` it after installing **Oh My Zsh**. 
+Then I figured out that when installing **Oh My Zsh**, 
+it moves all contents of the existing `.zshrc` file into a new file it creates called `~/.zshrc.pre-oh-my-zsh`.
 
 To solve this issue, I add the following commands into `.zshrc` as below:
 
@@ -97,12 +97,12 @@ fi
 
 ## Customize Keyboard Shortcuts on MacOS
 
-When I used terminal on **Ubuntu**, there is a keyboard shortcut, `Ctrl` + `Alt` + `T`, which helped me quickly open a terminal. 
-But there is no same shortcut on **MacOS**. Thus, I need customize keyboard shortcut as same as it on **Ubuntu**.
+When I used the terminal on **Ubuntu**, there is a keyboard shortcut, `Ctrl` + `Alt` + `T`, which helped me quickly open a terminal. 
+But there is no same shortcut on **MacOS**. Thus, I need to customize the keyboard shortcut as the same as on **Ubuntu**.
 
-To customize keyboard shortcut, click `System Setting` > `Keyboard` > `Keyboard Shortcuts` > `App Shortcuts` > `+`.
+To customize the keyboard shortcut, click `System Setting` > `Keyboard` > `Keyboard Shortcuts` > `App Shortcuts` > `+`.
 
-Then I configure shortcut as following:
+Then I configure the shortcut as follows:
 
 ![](/images/content/customize-keyboard-shortcuts-on-macos/customize.png)
 
