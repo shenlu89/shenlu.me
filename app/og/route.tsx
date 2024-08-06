@@ -1,6 +1,8 @@
 import { ImageResponse } from "next/og"; // App router includes @vercel/og.
 // No need to install it.
 
+import { HomePage } from "@/data/meta-data";
+
 export const runtime = "edge";
 
 export async function GET(request: Request) {
@@ -74,9 +76,9 @@ export async function GET(request: Request) {
                 alt="Shen Lu"
               />
               <div tw="flex flex-col">
-                <span tw="flex text-4xl font-extrabold mb-4">Shen Lu</span>
+                <span tw="flex text-4xl font-extrabold mb-4">{HomePage.title}</span>
                 <span tw="flex text-3xl text-gray-600">
-                  A full-stack developer and data visualisation enthusiast
+                  {HomePage.description}
                 </span>
               </div>
             </div>
