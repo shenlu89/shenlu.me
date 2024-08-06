@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "@/components/custom-link";
-import { FaNodeJs, FaReact, FaRust, FaUbuntu, FaPython } from "react-icons/fa";
+import { FaNodeJs, FaReact, FaRust, FaUbuntu, FaPython, FaDocker } from "react-icons/fa";
 import { IoLogoJavascript, IoLogoVercel } from "react-icons/io5";
 import { TbBrandVscode } from "react-icons/tb";
 import {
@@ -84,6 +84,12 @@ const techStackIcons = [
     target: "_blank",
   },
   {
+    title: "Docker",
+    href: "https://docker.com/",
+    icon: <FaDocker className="size-7" />,
+    target: "_blank",
+  },
+  {
     title: "Ubuntu",
     href: "https://ubuntu.com/",
     icon: <FaUbuntu className="size-6" />,
@@ -92,7 +98,7 @@ const techStackIcons = [
   {
     title: "VSCode",
     href: "https://code.visualstudio.com/",
-    icon: <TbBrandVscode className="size-6" />,
+    icon: <TbBrandVscode className="size-7" />,
     target: "_blank",
   },
   {
@@ -110,7 +116,7 @@ export default function About() {
       <div>
         <div>
           <p>
-            Hi, I’m Shen Lu 👋, a solopreneur and data visualization enthusiast,
+            Hi, I’m Shen Lu 👋, an indie developer and data visualization enthusiast,
             especially in bioinformatics.
           </p>
         </div>
