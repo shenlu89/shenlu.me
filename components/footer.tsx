@@ -5,25 +5,25 @@ const SocialIcons = [
   {
     title: "Medium",
     href: "https://medium.com/@shenlu89",
-    icon: <FaMedium className="w-6 h-6" />,
+    icon: <FaMedium className="size-6" />,
     target: "_blank",
   },
   {
     title: "Discord",
     href: "https://discord.gg/QqucGZFRz7",
-    icon: <FaDiscord className="w-6 h-6" />,
+    icon: <FaDiscord className="size-6" />,
     target: "_blank",
   },
   {
     title: "X",
     href: "https://twitter.com/shenlu89",
-    icon: <FaXTwitter className="w-6 h-6" />,
+    icon: <FaXTwitter className="size-6" />,
     target: "_blank",
   },
   {
     title: "GitHub",
     href: "https://github.com/shenlu89/shenlu.me",
-    icon: <FaGithub className="w-6 h-6" />,
+    icon: <FaGithub className="size-6" />,
     target: "_blank",
   },
 ];

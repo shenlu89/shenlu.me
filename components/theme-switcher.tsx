@@ -16,7 +16,7 @@ const ThemeSwitcher: NextPage = () => {
       onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       className="flex items-center p-2 outline-none rounded-full text-slate-600 bg-slate-200 dark:bg-slate-600  hover:bg-slate-600 hover:text-white dark:text-white dark:hover:bg-slate-200 dark:hover:text-black"
     >
-      <IconToUse className="w-6 h-6" />
+      <IconToUse className="size-6" />
     </button>
   );
 };
