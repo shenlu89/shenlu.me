@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import Link from "@/components/custom-link";
 import { FaNodeJs, FaReact, FaRust, FaUbuntu, FaPython, FaDocker } from "react-icons/fa";
 import { IoLogoJavascript, IoLogoVercel } from "react-icons/io5";
-import { TbBrandVscode } from "react-icons/tb";
+import { TbBrandVscode, TbBrandThreejs } from "react-icons/tb";
+
 import {
   SiVim,
   SiPrisma,
@@ -21,91 +22,81 @@ const techStackIcons = [
     title: "JavaScript",
     href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
     icon: <IoLogoJavascript className="size-6" />,
-    target: "_blank",
   },
   {
     title: "Python",
     href: "https://www.python.org/",
     icon: <FaPython className="size-6" />,
-    target: "_blank",
   },
   {
     title: "Rust",
     href: "https://www.rust-lang.org/",
     icon: <FaRust className="size-6" />,
-    target: "_blank",
   },
   {
     title: "React",
     href: "https://react.dev/",
     icon: <FaReact className="size-6" />,
-    target: "_blank",
+  },
+  {
+    title: "Three.js",
+    href: "https://threejs.org/",
+    icon: <TbBrandThreejs className="size-6" />,
   },
   {
     title: "Prisma",
     href: "https://www.prisma.io/",
     icon: <SiPrisma className="size-6" />,
-    target: "_blank",
   },
   {
     title: "Drizzle",
     href: "https://orm.drizzle.team/",
     icon: <SiDrizzle className="size-6" />,
-    target: "_blank",
   },
   {
     title: "Node",
     href: "https://nodejs.org/en",
     icon: <FaNodeJs className="size-6" />,
-    target: "_blank",
   },
   {
     title: "Vercel",
     href: "https://vercel.com/",
     icon: <IoLogoVercel className="size-6" />,
-    target: "_blank",
   },
   {
     title: "PostgreSQL",
     href: "https://www.postgresql.org/",
     icon: <SiPostgresql className="size-6" />,
-    target: "_blank",
   },
   {
     title: "Redis",
     href: "https://redis.io/",
     icon: <SiRedis className="size-6" />,
-    target: "_blank",
   },
   {
     title: "SQLite",
     href: "https://sqlite.org/",
     icon: <SiSqlite className="size-6" />,
-    target: "_blank",
   },
   {
     title: "Docker",
     href: "https://docker.com/",
     icon: <FaDocker className="size-7" />,
-    target: "_blank",
   },
   {
     title: "Ubuntu",
     href: "https://ubuntu.com/",
     icon: <FaUbuntu className="size-6" />,
-    target: "_blank",
   },
   {
     title: "VSCode",
     href: "https://code.visualstudio.com/",
     icon: <TbBrandVscode className="size-7" />,
-    target: "_blank",
   },
   {
     title: "Vim",
     href: "https://www.vim.org/",
     icon: <SiVim className="size-6" />,
-    target: "_blank",
   },
 ];
 
@@ -139,7 +130,6 @@ export default function About() {
               key={tech.title}
               className="text-inherit hover:text-black mb-2 dark:text-slate-200 dark:hover:text-white"
               href={tech.href}
-              target={"_blank"}
             >
               {tech.icon}
             </Link>
