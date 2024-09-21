@@ -1,13 +1,14 @@
 import { Metadata } from "next";
 import Link from "@/components/custom-link";
+import Image from "next/image"
 import { FaNodeJs, FaReact, FaRust, FaUbuntu, FaPython, FaDocker } from "react-icons/fa";
 import { IoLogoJavascript, IoLogoVercel } from "react-icons/io5";
 import { TbBrandVscode, TbBrandThreejs } from "react-icons/tb";
+import { DiRedis } from "react-icons/di";
 
 import {
   SiVim,
   SiPrisma,
-  SiRedis,
   SiPostgresql,
   SiSqlite,
   SiDrizzle,
@@ -71,7 +72,7 @@ const techStackIcons = [
   {
     title: "Redis",
     href: "https://redis.io/",
-    icon: <SiRedis className="size-6" />,
+    icon: <DiRedis className="size-9" />,
   },
   {
     title: "SQLite",
@@ -107,8 +108,7 @@ export default function About() {
       <div>
         <div>
           <p>
-            Hi, I’m Shen Lu 👋, an indie developer and data visualization enthusiast,
-            especially in bioinformatics.
+            Hi👋. I'm Shen Lu, an indie developer and data visualization enthusiast, especially in bioinformatics.
           </p>
         </div>
         <hr />
@@ -136,7 +136,7 @@ export default function About() {
           ))}
         </ul>
         <hr />
-        <h2>Analytics</h2>
+        <h2>Web Analytics</h2>
         <Link href="https://analytics.shenlu.me/share/apltJrEeXUVit3sP/shenlu.me">
           shenlu.me
         </Link>
