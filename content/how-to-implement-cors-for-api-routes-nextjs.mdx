@@ -21,10 +21,10 @@ If an opaque response serves your needs, set the request's mode to 'no-cors' to 
 
 There are two ways to solve this problem:
 
-- Define CORS in `headers` in configuration file, `next.config.js`
-- Create a middleware to handle the request
+- 1. Define CORS in `headers` in configuration file, `next.config.js`
+- 2. Create a middleware to handle the request
 
-### Define CORS in `headers` in configuration file
+### 1. Define CORS in `headers` in configuration file
 
 I used this method and configure `next.config.mjs` in
 [Amazing Endemic Species](https://github.com/shenlu89/amazing-endemic-species/blob/main/next.config.mjs) like below.
@@ -59,7 +59,7 @@ const nextConfig = {
 After this configuration, `shenlu.me` in local, `https://localhost:3000`, will normally get the data from API service,
 `https://aes.shenlu.me/api/v1/random`.
 
-### Create a middleware to handle the request
+### 2. Create a middleware to handle the request
 
 The secondary way I did not use, you can check this link, https://github.com/vercel/next.js/discussions/52933, to figure out.
 
