@@ -1,9 +1,7 @@
 "use client";
 import fetcher from "@/lib/fetcher";
-import Image from "next/image";
 import Link from "@/components/custom-link";
 import useSWR from "swr";
-import SpecieItem from "@/components/species-item";
 import SpeciesItem from "@/components/species-item";
 
 export default function NotFound() {
@@ -12,7 +10,6 @@ export default function NotFound() {
     isLoading,
     error,
   }: any = useSWR("https://aes.shenlu.me/api/v1/random", fetcher);
-  console.log(species);
   return (
     <>
       <h1 className="font-extrabold text-3xl tracking-tight mb-4">404</h1>
