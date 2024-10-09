@@ -3,7 +3,7 @@ const nextConfig = {
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
   swcMinify: true,
-  async headers () {
+  async headers() {
     return [
       {
         source: '/(.*)',
@@ -18,6 +18,12 @@ const nextConfig = {
         hostname: 'aes.shenlu.me',
         port: '',
         pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.qrserver.com',
+        port: '',
+        pathname: '/v1/create-qr-code/**',
       },
     ],
   },
