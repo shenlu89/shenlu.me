@@ -1,15 +1,7 @@
-"use client";
-import fetcher from "@/lib/fetcher";
 import Link from "@/components/custom-link";
-import useSWR from "swr";
 import SpeciesItem from "@/components/species-item";
 
 export default function NotFound() {
-  const {
-    data: species,
-    isLoading,
-    error,
-  }: any = useSWR("https://aes.shenlu.me/api/v1/random", fetcher);
   return (
     <>
       <h1 className="font-extrabold text-3xl tracking-tight mb-4">404</h1>
@@ -26,14 +18,7 @@ export default function NotFound() {
         </span>
       </div>
       <hr className="my-4" />
-      {!isLoading && !error && species?.image && (
-        <SpeciesItem
-          className="flex flex-col bg-slate-100 border p-4 space-y-4 relative text-slate-600 items-center rounded w-full"
-          key={species.id}
-          species={species}
-          imageUrl={species.image}
-        />
-      )}
+      <SpeciesItem />
     </>
   );
 }
