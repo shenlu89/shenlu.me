@@ -1,5 +1,3 @@
-"use client";
-import { ReactElement } from "react";
 import Image from "next/image";
 import {
   CONSERVATION_STATUS,
@@ -10,13 +8,16 @@ import {
 import Link from "@/components/custom-link";
 import getUnicodeFlagIcon from "country-flag-icons/unicode";
 
-const SpeciesItem = ({ children, ...props }: any): ReactElement => {
-  const { imageUrl, species, className } = props;
-  const { scientific_name, common_name, id, conservation_status, iso_code } =
-    species;
+export const runtime = 'edge';
+
+const SpeciesItem = async () => {
+  const res = await fetch("https://aes.shenlu.me/api/v1/random");
+  const { scientific_name, common_name, id, conservation_status, iso_code, image } = await res.json()
+  console.log(image)
 
   return (
-    <div className={className}>
+    <div className="flex flex-col bg-slate-100 border p-4 space-y-4 relative text-slate-600 items-center rounded w-full"
+    >
       <div className="flex space-x-4 justify-between w-full">
         <div className="flex flex-col space-y-2 text-sm no-wrap truncate">
           <div className="flex space-x-1">
@@ -46,7 +47,7 @@ const SpeciesItem = ({ children, ...props }: any): ReactElement => {
             href={WIKI_URI + COUNTRY_NAME.get(iso_code)}
             className="flex space-x-1 "
           >
-            <span className="hidden md:flex">ISO Code:</span>
+            <span className="hidden md:flex">Country:</span>
             <span className="text-black font-bold hover:text-red-600">{`${getUnicodeFlagIcon(
               iso_code
             )} ${COUNTRY_NAME.get(iso_code)}`}</span>
@@ -54,7 +55,7 @@ const SpeciesItem = ({ children, ...props }: any): ReactElement => {
         </div>
         <Link href={WIKI_URI + scientific_name.replace(/\s/g, "_")}>
           <Image
-            src={imageUrl}
+            src={image}
             width={110}
             height={110}
             alt=""
@@ -63,7 +64,7 @@ const SpeciesItem = ({ children, ...props }: any): ReactElement => {
         </Link>
         <Link
           href={WIKI_URI + CONSERVATION_STATUS.get(conservation_status)}
-          className={`flex absolute top-4 right-4 text-sm items-center ${conservation_status} justify-center rounded-full w-8 h-8 font-bold`}
+          className={`flex absolute top-4 right-4 text-sm items-center ${conservation_status} justify-center rounded-full size-8 font-bold`}
         >
           {conservation_status}
         </Link>
@@ -80,7 +81,8 @@ const SpeciesItem = ({ children, ...props }: any): ReactElement => {
               src="/images/aes-logo.svg"
               width={24}
               height={24}
-              alt=""
+              alt="Amazing Endemic Species"
+              priority
             />
             <div className="font-extrabold text-black text-lg">
               Amazing Endemic Species
@@ -92,9 +94,12 @@ const SpeciesItem = ({ children, ...props }: any): ReactElement => {
           </span>
         </div>
         <div>
-          <img
-            className="w-16 h-16"
+          <Image
+            width={64}
+            height={64}
+            alt="QR Code"
             src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aes.shenlu.me`}
+            priority
           />
         </div>
       </div>
