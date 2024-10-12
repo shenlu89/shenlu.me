@@ -3,12 +3,6 @@ import { FaGithub, FaXTwitter, FaDiscord, FaMedium } from "react-icons/fa6";
 
 const SocialIcons = [
   {
-    title: "Medium",
-    href: "https://medium.com/@shenlu89",
-    icon: <FaMedium className="size-6" />,
-    target: "_blank",
-  },
-  {
     title: "Discord",
     href: "https://discord.gg/QqucGZFRz7",
     icon: <FaDiscord className="size-6" />,
