@@ -8,12 +8,9 @@ import {
 import Link from "@/components/custom-link";
 import getUnicodeFlagIcon from "country-flag-icons/unicode";
 
-export const runtime = 'edge';
-
 const SpeciesItem = async () => {
-  const res = await fetch("https://aes.shenlu.me/api/v1/random");
+  const res = await fetch("https://aes.shenlu.me/api/v1/random", { cache: 'no-store' });
   const { scientific_name, common_name, id, conservation_status, iso_code, image } = await res.json()
-  console.log(image)
 
   return (
     <div className="flex flex-col bg-slate-100 border p-4 space-y-4 relative text-slate-600 items-center rounded w-full"
