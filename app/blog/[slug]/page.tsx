@@ -6,7 +6,8 @@ import Comment from "@/components/comment";
 import CustomMDX from "@/components/custom-mdx";
 import ViewCounter from "@/components/view-counter";
 
-export default function PostPage({ params }: { params: { slug: string } }) {
+export default async function PostPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const post = allPosts.find((post) => post.slug === params.slug);
   if (!post) notFound();
   return (
