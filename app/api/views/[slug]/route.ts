@@ -3,10 +3,8 @@ import { Redis } from "@upstash/redis";
 
 const redis = Redis.fromEnv();
 
-export async function GET(
-  _request: Request,
-  { params }: { params: { slug: string } }
-) {
+export async function GET(_request: Request, props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const { slug } = params;
 
   try {
@@ -23,10 +21,8 @@ export async function GET(
   }
 }
 
-export async function POST(
-  _request: Request,
-  { params }: { params: { slug: string } }
-) {
+export async function POST(_request: Request, props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const { slug } = params;
   try {
     const views = await redis.incr(slug);
