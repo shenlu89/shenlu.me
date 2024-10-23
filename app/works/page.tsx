@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Showcase from "@/components/showcase";
+import Showcases from "@/components/showcases";
+// import Showcase from "@/components/showcase";
 import { WorksPage } from "@/data/meta-data";
 
 export const metadata: Metadata = WorksPage.metadata;
@@ -17,16 +18,43 @@ export default function Works() {
         </div>
         <hr />
         <h2>Projects</h2>
-        <div className="flex flex-col md:flex-row md:space-x-4 space-x-0 md:space-y-0 space-y-4">
-          {showcase.map((sc: any) => (
-            <Showcase
-              href={sc.href}
-              title={sc.title}
-              logoUrl={sc.logoUrl}
-              imageUrl={sc.imageUrl}
-              description={sc.description}
-            />
-          ))}
+        <div className="flex flex-col space-y-4">
+          <div className="flex flex-col md:flex-row md:space-x-4 space-x-0 md:space-y-0 space-y-4">
+            {showcase.slice(0, 2).map((sc: any) => (
+              <Showcases
+                key={sc.title}
+                href={sc.href}
+                title={sc.title}
+                logoUrl={sc.logoUrl}
+                imageUrl={sc.imageUrl}
+                description={sc.description}
+              />
+            ))}
+          </div>
+          {/* <div className="hidden sm:flex flex-col md:flex-row md:space-x-4 space-x-0 md:space-y-0 space-y-4">
+            {showcase.slice(2).map((sc: any) => (
+              <Showcase
+                key={sc.title}
+                href={sc.href}
+                title={sc.title}
+                logoUrl={sc.logoUrl}
+                imageUrl={sc.imageUrl}
+                description={sc.description}
+              />
+            ))}
+          </div>
+          <div className="sm:hidden flex flex-col md:flex-row md:space-x-4 space-x-0 md:space-y-0 space-y-4">
+            {showcase.slice(2).map((sc: any) => (
+              <Showcase
+                key={sc.title}
+                href={sc.href}
+                title={sc.title}
+                logoUrl={sc.logoUrl}
+                imageUrl={sc.imageUrl}
+                description={sc.description}
+              />
+            ))}
+          </div> */}
         </div>
         <hr />
         <h2>Publications</h2>
