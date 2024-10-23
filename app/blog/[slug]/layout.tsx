@@ -2,11 +2,12 @@ import { Metadata } from "next";
 import { ReactNode } from "react";
 import allPosts from "generated/content.json";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata | undefined> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>;
+  }
+): Promise<Metadata | undefined> {
+  const params = await props.params;
   const post = allPosts.find((post) => post.slug === params.slug);
   if (!post) return;
   const { title, slug, publishedAt: publishedTime } = post;
