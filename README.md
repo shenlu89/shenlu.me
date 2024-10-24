@@ -1,6 +1,6 @@
 # shenlu.me
 
-Shen Lu's Blog, inspired by [leerob.io](https://leerob.io/).
+My portfolio built with Next.js, Tailwind, Giscus, Umami, Upstash, MDX, Bun, and Vercel.
 
 ## Features
 
