@@ -4,6 +4,7 @@ import Image from "next/image"
 import { FaNodeJs, FaReact, FaRust, FaUbuntu, FaPython, FaDocker } from "react-icons/fa";
 import { IoLogoJavascript, IoLogoVercel } from "react-icons/io5";
 import { TbBrandVscode, TbBrandThreejs } from "react-icons/tb";
+import { TfiEmail } from "react-icons/tfi";
 import { DiRedis } from "react-icons/di";
 
 import {
@@ -136,10 +137,16 @@ export default function About() {
           ))}
         </ul>
         <hr />
-        <h2>Web Analytics</h2>
-        <Link href="https://analytics.shenlu.me/share/apltJrEeXUVit3sP/shenlu.me">
-          shenlu.me
-        </Link>
+        <h2>Contact</h2>
+        <li className="flex items-center space-x-2 mb-4" title="Email">
+          <TfiEmail className="w-5 h-5" />
+          <Link
+            href="mailto: shelu89dev@gmail.com"
+            className="underline-offset-[3px] hover:underline hover:text-black"
+          >
+            shenlu89dev@gmail.com
+          </Link>
+        </li>
       </div>
     </div>
   );
