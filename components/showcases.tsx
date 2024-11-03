@@ -9,7 +9,7 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
     <Link
       href={href}
       target="_blank"
-      className="flex flex-col justify-between md:w-1/2 w-full no-underline p-6 border bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-black dark:border-slate-600 border-slate-200 rounded"
+      className="flex justify-between md:w-full w-full no-underline p-6 border bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-black dark:border-slate-600 border-slate-200 rounded"
     >
       <div className="flex item-center w-full md:flex-row justify-between space-y-4">
         <div className="flex flex-col w-full items-center md:items-start">

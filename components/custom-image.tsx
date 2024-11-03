@@ -10,7 +10,7 @@ export default function CustomImg({ src, alt, width, height, ...props }: any) {
       height={height || 0}
       sizes="100vw"
       style={{
-        width: "100%",
+        width: "240px",
         height: "auto",
       }}
       priority={true}
