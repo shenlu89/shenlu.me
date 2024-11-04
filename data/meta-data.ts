@@ -24,10 +24,10 @@ const HomePage = {
       default: "Shen Lu's Blog",
       template: `%s | Shen Lu's Blog`,
     },
-    description: "Indie developer and data visualisation enthusiast.",
+    description: "Thoughts and practices on independent development.",
     openGraph: {
       title: "Shen Lu",
-      description: "Indie developer and data visualisation enthusiast.",
+      description: "Thoughts and practices on independent development.",
       url: "https://shenlu.me",
       siteName: "Shen Lu",
       locale: "en-US",
@@ -52,8 +52,7 @@ const HomePage = {
     },
   },
   title: "Shen Lu",
-  description: "Indie developer and data visualisation enthusiast",
-  motto: "Thinking merely poses questions, action will bring all answers.",
+  description: "Thoughts and practices on independent development.",
   url: "https://shenlu.me",
   avatar_url: "/images/avatar.jpg",
 };
@@ -70,6 +69,14 @@ const WorksPage = {
       logoUrl: "/images/mathcheap-logo.svg",
       imageUrl: "/images/mathcheap-showcase.png",
       description: "A dead simple online LaTeX equation editor.",
+    },
+    {
+      href: "https://gre.shenlu.me",
+      title: "GRE GO",
+      logoUrl: "/images/grego-logo.svg",
+      imageUrl: "/images/grego-showcase.png",
+      description:
+        "A toolkit that can help you practice and prepare effectively for the GRE Analytical Writing.",
     },
     {
       href: "https://aes.shenlu.me",
