@@ -9,7 +9,7 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
     <Link
       href={href}
       target="_blank"
-      className="flex justify-between md:w-full w-full no-underline p-6 border bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-black dark:border-slate-600 border-slate-200 rounded"
+      className="flex justify-between md:w-full w-full no-underline p-6 border bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-black dark:border-slate-600 border-slate-200 rounded space-x-4"
     >
       <div className="flex item-center w-full md:flex-row justify-between space-y-4">
         <div className="flex flex-col w-full items-center md:items-start">
@@ -35,11 +35,13 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
           </p>
         </div>
       </div>
-      <CustomImage
-        src={imageUrl}
-        alt={title}
-        className="flex shadow self-center justify-center !ml-0 !mt-0"
-      />
+      <div className="flex justify-center items-center">
+        <CustomImage
+          src={imageUrl}
+          alt={title}
+          className="flex items-center shadow self-center justify-center !ml-0 !mt-0"
+        />
+      </div>
     </Link>
   );
 };
