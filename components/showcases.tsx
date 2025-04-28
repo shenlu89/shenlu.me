@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import CustomImage from "@/components/custom-image";
 import Image from "next/image";
 import { RiShareCircleLine } from "react-icons/ri";
 
@@ -36,9 +35,16 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        <CustomImage
+        <Image
           src={imageUrl}
           alt={title}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{
+            width: "360px",
+            height: "auto",
+          }}
           className="flex items-center shadow self-center justify-center !ml-0 !mt-0"
         />
       </div>
