@@ -3,12 +3,12 @@ title: Setting up Ubuntu Development Environment with Docker on MacOS
 date: "2024-08-09"
 ---
 
-After setting up the **Mac** terminal, I tried developing the programs I had previously worked on in **Ubuntu**. 
-However, I encountered an issue where **Bun** was unable to install packages properly after its installation. 
+After setting up the **Mac** terminal, I tried developing the programs I had previously worked on in **Ubuntu**.
+However, I encountered an issue where **Bun** was unable to install packages properly after its installation.
 I have been stuck on this problem for the entire day and cannot find a solution.
 
-Thus, I gave up to set up development environment on **MacOS** directly and attempted to create a **Ubuntu**
-development environment, as same as previous **Ubuntu** development environment, on my Macbook. 
+Thus, I gave up to set up development environment on **macOS** directly and attempted to create a **Ubuntu**
+development environment, as same as previous **Ubuntu** development environment, on my Macbook.
 
 Using **Docker** to set up an **Ubuntu** development environment on a **Mac** has several advantages compared to setting up the environment directly on the **Mac**:
 
@@ -34,8 +34,8 @@ Docker version 27.0.3, build 7d4bcd8
 
 ## Create Dockerfile for Ubuntu Development Environment
 
-Docker can build images automatically by reading the instructions from a Dockerfile. 
-A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. 
+Docker can build images automatically by reading the instructions from a Dockerfile.
+A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.
 
 I make a Dockerfile with the commands to build an images with development environment as same as my previous **Ubuntu**.
 
@@ -45,7 +45,7 @@ FROM ubuntu:latest
 
 # Update and install dependencies
 RUN apt-get update && \
-    apt-get install -y curl git
+    apt-get install -y curl git tmux
 
 # Install Bun
 RUN curl -fsSL https://bun.sh/install | bash
@@ -57,10 +57,18 @@ To build a docker image, run the following command:
 docker build -t ubuntu_on_mac .
 ```
 
+```bash
+docker images
+```
+
 Then run docker image to create an container.
 
 ```bash
 docker run -itd -p 3000:3000 -v $HOME/ubuntu:/home --name ubuntu ubuntu_on_mac
+```
+
+```bash
+docker ps
 ```
 
 ## Reference
