@@ -4,7 +4,6 @@ import { withContentCollections } from "@content-collections/next";
 const nextConfig: NextConfig = {
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
-  swcMinify: true,
   async headers() {
     return [
       {
