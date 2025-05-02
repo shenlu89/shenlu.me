@@ -1,6 +1,4 @@
-import { ImageResponse } from "next/og"; // App router includes @vercel/og.
-// No need to install it.
-
+import { ImageResponse } from "next/og";
 import { HomePage } from "@/data/meta-data";
 
 export const runtime = "edge";
