@@ -1,4 +1,4 @@
-import allPosts from "generated/content.json";
+import { allPosts } from "content-collections";
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
