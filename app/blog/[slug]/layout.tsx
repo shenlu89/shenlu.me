@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { ReactNode } from "react";
-import allPosts from "generated/content.json";
+import { allPosts } from "content-collections";
 
 export async function generateMetadata(
   props: {
@@ -10,11 +10,10 @@ export async function generateMetadata(
   const params = await props.params;
   const post = allPosts.find((post) => post.slug === params.slug);
   if (!post) return;
-  const { title, slug, publishedAt: publishedTime } = post;
-  const ogImage = `${
-    process.env.NODE_ENV === "production"
-      ? "https://shenlu.me"
-      : "http://localhost:3000"}/og?title=${title}&time=${publishedTime}&slug=${slug}`;
+  const { title, slug, date: publishedTime } = post;
+  const ogImage = `${process.env.NODE_ENV === "production"
+    ? "https://shenlu.me"
+    : "http://localhost:3000"}/og?title=${title}&time=${publishedTime}&slug=${slug}`;
   return {
     title,
     description: title,

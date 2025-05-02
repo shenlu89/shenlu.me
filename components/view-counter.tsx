@@ -7,6 +7,7 @@ import type { Views, Slug } from "@/lib/types";
 import { NextPage } from "next";
 
 const ViewCounter: NextPage<Slug> = ({ slug, method }) => {
+  if (process.env.NODE_ENV !== "production") return <>0 views</>;
   const { data, isLoading } = useSWR<Views>(
     `/api/views/${slug}`,
     (url: string) => fetcher(url, { method })

@@ -29,11 +29,10 @@ export default async function Image() {
               width="200"
               height="200"
               tw="bg-white rounded-full"
-              src={`${
-                process.env.NODE_ENV === "development"
-                  ? "http://localhost:3000"
-                  : "https://shenlu.me"
-              }/images/avatar.png`}
+              src={`${process.env.NODE_ENV === "development"
+                ? "http://localhost:3000"
+                : "https://shenlu.me"
+                }/images/avatar.png`}
               alt="Shen Lu"
             />
           </div>

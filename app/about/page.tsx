@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "@/components/custom-link";
-import Image from "next/image"
 import { FaNodeJs, FaReact, FaRust, FaUbuntu, FaPython, FaDocker } from "react-icons/fa";
 import { IoLogoJavascript, IoLogoVercel } from "react-icons/io5";
 import { TbBrandVscode, TbBrandThreejs } from "react-icons/tb";

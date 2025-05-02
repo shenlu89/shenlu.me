@@ -1,6 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+button {
+  cursor: pointer;
+}
 
 .prose .anchor {
   @apply absolute invisible no-underline;
@@ -20,7 +23,7 @@
   content: "#";
 }
 
-.prose *:hover > .anchor {
+.prose *:hover>.anchor {
   @apply visible;
 }
 

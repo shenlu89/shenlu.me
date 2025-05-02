@@ -14,7 +14,7 @@ export default function Home() {
           </p>
         </div>
         <Image
-          className="flex relative mx-auto md:mr-auto rounded-full"
+          className="flex relative mx-auto md:mr-auto rounded-full self-center"
           alt={HomePage.title}
           width={90}
           height={90}

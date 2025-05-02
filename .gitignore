@@ -39,8 +39,5 @@ next-env.d.ts
 # vscode
 .vscode
 
-# turborepo
-.turbo
-
-# generated json files of all posts
-generated
+# generated posts
+.content-collections

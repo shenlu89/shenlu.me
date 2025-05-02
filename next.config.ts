@@ -1,5 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+import { withContentCollections } from "@content-collections/next";
+
+const nextConfig: NextConfig = {
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
   swcMinify: true,
@@ -29,7 +31,8 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+// withContentCollections must be the outermost plugin
+export default withContentCollections(nextConfig);
 
 // https://nextjs.org/docs/advanced-features/security-headers
 // const ContentSecurityPolicy = `

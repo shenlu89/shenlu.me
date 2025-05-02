@@ -1,10 +1,20 @@
 import { notFound } from "next/navigation";
-import allPosts from "generated/content.json";
+import { allPosts } from "content-collections";
 
 import Image from "next/image";
 import Comment from "@/components/comment";
-import CustomMDX from "@/components/custom-mdx";
 import ViewCounter from "@/components/view-counter";
+import { MDXContent } from "@content-collections/mdx/react";
+
+import CustomLink from "@/components/custom-link";
+import CustomPre from "@/components/custom-pre";
+import CustomImg from "@/components/custom-image";
+
+const MDXComponent = {
+  a: CustomLink,
+  pre: CustomPre,
+  img: CustomImg,
+};
 
 export default async function PostPage(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
@@ -35,16 +45,19 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
         </div>
         <div className="flex flex-col text-sm text-slate-600 dark:text-slate-400 min-w-32 md:mt-0">
           <ViewCounter slug={post.slug} method={"POST"} />
+          {process.env.NODE_ENV === "production" && (
+            <ViewCounter slug={post.slug} method={"POST"} />
+          )}
           <div>
             {post.readingTime}
             {` (`}
-            {post.wordCount}
+            {post.content.split(/\s+/gu).length}
             {" words)"}
           </div>
         </div>
       </div>
       <div className="w-full prose dark:prose-invert max-w-none mb-8">
-        <CustomMDX source={post.content} />
+        <MDXContent code={post.mdx} components={MDXComponent} />
       </div>
       <Comment />
     </article>

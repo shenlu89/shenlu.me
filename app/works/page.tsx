@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Showcases from "@/components/showcases";
-// import Showcase from "@/components/showcase";
 import { WorksPage } from "@/data/meta-data";
 
 export const metadata: Metadata = WorksPage.metadata;
@@ -19,7 +18,6 @@ export default function Works() {
         <hr />
         <h2>Projects</h2>
         <div className="flex flex-col space-y-4">
-          {/* <div className="flex flex-col md:flex-row md:space-x-4 space-x-0 md:space-y-0 space-y-4"> */}
           {showcase.map((sc: any) => (
             <Showcases
               key={sc.title}
