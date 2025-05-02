@@ -13,7 +13,7 @@ const SpeciesItem = async () => {
   const { scientific_name, common_name, id, conservation_status, iso_code, image } = await res.json()
 
   return (
-    <div className="flex flex-col bg-slate-100 border p-4 space-y-4 relative text-slate-600 items-center rounded w-full"
+    (<div className="flex flex-col bg-slate-100 border border-slate-200 p-4 space-y-4 relative text-slate-600 items-center rounded w-full"
     >
       <div className="flex space-x-4 justify-between w-full">
         <div className="flex flex-col space-y-2 text-sm no-wrap truncate">
@@ -23,7 +23,7 @@ const SpeciesItem = async () => {
             <span className="text-black">{id}</span>
           </div>
           <Link
-            href={IUCN_RED_LIST_URI + scientific_name.replace(/\s/g, "%20")}
+            href={IUCN_RED_LIST_URI + scientific_name?.replace(/\s/g, "%20")}
             className="flex space-x-1 "
           >
             <span className="hidden md:flex">Common Name:</span>
@@ -32,7 +32,7 @@ const SpeciesItem = async () => {
             </span>
           </Link>
           <Link
-            href={IUCN_RED_LIST_URI + scientific_name.replace(/\s/g, "%20")}
+            href={IUCN_RED_LIST_URI + scientific_name?.replace(/\s/g, "%20")}
             className="flex space-x-1"
           >
             <span className="hidden md:flex">Scientific Name:</span>
@@ -45,12 +45,10 @@ const SpeciesItem = async () => {
             className="flex space-x-1 "
           >
             <span className="hidden md:flex">Country:</span>
-            <span className="text-black font-bold hover:text-red-600">{`${getUnicodeFlagIcon(
-              iso_code
-            )} ${COUNTRY_NAME.get(iso_code)}`}</span>
+            <span className="text-black font-bold hover:text-red-600">{`${iso_code?.length === 2 ? getUnicodeFlagIcon(iso_code) : ""} ${COUNTRY_NAME.get(iso_code)}`}</span>
           </Link>
         </div>
-        <Link href={WIKI_URI + scientific_name.replace(/\s/g, "_")}>
+        <Link href={WIKI_URI + scientific_name?.replace(/\s/g, "_")}>
           <Image
             src={image}
             width={110}
@@ -100,7 +98,7 @@ const SpeciesItem = async () => {
           />
         </div>
       </div>
-    </div>
+    </div>)
   );
 };
 
