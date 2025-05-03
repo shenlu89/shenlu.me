@@ -1,0 +1,50 @@
+---
+title: Building a GRE Analytical Writing Practice App with Next.js
+date: "2025-05-10"
+---
+
+It's been nearly six months since I published my last post, *[It's Time to Build in Public](/blog/it-is-time-to-build-in-public)*. During this time, I’ve been fully immersed in preparing for the GRE, which left me little time to follow through on the "Build in Public" mindset I once set out to embrace. But now, as I reach a new milestone, it’s the perfect time to revisit that idea—with a new project to share, **GRE GO**.
+
+## Why I Built This App?
+
+One of the most challenging aspects of GRE prep for me was writing. I hadn’t practiced academic writing in a long time, and rapidly improving my skills meant I needed to write—a lot. Fortunately, GRE writing topics come from a publicly available pool. That means that I knew exactly what topics could appear on the test.
+
+However, while the topics were available, I couldn’t find a tool that allowed me to efficiently practice writing for these topics. What I needed was a tool that could:
+
+- Randomly select topics from a customizable range.
+- Simulate the actual test environment, including timed sessions.
+- Allow me to search topics by keywords or writing tasks.
+
+Since I couldn’t find a tool like this online, I decided to build one myself—a simple web app tailored specifically for efficient GRE writing practice. I used it regularly for about a month and, ultimately, it helped me achieve a score I was happy with.
+
+## From Personal Tool to Public Product
+
+After finishing the GRE, I decided to turn this internal tool into something others could use too. I redesigned the app with a broader audience in mind, and added a few new features beyond my original needs:
+
+- Open-source, free to use and no login required.
+- Local data storage. Writing history and preferences are saved right in browser.
+- Custom tagging and highlighting, which can mark topics to revisit.
+
+Responsive design. Works great on both desktop and mobile.
+
+## Design Philosophy
+
+The GRE writing pool currently contains 158 topics. I converted the entire pool into a lightweight JSON file, totaling less than 80KB. Even if we estimate each essay response at around 600 words, the data footprint remains extremely small:
+
+70KB (writing pool) + 158 × 600 words ÷ 1024 = roughly 160KB
+
+Given this minimal data size, there’s really no need to build a full backend or database. Instead, I chose to store all data—including user settings and writing history—directly in the browser using **localStorage**. This approach ensures that the app is fast, simple, and completely private, while still preserving user data across sessions.
+
+## Tech Stack
+
+Here's what powers the app:
+
+- **Next.js 15** – Full-stack React framework with app router
+- **Zustand** – Lightweight state management, using localStorage for persistence
+- **Fuse.js** – Fuzzy search for topics queries
+- **Headless UI** – Accessible UI components
+- **Tailwind CSS 4** – Modern utility-first styling with built-in dark mode
+
+## What’s Next?
+
+This app began as a personal solution to a very specific problem and now it's something that can help others, too. By building in public, I hope to not only share what I’ve created but also invite feedback, suggestions, and even contributors. If you're preparing for the GRE, or if you're just curious about the code, check it out https://github.com/shenlu89/grego.
