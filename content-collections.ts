@@ -16,12 +16,12 @@ const mdxOptions: Options = {
   rehypePlugins: [
     rehypeKatex,
     rehypeSlug,
-    [
-      rehypePrettyCode,
-      {
-        theme: "solarized-light",
-      },
-    ],
+    // [
+    //   rehypePrettyCode,
+    //   {
+    //     theme: "solarized-light",
+    //   },
+    // ],
     rehypeCodeTitles,
     [
       rehypePrism,
