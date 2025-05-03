@@ -5,6 +5,14 @@ button {
   cursor: pointer;
 }
 
+.prose h1 {
+  @apply text-2xl;
+}
+
+.prose h2 {
+  @apply text-xl;
+}
+
 .prose .anchor {
   @apply absolute invisible no-underline;
   margin-left: -1em;
