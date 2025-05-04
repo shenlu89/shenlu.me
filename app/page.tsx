@@ -9,7 +9,7 @@ export default function Home() {
           <h1 className="font-extrabold text-4xl tracking-tight">
             {HomePage.title}
           </h1>
-          <p className="mb-4 text-lg text-slate-600 dark:text-slate-400">
+          <p className="text-lg text-slate-600 dark:text-slate-400">
             {HomePage.description}
           </p>
         </div>
