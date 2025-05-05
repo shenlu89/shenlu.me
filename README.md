@@ -1,12 +1,12 @@
 # shenlu.me
 
-My portfolio built with Next.js, Tailwind, Giscus, Umami, Upstash, MDX, Bun, and Vercel.
+My portfolio built with Next.js, Tailwind, Giscus, Umami, Upstash, MDX, Content Collections, Bun, and Vercel.
 
 ## Features
 
 - **Framework**: [Next.js](https://nextjs.org)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
-- **Content**: [MDX](https://mdxjs.com/) + [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote)
+- **Content**: [MDX](https://mdxjs.com/) + [Content Collections](https://www.content-collections.dev/)
 - **Analytics**: [Umami](https://umami.is/)
 - **Comment**: [Giscus](https://giscus.app)
 - **Database**: [Redis](https://redis.io/) + [Upstash](https://upstash.com/)
