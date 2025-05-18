@@ -8,7 +8,7 @@ import {
   Children,
 } from "react";
 
-import { LuCopy, LuCheck } from "react-icons/lu";
+import { RxCopy, RxCheck } from "react-icons/rx";
 
 const CustomPre = ({ children, ...props }: any): ReactElement => {
   const [isCopied, setCopied] = useState(false);
@@ -51,15 +51,15 @@ const CustomPre = ({ children, ...props }: any): ReactElement => {
     }
   }, [children]);
 
-  const IconToUse = isCopied ? LuCheck : LuCopy;
+  const IconToUse = isCopied ? RxCheck : RxCopy;
 
   return (
     <pre {...props}>
       <button onClick={handleClick} tabIndex={0} {...props}>
         <IconToUse
           className={`w-8 h-8 float-right border border-slate-200 rounded p-1 block ${isCopied
-              ? "text-green-400 !bg-green-200 border-green-200"
-              : "text-slate-400 !bg-slate-200 border-slate-200"
+            ? "text-green-400 !bg-green-200 border-green-200"
+            : "text-slate-400 !bg-slate-200 border-slate-200"
             }`}
         />
       </button>
