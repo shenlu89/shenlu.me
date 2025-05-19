@@ -1,0 +1,160 @@
+---
+title: Setting up Local PostgreSQL Database on MacOS
+date: "2025-05-20"
+---
+
+Recently, I tried learning how to use **[Better Auth](https://www.better-auth.com/)** to set up a GitHub OAuth authentication system in my new project. I came across a project called **[better-auth-next-demo](https://github.com/jolbol1/better-auth-next-demo)** and decided to reproduce it locally. The project uses **PostgreSQL** as its database. I had previously written a [guide](https://www.shenlu.me/blog/setting-up-local-postgresql-database) on configuring **PostgreSQL** locally on Ubuntu, and I am now using a newly purchased **Mac Pro** without **PostgreSQL** pre-installed, that experience is not applicable anymore. So I am taking this opportunity to set up **PostgreSQL** locally from scratch again.
+
+## Install PostgreSQL
+
+First, download **Postgres.app** from [https://postgresapp.com/](https://postgresapp.com/), move to **Applications folder**, and **Double Click**
+
+![](/images/content/setting-up-local-postgresql-database-on-macos/postgres-app.png)
+
+Once the app is open, click **“Initialize”** to create a new PostgreSQL server.
+
+![](/images/content/setting-up-local-postgresql-database-on-macos/create-new-server.png)
+
+## Set PostgreSQL in Terminal
+
+To use PostgreSQL in the terminal, you need to add its binaries to your system path. You can do this by creating a new path file:
+
+```sh
+sudo mkdir -p /etc/paths.d &&
+echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp
+```
+
+However, this method didn’t work on my Mac because I use Zsh as the default shell. Instead, I added the following line to my `~/.zshrc` file:
+
+```sh
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:${PATH}"
+```
+
+After updating the file, apply the changes by running:
+
+```sh
+source ~/.zshrc
+```
+
+Done! now I can run a PostgreSQL server on my Mac with these default settings:
+
+- **Host**:           localhost
+- **Port**:           5432
+- **User**:           your system user name
+- **Database**:       same as user
+- **Password**:       none
+- **Connection URL**: postgresql://localhost
+
+## Connect PostgreSQL with Connection URIs
+
+With PostgreSQL up and running, I cloned the demo project and started the development server using **Bun**:
+
+```sh
+git clone git@github.com:jolbol1/better-auth-next-demo.git
+cd better-auth-next-demo
+bun install
+bun dev
+```
+
+This project uses **Drizzle** as the ORM, and **Drizzle** provides a migration tool called **drizzle-kit**. To generate SQL migration files based on the schema, I ran:
+
+```sh
+bun drizzle-kit generate
+# No config path provided, using default 'drizzle.config.ts'
+# Reading config file '/Users/shenlu/better-auth-next-demo/drizzle.config.ts'
+# 4 tables
+# account 13 columns 0 indexes 1 fks
+# session 8 columns 0 indexes 1 fks
+# user 7 columns 0 indexes 0 fks
+# verification 6 columns 0 indexes 0 fks
+
+#[✓] Your SQL migration file ➜ drizzle/0000_fancy_stardust.sql 🚀
+```
+
+I prefer to apply schema changes directly to the database without generating SQL files by running:
+
+```sh
+bun drizzle-kit push
+# No config path provided, using default 'drizzle.config.ts'
+# Reading config file '/Users/shenlu/better-auth-next-demo/drizzle.config.ts'
+# Using 'pg' driver for database querying
+# [✓] Pulling schema from database...
+# [✓] Changes applied
+```
+
+To better understand what these commands do, here’s a visual summary:
+
+```text
+┌────────────────────────┐
+│ $ drizzle-kit generate │
+└─┬──────────────────────┘
+  │
+  └ 1. read previous migration folders
+    2. find diff between current and previous scheama
+    3. prompt developer for renames if necessary
+  ┌ 4. generate SQL migration and persist to file
+  │    ┌─┴───────────────────────────────────────┐
+  │      📂 drizzle
+  │      ├ 📂 _meta
+  │      └ 📜 0000_fancy_stardust.sql
+  v
+┌─────────────────────┐
+│ ~ drizzle-kit push  │
+└─┬───────────────────┘
+  │                                           ┌──────────────────────────┐
+  └ Pull current datatabase schema ---------> │                          │
+                                              │                          │
+  ┌ Generate alternations based on diff <---- │         DATABASE         │
+  │                                           │                          │
+  └ Apply migrations to the database -------> │                          │
+                                       │      └──────────────────────────┘
+                                       │
+  ┌────────────────────────────────────┴────────────────┐
+   create table users(id serial primary key, name text);
+```
+
+Next, I set up my environment variables for the project. Here’s a sample `.env` file:
+
+```sh
+DATABASE_URL="postgresql://postgres:password@localhost:5432/postgres"
+BETTER_AUTH_SECRET=
+BETTER_AUTH_URL=http://localhost:3000
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+```
+
+To generate a secure random secret key for Better Auth, you can run the following command in your terminal:
+
+```sh
+openssl rand -base64 32
+```
+
+>This will output a cryptographically secure 32-byte random string encoded in Base64, which you can use as the value for the `BETTER_AUTH_SECRET` environment variable. This secret is used to sign and verify JWT tokens for secure authentication.
+
+After setting a password for the postgres user, I can connect to the database using the following command:
+
+```sh
+psql 'postgresql://postgres:yourpassword@localhost:5432/postgres'
+```
+
+Once connected, you can check that the tables were created:
+
+```sh
+postgres=# \dt
+            List of relations
+ Schema |     Name     | Type  |  Owner
+--------+--------------+-------+----------
+ public | account      | table | postgres
+ public | session      | table | postgres
+ public | user         | table | postgres
+ public | verification | table | postgres
+(4 rows)
+```
+
+With everything set up, the demo project’s authentication system is now fully functional on your local machine. You can sign in with GitHub using OAuth, connect to your local PostgreSQL database, and manage users through Drizzle’s schema and migrations.
+
+## References:
+
+- [Setting up a local PostgreSQL database](https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database#debian-and-ubuntu)
+- [How to create and delete databases and tables in PostgreSQL](https://www.prisma.io/dataguide/postgresql/create-and-delete-databases-and-tables)
+- [Mac - zsh: command not found: psql](https://www.reddit.com/r/PostgreSQL/comments/124j4rq/mac_zsh_command_not_found_psql/)
