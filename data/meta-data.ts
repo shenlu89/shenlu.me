@@ -68,7 +68,7 @@ const WorksPage = {
       title: "Mathcheap",
       logoUrl: "/images/mathcheap-logo.svg",
       imageUrl: "/images/mathcheap-showcase.png",
-      description: "A dead simple online LaTeX equation editor.",
+      description: "An AI-powered, free alternative to Mathpix Snip.",
     },
     {
       href: "https://gre.shenlu.me",
