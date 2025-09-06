@@ -24,10 +24,10 @@ const HomePage = {
       default: "Shen Lu's Blog",
       template: `%s | Shen Lu's Blog`,
     },
-    description: "Thoughts and practices on independent development.",
+    description: "Building amazing things in public.",
     openGraph: {
       title: "Shen Lu",
-      description: "Thoughts and practices on independent development.",
+      description: "Building amazing things in public.",
       url: "https://shenlu.me",
       siteName: "Shen Lu",
       locale: "en-US",
@@ -52,7 +52,7 @@ const HomePage = {
     },
   },
   title: "Shen Lu",
-  description: "Thoughts and practices on independent development.",
+  description: "Building amazing things in public.",
   url: "https://shenlu.me",
   avatar_url: "/images/avatar.jpg",
 };
