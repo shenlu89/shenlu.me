@@ -1,0 +1,79 @@
+---
+title: Mathcheap v0.9: Building an AI Math Tool from 0 to 1
+date: '2025-09-01'
+---
+
+A month ago, I launched Mathcheap v0.9.0, an AI-powered tool for recognizing mathematical formulas and editing LaTeX math. This article chronicles the journey of Mathcheap from conception to launch, and the thinking behind it.
+
+**1. The Starting Point: An Attempt to "Recreate"**
+
+In 2021, I came across a video on Youtube by "妈咪说MommyTalk" titled "[如何优雅的编辑数学公式？LaTeX公式入门](https://www.youtube.com/watch?v=4MkdR6qChSY)" In the video, the creator had built their own formula editor, complete with an OCR image recognition feature. At the time, I felt the tool was quite feature-complete, but the user interface didn't quite match my aesthetic, and it seemed the tech stack could be optimized.
+
+The thought, "Why not try to recreate it?" lingered with me for two years. It wasn't until 2023 that I finally had the time to create the first version of Mathcheap, v0.1.0.
+
+This initial version was largely a copy of the LaTeX editor from [latexlive](https://latexlive.com). While I hit a few snags, it wasn't overly difficult. However, I didn't include formula recognition at the time, mainly out of laziness. I didn't want to bother with setting up a login and payment system, and I didn't want to pay for Mathpix's API. So, I put it on the back burner.
+
+**2. Market and User Need Analysis: Formula Recognition is Key**
+
+Later, I began to consider who would actually use a tool like [latexlive](https://latexlive.com). I identified roughly four types of users:
+
+*   Beginners who are just learning LaTeX and memorizing formula symbols.
+*   "Lazy" users who only need it occasionally and can't be bothered to look up symbols.
+*   Teachers who use it for educational purposes.
+*   Those who find Mathpix too expensive or are unable to purchase it.
+
+From an academic and teaching perspective, the tool is genuinely useful, especially with affordable OCR recognition. However, as a commercial product, it's in an awkward position. The user base isn't massive, the demand is niche, and the core recognition feature relies on a third-party API, leaving little room for profit.
+
+I then realized that the core of this product is the formula recognition feature; the LaTeX editor is just an add-on, not a must-have for users. The editing experience is slightly better than Mathpix's editor. In other words, the first three user groups likely only account for about 10% of the demand, while the fourth group (the price-conscious users) makes up the remaining 90%. This also explains why Mathpix Snip has shown little improvement in its editing experience over the years—they understood it wasn't the main focus.
+
+At that time, products like SimpleTex also appeared on the market. They chose to develop their own OCR algorithms to break free from their reliance on the Mathpix API and gain control over their pricing. This was a commendable effort, but I believe it wasn't the ultimate form for this type of product. The ultimate form of a product must be considered from the user's needs.
+
+**3. What Do Users Want Most?**
+
+I asked myself, "If I were a user, what would I want most from a formula recognition tool?" After much thought, it came down to three things:
+
+*   It should work right out of the box, with no hassle.
+*   The recognition should be fast and accurate.
+*   It should be free, or at least very cheap.
+
+The majority of users of such tools are students, teachers, and researchers, especially students. This group is very price-sensitive and would prefer not to pay if they don't have to. Having been a student and researcher myself, I understood that "convenience, accuracy, and being free" are the core elements that attract users.
+
+Judged by these criteria, my previous version only met the first one. Neither [latexlive](https://latexlive.com), which relies on the Mathpix API, nor SimpleTex, with its self-developed algorithm, could perfectly address all three issues. Developing a proprietary algorithm that could match the recognition level of the Mathpix API would require an enormous investment of time and effort. More importantly, the image recognition capabilities of large language models (LLMs) are advancing rapidly, and their API call costs are continuously decreasing. When LLMs can achieve recognition accuracy comparable to Mathpix at a fraction of the cost, the value of self-developed formula recognition algorithms will be significantly diminished.
+
+So, after the release of v0.8.12, the development of Mathcheap was paused. I was waiting for a singularity.
+
+**4. The Singularity Arrives: The Birth of the MVP**
+
+As I had anticipated, by July 2025, with the right prompts, Gemini was able to recognize mathematical formulas in images with great accuracy. The "singularity" I had been waiting for had arrived!
+
+That same day, I quickly built a minimum viable product (MVP), Mathcheap v0.9.0, to productize this capability. I then released a video on Bilibili titled "[免费无限次公式识别神器 Mathcheap！ 再也不用花钱买 Mathpix Snip 了！](https://www.bilibili.com/video/BV1yHuizjE8E/)".
+
+Following this, I did some light promotion on domestic platforms like [掘金](https://juejin.cn/post/7543917534355685395), [Bilibili](https://www.bilibili.com/video/BV1yHuizjE8E/?spm_id_from=333.1387.0.0), and [知乎](https://zhuanlan.zhihu.com/p/556602699), as well as some overseas communities. The results exceeded my expectations. Previously, Mathcheap had fewer than 100 monthly visits, but after integrating the free AI-powered formula recognition, the numbers exploded. To this day, there are users online almost every minute, and the formula recognition feature has been called over 10,000 times.
+
+Here is a summary of Mathcheap's user access data for the last 30 days:
+
+| Metric | Value | Change (MoM) | Notes |
+| :--- | :--- | :--- | :--- |
+| Page Views | 18.3 k | +510% | A significant increase in exposure, indicating effective promotion and SEO. |
+| Visits | 3.48 k | +509% | Strong user intent to enter the site. |
+| Visitors | 2.1 k | +381% | Significant growth in new users. |
+| Bounce rate | 44% | ↓22% | Improved user quality. |
+| Average visit duration | 6m 48s | +51% | Increased user stickiness, indicating the feature's strong appeal. |
+
+The MVP validated that the path of "convenient, accurate, and free" was the right one.
+
+**5. Future Outlook: Getting Things Done Without Spending Money**
+
+In all the time I've been working on Mathcheap, the only money I've spent has been on the domain name. My plans for the future are simple:
+
+*   Offer as many free features as possible.
+*   Keep development and operational costs to a minimum.
+*   Provide the best possible service.
+
+In short: "You don't spend money, I don't spend money, and we still get the job done well."
+
+The short-term goal is to create an AI-powered, free alternative to Mathpix Snip, which is still under active development.
+
+*   Mathcheap: https://mathcheap.xyz
+*   GitHub: https://github.com/mathcheap
+*   Discord: https://discord.gg/Q4chBVDFvK
