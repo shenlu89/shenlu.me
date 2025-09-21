@@ -7,17 +7,17 @@ A month ago, I launched Mathcheap v0.9.0, an AI-powered tool for recognizing mat
 
 ## 1. The Starting Point: An Attempt to "Recreate"
 
-In 2021, I came across a video on Youtube by "妈咪说MommyTalk" titled "[如何优雅的编辑数学公式？LaTeX公式入门](https://www.youtube.com/watch?v=4MkdR6qChSY)" In the video, the creator had built their own formula editor, complete with an OCR image recognition feature. At the time, I felt the tool was quite feature-complete, but the user interface didn't quite match my aesthetic, and it seemed the tech stack could be optimized.
+In 2021, I came across a video on Youtube by "妈咪说MommyTalk" titled "[如何优雅的编辑数学公式？LaTeX公式入门](https://www.youtube.com/watch?v=4MkdR6qChSY)" In the video, the creator had built their own formula editor, [latexlive.com](https://latexlive.com), complete with an OCR image recognition feature. At the time, I felt the tool was quite feature-complete, but the user interface didn't quite match my aesthetic, and it seemed the tech stack could be optimized.
 
 The thought, "Why not try to recreate it?" lingered with me for two years. It wasn't until 2023 that I finally had the time to create the first version of Mathcheap, v0.1.0.
 
 ![](/images/content/mathcheap-building-an-ai-math-tool-from-0-to-1/mathcheap-v-0-1-0.png)
 
-This initial version was largely a copy of the LaTeX editor from [latexlive](https://latexlive.com). While I hit a few snags, it wasn't overly difficult. However, I didn't include formula recognition at the time, mainly out of laziness. I didn't want to bother with setting up a login and payment system, and I didn't want to pay for Mathpix's API. So, I put it on the back burner.
+This initial version was largely a copy of the LaTeX editor from [latexlive.com](https://latexlive.com). While I hit a few snags, it wasn't overly difficult. However, I didn't include formula recognition at the time, mainly out of laziness. I didn't want to bother with setting up a login and payment system, and I didn't want to pay for Mathpix's API. So, I put it on the back burner.
 
 ## 2. Market and User Need Analysis: Formula Recognition is Key
 
-Later, I began to consider who would actually use a tool like [latexlive](https://latexlive.com). I identified roughly four types of users:
+Later, I began to consider who would actually use a tool like [latexlive.com](https://latexlive.com). I identified roughly four types of users:
 
 *   Beginners who are just learning LaTeX and memorizing formula symbols.
 *   "Lazy" users who only need it occasionally and can't be bothered to look up symbols.
@@ -40,7 +40,7 @@ I asked myself, "If I were a user, what would I want most from a formula recogni
 
 The majority of users of such tools are students, teachers, and researchers, especially students. This group is very price-sensitive and would prefer not to pay if they don't have to. Having been a student and researcher myself, I understood that "convenience, accuracy, and being free" are the core elements that attract users.
 
-Judged by these criteria, my previous version only met the first one. Neither [latexlive](https://latexlive.com), which relies on the Mathpix API, nor SimpleTex, with its self-developed algorithm, could perfectly address all three issues. Developing a proprietary algorithm that could match the recognition level of the Mathpix API would require an enormous investment of time and effort. More importantly, the image recognition capabilities of large language models (LLMs) are advancing rapidly, and their API call costs are continuously decreasing. When LLMs can achieve recognition accuracy comparable to Mathpix at a fraction of the cost, the value of self-developed formula recognition algorithms will be significantly diminished.
+Judged by these criteria, my previous version only met the first one. Neither [latexlive.com](https://latexlive.com), which relies on the Mathpix API, nor SimpleTex, with its self-developed algorithm, could perfectly address all three issues. Developing a proprietary algorithm that could match the recognition level of the Mathpix API would require an enormous investment of time and effort. More importantly, the image recognition capabilities of large language models (LLMs) are advancing rapidly, and their API call costs are continuously decreasing. When LLMs can achieve recognition accuracy comparable to Mathpix at a fraction of the cost, the value of self-developed formula recognition algorithms will be significantly diminished.
 
 So, after the release of v0.8.12, the development of Mathcheap was paused. I was waiting for a singularity.
 
