@@ -1,0 +1,140 @@
+---
+title: 'Building and Push Docker Image to Docker Hub using GitHub Actions'
+date: '2025-09-26'
+---
+
+Recently, I wanted to implement a feature on [Mathcheap](https://mathcheap.xyz "Mathcheap") that allows exporting LaTeX to DOCX format. Unfortunately, I couldn’t find a suitable JS library to achieve this. The tool that works very well for this task is **Pandoc**. The only drawback is that Pandoc is written in Haskell and cannot run natively in Node environments or on edge servers.
+
+To overcome this limitation, I compiled Pandoc to WebAssembly. Last week, I open-sourced [`pandoc-wasm`](https://github.com/shenlu89/pandoc-wasm "`pandoc-wasm`"), which provides this compilation workflow. I also published it on [Docker Hub](https://hub.docker.com/r/shenlu89/pandoc-wasm "Docker Hub") via Docker images.
+
+During this process, I explored how to leverage GitHub Actions to automatically build and publish Docker images, which greatly improved the integration and deployment efficiency of my open-source project.
+
+
+### **Why Automate Docker Image Publishing?**
+
+While migrating the Pandoc runtime environment to Node servers, I designed a reliable `pandoc-wasm` compilation workflow. Since Mathcheap depends on the build artifacts from this workflow, I decided to open-source it and maintain it long-term.
+
+Docker turned out to be the perfect solution, as it can package the application and all its dependencies into a standardized container. However, manually building images, tagging them, and pushing them to Docker Hub each time is tedious and error-prone.
+
+In fast-iterating open-source projects, automating this workflow is essential. It not only saves time but also ensures that each code merge results in a reliable Docker image. GitHub Actions is the ideal tool to achieve this.
+
+
+### **Prerequisites**
+
+Before getting started, make sure you have the following:
+
+1. **A GitHub repository**
+2. **A Docker Hub account**
+3. **A Dockerfile**
+
+> A `Dockerfile` is a plain text file containing a series of instructions to assemble an image.
+
+
+### **Step 1: Configure Docker Hub Credentials**
+
+To allow GitHub Actions to log in to your Docker Hub account and push images, you need to securely store your username and access token in GitHub.
+
+1. **Generate a Docker Hub access token**:
+
+   * Log in to Docker Hub.
+   * Go to **Settings → Personal access tokens**.
+   * Click **Generate new token**, create one with read/write/delete permissions, and **copy it immediately**.
+
+2. **Add Secrets in GitHub**:
+
+   * Go to your GitHub repository → **Settings → Secrets and variables → Actions**.
+   * Click **New repository secret**, and add:
+
+     * `DOCKERHUB_USERNAME`: your Docker Hub username.
+     * `DOCKERHUB_TOKEN`: the access token you just generated.
+
+This way, the workflow can securely use these credentials without hardcoding them into your code.
+
+### **Step 2: Create a GitHub Actions Workflow**
+
+Next, create a YAML file in your project to define the automation.
+
+1. In the repository root, create the `.github/workflows/` folder.
+2. Inside it, create a new YAML file, e.g., `docker-publish.yml`.
+
+```yaml
+name: Build and Publish Docker image
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./docker
+          file: ./docker/Dockerfile
+          push: true
+          tags: |
+            ${{ env.IMAGE_NAME }}:${{ github.ref_name }}
+            ${{ env.IMAGE_NAME }}:latest
+
+      - name: Update Docker Hub description
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ${{ env.IMAGE_NAME }}
+          short-description: ${{ github.event.repository.description }}
+          readme-filepath: ./docker/README.md
+```
+
+### **Breaking Down the Workflow**
+
+Here’s a closer look at the key parts:
+
+* **Trigger conditions `on`**:
+
+  * `push.tags`: runs when pushing tags starting with `v` (e.g., `v1.0.0`), aligning Docker image versions with project versions.
+  * `workflow_dispatch`: allows manual triggers from the GitHub UI.
+
+* **`env.IMAGE_NAME`**: defines the image name as `shenlu89/pandoc-wasm` (`shenlu89` is my Docker Hub username).
+
+* **`docker/build-push-action@v5`**:
+
+  * `context`: points to the `./docker` folder.
+  * `file`: specifies the Dockerfile path.
+  * `push: true`: pushes the built image to Docker Hub.
+  * `tags`: pushes both the version tag and `latest`.
+
+* **`peter-evans/dockerhub-description@v4`**:
+
+  * Automatically updates the Docker Hub description with repository metadata and `./docker/README.md`.
+
+### **Triggering GitHub Actions**
+
+You can trigger the workflow by pushing a version tag:
+
+```bash
+git add . && git commit -m 'feat: xxx'
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+Or manually via the **Run workflow** tab in GitHub.
+
+Once triggered, GitHub Actions will automatically build the Docker image and push it to Docker Hub.
