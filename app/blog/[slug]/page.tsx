@@ -44,7 +44,6 @@ export default async function PostPage(props: { params: Promise<{ slug: string }
           </div>
         </div>
         <div className="flex flex-col text-sm text-slate-600 dark:text-slate-400 min-w-32 md:mt-0">
-          <ViewCounter slug={post.slug} method={"POST"} />
           {process.env.NODE_ENV === "production" && (
             <ViewCounter slug={post.slug} method={"POST"} />
           )}
