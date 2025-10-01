@@ -16,17 +16,15 @@ export default function Works() {
         </div>
         <hr />
         <h2>Projects</h2>
-        <ul>
-          {showcase.map((sc: any) => (
-            <li key={sc.title}>
-              <Link href={sc.href} target="_blank">
-                {sc.title}
-              </Link>
-              {" - "}
-              {sc.description}
-            </li>
-          ))}
-        </ul>
+        {showcase.map((sc: any) => (
+          <p key={sc.title}>
+            <Link href={sc.href} target="_blank">
+              {sc.title}
+            </Link>
+            {" - "}
+            {sc.description}
+          </p>
+        ))}
         <hr />
         <h2>Publications</h2>
         <strong>
