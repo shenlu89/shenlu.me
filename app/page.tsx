@@ -1,5 +1,8 @@
 import Image from "next/image";
-import { HomePage } from "@/data/meta-data";
+import Showcases from "@/components/showcases";
+import { HomePage, WorksPage } from "@/data/meta-data";
+
+const { showcase } = WorksPage;
 
 export default function Home() {
   return (
@@ -23,7 +26,20 @@ export default function Home() {
         />
       </div>
       <hr className="border-slate-200 dark:border-slate-600" />
-      <div className="flex flex-col relative w-full space-y-4"></div>
+      <div className="flex flex-col relative w-full space-y-4">
+        <div className="flex flex-col space-y-4">
+          {showcase.map((sc: any) => (
+            <Showcases
+              key={sc.title}
+              href={sc.href}
+              title={sc.title}
+              logoUrl={sc.logoUrl}
+              imageUrl={sc.imageUrl}
+              description={sc.description}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
