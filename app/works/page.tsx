@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Showcases from "@/components/showcases";
 import { WorksPage } from "@/data/meta-data";
 
 export const metadata: Metadata = WorksPage.metadata;
@@ -17,18 +16,17 @@ export default function Works() {
         </div>
         <hr />
         <h2>Projects</h2>
-        <div className="flex flex-col space-y-4">
+        <ul>
           {showcase.map((sc: any) => (
-            <Showcases
-              key={sc.title}
-              href={sc.href}
-              title={sc.title}
-              logoUrl={sc.logoUrl}
-              imageUrl={sc.imageUrl}
-              description={sc.description}
-            />
+            <li key={sc.title}>
+              <Link href={sc.href} target="_blank">
+                {sc.title}
+              </Link>
+              {" - "}
+              {sc.description}
+            </li>
           ))}
-        </div>
+        </ul>
         <hr />
         <h2>Publications</h2>
         <strong>
