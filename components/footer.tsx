@@ -1,13 +1,7 @@
 import Link from "next/link";
-import { FaGithub, FaXTwitter, FaDiscord, FaMedium } from "react-icons/fa6";
+import { FaGithub, FaXTwitter } from "react-icons/fa6";
 
 const SocialIcons = [
-  {
-    title: "Discord",
-    href: "https://discord.gg/QqucGZFRz7",
-    icon: <FaDiscord className="size-6" />,
-    target: "_blank",
-  },
   {
     title: "X",
     href: "https://twitter.com/shenlu89",
