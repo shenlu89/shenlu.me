@@ -1,0 +1,148 @@
+---
+title: Why Did Git Push Suddenly Stop Working?
+date: "2025-11-23"
+---
+
+Today I ran into a bizarre problem during development — **`git push` worked perfectly yesterday, but suddenly stopped working today.**
+
+The error messages looked like this:
+
+```bash
+ERROR: no healthy upstream
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+```
+
+Or this one:
+
+```bash
+ERROR: upstream connect error or disconnect/reset before headers.
+remote connection failure, transport failure reason: delayed connect error: Connection refused
+fatal: Could not read from remote repository.
+```
+
+At first, I thought maybe **GitHub was down**, or perhaps **my SSH key expired**. But everything checked out fine:
+
+```bash
+ssh -T [git@github.com](mailto:git@github.com)
+```
+
+Output:
+
+```bash
+Hi shenlu89! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+Then I checked the remote URL:
+
+```bash
+git remote -v
+origin  [git@github.com](mailto:git@github.com):shenlu89/docs.git (fetch)
+origin  [git@github.com](mailto:git@github.com):shenlu89/docs.git (push)
+```
+
+- SSH connection worked ✔️
+- Repository URL correct ✔️
+- SSH keys valid ✔️
+- `git remote -v` looks fine ✔️
+
+So where was the problem?
+
+## SSH Works, but `git push` Fails — Why?
+
+Normally, if you're pushing over SSH, then:
+
+- If `ssh -T git@github.com` works
+- `git push` should also work
+
+But in my case:
+
+- `ssh -T` → **works**
+- `git push` → **fails**
+
+This means the issue **was not SSH itself**, but something **interfering with Git’s network connection**.
+
+
+## Checking macOS Network Proxy Settings
+
+I checked the system proxy configuration:
+
+```bash
+networksetup -getwebproxy "Wi-Fi"
+networksetup -getsocksfirewallproxy "Wi-Fi"
+```
+
+The result:
+
+```bash
+Enabled: Yes
+Server: 127.0.0.1
+Port: 7890
+````
+
+In other words:
+
+- macOS had **system-wide HTTP/HTTPS/SOCKS proxies enabled**
+- Everything was routed to `127.0.0.1:7890`
+- But the local proxy software wasn’t running
+- So any request going through the proxy → **connection refused**
+
+This perfectly explains the behavior:
+
+### Why SSH test worked
+The `ssh -T` command does **not** use macOS system proxies.
+
+### Why `git push` failed
+Git’s SSH operations **can** be affected by system proxy settings.
+When the proxy is misconfigured or inactive, connections fail immediately.
+
+
+## The Fix: Disable macOS System Proxies
+
+Turning off all system-level proxies solved the issue:
+
+```bash
+networksetup -setwebproxystate "Wi-Fi" off
+networksetup -setsecurewebproxystate "Wi-Fi" off
+networksetup -setsocksfirewallproxystate "Wi-Fi" off
+````
+
+Then:
+
+```bash
+git push
+```
+
+And everything worked instantly.
+
+
+## Bonus Tip: Use GitHub SSH Over Port 443 (More Reliable)
+
+To avoid similar issues in networks that block port **22** (corporate WiFi, school networks, hotels, etc.), I also updated my SSH config to use GitHub’s 443 tunnel.
+
+Edit `~/.ssh/config`:
+
+```bash
+Host github.com
+    HostName ssh.github.com
+    Port 443
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+```
+
+Port **443** is almost never blocked, and usually bypasses proxies as well — making Git operations much more stable.
+
+## Conclusion
+
+This debugging journey taught me:
+
+* **SSH tests don't always reflect how Git uses SSH internally**
+* **macOS system proxies can silently break Git push**
+* **Port 443 is a safer choice for GitHub SSH**
+
+If your `git push` works one day and fails the next, make sure your system proxy settings aren’t hijacking your SSH traffic.
+
+Happy coding!
