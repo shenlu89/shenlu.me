@@ -41,18 +41,16 @@
     "swr": "^2.3.6"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.3.8",
     "@content-collections/core": "^0.11.1",
     "@content-collections/mdx": "^0.2.2",
     "@content-collections/next": "^0.2.7",
+    "@tailwindcss/postcss": "^4",
     "@tailwindcss/typography": "^0.5.16",
-    "typescript": "^5",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
     "tailwindcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.3",
-    "@eslint/eslintrc": "^3"
+    "typescript": "^5"
   }
 }
