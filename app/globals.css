@@ -1,16 +1,114 @@
 @import "tailwindcss";
-@config "../tailwind.config.js";
+@plugin "@tailwindcss/typography";
 
 button {
   cursor: pointer;
 }
 
-.prose h1 {
-  @apply text-2xl;
+@theme {
+  --color-white: #fff;
+  --color-black: #000;
 }
 
-.prose h2 {
-  @apply text-xl;
+.prose {
+  blockquote p:first-of-type::before {
+    content: none;
+  }
+
+  blockquote p:first-of-type::after {
+    content: none;
+  }
+
+  a {
+    @apply text-blue-600;
+
+    &:hover {
+      @apply text-blue-800;
+    }
+
+    code {
+      @apply text-blue-600;
+    }
+  }
+
+  code {
+    @apply text-pink-600;
+  }
+
+  h1 {
+    @apply text-2xl mb-0;
+  }
+
+  h2 {
+    @apply font-extrabold text-xl;
+  }
+
+  h3 {
+    @apply font-extrabold text-lg;
+  }
+
+  hr {
+    @apply my-8;
+  }
+
+  p {
+    @apply text-slate-800;
+  }
+
+  img {
+    @apply my-0;
+  }
+
+  ul {
+    @apply mt-0;
+  }
+
+  blockquote p {
+    @apply text-slate-600;
+  }
+
+  pre {
+    @apply relative;
+
+    code {
+      @apply overflow-hidden;
+      white-space: pre-wrap !important;
+    }
+
+    button {
+      @apply absolute right-2 top-2 hidden;
+    }
+
+    &:hover button {
+      @apply block;
+    }
+  }
+}
+
+.dark .prose {
+  a {
+    @apply text-blue-400;
+
+    &:hover {
+      @apply text-blue-600;
+    }
+
+    code {
+      @apply text-blue-400;
+    }
+  }
+
+  code {
+    @apply text-pink-400;
+  }
+
+  p {
+    @apply text-slate-200;
+  }
+
+  blockquote p {
+    @apply text-slate-400;
+  }
 }
 
 .prose .anchor {
@@ -33,14 +131,6 @@ button {
 
 .prose *:hover>.anchor {
   @apply visible;
-}
-
-.prose pre {
-  border-radius: 0;
-}
-
-.prose ul {
-  word-wrap: break-word;
 }
 
 table {
