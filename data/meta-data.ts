@@ -70,11 +70,18 @@ const WorksPage = {
       imageUrl: "/images/mathcheap-showcase.png",
       description: "An AI-powered, free alternative to Mathpix Snip.",
     },
+    // {
+    //   href: "https://litedocs.dev",
+    //   title: "LiteDocs",
+    //   logoUrl: "/images/litedocs-logo.svg",
+    //   imageUrl: "/images/litedocs-showcase.png",
+    //   description: "Customisable documentation framework built with Tailwindcss, MDX, Content Collections, and Next.js",
+    // },
     {
       href: "https://gre.shenlu.me",
-      title: "GRE GO",
-      logoUrl: "/images/grego-logo.svg",
-      imageUrl: "/images/grego-showcase.png",
+      title: "GRE AWA",
+      logoUrl: "/images/gre-awa-logo.svg",
+      imageUrl: "/images/gre-awa-showcase.png",
       description:
         "A toolkit that can help you practice and prepare effectively for the GRE Analytical Writing.",
     },
