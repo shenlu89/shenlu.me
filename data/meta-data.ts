@@ -70,13 +70,6 @@ const WorksPage = {
       imageUrl: "/images/mathcheap-showcase.png",
       description: "An AI-powered, free alternative to Mathpix Snip.",
     },
-    {
-      href: "https://sixty.tools",
-      title: "Sixty Tools",
-      logoUrl: "/images/sixty-tools-logo.svg",
-      imageUrl: "/images/sixty-tools-showcase.png",
-      description: "A curated list of AI-powered tools.",
-    },
     // {
     //   href: "https://litedocs.dev",
     //   title: "LiteDocs",
