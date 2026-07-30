@@ -108,7 +108,7 @@ export default function About() {
       <div>
         <div>
           <p>
-            Hi👋. I'm Shen Lu, an indie developer and data visualization enthusiast, especially in bioinformatics.
+            Hi👋. I'm Shen Lu, an independent researcher and data visualization enthusiast, especially in bioinformatics.
           </p>
         </div>
         <hr />
