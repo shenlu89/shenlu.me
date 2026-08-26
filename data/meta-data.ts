@@ -64,8 +64,8 @@ const WorksPage = {
   },
   showcase: [
     {
-      href: "https://mathcheap.xyz",
-      title: "Mathcheap",
+      href: "https://notepix.ai",
+      title: "Notepix",
       logoUrl: "/images/mathcheap-logo.svg",
       imageUrl: "/images/mathcheap-showcase.png",
       description: "An AI-powered, free alternative to Mathpix Snip.",
