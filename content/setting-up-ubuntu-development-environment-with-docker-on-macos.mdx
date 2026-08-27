@@ -45,7 +45,7 @@ FROM ubuntu:latest
 
 # Update and install dependencies
 RUN apt-get update && \
-    apt-get install -y curl git tmux
+    apt-get install -y curl git tmux unzip
 
 # Install Bun
 RUN curl -fsSL https://bun.sh/install | bash
