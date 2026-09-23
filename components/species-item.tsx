@@ -72,7 +72,7 @@ const SpeciesItem = async () => {
             className="flex items-center space-x-2"
           >
             <Image
-              className="flex"
+              className="flex dark:invert"
               src="/images/aes-logo.svg"
               width={24}
               height={24}

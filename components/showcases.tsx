@@ -5,7 +5,8 @@ import { RiShareCircleLine } from "react-icons/ri";
 
 const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
   const shouldInvertLogo =
-    typeof logoUrl === "string" && logoUrl.includes("mathcheap-logo.svg");
+    typeof logoUrl === "string" &&
+    (logoUrl.includes("mathcheap-logo.svg") || logoUrl.includes("aes-logo.svg"));
   return (
     <Link
       href={href}
@@ -20,7 +21,7 @@ const Showcase = ({ href, title, logoUrl, imageUrl, description }: any) => {
               alt={title}
               width="48"
               height="48"
-              className={`flex self-center${shouldInvertLogo ? " dark:invert" : ""}`}
+              className={`flex self-center ${shouldInvertLogo ? "dark:invert" : ""}`}
             />
             <div className="flex flex-col justify-center items-center sm:items-start">
               <h3 className="flex text-lg font-extrabold m-0">{title}</h3>
