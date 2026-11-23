@@ -40,13 +40,13 @@ In ECMAScript, there are plenty of built-in objects that can be directly used as
 | Value Properties                                                                 | Description                                                                                                           |    Notation     | Value (Number)          |
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | :-------------: | ----------------------- |
 | [`EPSILON`](https://tc39.es/ecma262/#sec-number.epsilon)                         | the magnitude of the difference between 1 and the smallest value greater than 1, which is approximately $$2^{-52}$$   | $$\varepsilon$$ | 2.220446049250313e-16   |
-| ~~[`NaN`]()~~                                                                    | the value identicial to the global `NaN`                                                                              |     $$NaN$$     | NaN                     |
+| ~~[`NaN`]()~~                                                                    | the value identical to the global `NaN`                                                                               |     $$NaN$$     | NaN                     |
 | [`MAX_SAFE_INTEGER`](https://tc39.es/ecma262/#sec-number.max_safe_integer)       | the maximum safe integer in JavaScript                                                                                |  $$2^{53}-1$$   | 9007199254740991        |
-| [`MAX_VALUE`](https://tc39.es/ecma262/#sec-number.max_value)                     | the largest positive representable number                                                                             | $$2^{1024}-1$$  | 1.7976931348623157e+308 |
+| [`MAX_VALUE`](https://tc39.es/ecma262/#sec-number.max_value)                     | the largest positive representable number                                                                             | $$(2 - 2^{-52}) \times 2^{1023}$$ | 1.7976931348623157e+308 |
 | [`MIN_SAFE_INTEGER`](https://tc39.es/ecma262/#sec-number.min_safe_integer)       | the minimum safe integer in JavaScript ($$-2^{53} + 1$$)                                                              |  $$-2^{53}+1$$  | -9007199254740991       |
 | [`MIN_VALUE`](https://tc39.es/ecma262/#sec-number.min_value)                     | the smallest positive representable number—that is, the positive number closest to zero (without actually being zero) |  $$2^{-1074}$$  | 5e-324                  |
 | [`NEGATIVE_INFINITY`](https://tc39.es/ecma262/#sec-number.negative_infinity)     | negative infinity                                                                                                     |   $$-\infty$$   | -Infinity               |
-| ~~[`POSITIVE_INFINITY`](https://tc39.es/ecma262/#sec-number.positive_infinity)~~ | the value identicial to the global `Infinity`                                                                         |   $$+\infty$$   | Infinity (+Infinity)    |
+| ~~[`POSITIVE_INFINITY`](https://tc39.es/ecma262/#sec-number.positive_infinity)~~ | the value identical to the global `Infinity`                                                                          |   $$+\infty$$   | Infinity (+Infinity)    |
 
 | Function Properties                                                           | Description                                                                                              | Return Type      |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------- |
@@ -54,16 +54,16 @@ In ECMAScript, there are plenty of built-in objects that can be directly used as
 | [`isInteger(number)`](https://tc39.es/ecma262/#sec-number.isinteger)          | determine whether the passed value is an integer or not                                                  | boolean          |
 | [`isNaN(number)`](https://tc39.es/ecma262/#sec-number.isnan)                  | determine whether the passed value is NaN or not (`typeof number === 'number' && number !== number`)     | boolean          |
 | [`isSafeInteger(number)`](https://tc39.es/ecma262/#sec-number.issafeinteger)  | determine whether the passed value is a safe integer (between $$-2^{53} + 1$$ and $$2^{53} - 1$$) or not | boolean          |
-| ~~[`parseFloat(string)`](https://tc39.es/ecma262/#sec-number.parsefloat)~~    | the function identicial to the global `parseFloat`                                                       | number (float)   |
-| ~~[`parseInt(string, radix)`](https://tc39.es/ecma262/#sec-number.parseint)~~ | the function identicial to the global `parseInt`                                                         | number (integer) |
+| ~~[`parseFloat(string)`](https://tc39.es/ecma262/#sec-number.parsefloat)~~    | the function identical to the global `parseFloat`                                                        | number (float)   |
+| ~~[`parseInt(string, radix)`](https://tc39.es/ecma262/#sec-number.parseint)~~ | the function identical to the global `parseInt`                                                          | number (integer) |
 
 > **Note**:
 >
-> 1. `Number.isFinite(number)` does not convert its argument to a Number before determining whether it is `Infinity` or not, which differs from the global `isFinite(number)` function. So `Number.isNaN(number)` does it as well.
+> 1. `Number.isFinite(number)` does not convert its argument to a Number before determining whether it is a finite number, which differs from the global `isFinite(number)` function. So `Number.isNaN(number)` does it as well.
 
 ### Other Properties
 
-- [**Math**](https://tc39.es/ecma262/#sec-math-object): A a built-in object that has properties and methods for mathematical constants and functions. It’s not a function object. `Math` works with the `Number` type. It doesn't work with `BigInt`.
+- [**Math**](https://tc39.es/ecma262/#sec-math-object): A built-in object that has properties and methods for mathematical constants and functions. It’s not a function object. `Math` works with the `Number` type. It doesn't work with `BigInt`.
 
 #### Math
 
@@ -106,7 +106,7 @@ In ECMAScript, there are plenty of built-in objects that can be directly used as
 | [`max(...args)`](https://tc39.es/ecma262/#sec-math.max)            | return the largest of the resulting values                                      | $$\max \left \{ f\left ( x_1 \right ) ,...,f\left ( x_n \right ) \right \}$$ | number      |
 | [`min(...args)`](https://tc39.es/ecma262/#sec-math.min)            | return the smallest of the resulting values                                     | $$\min \left \{ f\left ( x_1 \right ) ,...,f\left ( x_n \right ) \right \}$$ | number      |
 | ~~[`pow(base, exponent)`](https://tc39.es/ecma262/#sec-math.pow)~~ | return base _x_ to the exponent power _y_ (that is, _x_^_y_)                    |                                   $$x^y$$                                    | number      |
-| [`random()`](https://tc39.es/ecma262/#sec-math.random)             | return a pseudo-random number between 0 and 1                                   |                       $$x \in \left (0, 1  \right ]$$                        | number      |
+| [`random()`](https://tc39.es/ecma262/#sec-math.random)             | return a pseudo-random number between 0 and 1                                   |                       $$x \in \left [0, 1  \right )$$                        | number      |
 | [`round(x)`](https://tc39.es/ecma262/#sec-math.round)              | return the value of the number x rounded to the nearest integer                 |                     $$\lfloor x + \frac{1}{2} \rfloor$$                      | number      |
 | [`sign(x)`](https://tc39.es/ecma262/#sec-math.sign)                | return the sign of the x, indicating whether x is positive, negative, or zero   |                                   $$\pm $$                                   | number      |
 | [`sin(x)`](https://tc39.es/ecma262/#sec-math.sin)                  | return the sine of _x_                                                          |                                  $$\sin x$$                                  | number      |
@@ -119,4 +119,4 @@ In ECMAScript, there are plenty of built-in objects that can be directly used as
 > **Note**:
 >
 > 1. `x ** y` is recommended to implement _x_ ^ _y_ instead of `Math.pow(x, y)`.
-> 2. `~~x` is recommended to get the integer part of the given number instead of `Math.trunc(x)`.
+> 2. `~~x` is sometimes used to get the integer part of a number, but **it is not recommended for general use** instead of `Math.trunc(x)` because bitwise operations truncate numbers to 32-bit signed integers, which will cause incorrect results for numbers outside the `[-2147483648, 2147483647]` range.
