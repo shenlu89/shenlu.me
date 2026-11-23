@@ -12,7 +12,7 @@ In ECMAScript, there are plenty of built-in objects that can be directly used as
 | Value Properties                                                                          | Description       |  Notation   | Value (Number)       |
 | ----------------------------------------------------------------------------------------- | ----------------- | :---------: | -------------------- |
 | [`Infinity`](https://tc39.es/ecma262/#sec-value-properties-of-the-global-object-infinity) | positive Infinity | $$+\infty$$ | Infinity (+Infinity) |
-| [`NaN`](https://tc39.es/ecma262/#sec-value-properties-of-the-global-object-nan)           | Not a Number      |   $$NaN$$   | NaN                  |
+| [`NaN`](https://tc39.es/ecma262/#sec-value-properties-of-the-global-object-nan)           | Not a Number      |   $$\mathrm{NaN}$$  | NaN                  |
 
 ### Function Properties
 
@@ -40,13 +40,15 @@ In ECMAScript, there are plenty of built-in objects that can be directly used as
 | Value Properties                                                                 | Description                                                                                                           |    Notation     | Value (Number)          |
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | :-------------: | ----------------------- |
 | [`EPSILON`](https://tc39.es/ecma262/#sec-number.epsilon)                         | the magnitude of the difference between 1 and the smallest value greater than 1, which is approximately $$2^{-52}$$   | $$\varepsilon$$ | 2.220446049250313e-16   |
-| ~~[`NaN`]()~~                                                                    | the value identical to the global `NaN`                                                                               |     $$NaN$$     | NaN                     |
+| ~~[`NaN`]()~~                                                                    | the value identical to the global `NaN`                                                                               |     $$\mathrm{NaN}$$    | NaN                     |
 | [`MAX_SAFE_INTEGER`](https://tc39.es/ecma262/#sec-number.max_safe_integer)       | the maximum safe integer in JavaScript                                                                                |  $$2^{53}-1$$   | 9007199254740991        |
 | [`MAX_VALUE`](https://tc39.es/ecma262/#sec-number.max_value)                     | the largest positive representable number                                                                             | $$(2 - 2^{-52}) \times 2^{1023}$$ | 1.7976931348623157e+308 |
 | [`MIN_SAFE_INTEGER`](https://tc39.es/ecma262/#sec-number.min_safe_integer)       | the minimum safe integer in JavaScript ($$-2^{53} + 1$$)                                                              |  $$-2^{53}+1$$  | -9007199254740991       |
 | [`MIN_VALUE`](https://tc39.es/ecma262/#sec-number.min_value)                     | the smallest positive representable number—that is, the positive number closest to zero (without actually being zero) |  $$2^{-1074}$$  | 5e-324                  |
 | [`NEGATIVE_INFINITY`](https://tc39.es/ecma262/#sec-number.negative_infinity)     | negative infinity                                                                                                     |   $$-\infty$$   | -Infinity               |
 | ~~[`POSITIVE_INFINITY`](https://tc39.es/ecma262/#sec-number.positive_infinity)~~ | the value identical to the global `Infinity`                                                                          |   $$+\infty$$   | Infinity (+Infinity)    |
+
+---
 
 | Function Properties                                                           | Description                                                                                              | Return Type      |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------- |
@@ -78,6 +80,8 @@ In ECMAScript, there are plenty of built-in objects that can be directly used as
 | [`SQRT1_2`](https://tc39.es/ecma262/#sec-math.sqrt1_2) | the square root of ½                                       | $$\frac{1}{\sqrt{2}}$$ | 0.7071067811865476    |
 | [`SQRT2`](https://tc39.es/ecma262/#sec-math.sqrt2)     | the square root of 2                                       |      $$\sqrt{2}$$      | 1.4142135623730951    |
 
+---
+
 | Function Properties                                                | Description                                                                     |                                   Notation                                   | Return Type |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------------------- | :--------------------------------------------------------------------------: | ----------- |
 | [`abs(x)`](https://tc39.es/ecma262/#sec-math.abs)                  | return the absolute value of _x_                                                |                             $$\lvert x \rvert $$                             | number      |
@@ -87,36 +91,36 @@ In ECMAScript, there are plenty of built-in objects that can be directly used as
 | [`asinh(x)`](https://tc39.es/ecma262/#sec-math.asinh)              | return the inverse hyperbolic sine of _x_                                       |                         $$\operatorname{arsinh}(x)$$                         | number      |
 | [`atan(x)`](https://tc39.es/ecma262/#sec-math.atan)                | return the inverse tangent of _x_                                               |                                $$\arctan(x)$$                                | number      |
 | [`atanh(x)`](https://tc39.es/ecma262/#sec-math.atanh)              | return the inverse hyperbolic tangent of _x_                                    |                        $$\operatorname{arctanh}(x)$$                         | number      |
-| [`atan2(y, x)`](https://tc39.es/ecma262/#sec-math.atan2)           | return the inverse tangent of the quotient _y / x_ of the arguments _y_ and _x_ |                           $$arctan(\frac{y}{x})$$                            | number      |
+| [`atan2(y, x)`](https://tc39.es/ecma262/#sec-math.atan2)           | return the inverse tangent of the quotient _y / x_ of the arguments _y_ and _x_ |                           $$\arctan(\frac{y}{x})$$                           | number      |
 | [`cbrt(x)`](https://tc39.es/ecma262/#sec-math.cbrt)                | return the cube root of _x_                                                     |                               $$\sqrt[3]{x}$$                                | number      |
 | [`ceil(x)`](https://tc39.es/ecma262/#sec-math.ceil)                | return the smallest integer greater than or equal to _x_                        |                             $$\lceil x \rceil$$                              | number      |
-| [`clz32(x)`](https://tc39.es/ecma262/#sec-math.clz32)              | return the number of leading zero bits of the 32-bit integer _x_                |                                                                              | number      |
+| [`clz32(x)`](https://tc39.es/ecma262/#sec-math.clz32)              | return the number of leading zero bits of the 32-bit integer _x_                |                      $$32 - \lceil \log_2(x+1) \rceil$$                      | number      |
 | [`cos(x)`](https://tc39.es/ecma262/#sec-math.cos)                  | return the cosine of _x_                                                        |                                 $$\cos(x)$$                                  | number      |
 | [`cosh(x)`](https://tc39.es/ecma262/#sec-math.cosh)                | return the hyperbolic cosine of _x_                                             |                          $$\frac{e^x + e^{-x}}{2}$$                          | number      |
 | [`exp(x)`](https://tc39.es/ecma262/#sec-math.exp)                  | return the exponential function of _x_                                          |                                   $$e^x$$                                    | number      |
 | [`expm1(x)`](https://tc39.es/ecma262/#sec-math.expm1)              | return the result of subtracting 1 from the exponential function of _x_         |                                 $$e^x - 1$$                                  | number      |
 | [`floor(x)`](https://tc39.es/ecma262/#sec-math.floor)              | return the largest integer less than or equal to _x_                            |                            $$\lfloor x \rfloor$$                             | number      |
-| [`fround(x)`](https://tc39.es/ecma262/#sec-math.fround)            | return the nearest single precision float representation of _x_                 |                                                                              | number      |
-| [`hypot(...args)`](https://tc39.es/ecma262/#sec-math.hypot)        | return the square root of the sum of squares of its arguments.                  |                      $$\sqrt{\sum\_{i=1}^{n}{x_n^2}}$$                       | number      |
-| [`imul(x, y)`](https://tc39.es/ecma262/#sec-math.imul)             | return the result of the 32-bit integer multiplication of _x_ and _y_.          |                                                                              | number      |
+| [`fround(x)`](https://tc39.es/ecma262/#sec-math.fround)            | return the nearest single precision float representation of _x_                 |                                $$fl_{32}(x)$$                                | number      |
+| [`hypot(...args)`](https://tc39.es/ecma262/#sec-math.hypot)        | return the square root of the sum of squares of its arguments.                  |                       $$\sqrt{\sum_{i=1}^{n}{x_i^2}}$$                       | number      |
+| [`imul(x, y)`](https://tc39.es/ecma262/#sec-math.imul)             | return the result of the 32-bit integer multiplication of _x_ and _y_.          |                        $$(x \times y) \pmod{2^{32}}$$                        | number      |
 | [`log(x)`](https://tc39.es/ecma262/#sec-math.log)                  | return the natural logarithm of _x_                                             |                                  $$\ln(x)$$                                  | number      |
 | [`log1p(x)`](https://tc39.es/ecma262/#sec-math.log1p)              | return the natural logarithm of 1 + _x_                                         |                                 $$\ln(1+x)$$                                 | number      |
 | [`log10(x)`](https://tc39.es/ecma262/#sec-math.log10)              | return the base 10 logarithm of _x_                                             |                               $$\log_{10} x$$                                | number      |
 | [`log2(x)`](https://tc39.es/ecma262/#sec-math.log2)                | return the base 2 logarithm of _x_                                              |                                $$\log_{2} x$$                                | number      |
-| [`max(...args)`](https://tc39.es/ecma262/#sec-math.max)            | return the largest of the resulting values                                      | $$\max \left \{ f\left ( x_1 \right ) ,...,f\left ( x_n \right ) \right \}$$ | number      |
-| [`min(...args)`](https://tc39.es/ecma262/#sec-math.min)            | return the smallest of the resulting values                                     | $$\min \left \{ f\left ( x_1 \right ) ,...,f\left ( x_n \right ) \right \}$$ | number      |
+| [`max(...args)`](https://tc39.es/ecma262/#sec-math.max)            | return the largest of the resulting values                                      | $$\max \{ x_1, \dots, x_n \}$$ | number      |
+| [`min(...args)`](https://tc39.es/ecma262/#sec-math.min)            | return the smallest of the resulting values                                     | $$\min \{ x_1, \dots, x_n \}$$ | number      |
 | ~~[`pow(base, exponent)`](https://tc39.es/ecma262/#sec-math.pow)~~ | return base _x_ to the exponent power _y_ (that is, _x_^_y_)                    |                                   $$x^y$$                                    | number      |
 | [`random()`](https://tc39.es/ecma262/#sec-math.random)             | return a pseudo-random number between 0 and 1                                   |                       $$x \in \left [0, 1  \right )$$                        | number      |
 | [`round(x)`](https://tc39.es/ecma262/#sec-math.round)              | return the value of the number x rounded to the nearest integer                 |                     $$\lfloor x + \frac{1}{2} \rfloor$$                      | number      |
-| [`sign(x)`](https://tc39.es/ecma262/#sec-math.sign)                | return the sign of the x, indicating whether x is positive, negative, or zero   |                                   $$\pm $$                                   | number      |
+| [`sign(x)`](https://tc39.es/ecma262/#sec-math.sign)                | return the sign of the x, indicating whether x is positive, negative, or zero   |                          $$\operatorname{sgn}(x)$$                           | number      |
 | [`sin(x)`](https://tc39.es/ecma262/#sec-math.sin)                  | return the sine of _x_                                                          |                                  $$\sin x$$                                  | number      |
 | [`sinh(x)`](https://tc39.es/ecma262/#sec-math.sinh)                | return the hyperbolic sine of _x_                                               |                          $$\frac{e^x - e^{-x}}{2}$$                          | number      |
 | [`sqrt(x)`](https://tc39.es/ecma262/#sec-math.sqrt)                | return the positive square root of _x_                                          |                                 $$\sqrt{x}$$                                 | number      |
 | [`tan(x)`](https://tc39.es/ecma262/#sec-math.tan)                  | return the tangent of _x_                                                       |                                 $$\tan(x)$$                                  | number      |
 | [`tanh(x)`](https://tc39.es/ecma262/#sec-math.tanh)                | return the hyperbolic tangent of _x_                                            |                       $$\frac{e^{2x} - 1}{e^{2x}+1}$$                        | number      |
-| ~~[`trunc(x)`](https://tc39.es/ecma262/#sec-math.trunc)~~          | return the integer portion of _x_, removing any fractional digits               |                                                                              | number      |
+| [`trunc(x)`](https://tc39.es/ecma262/#sec-math.trunc)          | return the integer portion of _x_, removing any fractional digits               |                  $$\operatorname{sgn}(x) \lfloor \lvert x \rvert \rfloor$$   | number      |
 
 > **Note**:
 >
 > 1. `x ** y` is recommended to implement _x_ ^ _y_ instead of `Math.pow(x, y)`.
-> 2. `~~x` is sometimes used to get the integer part of a number, but **it is not recommended for general use** instead of `Math.trunc(x)` because bitwise operations truncate numbers to 32-bit signed integers, which will cause incorrect results for numbers outside the `[-2147483648, 2147483647]` range.
+> 2. `~~x` or `x | 0` is sometimes used to get the integer part of a number, but **it is not recommended for general use** instead of `Math.trunc(x)` because bitwise operations truncate numbers to 32-bit signed integers, which will cause incorrect results for numbers outside the `[-2147483648, 2147483647]` range.
