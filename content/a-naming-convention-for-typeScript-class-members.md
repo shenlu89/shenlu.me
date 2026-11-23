@@ -1,4 +1,8 @@
-# #, _, and Nothing: A Naming Convention for TypeScript Class Members
+---
+title: "#, _, and Nothing: A Naming Convention for TypeScript Class Members"
+date: "2026-11-23"
+---
+
 
 A consistent naming convention makes TypeScript code easier to read, maintain, and extend.
 
