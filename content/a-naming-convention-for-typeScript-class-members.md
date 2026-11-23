@@ -1,0 +1,91 @@
+# #, _, and Nothing: A Naming Convention for TypeScript Class Members
+
+A consistent naming convention makes TypeScript code easier to read, maintain, and extend.
+
+This convention uses three simple rules to distinguish class member visibility:
+
+| Access Level | Naming Convention | Example |
+|---|---|---|
+| Private | `#` prefix | `#context` |
+| Protected | `_` prefix | `_data` |
+| Public | No prefix or modifier | `render()` |
+
+## 1. Private: Use `#`
+
+Use JavaScript native private fields and methods instead of TypeScript's `private` modifier.
+
+```typescript
+class Renderer {
+    #context: WebGLRenderingContext;
+
+    #initialize(): void {
+        // Internal implementation
+    }
+}
+```
+
+The `#` syntax provides runtime privacy. Private members cannot be accessed directly from outside the declaring class or from subclasses.
+
+## 2. Protected: Use `_` Prefix
+
+Use the underscore prefix to identify internal class members intended for use by the class and its subclasses.
+
+```typescript
+class Renderer {
+    _data: Float32Array;
+
+    _render(): void {}
+}
+
+class WebGLRenderer extends Renderer {
+    draw(): void {
+        this._render();
+    }
+}
+```
+
+Unlike `protected`, the `_` prefix is a naming convention rather than an enforced access restriction. It communicates that these members are internal implementation details, not part of the public API.
+
+## 3. Public: Use Default Access
+
+TypeScript class members are public by default. There is no need to explicitly declare `public`.
+
+```typescript
+class Renderer {
+    render(): void {}
+
+    resize(width: number, height: number): void {}
+}
+```
+
+Omitting `public` keeps the code concise and avoids redundant declarations.
+
+## 4. Complete Example
+
+```typescript
+class Renderer {
+    #context: WebGLRenderingContext;
+
+    _data: Float32Array;
+
+    _render(): void {}
+
+    render(): void {
+        this._render();
+    }
+}
+
+class WebGLRenderer extends Renderer {
+    _render(): void {
+        // Custom rendering implementation
+    }
+}
+```
+
+## 5. Summary
+
+- **Private (`#`)**: Strict encapsulation with JavaScript runtime privacy.
+- **Protected (`_`)**: Internal members intended for inheritance and extension.
+- **Public (default)**: Public APIs without redundant modifiers.
+
+**Private for encapsulation, Protected for extension, Public for API.**
