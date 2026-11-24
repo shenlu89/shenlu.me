@@ -24,10 +24,10 @@ const HomePage = {
       default: "Shen Lu's Blog",
       template: `%s | Shen Lu's Blog`,
     },
-    description: "Indie researcher in bioinformatics & AI",
+    description: "Independent researcher in bioinformatics & AI",
     openGraph: {
       title: "Shen Lu",
-      description: "Indie researcher in bioinformatics & AI",
+      description: "Independent researcher in bioinformatics & AI",
       url: "https://shenlu.me",
       siteName: "Shen Lu",
       locale: "en-US",
@@ -52,7 +52,7 @@ const HomePage = {
     },
   },
   title: "Shen Lu",
-  description: "Indie researcher in bioinformatics & AI",
+  description: "Independent researcher in bioinformatics & AI",
   url: "https://shenlu.me",
   avatar_url: "/images/avatar.jpg",
 };
